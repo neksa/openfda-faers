@@ -1,5 +1,5 @@
-FAERS Adverse Reaction Events database and OpenFDA API
-======================================================
+FAERS/FDA Adverse Reaction Events database
+==========================================
 
 |Binder| |Colab|
 
