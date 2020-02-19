@@ -17,3 +17,5 @@ dependencies:
     - munch
     - seaborn
     - wordcloud
+    - ratelimit
+    - requests_cache

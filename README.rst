@@ -17,6 +17,6 @@ On top of this page there are links to Binder2 an Google Collab clouds, where an
 A copy is also available in html format if github notebook rendering does not work for some reason.
 
 .. |Binder| image:: https://mybinder.org/badge_logo.svg
-   :target: https://mybinder.org/v2/gh/neksa/openfda-faers/master?urlpath=lab
+   :target: https://mybinder.org/v2/gh/neksa/openfda-faers/master?urlpath=lab%2Ftree%2FOpenFDA%20API%20for%20FAERS.ipynb
 .. |Colab| image:: https://colab.research.google.com/assets/colab-badge.svg
    :target: https://colab.research.google.com/github/openfda-faers
