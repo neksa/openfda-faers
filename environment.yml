@@ -1,0 +1,20 @@
+name: openfda-jupyter-environment
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.6
+  - numpy
+  - scipy
+  - scikit-learn
+  - matplotlib
+  - pandas
+  - seaborn
+  -
+  - pip:
+    - PyYAML
+    - tqdm
+    - umap-learn
+    - munch
+    - seaborn
+    - wordcloud
