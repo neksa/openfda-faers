@@ -1,0 +1,142 @@
+{
+ "config": {
+  "view": {
+   "continuousWidth": 300,
+   "continuousHeight": 300
+  }
+ },
+ "data": {
+  "name": "data-b3441ccad3816dd5965f257ab4af87a3"
+ },
+ "mark": {
+  "type": "line",
+  "color": "#4C78A8",
+  "point": true
+ },
+ "encoding": {
+  "tooltip": [
+   {
+    "field": "year",
+    "type": "ordinal"
+   },
+   {
+    "field": "reports",
+    "format": ",",
+    "type": "quantitative"
+   }
+  ],
+  "x": {
+   "field": "year",
+   "title": "FDA receipt year",
+   "type": "ordinal"
+  },
+  "y": {
+   "axis": {
+    "format": "~s"
+   },
+   "field": "reports",
+   "title": "Reports",
+   "type": "quantitative"
+  }
+ },
+ "height": 320,
+ "title": "FAERS reports per year, deduplicated (2004-2026)",
+ "width": 620,
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+ "datasets": {
+  "data-b3441ccad3816dd5965f257ab4af87a3": [
+   {
+    "year": 2004,
+    "reports": 205154
+   },
+   {
+    "year": 2005,
+    "reports": 230441
+   },
+   {
+    "year": 2006,
+    "reports": 245237
+   },
+   {
+    "year": 2007,
+    "reports": 264528
+   },
+   {
+    "year": 2008,
+    "reports": 309538
+   },
+   {
+    "year": 2009,
+    "reports": 335508
+   },
+   {
+    "year": 2010,
+    "reports": 475980
+   },
+   {
+    "year": 2011,
+    "reports": 538584
+   },
+   {
+    "year": 2012,
+    "reports": 637755
+   },
+   {
+    "year": 2013,
+    "reports": 769472
+   },
+   {
+    "year": 2014,
+    "reports": 811933
+   },
+   {
+    "year": 2015,
+    "reports": 1224113
+   },
+   {
+    "year": 2016,
+    "reports": 1147014
+   },
+   {
+    "year": 2017,
+    "reports": 1231908
+   },
+   {
+    "year": 2018,
+    "reports": 1055713
+   },
+   {
+    "year": 2019,
+    "reports": 1421252
+   },
+   {
+    "year": 2020,
+    "reports": 1419546
+   },
+   {
+    "year": 2021,
+    "reports": 1566609
+   },
+   {
+    "year": 2022,
+    "reports": 1526834
+   },
+   {
+    "year": 2023,
+    "reports": 1385487
+   },
+   {
+    "year": 2024,
+    "reports": 1340061
+   },
+   {
+    "year": 2025,
+    "reports": 1389118
+   },
+   {
+    "year": 2026,
+    "reports": 792341
+   }
+  ]
+ }
+}

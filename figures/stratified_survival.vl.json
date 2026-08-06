@@ -1,0 +1,77 @@
+{
+ "config": {
+  "view": {
+   "continuousWidth": 300,
+   "continuousHeight": 300
+  }
+ },
+ "data": {
+  "name": "data-0626afe21711887e7adc74d94a7bbea5"
+ },
+ "mark": {
+  "type": "bar",
+  "color": "#54A24B"
+ },
+ "encoding": {
+  "tooltip": [
+   {
+    "field": "tested",
+    "format": ",",
+    "type": "quantitative"
+   },
+   {
+    "field": "surviving",
+    "format": ",",
+    "type": "quantitative"
+   },
+   {
+    "field": "heterogeneous",
+    "format": ",",
+    "type": "quantitative"
+   }
+  ],
+  "x": {
+   "axis": {
+    "format": "~s"
+   },
+   "field": "surviving",
+   "title": "Pairs still signalling after adjustment",
+   "type": "quantitative"
+  },
+  "y": {
+   "field": "variable",
+   "sort": "-x",
+   "title": null,
+   "type": "nominal"
+  }
+ },
+ "height": 200,
+ "title": "Signals surviving confounder adjustment",
+ "width": 620,
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+ "datasets": {
+  "data-0626afe21711887e7adc74d94a7bbea5": [
+   {
+    "variable": "sex",
+    "tested": 18550,
+    "surviving": 18542,
+    "heterogeneous": 9313,
+    "survival_rate": 0.9996
+   },
+   {
+    "variable": "age_band",
+    "tested": 18276,
+    "surviving": 17995,
+    "heterogeneous": 13826,
+    "survival_rate": 0.9846
+   },
+   {
+    "variable": "calendar_period",
+    "tested": 18352,
+    "surviving": 18207,
+    "heterogeneous": 13899,
+    "survival_rate": 0.9921
+   }
+  ]
+ }
+}

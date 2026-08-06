@@ -1,0 +1,52 @@
+# Pipeline parameters. Every choice that changes a published number lives here, so that a
+# sensitivity analysis is a params edit and a `dvc repro`, not a code change.
+
+coverage:
+  # Full published range. 2004Q1-2012Q3 is the legacy LAERS format, 2012Q4 onward is FAERS.
+  start: 2004Q1
+  end: 2026Q2
+
+normalize:
+  # A drugname -> ingredient mapping must be observed at least this many times before it is
+  # trusted, so one mis-keyed row cannot define a mapping for a whole substance.
+  dictionary_min_support: 2
+
+signals:
+  # Drug roles included in the contingency tables. PS/SS are primary and secondary suspect.
+  # Set to null to include concomitant drugs as well; the report compares both.
+  roles: [PS, SS]
+
+  # Minimum co-reports for a pair to enter the hypothesis family. Screening the long tail of
+  # single-occurrence pairs adds no information and destroys power under multiple testing.
+  min_count: 3
+
+  # The gamma-Poisson hyperparameters describe the distribution of reporting ratios; a sample
+  # pins down those five numbers as well as the full table, at a fraction of the fitting cost.
+  gamma_poisson_fit_sample: 200000
+  random_state: 0
+
+  memory_limit: 24GB
+  temp_dir: data/tmp
+
+descriptive:
+  # The three terms the 2020 notebook compared when it looked for reporting bias. Kept identical
+  # so the 2026 rebuild is directly comparable to its figure.
+  trend_terms: [DEATH, PAIN, DYSPNOEA]
+
+stratify:
+  # Variables for the Mantel-Haenszel adjusted analysis, each applied as a separate stratification.
+  variables: [sex, age_band, calendar_period]
+  # Strata carrying less information than this contribute nothing stable and are pooled out.
+  min_stratum_count: 3
+  # Length of the calendar strata, in years. Reporting volume and practice changed sharply over
+  # 22 years, so calendar period is a confounder in its own right.
+  calendar_period_years: 5
+
+publish:
+  # Hugging Face dataset repo receiving the derived tables. Requires HF_TOKEN in the environment.
+  # The publish stage is opt-in and is not part of the default `dvc repro`.
+  hf_repo: null
+  include:
+    - results/signals/scored.parquet
+    - results/descriptive
+    - results/*.json

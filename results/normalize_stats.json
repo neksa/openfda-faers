@@ -1,0 +1,13 @@
+{
+  "dictionary_entries": 95555,
+  "rows_out": 81454667,
+  "distinct_ingredients": 460755,
+  "distinct_reported_names": 974651,
+  "resolution_counts": {
+    "prod_ai": 63994344,
+    "dict_exact": 14527180,
+    "unresolved": 1997864,
+    "dict_cleaned": 935279
+  },
+  "resolved_fraction": 0.9755
+}

@@ -1,0 +1,546 @@
+{
+  "n_quarters": 90,
+  "total_bytes": 3547347845,
+  "archives": {
+    "2004Q1": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2004q1.zip",
+      "era": "laers",
+      "bytes": 7582957,
+      "sha256": "649ed8ec2b30b5e5c2824a3a7a5b37473652293a77988e677d638d73f9a34423"
+    },
+    "2004Q2": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2004q2.zip",
+      "era": "laers",
+      "bytes": 7416958,
+      "sha256": "56530ed14e0591df2827a9a68152cf80e2d621cba2efc00adfa6e817448193c9"
+    },
+    "2004Q3": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2004q3.zip",
+      "era": "laers",
+      "bytes": 8500763,
+      "sha256": "7e7038c03173764e26bd10246bb1fb4504729273cf1ef46251758383131daebc"
+    },
+    "2004Q4": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2004q4.zip",
+      "era": "laers",
+      "bytes": 8472199,
+      "sha256": "f947231a6f353c45b903c016c5f0165cedace07b310c602c4a2baaa896248d5c"
+    },
+    "2005Q1": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2005q1.zip",
+      "era": "laers",
+      "bytes": 8864096,
+      "sha256": "bd1a8df126d5b6c445e3c49bdbaf08c51751edecf6c6293475879cde8d3088c4"
+    },
+    "2005Q2": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2005q2.zip",
+      "era": "laers",
+      "bytes": 9878062,
+      "sha256": "65c4a4ae063f010ca45c2a1844a4a27e26c70759f284053829e3bd79c693a7f7"
+    },
+    "2005Q3": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2005q3.zip",
+      "era": "laers",
+      "bytes": 9750897,
+      "sha256": "ecada88b99a000db59cb6ada1c3b00414107fc67d8602122044e4b3af2adbd02"
+    },
+    "2005Q4": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2005q4.zip",
+      "era": "laers",
+      "bytes": 10089154,
+      "sha256": "09fd999756fa3cea44a093930ec73970cd22f102ec26239faf4a809bfdfa4efd"
+    },
+    "2006Q1": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2006q1.zip",
+      "era": "laers",
+      "bytes": 10848783,
+      "sha256": "5f53a8c90d9540c1fa30f45ca85a8845186f732fe0205739b32d6eda0f6f204f"
+    },
+    "2006Q2": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2006q2.zip",
+      "era": "laers",
+      "bytes": 10154467,
+      "sha256": "c439e539872e5cf09a1e038957b0edad9e7f8798b91879dcd7b5259029310f3b"
+    },
+    "2006Q3": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2006q3.zip",
+      "era": "laers",
+      "bytes": 8829761,
+      "sha256": "f19ea119bb55bd6e94304ce6f99a06f09f80f597034316889713ac8fb768de83"
+    },
+    "2006Q4": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2006q4.zip",
+      "era": "laers",
+      "bytes": 9496715,
+      "sha256": "b6462e1cd32396178b9b47bca448a1db3eaa6318e420dd3bf4d8780197f2f9d4"
+    },
+    "2007Q1": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2007q1.zip",
+      "era": "laers",
+      "bytes": 9981098,
+      "sha256": "1c52dbfc876f4bf68657f091ea31c9a91a97907bffecdf5641eca53906781c75"
+    },
+    "2007Q2": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2007q2.zip",
+      "era": "laers",
+      "bytes": 9858668,
+      "sha256": "27d4796132da3e09b1b87548f11bc911b705c02117630bb0e11073208ffcc315"
+    },
+    "2007Q3": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2007q3.zip",
+      "era": "laers",
+      "bytes": 10338532,
+      "sha256": "be50abfdc1ea56243285d225aefae0396e96e5fc6acee7a0a99e16f656dfa5ab"
+    },
+    "2007Q4": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2007q4.zip",
+      "era": "laers",
+      "bytes": 11799308,
+      "sha256": "1c3609d31f4d3c45a5ac3446ebf7b34b1f847989de6ea0bd785937a6cea5fb64"
+    },
+    "2008Q1": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2008q1.zip",
+      "era": "laers",
+      "bytes": 11836889,
+      "sha256": "68e81775336ea8f52206a83b06db9dd00aeded58d3f5a923c8955c3535040d28"
+    },
+    "2008Q2": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2008q2.zip",
+      "era": "laers",
+      "bytes": 12457874,
+      "sha256": "4225577655b45f9601d0cbb021455f9ba9aae538738679ee07e67800551c6393"
+    },
+    "2008Q3": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2008q3.zip",
+      "era": "laers",
+      "bytes": 12777009,
+      "sha256": "04f05a6d13080d292c0ff82fa6cac33ef5669808036cc17eb71a468403b0c38e"
+    },
+    "2008Q4": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2008q4.zip",
+      "era": "laers",
+      "bytes": 13417442,
+      "sha256": "87376f80c79a71059bdfe21c886941bf5f42fcd0ac386f477d92d018a9a9f44f"
+    },
+    "2009Q1": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2009q1.zip",
+      "era": "laers",
+      "bytes": 12962181,
+      "sha256": "e16a488d37809de50d1a2219cac037eb2a0666a0c64195f56812af44b3033ae4"
+    },
+    "2009Q2": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2009q2.zip",
+      "era": "laers",
+      "bytes": 14181560,
+      "sha256": "50bb732ee27235cd455a204b807d2ec333467655d35afe97087a0f89f2b6ed02"
+    },
+    "2009Q3": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2009q3.zip",
+      "era": "laers",
+      "bytes": 15742018,
+      "sha256": "7f664875b46925da52059b067ed71172a78d1dd2a29f4bcc7fc91f1ccc56c1a4"
+    },
+    "2009Q4": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2009q4.zip",
+      "era": "laers",
+      "bytes": 16178543,
+      "sha256": "075e050ccd580ba093fca003dd64985e486e3685cb32aa6e914ef89437b7d602"
+    },
+    "2010Q1": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2010q1.zip",
+      "era": "laers",
+      "bytes": 16227970,
+      "sha256": "1e67423d3c4f9f6c6f257220248ff84ccfe5f9bd758fa7e0a25c7b7b6828928b"
+    },
+    "2010Q2": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2010q2.zip",
+      "era": "laers",
+      "bytes": 15570967,
+      "sha256": "f7ed8d615653a8d412db3e9bffe9d692bc2325c5bd82ab3b3c1f73a03e71e7ec"
+    },
+    "2010Q3": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2010q3.zip",
+      "era": "laers",
+      "bytes": 22853921,
+      "sha256": "764cd01cb965ea12d4c2e1b6e987a24229775cd0f504b8bf5d7f24f3d8fd2bb9"
+    },
+    "2010Q4": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2010q4.zip",
+      "era": "laers",
+      "bytes": 20191549,
+      "sha256": "a817e7c8d6121c4f0506b9e21a5dc212904993a987e3fd525f256757942f7285"
+    },
+    "2011Q1": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2011q1.zip",
+      "era": "laers",
+      "bytes": 21342818,
+      "sha256": "734f8847a4777c7502a1e86f93e49c622169c01f485e83dfadeb497a22d8c6b5"
+    },
+    "2011Q2": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2011q2.zip",
+      "era": "laers",
+      "bytes": 23514726,
+      "sha256": "d60f5f7484adab4a1a4d132cff8446d5f6c605fa100d0123ac1b03b1b3450165"
+    },
+    "2011Q3": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2011q3.zip",
+      "era": "laers",
+      "bytes": 23476195,
+      "sha256": "352e15c360dbfcfd2a719c003876f9d5f72b73e4e69eb3917afa5260035fc6e4"
+    },
+    "2011Q4": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2011q4.zip",
+      "era": "laers",
+      "bytes": 23642384,
+      "sha256": "5596cf59ae5702f75fefa251300499a36ba1980b1bd78f271dc7796588d8b9c0"
+    },
+    "2012Q1": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2012q1.zip",
+      "era": "laers",
+      "bytes": 26697922,
+      "sha256": "8f19acee4ebf142e0a739fbede65f154b8d2e9a1a578d47ef327c41a7cf7e473"
+    },
+    "2012Q2": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2012q2.zip",
+      "era": "laers",
+      "bytes": 25956627,
+      "sha256": "6b53053a48292a64d54c799bf708edf573af524b3d15eaf05d83feb972613891"
+    },
+    "2012Q3": {
+      "url": "https://fis.fda.gov/content/Exports/aers_ascii_2012q3.zip",
+      "era": "laers",
+      "bytes": 16082485,
+      "sha256": "b8d96a85eb7ae2d9f8bf42a5c8719137dacf560636c100c96109d2ec3777768a"
+    },
+    "2012Q4": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2012q4.zip",
+      "era": "faers",
+      "bytes": 28541645,
+      "sha256": "20562c821eebd248445b7618ad63222acbe45ecb90e9fa384c07a82516661368"
+    },
+    "2013Q1": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2013q1.zip",
+      "era": "faers",
+      "bytes": 25915184,
+      "sha256": "31df3e518d400a8ba0323629dd4c64809370f5d1c2e4d0711b32997066dcfc49"
+    },
+    "2013Q2": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2013q2.zip",
+      "era": "faers",
+      "bytes": 21527601,
+      "sha256": "1f954f7561f8c9408a7547fcbcbc786a7329b2fad78dca86ab67cb85188d7e39"
+    },
+    "2013Q3": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2013q3.zip",
+      "era": "faers",
+      "bytes": 22767509,
+      "sha256": "e440ac13442f573fdeae216dad5d2ffa5e24fb4815625fb5c0915068c72a7fd5"
+    },
+    "2013Q4": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2013q4.zip",
+      "era": "faers",
+      "bytes": 26520158,
+      "sha256": "2e36bab3c85215d3471dbe6562861668b1c2141b23d1d2f5b5bb43d0fe9b9c8e"
+    },
+    "2014Q1": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2014q1.zip",
+      "era": "faers",
+      "bytes": 30461865,
+      "sha256": "86836c2acd70848d0bc4eaa776247cbc4da08625400b949f2ccff38e64943031"
+    },
+    "2014Q2": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2014q2.zip",
+      "era": "faers",
+      "bytes": 25791893,
+      "sha256": "2fad8b257781c5c39c7f414355abdb11bf405efad897cf8cca16c393784e6405"
+    },
+    "2014Q3": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2014q3.zip",
+      "era": "faers",
+      "bytes": 29279299,
+      "sha256": "8b8b79a7381103f5f653ec5c011444e54401bdab1a92e78e6d2bbeca37ce40a2"
+    },
+    "2014Q4": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2014q4.zip",
+      "era": "faers",
+      "bytes": 29052294,
+      "sha256": "ab5e44fdd430113b1a4eba2262fe4fc0d67d51525328343348eecd7fed7e7f7f"
+    },
+    "2015Q1": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2015q1.zip",
+      "era": "faers",
+      "bytes": 40474964,
+      "sha256": "ba1fc85963cb55a041dfa3b106550a3c9af4467477b15c65ba6a39509b1d2909"
+    },
+    "2015Q2": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2015q2.zip",
+      "era": "faers",
+      "bytes": 39592529,
+      "sha256": "218cc382545ecbf8ba738720a5cc9e96253b30040512aecf0395cbb8af340158"
+    },
+    "2015Q3": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2015q3.zip",
+      "era": "faers",
+      "bytes": 48837929,
+      "sha256": "e87780d538d128908c2f4d8aeacaae548249af16ffd9d19924af8566e13b5f5d"
+    },
+    "2015Q4": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2015q4.zip",
+      "era": "faers",
+      "bytes": 43099558,
+      "sha256": "b738b69f999a23a46224ac57fbde11971caa21af23be05655b9dac58af003738"
+    },
+    "2016Q1": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2016q1.zip",
+      "era": "faers",
+      "bytes": 47555838,
+      "sha256": "1df9f39e415fea6aa578946950265e535088ab7ef80523dfe6a6ec9f402ac129"
+    },
+    "2016Q2": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2016q2.zip",
+      "era": "faers",
+      "bytes": 45807096,
+      "sha256": "7ee2937a94dda400eba9e411c8d95aa4731e020ff080774ba2a5aaf413458494"
+    },
+    "2016Q3": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2016q3.zip",
+      "era": "faers",
+      "bytes": 47245256,
+      "sha256": "cc1548f46763945f228d91aeceb90f24239a20faa51ffec9abddf32a886d7c7d"
+    },
+    "2016Q4": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2016q4.zip",
+      "era": "faers",
+      "bytes": 45607862,
+      "sha256": "203a04739b272a0fa7b0ba55b1a932d3825e13156f18cc121f2bae7efc062928"
+    },
+    "2017Q1": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2017q1.zip",
+      "era": "faers",
+      "bytes": 49741685,
+      "sha256": "8b347d55faae822a896c106681f9af40a9b5d858fef78b8023ae20d49f36c044"
+    },
+    "2017Q2": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2017q2.zip",
+      "era": "faers",
+      "bytes": 47988295,
+      "sha256": "e61cff7a813c413a1b074b21dd82db926dc34eb285478d8a7b12f1171ba4b8f6"
+    },
+    "2017Q3": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2017q3.zip",
+      "era": "faers",
+      "bytes": 49374579,
+      "sha256": "eb03aa80d900b9168b8807ed72c94992de2e601a514aab2ba7995b912f9a916a"
+    },
+    "2017Q4": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2017q4.zip",
+      "era": "faers",
+      "bytes": 42758520,
+      "sha256": "586976e775598f1261cea863703b24a6236c7a16645f4764aec67138d6bce885"
+    },
+    "2018Q1": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2018q1.zip",
+      "era": "faers",
+      "bytes": 53654213,
+      "sha256": "021761361fa3acebe517cf2d941e96a2a03ce6597fd03dda205b0c94a573395c"
+    },
+    "2018Q2": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2018q2.zip",
+      "era": "faers",
+      "bytes": 61975665,
+      "sha256": "cde475975ae7342a841c7a04c10618b94bc65555cee93c0215661ed0d65449b5"
+    },
+    "2018Q3": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2018q3.zip",
+      "era": "faers",
+      "bytes": 58388423,
+      "sha256": "b974e77d35a47e3e5f2d999f57c61037243a89c07f3826f242e20dc8f6063ba7"
+    },
+    "2018Q4": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2018q4.zip",
+      "era": "faers",
+      "bytes": 63004616,
+      "sha256": "8f659d11b94f04618e1f2202e18779399c3e47e272c03e0bcd023bdceea2e322"
+    },
+    "2019Q1": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2019q1.zip",
+      "era": "faers",
+      "bytes": 58205417,
+      "sha256": "51229f0e421b49c022ffbaccba696426e0787ca378d8c7b73bd89006f3f5e9e9"
+    },
+    "2019Q2": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2019q2.zip",
+      "era": "faers",
+      "bytes": 63065908,
+      "sha256": "1910995dfb006f0b97d610716440aa453de6b2d9ff7381fc05f64d442425e5c7"
+    },
+    "2019Q3": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2019q3.zip",
+      "era": "faers",
+      "bytes": 68286386,
+      "sha256": "7f02a06088a73cbf910f1cd065a685f8d262f34e6c534deedc1b8fa0de155b84"
+    },
+    "2019Q4": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2019q4.zip",
+      "era": "faers",
+      "bytes": 62714294,
+      "sha256": "ddbac5a8eb09739c968c77c6370de3ceed388c722197574d0a550f3c680a16fc"
+    },
+    "2020Q1": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2020q1.zip",
+      "era": "faers",
+      "bytes": 68320375,
+      "sha256": "3d5d38ca7aa7b254b472164a47c93f59a7103c0d6201e3b743559b4179db4a5d"
+    },
+    "2020Q2": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2020q2.zip",
+      "era": "faers",
+      "bytes": 68828475,
+      "sha256": "f9fe8e8b6d285a11018e399f4c3927440a0d8bfb52c7ad1025622388ad05de6a"
+    },
+    "2020Q3": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2020q3.zip",
+      "era": "faers",
+      "bytes": 66442726,
+      "sha256": "4ed47f09faaf8ea6f52bb1f5c19ca1fce1959d0a7d16a08360071a4a5a623b40"
+    },
+    "2020Q4": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2020q4.zip",
+      "era": "faers",
+      "bytes": 74056668,
+      "sha256": "22ed5117ddbd4f66577eb07a0d1e28dbfcbe66176400fbfbbda8ff23aa69a27d"
+    },
+    "2021Q1": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2021q1.zip",
+      "era": "faers",
+      "bytes": 70771182,
+      "sha256": "3432dc656ec0a4700a86f4865676417062ab0fc69067d8505355dca2fb43d563"
+    },
+    "2021Q2": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2021q2.zip",
+      "era": "faers",
+      "bytes": 72294497,
+      "sha256": "33d90c7ee20aebece837a981705ec6d84839d0ff14b0b0563ed0bc45e189ca6a"
+    },
+    "2021Q3": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2021q3.zip",
+      "era": "faers",
+      "bytes": 73758770,
+      "sha256": "32db043748af1fedcf03bf2635dcf1aa4dbd5cc4f8440f67ea81c5670f713b36"
+    },
+    "2021Q4": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2021q4.zip",
+      "era": "faers",
+      "bytes": 62327755,
+      "sha256": "8d41ec8d36aad4de3450840517bd52b8b21271ac936b52cb851f0654ea13a15b"
+    },
+    "2022Q1": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2022q1.zip",
+      "era": "faers",
+      "bytes": 67926472,
+      "sha256": "76cb17f81e49b145aefb108c7d6d486a8d39a86159e91de2e09f9ad9954c7291"
+    },
+    "2022Q2": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2022q2.zip",
+      "era": "faers",
+      "bytes": 65860637,
+      "sha256": "3cc5a4fa96ff1ec58da4669e1e415cbf50812beef582244720cfa87a8df70d4f"
+    },
+    "2022Q3": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2022q3.zip",
+      "era": "faers",
+      "bytes": 66272962,
+      "sha256": "810689d34c0f1a81599996f8d59619a2efa887ffda68850f9c2ab941c075986c"
+    },
+    "2022Q4": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2022q4.zip",
+      "era": "faers",
+      "bytes": 72367913,
+      "sha256": "1bbf1b50724ff4048d8113ceced08b53707b19c4d6fd5cf47add01329ea7c534"
+    },
+    "2023Q1": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2023q1.zip",
+      "era": "faers",
+      "bytes": 67476029,
+      "sha256": "3b5d7ee3fc78990bdde16db9e4a43f448344f2cecb835bfc6b7cbcecf726d8e6"
+    },
+    "2023Q2": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2023q2.zip",
+      "era": "faers",
+      "bytes": 67650543,
+      "sha256": "e7f2f051317adf1561063d8241a64a015bc1694d64586386160eb60045f822fa"
+    },
+    "2023Q3": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2023q3.zip",
+      "era": "faers",
+      "bytes": 63036207,
+      "sha256": "86120ac44667eaeed9551a53ea8af20ef33fe1fbdf835a52662e52fb7077dbb6"
+    },
+    "2023Q4": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2023q4.zip",
+      "era": "faers",
+      "bytes": 72554591,
+      "sha256": "7e6b72848ed670900eaf78d24983c845f077091f71ffa7b9c310d590faebac62"
+    },
+    "2024Q1": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2024q1.zip",
+      "era": "faers",
+      "bytes": 67446377,
+      "sha256": "12a086c473666c2c323c13ae82e0cf333ac2c8e63538ec5488054fcad5d5ae18"
+    },
+    "2024Q2": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2024q2.zip",
+      "era": "faers",
+      "bytes": 67008112,
+      "sha256": "5d4d58828916a3823ae12c97d64d2849723d964793e4d1e436d98833f72ff05b"
+    },
+    "2024Q3": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2024q3.zip",
+      "era": "faers",
+      "bytes": 66785004,
+      "sha256": "c13ce123e26e12d1533ebf494e482e7ae697d18b7169b9627f8b576a75111030"
+    },
+    "2024Q4": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2024q4.zip",
+      "era": "faers",
+      "bytes": 68830688,
+      "sha256": "3866a1ccc5b08fcbc35c333239efd651ca08fa861244ac90f73d46ca5b17ab59"
+    },
+    "2025Q1": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2025q1.zip",
+      "era": "faers",
+      "bytes": 67465250,
+      "sha256": "51c1dc440733fbbb0b6913b5382ce5b9a3510642a0c6bfd6239d26aa18346b69"
+    },
+    "2025Q2": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2025q2.zip",
+      "era": "faers",
+      "bytes": 64494817,
+      "sha256": "e731a72f1c85b79c5d86706d9f8708cc2f4cef75c0a9caac7c28074da02a9074"
+    },
+    "2025Q3": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2025q3.zip",
+      "era": "faers",
+      "bytes": 76715577,
+      "sha256": "a02b89ba6bc56e7c8c197f44389f1d3a816fe1bc2c1374b70a50dacf3d7012c3"
+    },
+    "2025Q4": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2025q4.zip",
+      "era": "faers",
+      "bytes": 67144585,
+      "sha256": "1a31e6fdedd7442ffb0cd9d0dc8d2d27ee738e5ee2da34e629d82e47f8d418b6"
+    },
+    "2026Q1": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2026q1.zip",
+      "era": "faers",
+      "bytes": 64078040,
+      "sha256": "ed36733361701ed5cf9bf240be4a360a765126e9ca06b3e5fd3fae7fe2ae5813"
+    },
+    "2026Q2": {
+      "url": "https://fis.fda.gov/content/Exports/faers_ascii_2026q2.zip",
+      "era": "faers",
+      "bytes": 63223614,
+      "sha256": "90213500721ecaf976ee45d8ad04aa2dbb80861d93c87fef67ccaf515919bf2a"
+    }
+  }
+}

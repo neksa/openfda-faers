@@ -1,0 +1,25 @@
+{
+  "n_pairs": 2287613,
+  "n_total_reports": 20319862,
+  "gamma_poisson": {
+    "alpha1": 0.9688052245370391,
+    "beta1": 0.3541604854945587,
+    "alpha2": 0.383169365862998,
+    "beta2": 0.002858034059002873,
+    "weight": 0.796101772745786,
+    "neg_log_likelihood": 904926.4328123704,
+    "converged": true,
+    "n_pairs_fitted": 200000,
+    "fit_sample_size": 200000,
+    "fit_random_state": 0
+  },
+  "signals": {
+    "signal_ror": 1220498,
+    "signal_prr_mhra": 1086504,
+    "signal_ic": 1050583,
+    "signal_eb05": 835291,
+    "signal_fdr": 1128773
+  },
+  "concordant_all_four": 834056,
+  "hypothesis_family": "One Benjamini-Hochberg family per cohort, over ingredient-reaction pairs with n_ij >= 3 in that cohort. q-values are approximate because pairs share reports and are therefore dependent."
+}

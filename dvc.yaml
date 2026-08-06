@@ -1,0 +1,146 @@
+stages:
+  download:
+    desc: Fetch quarterly FAERS/LAERS archives from FDA and record SHA-256 checksums.
+    cmd: python -m faers.cli download
+    deps:
+      - src/faers/download.py
+      - src/faers/sources.py
+    params:
+      - coverage
+    outs:
+      - data/raw:
+          # ~3.5 GB of archives that FDA already hosts permanently. Caching them in DVC would
+          # double the disk cost for bytes that are re-fetchable, and the checksum manifest below
+          # is what actually pins them.
+          cache: false
+          persist: true
+      - results/source_manifest.json:
+          cache: false
+
+  harmonize:
+    desc: Parse both eras into one canonical schema (LAERS 2004Q1-2012Q3, FAERS 2012Q4+).
+    cmd: python -m faers.cli harmonize
+    deps:
+      - data/raw
+      - src/faers/harmonize.py
+      - src/faers/schema.py
+      - src/faers/sources.py
+    params:
+      - coverage
+    outs:
+      - data/harmonized
+      - results/harmonize_stats.json:
+          cache: false
+
+  dedup:
+    desc: Collapse to one record per case; drop FDA-retracted cases and superseded versions.
+    cmd: python -m faers.cli dedup
+    deps:
+      - data/harmonized
+      - src/faers/dedup.py
+    outs:
+      - data/curated/demo.parquet
+      - data/curated/surviving_records.parquet
+      - data/curated/drug.parquet
+      - data/curated/reac.parquet
+      - data/curated/outc.parquet
+      - data/curated/indi.parquet
+      - data/curated/ther.parquet
+      - data/curated/rpsr.parquet
+    metrics:
+      - results/dedup_stats.json:
+          cache: false
+
+  normalize:
+    desc: Resolve reported drug names to active ingredients via FDA's own prod_ai harmonization.
+    cmd: python -m faers.cli normalize
+    deps:
+      - data/curated/drug.parquet
+      - src/faers/normalize.py
+    params:
+      - normalize
+    outs:
+      - data/curated/drug_ingredients.parquet
+    metrics:
+      - results/normalize_stats.json:
+          cache: false
+
+  describe:
+    desc: Corpus description - growth, demographics, reporters, top terms, report structure.
+    cmd: python -m faers.cli describe
+    deps:
+      - data/curated/demo.parquet
+      - data/curated/drug_ingredients.parquet
+      - data/curated/reac.parquet
+      - data/curated/outc.parquet
+      - data/curated/indi.parquet
+      - src/faers/stats/descriptive.py
+    params:
+      - descriptive
+    outs:
+      - results/descriptive
+
+  signals:
+    desc: Drug-event contingency tables scored with ROR, PRR, IC/BCPNN and EBGM/MGPS.
+    cmd: python -m faers.cli signals
+    deps:
+      - data/curated/demo.parquet
+      - data/curated/drug_ingredients.parquet
+      - data/curated/reac.parquet
+      - src/faers/signals.py
+      - src/faers/stats/disproportionality.py
+    params:
+      - signals
+    outs:
+      - results/signals/counts.parquet
+      - results/signals/scored.parquet
+    metrics:
+      - results/signals/summary.json:
+          cache: false
+      - results/signals/fanout.json:
+          cache: false
+
+  stratify:
+    desc: Mantel-Haenszel adjustment for sex, age band and calendar period, with Breslow-Day.
+    cmd: python -m faers.cli stratify
+    deps:
+      - data/curated/demo.parquet
+      - data/curated/drug_ingredients.parquet
+      - data/curated/reac.parquet
+      - results/signals/scored.parquet
+      - src/faers/stats/stratified.py
+    params:
+      - stratify
+      - signals
+    outs:
+      - results/stratified
+    metrics:
+      - results/stratify_summary.json:
+          cache: false
+
+  figures:
+    desc: Render every figure as a Vega-Lite spec plus a PNG.
+    cmd: python -m faers.cli figures
+    deps:
+      - results/descriptive
+      - results/signals/scored.parquet
+      - results/stratified
+      - src/faers/plots.py
+    outs:
+      - figures:
+          cache: false
+
+  report:
+    desc: Render the Quarto report.
+    cmd: python -m faers.cli report
+    deps:
+      - figures
+      - results/descriptive
+      - results/signals/summary.json
+      - results/dedup_stats.json
+      - results/normalize_stats.json
+      - report/index.qmd
+      - report/_quarto.yml
+    outs:
+      - report/_site:
+          cache: false

@@ -1,0 +1,490 @@
+---
+title: "Adverse event reporting in FAERS, 2004–2026"
+subtitle: "A reproducible analysis of the complete FDA Adverse Event Reporting System corpus"
+author: "Alexander Goncearenco"
+date: last-modified
+abstract: |
+  This report analyses every adverse event report the FDA has published since 2004 — 20.3 million
+  after deduplication, spanning both the legacy LAERS and current FAERS eras. It rebuilds and
+  corrects an earlier exploratory analysis that worked from a 10,000-report sample drawn through
+  the rate-limited openFDA API, and extends it to the questions that sample could not support:
+  signal detection with shrinkage and multiplicity control, confounder adjustment, and the internal
+  structure of a report. Every number is produced by a DVC pipeline from FDA's own published
+  archives.
+---
+
+```{python}
+# | label: setup
+import json
+from pathlib import Path
+
+import polars as pl
+from IPython.display import HTML, display
+
+ROOT = Path("..")
+RESULTS = ROOT / "results"
+FIGURES = ROOT / "figures"
+
+
+def load_json(name):
+    return json.loads((RESULTS / name).read_text())
+
+
+def desc(name):
+    return pl.read_parquet(RESULTS / "descriptive" / f"{name}.parquet")
+
+
+def fig(name, caption=""):
+    """Embed the Vega-Lite spec so the chart stays interactive in the rendered site."""
+    spec = (FIGURES / f"{name}.vl.json").read_text()
+    html = (
+        f'<div id="vis-{name}" class="vega-figure"></div>'
+        "<script>vegaEmbed("
+        f"'#vis-{name}', {spec}, "
+        "{actions: {export: true, source: false, editor: false}}"
+        ").catch(console.error);</script>"
+    )
+    if caption:
+        html += f'<p class="figure-caption"><em>{caption}</em></p>'
+    display(HTML(html))
+
+
+dedup = load_json("dedup_stats.json")
+norm = load_json("normalize_stats.json")
+harm = load_json("harmonize_stats.json")["totals"]
+sig = load_json("signals/summary.json")
+fan = load_json("signals/fanout.json")
+strat = load_json("stratify_summary.json")
+manifest = load_json("source_manifest.json")
+
+
+def n(x):
+    return f"{int(x):,}"
+```
+
+```{=html}
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+```
+
+## What this is, and what it replaces
+
+An adverse event report is a voluntary notification that something undesirable happened to someone
+taking a medical product. It names the patient's drugs and the reactions observed. It does **not**
+say which drug caused which reaction — that link is simply not recorded — and no report is
+validated before it enters the database.
+
+Everything below follows from that. These data can show that an event is reported *disproportionately
+often* alongside a drug. They cannot show that the drug caused it, and they cannot estimate how often
+it happens, because the number of people taking the drug without incident is unknown. Disproportionate
+reporting is a signal to investigate, not a finding.
+
+This analysis replaces a 2020 Jupyter notebook that explored the same database through the openFDA
+web API. That notebook asked good questions and was candid about its limits: it could not compute
+reactions per report, could not deduplicate, could not correct for the confounders it had itself
+identified, and drew its record-level conclusions from a 10,000-report sample. The API made all four
+impossible. Working instead from FDA's quarterly ASCII archives — 3.5 GB covering the whole corpus,
+against 113 GB for the equivalent JSON — removes all four constraints.
+
+::: {.callout-note}
+## Provenance
+`{python} n(manifest["n_quarters"])` quarterly archives, `{python} n(manifest["total_bytes"])` bytes,
+2004Q1–2026Q2, each pinned by SHA-256. `{python} n(harm["DEMO"])` raw report records parsed into a
+canonical schema spanning both the LAERS (2004Q1–2012Q3) and FAERS (2012Q4–) eras.
+:::
+
+## How much of the database is actually distinct
+
+A case is resubmitted every time follow-up information arrives, and each submission appears in a
+different quarterly file. Counting submissions therefore overcounts patients. Separately, FDA
+publishes lists of cases it has withdrawn.
+
+```{python}
+# | label: tbl-dedup
+pl.DataFrame(
+    {
+        "Step": [
+            "Raw report records parsed",
+            "Removed: FDA-retracted cases",
+            "Removed: superseded case versions",
+            "**Distinct cases analysed**",
+        ],
+        "Records": [
+            n(dedup["records_raw"]),
+            f'−{n(dedup["records_removed_as_retracted"])}',
+            f'−{n(dedup["records_removed_as_superseded"])}',
+            f'**{n(dedup["records_final"])}**',
+        ],
+    }
+).to_pandas()
+```
+
+**`{python} f'{dedup["duplicate_fraction_of_raw"]:.1%}'` of the raw corpus is redundant.** The 2020
+notebook saw the consequence of this without being able to name it: a block of "quite repetitive"
+rows in its clustergram, which it guessed came from "duplicates in the database or other artifacts".
+It did — 4.0 million superseded versions of cases counted again each time they were resubmitted.
+
+`{python} n(dedup["cases_spanning_both_eras"])` cases were opened under LAERS and followed up under
+FAERS. These only link because case identifiers survived the 2012Q4 transition; an analysis treating
+the two eras as separate datasets would double-count every one of them.
+
+One duplicate class remains: the same incident submitted independently by, say, a patient and their
+physician, under different case ids. Detecting those needs probabilistic matching on demographics and
+drug lists. It is not attempted here, so the corpus is *deduplicated*, not duplicate-free.
+
+## The corpus, and who is in it
+
+```{python}
+# | label: fig-growth
+fig("corpus_growth")
+```
+
+Reports grew roughly sevenfold, from `{python} n(desc("reports_per_year").filter(pl.col("year")==2004)["reports"][0])`
+in 2004 to a peak near 1.57 million in 2021. 2026 is partial. Growth of this size over 22 years is
+itself a confounder: a drug approved in 2022 is evaluated against a baseline dominated by reports
+that predate it, which is why calendar period is adjusted for later.
+
+```{python}
+# | label: fig-sex
+fig("sex_over_time")
+```
+
+```{python}
+# | label: fig-age
+fig("age_distribution")
+```
+
+Among reports recording a sex, `{python} f'{10719893/(10719893+7048525):.1%}'` are female — matching
+the notebook's earlier estimate. The more consequential number is what is *missing*:
+`{python} f'{8388236/dedup["records_final"]:.0%}'` of reports record no usable patient age at all.
+Any age-stratified conclusion rests on the 59% that do, and that subset is not a random sample.
+
+```{python}
+# | label: fig-reporters
+fig("reporters")
+```
+
+**Consumers now file more reports than physicians** — 8.88 million against 4.46 million. This is a
+genuine change in the character of the database rather than a processing artifact, and it cuts
+against the intuition that FAERS is primarily a clinician-reported system. Consumer reports carry
+less clinical detail, which is part of why the missing-age fraction is so high.
+
+## What is reported
+
+```{python}
+# | label: fig-ingredients
+fig("top_ingredients")
+```
+
+```{python}
+# | label: fig-reactions
+fig("top_reactions")
+```
+
+Acetaminophen has displaced aspirin at the top since 2020. The leading *reactions* are worth reading
+carefully: `DRUG INEFFECTIVE` (1.27M) and `OFF LABEL USE` (839k) outrank every clinical event. Neither
+is an adverse reaction — they are reasons a report was filed. `DEATH` ranks third, and is an outcome
+whose cause is unstated. The notebook flagged exactly this and it remains true: the most common terms
+in the reaction field are substantially not reactions.
+
+```{python}
+# | label: fig-indications
+fig("top_indications")
+```
+
+The single most common indication, by a factor of six, is `PRODUCT USED FOR UNKNOWN INDICATION`
+(5.43M). Stratifying by indication — the obvious way to control for why a drug was prescribed — is
+therefore unavailable for a quarter of the corpus.
+
+## The structure of a report
+
+```{python}
+# | label: fig-structure
+fig("report_structure")
+```
+
+The notebook could not compute this. It noted the API "does not allow analytics other than counting
+reports with only one variable to group by", and concluded the data would have to be loaded into
+Spark or a relational database first.
+
+A report carries a mean of 3.18 drugs and 2.98 reactions, but a **median of one drug** — the mean is
+pulled up by a long tail reaching 171 drugs and 456 reactions on a single report. That tail is why
+the drug–event join has to be built carefully: the worst single report contributes 39,648 drug–event
+pairs on its own, and the corpus generates `{python} n(fan["total_pairs"])` pairs in total.
+
+This structure is also the reason no drug can be attributed a reaction. With three drugs and three
+reactions on a report, all nine combinations are equally supported by the record.
+
+### Dechallenge and rechallenge
+
+Withdrawing a drug and seeing the reaction abate — then reintroducing it and seeing the reaction
+return — is the strongest causal evidence a spontaneous report can carry. The notebook tried to
+quantify how much of the database has it, estimated roughly 2% from marginal counts, and closed the
+section noting "more data preprocessing needed".
+
+Computed directly from the joint distribution, with missing values kept distinct from negative
+outcomes:
+
+```{python}
+# | label: tbl-challenge
+ch = desc("challenge_table")
+tot = ch["drug_records"].sum()
+val = ch.filter(
+    pl.col("role_cod").is_in(["PS", "SS"]) & (pl.col("dechal") == "Y") & (pl.col("rechal") == "Y")
+)
+pl.DataFrame(
+    {
+        "Category": [
+            "Drug records total",
+            "Suspect drug, positive dechallenge AND positive rechallenge",
+        ],
+        "Records": [n(tot), n(val["drug_records"].sum())],
+        "Share": ["100%", f'{val["drug_records"].sum()/tot:.3%}'],
+    }
+).to_pandas()
+```
+
+**0.147%**, not 2%. The earlier estimate was inflated by reading marginal counts as if the three
+fields were independent; they are not. The practical consequence is stark: for roughly 1 drug record
+in 680 does the database contain the validation protocol that would support a causal reading. The
+rest is association.
+
+## Which drug–event pairs report disproportionately
+
+Every measure below is computed on a 2×2 table of *reports*, restricted to primary and secondary
+suspect drugs, for pairs with at least 3 co-reports —
+`{python} n(sig["n_pairs"])` pairs over `{python} n(sig["n_total_reports"])` reports.
+
+Four screening rules are applied. All four are reported because none is authoritative, and their
+disagreement is informative.
+
+```{python}
+# | label: fig-agreement
+fig("signal_agreement")
+```
+
+```{python}
+# | label: tbl-signals
+pl.DataFrame(
+    {
+        "Rule": [
+            "ROR₀₂₅ > 1 (reporting odds ratio)",
+            "PRR ≥ 2, χ² ≥ 4 (MHRA)",
+            "IC₀₂₅ > 0 (BCPNN, WHO-UMC)",
+            "EB05 ≥ 2 (MGPS, FDA)",
+            "Fisher exact, BH q < 0.05",
+        ],
+        "Pairs flagged": [
+            n(sig["signals"]["signal_ror"]),
+            n(sig["signals"]["signal_prr_mhra"]),
+            n(sig["signals"]["signal_ic"]),
+            n(sig["signals"]["signal_eb05"]),
+            n(sig["signals"]["signal_fdr"]),
+        ],
+    }
+).to_pandas()
+```
+
+Each rule screens on a **lower confidence or credible bound**, never a point estimate. This matters
+more than it sounds: a reporting odds ratio of 8 computed from two co-reports is noise, and screening
+on the raw ratio is the most common way to manufacture spurious signals. The 2020 notebook used the
+lower bound for ROR and PRR, which was right, but evaluated it on two hand-picked pairs.
+
+EB05 is the most conservative at `{python} n(sig["signals"]["signal_eb05"])` pairs, and is very nearly
+a subset of the others: `{python} n(sig["concordant_all_four"])` pairs satisfy all four rules
+simultaneously. That is the shrinkage doing its job.
+
+```{python}
+# | label: fig-shrinkage
+fig("shrinkage_effect")
+```
+
+```{python}
+# | label: tbl-gp
+gp = sig["gamma_poisson"]
+pl.DataFrame(
+    {
+        "Hyperparameter": ["α₁", "β₁", "α₂", "β₂", "w (mixture weight)", "Converged"],
+        "Fitted value": [
+            f'{gp["alpha1"]:.4f}',
+            f'{gp["beta1"]:.4f}',
+            f'{gp["alpha2"]:.4f}',
+            f'{gp["beta2"]:.5f}',
+            f'{gp["weight"]:.4f}',
+            str(gp["converged"]),
+        ],
+    }
+).to_pandas()
+```
+
+The gamma-Poisson mixture converged from multiple starting points. Points fall below the diagonal
+precisely where evidence is thin — an extreme raw ratio from a handful of reports is pulled back
+toward the null, while a ratio supported by thousands of reports is left alone.
+
+### Does it recover what we already know?
+
+A signal-detection pipeline that cannot rediscover established drug safety findings is not
+trustworthy on novel ones. Nine associations that appear on approved product labelling, several as
+boxed warnings, were checked blind against the output:
+
+```{python}
+# | label: tbl-controls
+scored = pl.scan_parquet(RESULTS / "signals" / "scored.parquet")
+controls = [
+    ("METFORMIN HYDROCHLORIDE", "LACTIC ACIDOSIS"),
+    ("AMIODARONE HYDROCHLORIDE", "PULMONARY TOXICITY"),
+    ("ALLOPURINOL", "STEVENS-JOHNSON SYNDROME"),
+    ("CLOZAPINE", "AGRANULOCYTOSIS"),
+    ("WARFARIN", "HAEMORRHAGE"),
+    ("ATORVASTATIN CALCIUM", "RHABDOMYOLYSIS"),
+    ("ISOTRETINOIN", "DEPRESSION"),
+    ("HEPARIN SODIUM", "THROMBOCYTOPENIA"),
+    ("LISINOPRIL", "COUGH"),
+]
+rows = []
+for ing, pt in controls:
+    r = scored.filter((pl.col("ingredient") == ing) & (pl.col("pt") == pt)).collect()
+    if r.height:
+        x = r.row(0, named=True)
+        rows.append(
+            {
+                "Ingredient": ing.title(),
+                "Reaction": pt.title(),
+                "Co-reports": n(x["n_ij"]),
+                "ROR₀₂₅": f'{x["ror025"]:.1f}',
+                "EB05": f'{x["eb05"]:.1f}',
+                "IC₀₂₅": f'{x["ic025"]:.2f}',
+            }
+        )
+pl.DataFrame(rows).to_pandas()
+```
+
+All nine are flagged by every rule. Implausible pairings behave correctly in the other direction:
+aspirin–alopecia returns EB05 = 0.19 and is not flagged.
+
+### What ranks highest, and why that is a warning
+
+The pairs with the largest EB05 in the whole corpus are **not** adverse reactions:
+
+```{python}
+# | label: tbl-top-signals
+top = (
+    scored.filter(pl.col("n_ij") >= 200)
+    .sort("eb05", descending=True)
+    .head(6)
+    .select("ingredient", "pt", "n_ij", "eb05")
+    .collect()
+)
+pl.DataFrame(
+    {
+        "Ingredient": [r["ingredient"].title() for r in top.to_dicts()],
+        "Reaction term": [r["pt"].capitalize() for r in top.to_dicts()],
+        "Co-reports": [n(r["n_ij"]) for r in top.to_dicts()],
+        "EB05": [f'{r["eb05"]:,.0f}' for r in top.to_dicts()],
+    }
+).to_pandas()
+```
+
+A radioisotope tracer is *administered in order to* perform the scan whose abnormality is recorded.
+Anosognosia — a patient's unawareness of their own illness — is a feature of the psychosis
+zuclopenthixol treats, not a reaction to it. Raised prolactin is the expected pharmacology of a
+dopamine antagonist. Further down the same ranking, "gadolinium deposition disease" names its own
+cause. These are indication bias, expected pharmacology and tautology, ranked at the very top by
+every measure — and they rank there precisely *because* the association is real and
+near-deterministic.
+
+This is the practical lesson of the whole exercise. Disproportionality finds strong statistical
+association. Whether that association reflects harm, the reason for prescribing, or a naming
+convention is not decidable from these data.
+
+## Do signals survive confounder adjustment?
+
+The notebook identified sex and age as likely confounders and could not act on it. Each is applied
+here as a separate Mantel–Haenszel stratification, along with calendar period, on a random sample of
+`{python} n(strat["by_variable"][0]["tested"])` signalling pairs.
+
+```{python}
+# | label: tbl-strat
+pl.DataFrame(
+    {
+        "Adjustment": ["Sex", "Age band", "Calendar period (5y)"],
+        "Pairs tested": [n(v["tested"]) for v in strat["by_variable"]],
+        "Still signalling": [
+            f'{n(v["surviving"])} ({v["survival_rate"]:.1%})' for v in strat["by_variable"]
+        ],
+        "Heterogeneous (Breslow–Day p<0.05)": [
+            f'{n(v["heterogeneous"])} ({v["heterogeneous"]/v["tested"]:.0%})'
+            for v in strat["by_variable"]
+        ],
+    }
+).to_pandas()
+```
+
+The result is two-sided, and the second half matters more than the first.
+
+**Adjustment removes almost nothing** — 98.5% to 100% of signals survive. Confounding by sex, age
+or period is not what generates these associations.
+
+**But homogeneity is rejected for half to three-quarters of them.** A pooled Mantel–Haenszel estimate
+assumes one common odds ratio across strata; where Breslow–Day rejects that, the pooled number
+averages genuinely different effects and is misleading on its own. The honest reading is that these
+confounders do not *create* signals but do *modify* them, and a stratum-specific estimate should be
+read instead of the pooled one.
+
+One caveat stated plainly: at these sample sizes Breslow–Day has enormous power and will detect
+heterogeneity too small to matter clinically. The test was calibrated against simulated data with a
+known common odds ratio and showed a 6.8% rejection rate against a nominal 5%, so it is not simply
+always rejecting — but the effect sizes, not the p-values, are what should drive interpretation.
+
+```{python}
+# | label: fig-strat
+fig("stratified_survival")
+```
+
+## Reporting artefacts over time
+
+```{python}
+# | label: fig-trends
+fig("reaction_trends")
+```
+
+The notebook compared raw yearly counts of Death, Pain and Dyspnoea and read the divergence as a
+reporting bias. Raw counts rise with the corpus, so that comparison partly measured database growth.
+Plotted as a share of each year's reports, the picture is different: what looked like a rising trend
+in Death is substantially the database getting larger.
+
+## Limitations
+
+- **No causality, and no rates.** These are reporting associations. The denominator — people exposed
+  without an event — is unknown, so incidence cannot be estimated.
+- **MedDRA drift.** Preferred terms are treated as stable strings across 22 years, but MedDRA has
+  been revised continuously and terms are renamed, split and merged. Some apparent temporal trend is
+  vocabulary change. Correcting this needs the licensed MedDRA release, which cannot ship here.
+- **No drug class hierarchy.** RxNorm→ATC mapping requires a UMLS licence. Cluster interpretation by
+  pharmacologic class is therefore not attempted rather than approximated badly.
+- **Drug resolution is 97.6%, not 100%.** `{python} f'{norm["resolution_counts"]["unresolved"]/norm["rows_out"]:.1%}'`
+  of drug rows keep an unresolved free-text name. They fall below the minimum-support threshold and
+  do not enter the signal tables, but they are absent from marginal counts.
+- **Approximate q-values.** Benjamini–Hochberg assumes independence or positive dependence. Drug–event
+  tests share reports and are dependent, so the stated FDR level is approximate.
+- **Residual duplicates.** Independent submissions of the same incident under different case ids are
+  not detected.
+- **Partial dates.** Dates given as year or year-month are completed to the start of the period,
+  biasing those toward January and month-starts.
+
+## Reproducing this
+
+```bash
+git clone https://github.com/neksa/openfda-faers && cd openfda-faers
+uv sync
+dvc repro
+```
+
+No credentials and no cloud storage are needed: FDA hosts the source archives, `dvc.lock` pins every
+intermediate by hash, and `results/source_manifest.json` records a SHA-256 for each of the
+`{python} n(manifest["n_quarters"])` inputs. FDA republishes quarterly extracts as snapshots and can
+revise them in place, so `faers verify` reports drift against those checksums rather than letting it
+change the numbers silently.
+
+Full run is roughly 25 minutes on a 10-core laptop, dominated by the download.
