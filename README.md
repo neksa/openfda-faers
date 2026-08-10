@@ -17,7 +17,7 @@ disproportionality analysis, confounder adjustment, and a rendered report.
 | **How much of the database is distinct?** | 16.7% of raw records are redundant: 4.0M superseded case versions and 67,838 FDA-retracted cases. 82,134 cases span the 2012 era boundary. |
 | **What does a report contain?** | Mean 3.18 drugs and 2.98 reactions, median 1 drug — with a tail reaching 171 drugs on one report. |
 | **Who reports?** | Consumers (8.9M) now file more than physicians (4.5M). |
-| **Which drug–event pairs report disproportionately?** | 2.29M pairs scored; 835,291 flagged by EB05 ≥ 2, the most conservative rule. |
+| **Which drug–event pairs report disproportionately?** | 2.28M pairs scored; 822,472 flagged by EB05 ≥ 2, the most conservative rule. |
 | **Do signals survive confounder adjustment?** | 98.5–100% survive Mantel–Haenszel adjustment, but Breslow–Day rejects homogeneity for 50–76% — the confounders modify signals rather than create them. |
 | **How much of the corpus supports a causal reading?** | 0.147% of drug records are a suspect drug with both positive dechallenge and positive rechallenge. |
 
@@ -40,9 +40,10 @@ dvc metrics show  # corpus, resolution and signal counts
 ## Pipeline
 
 ```
-download → harmonize → dedup → normalize → ┬→ describe ─┐
-                                           ├→ signals ──┼→ figures → report
-                                           └→ stratify ─┘
+download → harmonize → dedup ─┐
+                              ├→ normalize ─┬→ describe ─┐
+brands ───────────────────────┘             ├→ signals ──┼→ figures → report
+                                            └→ stratify ─┘
 ```
 
 | Stage | What it does |
@@ -50,7 +51,8 @@ download → harmonize → dedup → normalize → ┬→ describe ─┐
 | `download` | Fetch 90 quarterly archives, record SHA-256 per file |
 | `harmonize` | Parse both eras into one canonical schema |
 | `dedup` | One record per case; drop retracted and superseded |
-| `normalize` | Resolve drug names to active ingredients (97.6%) |
+| `brands` | Brand→ingredient index from FDA's NDC directory |
+| `normalize` | Resolve drug names to ingredients via prod_ai, corpus, NDC, RxNav (98.6%) |
 | `describe` | Growth, demographics, reporters, top terms, report structure |
 | `signals` | ROR, PRR, IC/BCPNN, EBGM/MGPS with Fisher + BH-FDR |
 | `stratify` | Mantel–Haenszel by sex, age band, calendar period |
@@ -115,7 +117,13 @@ near-deterministic — the tracer is given in order to perform the scan; anosogn
 the treated psychosis. Strong disproportionality distinguishes association from noise, not harm from
 indication.
 
-Further limitations — MedDRA version drift, absent drug-class hierarchy, 2.4% unresolved drug names,
+**Drug names are resolved to ingredients at 98.6%**, via FDA's `prod_ai`, a dictionary bootstrapped
+from the corpus, FDA's NDC directory and NLM's RxNav. The residue — discontinued, foreign and
+misspelled products — keeps its reported name and is flagged `ingredient_curated = false` in the
+published table. 23.5% of distinct drug labels in the signal table are still product names rather
+than substances, which splits marginals; treat those signals as provisional.
+
+Further limitations — MedDRA version drift, absent drug-class hierarchy,
 approximate q-values under dependence — are stated in the
 [report](https://neksa.github.io/openfda-faers/#limitations).
 

@@ -6,7 +6,7 @@
   }
  },
  "data": {
-  "name": "data-bc08c833972a28855c3f4a9c5cce2fb7"
+  "name": "data-f198d1033ce1909e2a17b0dd634a0125"
  },
  "mark": {
   "type": "bar"
@@ -61,105 +61,105 @@
  "width": 620,
  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
  "datasets": {
-  "data-bc08c833972a28855c3f4a9c5cce2fb7": [
+  "data-f198d1033ce1909e2a17b0dd634a0125": [
    {
     "count": 1,
-    "reports": 10980482,
+    "reports": 10943167,
     "kind": "Drugs per report"
    },
    {
     "count": 2,
-    "reports": 2849917,
+    "reports": 2843106,
     "kind": "Drugs per report"
    },
    {
     "count": 3,
-    "reports": 1512413,
+    "reports": 1508195,
     "kind": "Drugs per report"
    },
    {
     "count": 4,
-    "reports": 953201,
+    "reports": 954972,
     "kind": "Drugs per report"
    },
    {
     "count": 5,
-    "reports": 874711,
+    "reports": 903557,
     "kind": "Drugs per report"
    },
    {
     "count": 6,
-    "reports": 615197,
+    "reports": 616533,
     "kind": "Drugs per report"
    },
    {
     "count": 7,
-    "reports": 446194,
+    "reports": 445525,
     "kind": "Drugs per report"
    },
    {
     "count": 8,
-    "reports": 346709,
+    "reports": 347325,
     "kind": "Drugs per report"
    },
    {
     "count": 9,
-    "reports": 284663,
+    "reports": 284916,
     "kind": "Drugs per report"
    },
    {
     "count": 10,
-    "reports": 234737,
+    "reports": 235207,
     "kind": "Drugs per report"
    },
    {
     "count": 11,
-    "reports": 195566,
+    "reports": 195827,
     "kind": "Drugs per report"
    },
    {
     "count": 12,
-    "reports": 167855,
+    "reports": 168734,
     "kind": "Drugs per report"
    },
    {
     "count": 13,
-    "reports": 139645,
+    "reports": 140271,
     "kind": "Drugs per report"
    },
    {
     "count": 14,
-    "reports": 110759,
+    "reports": 111623,
     "kind": "Drugs per report"
    },
    {
     "count": 15,
-    "reports": 92466,
+    "reports": 93270,
     "kind": "Drugs per report"
    },
    {
     "count": 16,
-    "reports": 77411,
+    "reports": 78019,
     "kind": "Drugs per report"
    },
    {
     "count": 17,
-    "reports": 65525,
+    "reports": 66403,
     "kind": "Drugs per report"
    },
    {
     "count": 18,
-    "reports": 54824,
+    "reports": 55341,
     "kind": "Drugs per report"
    },
    {
     "count": 19,
-    "reports": 45727,
+    "reports": 46535,
     "kind": "Drugs per report"
    },
    {
     "count": 20,
-    "reports": 38731,
+    "reports": 39478,
     "kind": "Drugs per report"
    },
    {

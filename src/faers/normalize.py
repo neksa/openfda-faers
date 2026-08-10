@@ -42,19 +42,42 @@ _NOISE_WORDS = (
     r"\bER\b|\bXR\b|\bSR\b|\bCR\b|\bDR\b|\bIR\b|\bODT\b|\bHCL\b|\bCHW\b|\bUSP\b|\bNF\b"
 )
 
-#: A strength expression such as "81MG", "10 MG/ML", "0.5%".
-_STRENGTH = r"\d+(?:[.,]\d+)?\s*(?:MG|MCG|UG|G|KG|ML|L|IU|U|MEQ|MMOL|%)\b(?:\s*/\s*\w+)?"
+#: A strength expression such as "81MG", "10 MG/ML", "0.5%". The percent alternative carries no
+#: trailing word boundary: "%" is a non-word character, so "\b" after it would never match at end
+#: of string and "SODIUM CHLORIDE 0.9%" would keep a stray "0.9".
+_STRENGTH = (
+    r"\d+(?:[.,]\d+)?\s*(?:(?:MG|MCG|UG|G|KG|ML|L|IU|U|MEQ|MMOL)\b(?:\s*/\s*\w+)?|%)"
+)
 
 #: A manufacturer / NDC-ish code embedded in the free text, e.g. "/07499601/".
 _EMBEDDED_CODE = r"/\s*\d[\d\-]*\s*/"
+
+#: Delivery devices and presentations appended to a brand: "HUMIRA . PEN", "ADVAIR DISKUS",
+#: "VENTOLIN HFA". These identify the package, not the substance, and splinter one product across
+#: several apparent ingredients if left in place.
+_DEVICE_WORDS = (
+    r"\bPENS?\b|\bDISKUS\b|\bRESPIMAT\b|\bHFA\b|\bAUTO[- ]?INJECTORS?\b|\bSYRINGES?\b|"
+    r"\bINHALERS?\b|\bVIALS?\b|\bKITS?\b|\bPACKS?\b|\bFLEXPEN\b|\bSOLOSTAR\b|\bNEBULES?\b|"
+    r"\bAMPOULES?\b|\bAMPULES?\b|\bPREFILLED\b|\bSINGLE[- ]DOSE\b|\bMULTI[- ]?DOSE\b"
+)
+
+#: A trailing product/strength designator: "DURAGESIC-100", "PARAGARD 380A", "ADVAIR 100/50".
+#:
+#: Requires three or more digits, or digits immediately followed by a letter, because a short
+#: trailing number is frequently part of the substance name itself -- NONOXYNOL-9, OMEGA-3, COQ-10
+#: are ingredients, not product codes. Stripping those would invent new substances.
+_TRAILING_DESIGNATOR = r"[\s\-]+(?:\d{3,}[A-Z]?|\d+[A-Z])(?:\s*/\s*\d+[A-Z]?)*\s*$"
 
 _CLEAN_STEPS: tuple[tuple[str, str], ...] = (
     (_EMBEDDED_CODE, " "),
     (r"\(.*?\)", " "),  # parenthetical asides: "(as hydrochloride)"
     (_STRENGTH, " "),
     (_NOISE_WORDS, " "),
+    (_DEVICE_WORDS, " "),
     (r"[^A-Z0-9 /\\;,+.\-]", " "),
     (r"\s*[.\-]+\s*$", " "),
+    (r"\s+", " "),
+    (_TRAILING_DESIGNATOR, ""),
     (r"\s+", " "),
 )
 
@@ -133,8 +156,25 @@ def build_dictionary(drug: pl.LazyFrame, min_support: int = 2) -> pl.DataFrame:
     return counted.collect()
 
 
-def resolve(drug: pl.LazyFrame, dictionary: pl.DataFrame) -> pl.LazyFrame:
-    """Attach a resolved ingredient string and the method that resolved it."""
+def resolve(
+    drug: pl.LazyFrame,
+    dictionary: pl.DataFrame,
+    ndc_index: pl.DataFrame | None = None,
+    rxnav_map: dict[str, str] | None = None,
+) -> pl.LazyFrame:
+    """Attach a resolved ingredient string and the method that resolved it.
+
+    Cascade, in decreasing order of confidence. ``resolution`` records which step fired, and is
+    carried all the way into the published signal table so a consumer can tell a curated ingredient
+    from a free-text fallback:
+
+    ``prod_ai``       FDA's own active-ingredient field
+    ``dict_exact``    reported name seen verbatim alongside a prod_ai elsewhere in the corpus
+    ``dict_cleaned``  same, after stripping strengths, forms and devices
+    ``ndc_brand``     first token matched an unambiguous brand in FDA's NDC directory
+    ``rxnav_brand``   first token resolved to ingredients via NLM RxNav
+    ``unresolved``    none of the above; the cleaned name is kept, and labelled
+    """
     by_raw = dictionary.select(
         pl.col("name_raw"), pl.col("prod_ai").alias("dict_by_raw")
     ).unique(subset=["name_raw"])
@@ -148,6 +188,21 @@ def resolve(drug: pl.LazyFrame, dictionary: pl.DataFrame) -> pl.LazyFrame:
         .drop("support")
     )
 
+    # Brand lookups key on the first token of the cleaned name: NDC brand strings are usually
+    # longer than what the reporter wrote ("ParaGard T 380A" vs "PARAGARD 380A"), so neither exact
+    # direction matches.
+    ndc = (
+        ndc_index.filter(pl.col("usable"))
+        .select(pl.col("token"), pl.col("ingredients").alias("ndc_ing"))
+        if ndc_index is not None and ndc_index.height
+        else pl.DataFrame({"token": [], "ndc_ing": []}, schema={"token": pl.String,
+                                                                "ndc_ing": pl.String})
+    )
+    rx = pl.DataFrame(
+        {"token": list((rxnav_map or {}).keys()), "rx_ing": list((rxnav_map or {}).values())},
+        schema={"token": pl.String, "rx_ing": pl.String},
+    )
+
     return (
         drug.with_columns(
             [
@@ -156,13 +211,21 @@ def resolve(drug: pl.LazyFrame, dictionary: pl.DataFrame) -> pl.LazyFrame:
                 clean_expr("drugname").alias("name_clean"),
             ]
         )
+        .with_columns(
+            pl.col("name_clean").str.replace_all(r"[^A-Z0-9 ]", " ").str.strip_chars()
+            .str.split(" ").list.first().alias("token")
+        )
         .join(by_raw.lazy(), on="name_raw", how="left")
         .join(by_clean.lazy(), on="name_clean", how="left")
+        .join(ndc.lazy(), on="token", how="left")
+        .join(rx.lazy(), on="token", how="left")
         .with_columns(
             pl.coalesce(
                 pl.col("prod_ai").cast(pl.String).str.to_uppercase().str.strip_chars(),
                 pl.col("dict_by_raw"),
                 pl.col("dict_by_clean"),
+                pl.col("ndc_ing"),
+                pl.col("rx_ing"),
                 pl.col("name_clean"),
             ).alias("ingredient_raw"),
             pl.when(pl.col("prod_ai").is_not_null())
@@ -171,22 +234,73 @@ def resolve(drug: pl.LazyFrame, dictionary: pl.DataFrame) -> pl.LazyFrame:
             .then(pl.lit("dict_exact"))
             .when(pl.col("dict_by_clean").is_not_null())
             .then(pl.lit("dict_cleaned"))
+            .when(pl.col("ndc_ing").is_not_null())
+            .then(pl.lit("ndc_brand"))
+            .when(pl.col("rx_ing").is_not_null())
+            .then(pl.lit("rxnav_brand"))
             .otherwise(pl.lit("unresolved"))
             .alias("resolution"),
         )
-        .drop(["dict_by_raw", "dict_by_clean"])
+        .drop(["dict_by_raw", "dict_by_clean", "ndc_ing", "rx_ing", "token"])
+    )
+
+
+def unresolved_tokens(
+    drug: pl.LazyFrame, dictionary: pl.DataFrame, ndc_index: pl.DataFrame, min_reports: int
+) -> list[str]:
+    """First tokens still unresolved after the corpus and NDC steps, worth an RxNav lookup.
+
+    Restricted to tokens carrying at least ``min_reports`` drug records. RxNav is queried one name
+    at a time over the network, so resolving the whole tail would take hours to recover substances
+    that cannot reach the minimum-support threshold anyway.
+    """
+    partial = resolve(drug, dictionary, ndc_index, None)
+    return (
+        partial.filter(pl.col("resolution") == "unresolved")
+        .with_columns(
+            pl.col("name_clean").str.replace_all(r"[^A-Z0-9 ]", " ").str.strip_chars()
+            .str.split(" ").list.first().alias("token")
+        )
+        .filter(pl.col("token").is_not_null() & (pl.col("token").str.len_chars() >= 3))
+        .group_by("token")
+        .agg(pl.len().alias("rows"))
+        .filter(pl.col("rows") >= min_reports)
+        .sort("rows", descending=True)
+        .collect()["token"]
+        .to_list()
     )
 
 
 def normalize_drugs(
-    dedup_dir: Path, out_path: Path, stats_path: Path, min_support: int = 2
+    dedup_dir: Path,
+    out_path: Path,
+    stats_path: Path,
+    min_support: int = 2,
+    ndc_index_path: Path | None = None,
+    rxnav_cache: Path | None = None,
+    rxnav_min_reports: int = 50,
 ) -> dict:
     """Run the full cascade and write the ingredient-level drug table."""
     dedup_dir = Path(dedup_dir)
     drug = pl.scan_parquet(str(dedup_dir / "drug.parquet"))
 
     dictionary = build_dictionary(drug, min_support=min_support)
-    resolved = resolve(drug, dictionary)
+
+    ndc_index = (
+        pl.read_parquet(ndc_index_path)
+        if ndc_index_path and Path(ndc_index_path).exists()
+        else None
+    )
+
+    rxnav_map: dict[str, str] = {}
+    if rxnav_cache is not None and ndc_index is not None:
+        from .brands import resolve_via_rxnav
+
+        tokens = unresolved_tokens(drug, dictionary, ndc_index, rxnav_min_reports)
+        print(f"  querying RxNav for {len(tokens):,} unresolved tokens", flush=True)
+        rxnav_map = resolve_via_rxnav(tokens, rxnav_cache)
+
+    resolved = resolve(drug, dictionary, ndc_index, rxnav_map)
 
     exploded = (
         explode_ingredients(resolved, "ingredient_raw", "ingredient")
@@ -208,15 +322,31 @@ def normalize_drugs(
     by_method = (
         df.group_by("resolution").agg(pl.len().alias("rows")).sort("rows", descending=True)
     )
+    # An ingredient string counts as curated if *any* row reached it by a confident path. This is
+    # the number the report quotes, and it is the honest one: the same string is often reached both
+    # ways, so counting unresolved rows alone overstates the problem.
+    ever_confident = (
+        df.group_by("ingredient")
+        .agg((pl.col("resolution") != "unresolved").any().alias("confident"))
+    )
+    n_ing = ever_confident.height
+    n_fallback = ever_confident.filter(~pl.col("confident")).height
+
     stats = {
         "dictionary_entries": dictionary.height,
+        "ndc_tokens_usable": (
+            int(ndc_index.filter(pl.col("usable")).height) if ndc_index is not None else 0
+        ),
+        "rxnav_tokens_resolved": len(rxnav_map),
         "rows_out": df.height,
-        "distinct_ingredients": df["ingredient"].n_unique(),
+        "distinct_ingredients": n_ing,
         "distinct_reported_names": df["drugname"].n_unique(),
         "resolution_counts": {r["resolution"]: r["rows"] for r in by_method.to_dicts()},
         "resolved_fraction": round(
             1 - df.filter(pl.col("resolution") == "unresolved").height / max(df.height, 1), 4
         ),
+        "ingredients_fallback_only": n_fallback,
+        "ingredients_fallback_only_fraction": round(n_fallback / max(n_ing, 1), 4),
     }
     Path(stats_path).parent.mkdir(parents=True, exist_ok=True)
     Path(stats_path).write_text(json.dumps(stats, indent=2) + "\n")

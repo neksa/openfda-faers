@@ -11,6 +11,11 @@ normalize:
   # trusted, so one mis-keyed row cannot define a mapping for a whole substance.
   dictionary_min_support: 2
 
+  # Brand names still unresolved after the corpus and NDC steps are sent to RxNav, but only when
+  # they carry at least this many drug records. RxNav is a per-name network call, and the long tail
+  # cannot reach the signal minimum-support threshold anyway.
+  rxnav_min_reports: 50
+
 signals:
   # Drug roles included in the contingency tables. PS/SS are primary and secondary suspect.
   # Set to null to include concomitant drugs as well; the report compares both.

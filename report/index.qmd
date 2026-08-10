@@ -454,6 +454,60 @@ reporting bias. Raw counts rise with the corpus, so that comparison partly measu
 Plotted as a share of each year's reports, the picture is different: what looked like a rising trend
 in Death is substantially the database getting larger.
 
+## Drug names that are not ingredients
+
+The unit of analysis is supposed to be the active ingredient. For a large minority of entries it
+is not: the reported string was a brand or product name that the resolution cascade could not map,
+and it survives into the results under its own name.
+
+```{python}
+# | label: tbl-unresolved
+drug_ing = pl.scan_parquet(ROOT / "data" / "curated" / "drug_ingredients.parquet")
+ever_confident = (
+    drug_ing.group_by("ingredient")
+    .agg((pl.col("resolution") != "unresolved").any().alias("confident"))
+)
+ing_in_signals = scored.select("ingredient").unique()
+joined = ing_in_signals.join(ever_confident, on="ingredient", how="left").collect()
+
+total = joined.height
+fallback = joined.filter(~pl.col("confident").fill_null(False)).height
+
+pl.DataFrame(
+    {
+        "Distinct ingredients in the signal table": [n(total)],
+        "Resolved by a curated path": [f"{n(total - fallback)} ({(total - fallback) / total:.1%})"],
+        "Free-text fallback only": [f"{n(fallback)} ({fallback / total:.1%})"],
+    }
+).to_pandas()
+```
+
+The consequence is not cosmetic, and it runs in two directions at once. When `HUMIRA . PEN` is
+counted separately from `ADALIMUMAB`, adalimumab's marginal is **understated** — the reports filed
+under the brand never reach it. Meanwhile the brand string carries a small marginal of its own,
+which **inflates** its disproportionality: it is being compared against the whole database on a
+fragment of its true exposure. Both the numerator and the denominator are wrong, in opposite
+directions.
+
+Two free sources close most of this gap, and the pipeline now uses both: FDA's **NDC directory**
+(public domain, 7,958 brand tokens usable after an ambiguity filter) and NLM's **RxNav**. Together
+with stricter cleaning of device and product designators, they moved the fallback-only share from
+37.3% to the figure above, consolidating brands into their substances — `DURAGESIC-100` into
+fentanyl, `ADVAIR DISKUS 100/50` into fluticasone and salmeterol, `PARAGARD 380A` into copper.
+
+The effect on real signals is visible: atorvastatin–rhabdomyolysis rose from 2,397 co-reports
+(EB05 = 15.5) to 2,794 (EB05 = 28.6) once Lipitor's reports joined the substance they belong to.
+The signal was always there; part of its evidence was filed under another name.
+
+A residue remains and always will. Discontinued brands appear in neither reference, and foreign and
+misspelled products appear in nothing at all. Those entries keep their reported name and are marked
+`ingredient_curated = false` in the published table, so they can be filtered rather than mistaken
+for substances.
+
+One correction to an earlier draft of this report, which claimed these rows fall below the
+minimum-support threshold and never enter the signal tables: they do enter it, and always did. The
+claim was inferred from the `min_count` rule rather than measured, and it was wrong.
+
 ## Limitations
 
 - **No causality, and no rates.** These are reporting associations. The denominator — people exposed
@@ -463,9 +517,9 @@ in Death is substantially the database getting larger.
   vocabulary change. Correcting this needs the licensed MedDRA release, which cannot ship here.
 - **No drug class hierarchy.** RxNorm→ATC mapping requires a UMLS licence. Cluster interpretation by
   pharmacologic class is therefore not attempted rather than approximated badly.
-- **Drug resolution is 97.6%, not 100%.** `{python} f'{norm["resolution_counts"]["unresolved"]/norm["rows_out"]:.1%}'`
-  of drug rows keep an unresolved free-text name. They fall below the minimum-support threshold and
-  do not enter the signal tables, but they are absent from marginal counts.
+- **A substantial minority of "ingredients" are really product names.** See the section below —
+  this is the most consequential limitation of the analysis and it is quantified there rather than
+  summarized here.
 - **Approximate q-values.** Benjamini–Hochberg assumes independence or positive dependence. Drug–event
   tests share reports and are dependent, so the stated FDR level is approximate.
 - **Residual duplicates.** Independent submissions of the same incident under different case ids are

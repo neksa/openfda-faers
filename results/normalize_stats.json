@@ -1,13 +1,19 @@
 {
   "dictionary_entries": 95555,
-  "rows_out": 81454667,
-  "distinct_ingredients": 460755,
-  "distinct_reported_names": 974651,
+  "ndc_tokens_usable": 7958,
+  "rxnav_tokens_resolved": 478,
+  "rows_out": 82181390,
+  "distinct_ingredients": 337179,
+  "distinct_reported_names": 976739,
   "resolution_counts": {
     "prod_ai": 63994344,
     "dict_exact": 14527180,
-    "unresolved": 1997864,
-    "dict_cleaned": 935279
+    "unresolved": 1182322,
+    "dict_cleaned": 1153585,
+    "ndc_brand": 884622,
+    "rxnav_brand": 439337
   },
-  "resolved_fraction": 0.9755
+  "resolved_fraction": 0.9856,
+  "ingredients_fallback_only": 325849,
+  "ingredients_fallback_only_fraction": 0.9664
 }

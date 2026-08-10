@@ -7,6 +7,7 @@ import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
+import polars as pl
 import typer
 import yaml
 
@@ -119,16 +120,49 @@ def dedup(
 
 
 @app.command()
+def brands(
+    ndc_zip: Path = Path("data/reference/drug-ndc.json.zip"),
+    index_path: Path = Path("data/reference/ndc_brand_index.parquet"),
+    stats_path: Path = Path("results/brands_stats.json"),
+) -> None:
+    """Build the brand-to-ingredient index from FDA's NDC directory."""
+    from .brands import build_ndc_index, download_ndc
+    from .download import sha256
+
+    path = download_ndc(ndc_zip)
+    index = build_ndc_index(path)
+    Path(index_path).parent.mkdir(parents=True, exist_ok=True)
+    index.write_parquet(index_path, compression="zstd")
+
+    usable = index.filter(pl.col("usable"))
+    stats = {
+        "ndc_archive_sha256": sha256(path),
+        "ndc_archive_bytes": path.stat().st_size,
+        "tokens_total": index.height,
+        "tokens_usable": usable.height,
+        "tokens_rejected_ambiguous": index.height - usable.height,
+    }
+    Path(stats_path).parent.mkdir(parents=True, exist_ok=True)
+    Path(stats_path).write_text(json.dumps(stats, indent=2) + "\n")
+    _echo(json.dumps(stats, indent=2))
+
+
+@app.command()
 def normalize(
     curated_dir: Path = Path("data/curated"),
     out_path: Path = Path("data/curated/drug_ingredients.parquet"),
     stats_path: Path = Path("results/normalize_stats.json"),
+    ndc_index: Path = Path("data/reference/ndc_brand_index.parquet"),
+    rxnav_cache: Path = Path("data/reference/rxnav_cache.json"),
 ) -> None:
     """Resolve reported drug names to active ingredients."""
     p = load_params()
     stats = normalize_mod.normalize_drugs(
         curated_dir, out_path, stats_path,
         min_support=p["normalize"]["dictionary_min_support"],
+        ndc_index_path=ndc_index,
+        rxnav_cache=rxnav_cache,
+        rxnav_min_reports=p["normalize"]["rxnav_min_reports"],
     )
     _echo(json.dumps(stats, indent=2))
 

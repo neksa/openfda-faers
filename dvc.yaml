@@ -51,16 +51,39 @@ stages:
       - results/dedup_stats.json:
           cache: false
 
+  brands:
+    desc: Build a brand-to-ingredient index from FDA's public-domain NDC directory.
+    cmd: python -m faers.cli brands
+    deps:
+      - src/faers/brands.py
+    outs:
+      - data/reference/drug-ndc.json.zip:
+          # Re-fetchable from FDA and pinned by the checksum in brands_stats.json, like the
+          # quarterly archives.
+          cache: false
+          persist: true
+      - data/reference/ndc_brand_index.parquet
+    metrics:
+      - results/brands_stats.json:
+          cache: false
+
   normalize:
-    desc: Resolve reported drug names to active ingredients via FDA's own prod_ai harmonization.
+    desc: Resolve reported drug names to ingredients via prod_ai, the corpus, NDC and RxNav.
     cmd: python -m faers.cli normalize
     deps:
       - data/curated/drug.parquet
+      - data/reference/ndc_brand_index.parquet
       - src/faers/normalize.py
+      - src/faers/brands.py
     params:
       - normalize
     outs:
       - data/curated/drug_ingredients.parquet
+      - data/reference/rxnav_cache.json:
+          # Cached RxNav answers, negatives included. Kept out of the DVC cache so a re-run tops it
+          # up rather than re-querying NLM for thousands of names it has already answered.
+          cache: false
+          persist: true
     metrics:
       - results/normalize_stats.json:
           cache: false

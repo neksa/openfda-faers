@@ -125,6 +125,20 @@ def build_counts(
         "SELECT COUNT(*) FROM (SELECT record_id FROM dr INTERSECT SELECT record_id FROM rc)"
     ).fetchone()[0]
 
+    # Whether an ingredient string was ever reached by a curated path (FDA prod_ai, the corpus
+    # dictionary, or a brand lookup) rather than only by free-text fallback. Published alongside
+    # the statistics so a consumer can tell a real substance from an unmapped product name --
+    # without it, `HUMIRA . PEN` is indistinguishable from `ADALIMUMAB` in the output.
+    con.execute(
+        f"""
+        CREATE OR REPLACE VIEW curated AS
+            SELECT ingredient, bool_or(resolution <> 'unresolved') AS ingredient_curated
+            FROM read_parquet('{drug_path}')
+            WHERE ingredient IS NOT NULL
+            GROUP BY 1;
+        """
+    )
+
     con.execute(
         f"""
         COPY (
@@ -136,8 +150,12 @@ def build_counts(
             ),
             di AS (SELECT ingredient, COUNT(*) AS n_i FROM dr GROUP BY 1),
             rj AS (SELECT pt, COUNT(*) AS n_j FROM rc GROUP BY 1)
-            SELECT p.ingredient, p.pt, p.n_ij, di.n_i, rj.n_j
-            FROM pair p JOIN di USING (ingredient) JOIN rj USING (pt)
+            SELECT p.ingredient, p.pt, p.n_ij, di.n_i, rj.n_j,
+                   COALESCE(c.ingredient_curated, FALSE) AS ingredient_curated
+            FROM pair p
+            JOIN di USING (ingredient)
+            JOIN rj USING (pt)
+            LEFT JOIN curated c ON c.ingredient = p.ingredient
         ) TO '{out_path}' (FORMAT PARQUET, COMPRESSION ZSTD)
         """
     )

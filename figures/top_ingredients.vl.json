@@ -6,7 +6,7 @@
   }
  },
  "data": {
-  "name": "data-2cb2ad67d41fabac912bac82f1b74aa0"
+  "name": "data-3fb4155fb011279dd315a0be6f3ad63b"
  },
  "mark": {
   "type": "bar",
@@ -40,86 +40,86 @@
  "width": 620,
  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
  "datasets": {
-  "data-2cb2ad67d41fabac912bac82f1b74aa0": [
+  "data-3fb4155fb011279dd315a0be6f3ad63b": [
    {
     "ingredient": "ACETAMINOPHEN",
-    "reports": 1024677
+    "reports": 1049952
    },
    {
     "ingredient": "ASPIRIN",
-    "reports": 802289
+    "reports": 816368
    },
    {
     "ingredient": "ADALIMUMAB",
-    "reports": 689742
+    "reports": 710789
    },
    {
     "ingredient": "ETANERCEPT",
-    "reports": 580849
+    "reports": 581282
    },
    {
     "ingredient": "PREDNISONE",
-    "reports": 539570
+    "reports": 539991
    },
    {
     "ingredient": "METFORMIN HYDROCHLORIDE",
-    "reports": 523406
+    "reports": 525103
    },
    {
     "ingredient": "AMLODIPINE BESYLATE",
-    "reports": 482721
+    "reports": 483036
    },
    {
     "ingredient": "DUPILUMAB",
-    "reports": 478026
+    "reports": 478057
    },
    {
     "ingredient": "CHOLECALCIFEROL",
-    "reports": 431993
+    "reports": 435013
    },
    {
     "ingredient": "FUROSEMIDE",
-    "reports": 430156
+    "reports": 432032
    },
    {
     "ingredient": "RANITIDINE HYDROCHLORIDE",
-    "reports": 425552
+    "reports": 425816
    },
    {
     "ingredient": "LENALIDOMIDE",
-    "reports": 422026
+    "reports": 421694
    },
    {
     "ingredient": "METHOTREXATE",
-    "reports": 415808
+    "reports": 415774
    },
    {
     "ingredient": "OMEPRAZOLE",
-    "reports": 374396
+    "reports": 377841
    },
    {
     "ingredient": "GABAPENTIN",
-    "reports": 365291
+    "reports": 366065
    },
    {
     "ingredient": "LEVOTHYROXINE SODIUM",
-    "reports": 364210
+    "reports": 365475
    },
    {
     "ingredient": "OXYCODONE HYDROCHLORIDE",
-    "reports": 352903
+    "reports": 353573
    },
    {
     "ingredient": "DEXAMETHASONE",
-    "reports": 348855
-   },
-   {
-    "ingredient": "LISINOPRIL",
-    "reports": 339804
+    "reports": 351706
    },
    {
     "ingredient": "HYDROCHLOROTHIAZIDE",
-    "reports": 335706
+    "reports": 341981
+   },
+   {
+    "ingredient": "LISINOPRIL",
+    "reports": 341718
    }
   ]
  }
