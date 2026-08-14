@@ -129,9 +129,10 @@ It did — 4.0 million superseded versions of cases counted again each time they
 FAERS. These only link because case identifiers survived the 2012Q4 transition; an analysis treating
 the two eras as separate datasets would double-count every one of them.
 
-One duplicate class remains: the same incident submitted independently by, say, a patient and their
-physician, under different case ids. Detecting those needs probabilistic matching on demographics and
-drug lists. It is not attempted here, so the corpus is *deduplicated*, not duplicate-free.
+A second duplicate class exists: the same incident submitted independently by, say, a patient and
+their physician, under different case ids. Those cannot be collapsed by identifier because they
+share none. They are estimated separately by record linkage — see *Independent duplicates* below —
+and are **not** removed from the figures here.
 
 ## The corpus, and who is in it
 
@@ -508,6 +509,100 @@ One correction to an earlier draft of this report, which claimed these rows fall
 minimum-support threshold and never enter the signal tables: they do enter it, and always did. The
 claim was inferred from the `min_count` rule rather than measured, and it was wrong.
 
+## Vocabulary drift, measured
+
+MedDRA is revised twice a year. Terms are added, renamed, split and merged, so a reaction term's
+frequency can move for reasons that have nothing to do with patients. Earlier versions of this
+report declared that as a limitation. It is now measured.
+
+Correcting drift needs the licensed MedDRA release history. *Noticing* it does not: a term that
+goes from absent to established between two adjacent quarters, or the reverse, is behaving like a
+vocabulary change. Real clinical trends do not switch on in one quarter and stay on.
+
+```{python}
+# | label: tbl-drift
+drift = load_json("drift_summary.json")
+pl.DataFrame(
+    {
+        "Measure": [
+            "Terms tested (>= 200 reports)",
+            "Flagged as drift-suspect",
+            "  - absent early, established later",
+            "  - established early, absent later",
+            "  - abrupt step between adjacent quarters",
+            "Share of reaction mentions involving a flagged term",
+        ],
+        "Value": [
+            n(drift["terms_tested"]),
+            f'{n(drift["terms_drift_suspect"])} ({drift["terms_drift_suspect_fraction"]:.1%})',
+            n(drift["late_onset"]),
+            n(drift["discontinued"]),
+            n(drift["step_change"]),
+            f'{drift["report_mentions_affected_fraction"]:.1%}',
+        ],
+    }
+).to_pandas()
+```
+
+**Roughly a quarter of reaction mentions involve a term whose trajectory looks like vocabulary
+change rather than epidemiology.** Any statement about a reaction becoming more or less common over
+this window has to contend with that. The pooled disproportionality analysis is unaffected — it
+aggregates over the whole window and never asks when a term appeared — but the temporal figures
+are, and the per-term flags in `results/drift/term_drift.parquet` mark which terms to distrust.
+
+This is a floor, not a ceiling. A rename between two similarly-named terms shows up on both sides
+and is caught; a gradual merge of one term into another may not be visible at all.
+
+## Independent duplicates
+
+Deduplication earlier in this report collapsed case *versions* — follow-up submissions carrying the
+same case id. It cannot see the other kind of redundancy: one incident reported separately by the
+patient, the physician and the manufacturer, each becoming a distinct case with its own id. FDA does
+not link these and no field identifies them.
+
+Detected here by record linkage: block on sex, five-year age band, event year-month, reporter
+country **and** a shared drug **and** a shared reaction, then score candidate pairs on how much
+their drug and reaction sets overlap.
+
+```{python}
+# | label: tbl-duplicates
+dup = load_json("duplicates_summary.json")
+pl.DataFrame(
+    {
+        "Measure": [
+            "Records eligible for linkage",
+            "Candidate pairs compared",
+            "Pairs above similarity threshold",
+            "Suspected duplicate clusters",
+            "Redundant records (all but one per cluster)",
+            "As a share of eligible records",
+            "As a share of the whole corpus",
+        ],
+        "Value": [
+            f'{n(dup["eligible_records"])} ({dup["eligible_fraction_of_corpus"]:.1%} of corpus)',
+            n(dup["candidate_pairs"]),
+            n(dup["pairs_above_threshold"]),
+            n(dup["clusters"]),
+            n(dup["redundant_records"]),
+            f'{dup["redundant_fraction_of_eligible"]:.1%}',
+            f'{dup["redundant_fraction_of_corpus"]:.1%}',
+        ],
+    }
+).to_pandas()
+```
+
+Two numbers, because they answer different questions. Only **30%** of the corpus records a sex, an
+age, an event date *and* a reporter country, and without all four a record cannot be blocked at
+all. Among records that could be examined, **9.1%** appear to be redundant. Across the whole corpus
+the figure is 2.7%, but that denominator mixes "not redundant" with "never examined" — the true
+rate is somewhere between, and closer to the higher figure if missingness is unrelated to
+duplication.
+
+**These reports have not been removed.** Dropping half a million records would move every number in
+this document, and a matcher with unknown precision should not do that silently. The estimate is
+published; removal is a parameter (`duplicates.remove`) that is off by default. Anyone who wants
+the deduplicated variant can turn it on and re-run.
+
 ## Limitations
 
 - **No causality, and no rates.** These are reporting associations. The denominator — people exposed
@@ -522,8 +617,8 @@ claim was inferred from the `min_count` rule rather than measured, and it was wr
   summarized here.
 - **Approximate q-values.** Benjamini–Hochberg assumes independence or positive dependence. Drug–event
   tests share reports and are dependent, so the stated FDR level is approximate.
-- **Residual duplicates.** Independent submissions of the same incident under different case ids are
-  not detected.
+- **Independent duplicates are estimated, not removed.** See the section above: ~9% of linkable
+  records. Blocking makes that a lower bound, and the reports remain in every table here.
 - **Partial dates.** Dates given as year or year-month are completed to the start of the period,
   biasing those toward January and month-starts.
 

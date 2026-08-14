@@ -5,19 +5,26 @@ string. FAERS contains ~33k distinct ``drugname`` values in a *single* quarter -
 misspellings, strengths, dose forms and manufacturer codes ("ONE A DAY /07499601/") -- which would
 scatter the reports for one substance across dozens of rows and destroy every marginal count.
 
-The resolution cascade is deliberately license-free. RxNorm-to-ATC and the MedDRA hierarchy both
+The resolution cascade is deliberately licence-free. RxNorm-to-ATC and the MedDRA hierarchy both
 require licences that cannot ship in a public repository, so instead this **bootstraps FDA's own
 harmonization out of the corpus**: from 2014Q3 onward each DRUG row carries both the reported
 ``drugname`` and FDA's curated ``prod_ai`` active ingredient. Those co-occurrences form an
 empirical drugname -> ingredient dictionary, which is then applied backwards to the LAERS era and
-to modern rows where ``prod_ai`` is missing.
+to modern rows where ``prod_ai`` is missing. Two public references close the remaining brand gap.
 
 Cascade, in order of decreasing confidence:
 
 1. ``prod_ai`` present -> use it directly (split on ``\\`` for combination products).
 2. Exact match of the raw name in the bootstrapped dictionary.
 3. Exact match of the *cleaned* name (strengths, forms and codes stripped) in the dictionary.
-4. Unresolved -> keep the cleaned name, flagged, so coverage is measurable rather than hidden.
+4. First token matches an unambiguous brand in FDA's NDC directory.
+5. First token resolves to ingredients via NLM RxNav.
+6. Unresolved -> keep the cleaned name, flagged, so coverage is measurable rather than hidden.
+
+Each row records which step fired in ``resolution``, and that provenance is carried through to the
+published signal table so a consumer can distinguish a curated substance from an unmapped product
+name. Ingredients also carry an RxNorm identifier where one is known, making the drug column
+joinable rather than free text.
 
 Combination products matter: 5.6% of ``prod_ai`` values in 2026Q1 hold several ingredients
 separated by backslashes. Splitting them into one row per ingredient is required for a drug's
@@ -125,6 +132,30 @@ def explode_ingredients(lf: pl.LazyFrame, col: str, out: str = "ingredient") -> 
     )
 
 
+def rxcui_lookup(rxnav_map: dict[str, dict] | None) -> pl.DataFrame:
+    """Ingredient name -> RxNorm ingredient identifier.
+
+    Built by pairing the parallel ingredient and RxCUI lists RxNav returned. Joining on the
+    ingredient *name* afterwards, rather than carrying identifiers positionally through the
+    combination-product explode, means an ingredient picks up its RxCUI however it was resolved --
+    including via ``prod_ai``, which never touches RxNav. Positional alignment through an explode
+    would have been silently wrong the first time a combination product resolved by a different
+    path.
+    """
+    pairs: dict[str, str] = {}
+    for entry in (rxnav_map or {}).values():
+        names = (entry.get("ingredients") or "").split("\\")
+        cuis = (entry.get("rxcuis") or "").split("\\")
+        for name, cui in zip(names, cuis, strict=False):
+            name, cui = name.strip(), cui.strip()
+            if name and cui:
+                pairs.setdefault(name, cui)
+    return pl.DataFrame(
+        {"ingredient": list(pairs), "ingredient_rxcui": [pairs[k] for k in pairs]},
+        schema={"ingredient": pl.String, "ingredient_rxcui": pl.String},
+    )
+
+
 def build_dictionary(drug: pl.LazyFrame, min_support: int = 2) -> pl.DataFrame:
     """Learn a drugname -> ingredient dictionary from rows where FDA supplied both.
 
@@ -199,8 +230,12 @@ def resolve(
                                                                 "ndc_ing": pl.String})
     )
     rx = pl.DataFrame(
-        {"token": list((rxnav_map or {}).keys()), "rx_ing": list((rxnav_map or {}).values())},
-        schema={"token": pl.String, "rx_ing": pl.String},
+        {
+            "token": list((rxnav_map or {}).keys()),
+            "rx_ing": [v["ingredients"] for v in (rxnav_map or {}).values()],
+            "rx_cui": [v.get("rxcuis") or None for v in (rxnav_map or {}).values()],
+        },
+        schema={"token": pl.String, "rx_ing": pl.String, "rx_cui": pl.String},
     )
 
     return (
@@ -241,7 +276,7 @@ def resolve(
             .otherwise(pl.lit("unresolved"))
             .alias("resolution"),
         )
-        .drop(["dict_by_raw", "dict_by_clean", "ndc_ing", "rx_ing", "token"])
+        .drop(["dict_by_raw", "dict_by_clean", "ndc_ing", "rx_ing", "rx_cui", "token"])
     )
 
 
@@ -279,6 +314,8 @@ def normalize_drugs(
     ndc_index_path: Path | None = None,
     rxnav_cache: Path | None = None,
     rxnav_min_reports: int = 50,
+    rxcui_cache: Path | None = None,
+    rxcui_min_rows: int = 20,
 ) -> dict:
     """Run the full cascade and write the ingredient-level drug table."""
     dedup_dir = Path(dedup_dir)
@@ -311,9 +348,40 @@ def normalize_drugs(
         )
     )
 
+    # Ingredient identifiers, resolved after the explode so combination products are covered
+    # per-ingredient. Bounded to ingredients carrying enough reports to matter: the long tail of
+    # one-off free-text strings is not in RxNorm and querying it would take hours to no purpose.
+    ing_counts = (
+        exploded.group_by("ingredient").agg(pl.len().alias("rows")).collect()
+    )
+    wanted = (
+        ing_counts.filter(pl.col("rows") >= rxcui_min_rows)
+        .sort(["rows", "ingredient"], descending=[True, False])["ingredient"]
+        .to_list()
+    )
+    rxcuis = rxcui_lookup(rxnav_map)
+    if rxcui_cache is not None and wanted:
+        from .brands import resolve_ingredient_rxcuis
+
+        print(f"  resolving RxCUIs for {len(wanted):,} ingredients", flush=True)
+        direct = resolve_ingredient_rxcuis(wanted, rxcui_cache)
+        rxcuis = (
+            pl.DataFrame(
+                {
+                    "ingredient": list(direct),
+                    "ingredient_rxcui": [direct[k] for k in direct],
+                },
+                schema={"ingredient": pl.String, "ingredient_rxcui": pl.String},
+            )
+            # A direct ingredient match beats one inferred through a brand.
+            .vstack(rxcuis.filter(~pl.col("ingredient").is_in(list(direct))))
+        )
+
+    exploded = exploded.join(rxcuis.lazy(), on="ingredient", how="left")
+
     df = exploded.select(
-        "record_id", "drug_seq", "role_cod", "drugname", "ingredient", "resolution",
-        "dechal", "rechal", "route", "quarter",
+        "record_id", "drug_seq", "role_cod", "drugname", "ingredient", "ingredient_rxcui",
+        "resolution", "dechal", "rechal", "route", "quarter",
     ).collect()
 
     Path(out_path).parent.mkdir(parents=True, exist_ok=True)
@@ -322,9 +390,15 @@ def normalize_drugs(
     by_method = (
         df.group_by("resolution").agg(pl.len().alias("rows")).sort("rows", descending=True)
     )
-    # An ingredient string counts as curated if *any* row reached it by a confident path. This is
-    # the number the report quotes, and it is the honest one: the same string is often reached both
-    # ways, so counting unresolved rows alone overstates the problem.
+    # An ingredient string counts as curated if *any* row reached it by a confident path. The same
+    # string is often reached both ways, so counting unresolved rows alone overstates the problem.
+    #
+    # Two populations, and the difference between them is large enough to mislead. Over *all*
+    # distinct strings the fallback share is ~97%, because the population is dominated by a long
+    # tail of one-off free text that never clears the signal minimum-support threshold. Over the
+    # strings that actually reach the signal table it is ~24%. The second is the number that
+    # describes the published data; the first was previously the only one reported, as a tracked
+    # DVC metric, which made the data look far worse than it is.
     ever_confident = (
         df.group_by("ingredient")
         .agg((pl.col("resolution") != "unresolved").any().alias("confident"))
@@ -332,12 +406,22 @@ def normalize_drugs(
     n_ing = ever_confident.height
     n_fallback = ever_confident.filter(~pl.col("confident")).height
 
+    # Deliberately not attempting a signal-table proxy here. An earlier version filtered on
+    # "ingredient appears in >= 3 reports" and reported 86%, because that population (68k
+    # ingredients) is nothing like the signal table's (8.7k): the signal table additionally
+    # requires >= 3 co-reports with a *specific* reaction and applies the suspect-role filter.
+    # The population is defined in the signals stage, so the metric is computed there.
+
     stats = {
         "dictionary_entries": dictionary.height,
         "ndc_tokens_usable": (
             int(ndc_index.filter(pl.col("usable")).height) if ndc_index is not None else 0
         ),
         "rxnav_tokens_resolved": len(rxnav_map),
+        "ingredients_with_rxcui": int(df["ingredient_rxcui"].drop_nulls().n_unique()),
+        "rows_with_rxcui_fraction": round(
+            df.filter(pl.col("ingredient_rxcui").is_not_null()).height / max(df.height, 1), 4
+        ),
         "rows_out": df.height,
         "distinct_ingredients": n_ing,
         "distinct_reported_names": df["drugname"].n_unique(),
@@ -345,8 +429,10 @@ def normalize_drugs(
         "resolved_fraction": round(
             1 - df.filter(pl.col("resolution") == "unresolved").height / max(df.height, 1), 4
         ),
-        "ingredients_fallback_only": n_fallback,
-        "ingredients_fallback_only_fraction": round(n_fallback / max(n_ing, 1), 4),
+        # Named to make the population explicit. The signal-table figure is the one that describes
+        # the published data and the one the report quotes.
+        "fallback_only_all_strings": n_fallback,
+        "fallback_fraction_all_strings": round(n_fallback / max(n_ing, 1), 4),
     }
     Path(stats_path).parent.mkdir(parents=True, exist_ok=True)
     Path(stats_path).write_text(json.dumps(stats, indent=2) + "\n")

@@ -2,7 +2,7 @@
 
 [![DVC](https://img.shields.io/badge/pipeline-DVC-13ADC7.svg)](https://dvc.org)
 [![Report](https://img.shields.io/badge/report-Quarto-75AADB.svg)](https://neksa.github.io/openfda-faers/)
-[![Tests](https://img.shields.io/badge/tests-75%20passing-brightgreen.svg)](tests/)
+[![Tests](https://img.shields.io/badge/tests-123%20passing-brightgreen.svg)](tests/)
 
 A DVC pipeline over **every adverse event report the FDA has published since 2004** — 20.3 million
 distinct cases after deduplication, spanning both the legacy LAERS and current FAERS eras — with
@@ -20,6 +20,8 @@ disproportionality analysis, confounder adjustment, and a rendered report.
 | **Which drug–event pairs report disproportionately?** | 2.28M pairs scored; 822,472 flagged by EB05 ≥ 2, the most conservative rule. |
 | **Do signals survive confounder adjustment?** | 98.5–100% survive Mantel–Haenszel adjustment, but Breslow–Day rejects homogeneity for 50–76% — the confounders modify signals rather than create them. |
 | **How much of the corpus supports a causal reading?** | 0.147% of drug records are a suspect drug with both positive dechallenge and positive rechallenge. |
+| **How much is vocabulary drift rather than epidemiology?** | 42% of tested reaction terms look like MedDRA revisions, touching 24% of reaction mentions. Flagged, not corrected. |
+| **How many reports are the same incident twice?** | 9.1% of linkable records, in 287k clusters — beyond the 16.7% version-based redundancy. Estimated, not removed. |
 
 ## Quick start
 
@@ -40,10 +42,11 @@ dvc metrics show  # corpus, resolution and signal counts
 ## Pipeline
 
 ```
-download → harmonize → dedup ─┐
-                              ├→ normalize ─┬→ describe ─┐
-brands ───────────────────────┘             ├→ signals ──┼→ figures → report
-                                            └→ stratify ─┘
+download → harmonize → dedup ─┐             ┌→ describe ──┐
+                              ├→ normalize ─┼→ signals ───┤
+brands ───────────────────────┘             ├→ stratify ──┼→ figures → report
+                                            ├→ duplicates ┤
+                                            └→ drift ─────┘
 ```
 
 | Stage | What it does |
@@ -56,6 +59,8 @@ brands ───────────────────────┘ 
 | `describe` | Growth, demographics, reporters, top terms, report structure |
 | `signals` | ROR, PRR, IC/BCPNN, EBGM/MGPS with Fisher + BH-FDR |
 | `stratify` | Mantel–Haenszel by sex, age band, calendar period |
+| `duplicates` | Record linkage for independent duplicate reports (estimated, not removed) |
+| `drift` | Flags MedDRA vocabulary change without a licensed dictionary |
 | `figures` | Vega-Lite specs + PNG |
 | `report` | Quarto site |
 

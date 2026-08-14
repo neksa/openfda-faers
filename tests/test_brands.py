@@ -117,7 +117,7 @@ class TestRxNavQueryConstruction:
 
         from faers import brands
 
-        source = inspect.getsource(brands.rxnav_ingredients)
+        source = inspect.getsource(brands.rxnav_lookup)
         assert 'tty="IN MIN"' in source, "term types must be space-separated, not '+'-joined"
         assert 'tty="IN+MIN"' not in source
 

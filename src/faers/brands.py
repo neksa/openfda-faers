@@ -138,11 +138,17 @@ def _rxnav_json(path: str, **params) -> dict | None:
         return None
 
 
-def rxnav_ingredients(name: str) -> str | None:
-    """Resolve one brand name to its active ingredients via RxNav.
+def rxnav_lookup(name: str) -> dict | None:
+    """Resolve one brand name to its active ingredients and their RxNorm identifiers.
 
     Two hops: the brand to an RxNorm concept, then that concept to its ``IN``/``MIN`` ingredients.
-    Returns the backslash-joined ingredient set, matching the ``prod_ai`` convention.
+    Returns the backslash-joined ingredient set (matching FDA's ``prod_ai`` convention) alongside
+    the corresponding RxCUIs.
+
+    The RxCUIs are retained rather than discarded because they turn the published drug column into
+    a joinable identifier instead of free text -- the convention OFFSIDES/TWOSIDES follow with
+    ``drug_rxnorm_id`` beside ``drug_concept_name``. The lookup happens either way, so keeping the
+    identifier is free.
     """
     drugs = _rxnav_json("drugs.json", name=name)
     rxcui = None
@@ -159,39 +165,110 @@ def rxnav_ingredients(name: str) -> str | None:
     # one nonexistent term type rather than two. A space encodes to "+" on the wire, which is what
     # the API actually wants. This silently returned zero ingredients for every brand.
     related = _rxnav_json(f"rxcui/{rxcui}/related.json", tty="IN MIN")
-    names = sorted(
-        {
-            p["name"].strip().upper()
-            for g in ((related or {}).get("relatedGroup") or {}).get("conceptGroup") or []
-            for p in g.get("conceptProperties") or []
-            if p.get("name")
-        }
-    )
-    return "\\".join(names) if names else None
+    props = [
+        p
+        for g in ((related or {}).get("relatedGroup") or {}).get("conceptGroup") or []
+        for p in g.get("conceptProperties") or []
+        if p.get("name")
+    ]
+    if not props:
+        return None
+
+    by_name: dict[str, str] = {}
+    for p in props:
+        by_name.setdefault(p["name"].strip().upper(), str(p.get("rxcui") or ""))
+    names = sorted(by_name)
+    return {"ingredients": "\\".join(names), "rxcuis": "\\".join(by_name[n] for n in names)}
+
+
+def rxnav_ingredients(name: str) -> str | None:
+    """Ingredient string only, for callers that do not need the identifiers."""
+    found = rxnav_lookup(name)
+    return found["ingredients"] if found else None
+
+
+def _migrate_cache_entry(value):
+    """Accept both cache shapes.
+
+    Earlier runs stored a bare ingredient string; entries now carry RxCUIs too. Migrating on read
+    preserves several thousand cached lookups that would otherwise be re-queried from NLM one name
+    at a time.
+    """
+    if value is None:
+        return None
+    if isinstance(value, str):
+        return {"ingredients": value, "rxcuis": ""}
+    return value
+
+
+def rxcui_for_ingredient(name: str) -> str | None:
+    """RxNorm identifier for an ingredient name, by exact/normalized match.
+
+    Distinct from :func:`rxnav_lookup`, which starts from a *brand* and walks to its ingredients.
+    Most ingredients in this corpus arrive via FDA's ``prod_ai`` and never touch a brand lookup, so
+    without this pass the identifier column covers only the handful resolved from brands -- 560 of
+    337k ingredients when first measured, which is not worth publishing.
+    """
+    got = _rxnav_json("rxcui.json", name=name, search=1)
+    ids = ((got or {}).get("idGroup") or {}).get("rxnormId") or []
+    return str(ids[0]) if ids else None
+
+
+def resolve_ingredient_rxcuis(
+    names: list[str], cache_path: Path, pause: float = 0.06
+) -> dict[str, str]:
+    """Resolve a list of ingredient names to RxCUIs, caching hits and misses alike."""
+    cache_path = Path(cache_path)
+    cache: dict[str, str | None] = {}
+    if cache_path.exists():
+        cache = json.loads(cache_path.read_text())
+
+    def flush():
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        cache_path.write_text(json.dumps(cache, indent=0, sort_keys=True))
+
+    pending = [n for n in names if n not in cache]
+    for i, name in enumerate(pending, 1):
+        cache[name] = rxcui_for_ingredient(name)
+        time.sleep(pause)
+        if i % 500 == 0:
+            flush()
+            print(f"    rxcui {i}/{len(pending)}", flush=True)
+
+    flush()
+    return {k: v for k, v in cache.items() if v}
 
 
 def resolve_via_rxnav(
     tokens: list[str], cache_path: Path, pause: float = 0.06
-) -> dict[str, str]:
+) -> dict[str, dict]:
     """Resolve tokens RxNav can map, caching every answer including the misses.
 
     Caching negatives matters as much as positives: without it, every re-run re-queries thousands
     of names NLM has already told us it does not know.
     """
     cache_path = Path(cache_path)
-    cache: dict[str, str | None] = {}
+    cache: dict[str, dict | None] = {}
     if cache_path.exists():
-        cache = json.loads(cache_path.read_text())
+        cache = {k: _migrate_cache_entry(v) for k, v in json.loads(cache_path.read_text()).items()}
 
-    pending = [t for t in tokens if t not in cache]
+    def flush():
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        cache_path.write_text(json.dumps(cache, indent=0, sort_keys=True))
+
+    # Tokens whose cached entry predates RxCUI capture are re-queried so the identifiers get
+    # filled in; genuine negatives (None) are left alone.
+    pending = [
+        t
+        for t in tokens
+        if t not in cache or (cache[t] is not None and not cache[t].get("rxcuis"))
+    ]
     for i, token in enumerate(pending, 1):
-        cache[token] = rxnav_ingredients(token)
+        cache[token] = rxnav_lookup(token)
         time.sleep(pause)  # NLM asks for <= 20 requests/second; this stays well under
         if i % 250 == 0:
-            cache_path.parent.mkdir(parents=True, exist_ok=True)
-            cache_path.write_text(json.dumps(cache, indent=0))
+            flush()
             print(f"    rxnav {i}/{len(pending)}", flush=True)
 
-    cache_path.parent.mkdir(parents=True, exist_ok=True)
-    cache_path.write_text(json.dumps(cache, indent=0))
+    flush()
     return {k: v for k, v in cache.items() if v}

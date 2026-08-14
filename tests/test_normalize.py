@@ -91,6 +91,48 @@ class TestNonDrugFilter:
         assert not got, f"{text!r} is a real ingredient and must survive"
 
 
+class TestRxcuiLookup:
+    """Ingredient identifiers are joined by name, not carried positionally through the explode."""
+
+    def test_pairs_parallel_ingredient_and_rxcui_lists(self):
+        from faers.normalize import rxcui_lookup
+
+        got = rxcui_lookup(
+            {
+                "HUMIRA": {"ingredients": "ADALIMUMAB", "rxcuis": "642036"},
+                "ADVAIR": {
+                    "ingredients": "FLUTICASONE\\SALMETEROL",
+                    "rxcuis": "41126\\36117",
+                },
+            }
+        )
+        as_dict = dict(zip(got["ingredient"], got["ingredient_rxcui"], strict=True))
+        assert as_dict["ADALIMUMAB"] == "642036"
+        # Combination products must not cross-assign identifiers between their ingredients.
+        assert as_dict["FLUTICASONE"] == "41126"
+        assert as_dict["SALMETEROL"] == "36117"
+
+    def test_ignores_entries_without_identifiers(self):
+        from faers.normalize import rxcui_lookup
+
+        got = rxcui_lookup({"X": {"ingredients": "SOMETHING", "rxcuis": ""}})
+        assert got.height == 0
+
+    def test_tolerates_mismatched_list_lengths(self):
+        """A truncated RxCUI list must drop the unpaired names, not misalign them."""
+        from faers.normalize import rxcui_lookup
+
+        got = rxcui_lookup({"X": {"ingredients": "AAA\\BBB\\CCC", "rxcuis": "1\\2"}})
+        as_dict = dict(zip(got["ingredient"], got["ingredient_rxcui"], strict=True))
+        assert as_dict == {"AAA": "1", "BBB": "2"}
+
+    def test_handles_empty_input(self):
+        from faers.normalize import rxcui_lookup
+
+        assert rxcui_lookup(None).height == 0
+        assert rxcui_lookup({}).height == 0
+
+
 class TestDictionaryDeterminism:
     def test_equal_support_ties_resolve_identically_across_row_orders(self):
         """The regression test: a tie must not be decided by row arrival order."""

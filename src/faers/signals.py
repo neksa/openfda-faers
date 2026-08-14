@@ -45,6 +45,9 @@ def connect(memory_limit: str = DEFAULT_MEMORY_LIMIT, temp_dir: str | Path = "da
     con.execute(f"SET memory_limit='{memory_limit}'")
     con.execute(f"SET temp_directory='{temp_dir}'")
     con.execute("SET preserve_insertion_order=false")
+    # Bound the scratch space explicitly. Left unset, DuckDB will happily spill until the disk is
+    # full -- a runaway join here consumed 739 GB before failing.
+    con.execute("SET max_temp_directory_size='100GiB'")
     return con
 
 
@@ -212,6 +215,11 @@ def score(
 
     out = df.with_columns(
         [
+            # The four contingency cells, published explicitly. They are recoverable from
+            # n_ij/n_i/n_j and the cohort total, but shipping them is the convention consumers
+            # expect (OFFSIDES/TWOSIDES do the same) and lets anyone recompute any measure --
+            # including ones this pipeline does not implement -- without re-deriving the table.
+            pl.Series("a", a_c), pl.Series("b", b), pl.Series("c", c), pl.Series("d", d),
             pl.Series("expected", expected),
             pl.Series("ror", ror), pl.Series("ror025", ror_lo), pl.Series("ror975", ror_hi),
             pl.Series("prr", prr), pl.Series("prr025", prr_lo), pl.Series("prr975", prr_hi),
@@ -234,9 +242,21 @@ def score(
     Path(out_path).parent.mkdir(parents=True, exist_ok=True)
     out.write_parquet(out_path, compression="zstd")
 
+    # The drug-name resolution quality of the *published* population, computed here because this
+    # is where that population is defined: pairs surviving the co-report minimum and the role
+    # filter. Computing a proxy for it upstream gave 86% against a true 24%, because "ingredient
+    # appears in >= 3 reports" admits eight times as many strings as the signal table does.
+    n_ing = out.select("ingredient").unique().height
+    n_ing_fallback = (
+        out.filter(~pl.col("ingredient_curated")).select("ingredient").unique().height
+    )
+
     summary = {
         "n_pairs": out.height,
         "n_total_reports": int(n_total),
+        "signal_table_ingredients": n_ing,
+        "signal_table_ingredients_fallback_only": n_ing_fallback,
+        "signal_table_fallback_fraction": round(n_ing_fallback / max(n_ing, 1), 4),
         "gamma_poisson": gp,
         "signals": {
             name: int(out[name].sum())

@@ -16,6 +16,11 @@ normalize:
   # cannot reach the signal minimum-support threshold anyway.
   rxnav_min_reports: 50
 
+  # Ingredients carrying at least this many drug rows get an RxNorm identifier looked up, making
+  # the published drug column joinable. The tail below this is free-text noise that is not in
+  # RxNorm; querying it would take hours and resolve nothing.
+  rxcui_min_rows: 20
+
 signals:
   # Drug roles included in the contingency tables. PS/SS are primary and secondary suspect.
   # Set to null to include concomitant drugs as well; the report compares both.
@@ -32,6 +37,17 @@ signals:
 
   memory_limit: 24GB
   temp_dir: data/tmp
+
+duplicates:
+  # Mean of the drug-set and reaction-set Jaccard similarities above which a candidate pair is
+  # called the same incident. 0.8 requires substantial agreement on BOTH lists: sharing only a
+  # common drug, or only a common reaction, scores 0.5 and does not qualify.
+  threshold: 0.8
+
+  # Estimated and reported, never applied to the published tables unless switched on here.
+  # Removing reports shifts every downstream number, so it must be a deliberate act with a
+  # sensitivity analysis attached, not a silent default.
+  remove: false
 
 descriptive:
   # The three terms the 2020 notebook compared when it looked for reporting bias. Kept identical

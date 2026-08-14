@@ -6,7 +6,7 @@
   }
  },
  "data": {
-  "name": "data-9961314206ced11a1e5c5da76b7b3a91"
+  "name": "data-aa860131cf9c3d4ca8e41f0afee7203c"
  },
  "mark": {
   "type": "bar",
@@ -50,27 +50,27 @@
  "width": 620,
  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
  "datasets": {
-  "data-9961314206ced11a1e5c5da76b7b3a91": [
+  "data-aa860131cf9c3d4ca8e41f0afee7203c": [
    {
     "variable": "sex",
-    "tested": 18653,
-    "surviving": 18644,
-    "heterogeneous": 9467,
-    "survival_rate": 0.9995
+    "tested": 18685,
+    "surviving": 18678,
+    "heterogeneous": 9496,
+    "survival_rate": 0.9996
    },
    {
     "variable": "age_band",
-    "tested": 18307,
-    "surviving": 18037,
-    "heterogeneous": 13962,
-    "survival_rate": 0.9853
+    "tested": 18344,
+    "surviving": 18096,
+    "heterogeneous": 13951,
+    "survival_rate": 0.9865
    },
    {
     "variable": "calendar_period",
-    "tested": 18376,
-    "surviving": 18105,
-    "heterogeneous": 14503,
-    "survival_rate": 0.9853
+    "tested": 18415,
+    "surviving": 18292,
+    "heterogeneous": 14047,
+    "survival_rate": 0.9933
    }
   ]
  }

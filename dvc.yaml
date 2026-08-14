@@ -84,6 +84,9 @@ stages:
           # up rather than re-querying NLM for thousands of names it has already answered.
           cache: false
           persist: true
+      - data/reference/rxcui_cache.json:
+          cache: false
+          persist: true
     metrics:
       - results/normalize_stats.json:
           cache: false
@@ -141,6 +144,35 @@ stages:
       - results/stratify_summary.json:
           cache: false
 
+  duplicates:
+    desc: Estimate independent duplicate reports (same incident, different case ids).
+    cmd: python -m faers.cli duplicates
+    deps:
+      - data/curated/demo.parquet
+      - data/curated/drug_ingredients.parquet
+      - data/curated/reac.parquet
+      - src/faers/duplicates.py
+    params:
+      - duplicates
+    outs:
+      - results/duplicates
+    metrics:
+      - results/duplicates_summary.json:
+          cache: false
+
+  drift:
+    desc: Flag reaction terms whose trajectory looks like MedDRA vocabulary change.
+    cmd: python -m faers.cli drift
+    deps:
+      - data/curated/reac.parquet
+      - data/curated/demo.parquet
+      - src/faers/stats/drift.py
+    outs:
+      - results/drift
+    metrics:
+      - results/drift_summary.json:
+          cache: false
+
   figures:
     desc: Render every figure as a Vega-Lite spec plus a PNG.
     cmd: python -m faers.cli figures
@@ -148,6 +180,7 @@ stages:
       - results/descriptive
       - results/signals/scored.parquet
       - results/stratified
+      - results/drift
       - src/faers/plots.py
     outs:
       - figures:
@@ -165,5 +198,7 @@ stages:
       - report/index.qmd
       - report/_quarto.yml
     outs:
-      - report/_site:
+      - docs:
+          # Served directly by GitHub Pages from the master branch, so it must be git-tracked
+          # rather than DVC-cached.
           cache: false

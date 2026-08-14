@@ -2,6 +2,8 @@
   "dictionary_entries": 95555,
   "ndc_tokens_usable": 7958,
   "rxnav_tokens_resolved": 478,
+  "ingredients_with_rxcui": 4817,
+  "rows_with_rxcui_fraction": 0.9665,
   "rows_out": 82181390,
   "distinct_ingredients": 337179,
   "distinct_reported_names": 976739,
@@ -14,6 +16,6 @@
     "rxnav_brand": 439337
   },
   "resolved_fraction": 0.9856,
-  "ingredients_fallback_only": 325849,
-  "ingredients_fallback_only_fraction": 0.9664
+  "fallback_only_all_strings": 325849,
+  "fallback_fraction_all_strings": 0.9664
 }

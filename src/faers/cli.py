@@ -154,6 +154,7 @@ def normalize(
     stats_path: Path = Path("results/normalize_stats.json"),
     ndc_index: Path = Path("data/reference/ndc_brand_index.parquet"),
     rxnav_cache: Path = Path("data/reference/rxnav_cache.json"),
+    rxcui_cache: Path = Path("data/reference/rxcui_cache.json"),
 ) -> None:
     """Resolve reported drug names to active ingredients."""
     p = load_params()
@@ -163,6 +164,8 @@ def normalize(
         ndc_index_path=ndc_index,
         rxnav_cache=rxnav_cache,
         rxnav_min_reports=p["normalize"]["rxnav_min_reports"],
+        rxcui_cache=rxcui_cache,
+        rxcui_min_rows=p["normalize"]["rxcui_min_rows"],
     )
     _echo(json.dumps(stats, indent=2))
 
@@ -298,6 +301,38 @@ def stratify(
 
 
 @app.command()
+def duplicates(
+    curated_dir: Path = Path("data/curated"),
+    out_dir: Path = Path("results/duplicates"),
+    summary_path: Path = Path("results/duplicates_summary.json"),
+) -> None:
+    """Estimate independent duplicate reports (same incident, different case ids)."""
+    from . import duplicates as dup_mod
+
+    p = load_params()
+    con = signals_mod.connect(
+        memory_limit=p["signals"]["memory_limit"], temp_dir=p["signals"]["temp_dir"]
+    )
+    summary = dup_mod.run(
+        con, curated_dir, out_dir, summary_path, threshold=p["duplicates"]["threshold"]
+    )
+    _echo(json.dumps(summary, indent=2))
+
+
+@app.command()
+def drift(
+    curated_dir: Path = Path("data/curated"),
+    out_dir: Path = Path("results/drift"),
+    summary_path: Path = Path("results/drift_summary.json"),
+) -> None:
+    """Flag reaction terms whose trajectory looks like MedDRA vocabulary change."""
+    from .stats import drift as drift_mod
+
+    summary = drift_mod.write(curated_dir, out_dir, summary_path)
+    _echo(json.dumps(summary, indent=2))
+
+
+@app.command()
 def figures(
     results_dir: Path = Path("results"),
     out_dir: Path = Path("figures"),
@@ -321,7 +356,12 @@ def report(report_dir: Path = Path("report")) -> None:
         _echo(proc.stdout[-4000:])
         _echo(proc.stderr[-4000:])
         raise typer.Exit(proc.returncode)
-    _echo("report rendered")
+
+    # GitHub Pages runs Jekyll by default, which drops directories beginning with an underscore --
+    # exactly what Quarto emits for its site libraries. .nojekyll disables that.
+    docs = Path(report_dir).parent / "docs"
+    (docs / ".nojekyll").touch()
+    _echo(f"report rendered to {docs}")
 
 
 @app.command()

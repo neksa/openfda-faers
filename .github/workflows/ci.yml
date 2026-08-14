@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches: [master, "feat/**", "fix/**"]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Install project
+        run: uv sync --all-extras
+
+      - name: Lint
+        run: uv run ruff check src tests
+
+      - name: Test
+        # The full pipeline needs a 3.5 GB download from FDA and is not run here. These are the
+        # statistical and data-contract tests, which are the ones that would catch a silent
+        # regression -- every bug found while building this was of that kind.
+        run: uv run pytest -q
+
+  pipeline-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Install project
+        run: uv sync --all-extras
+
+      - name: DVC pipeline definition is valid and the DAG is intact
+        # Catches a malformed dvc.yaml or a stage whose deps/outs no longer line up, without
+        # executing anything. A duplicate `outs:` key silently overriding another has already
+        # happened once in this repo.
+        run: |
+          uv run dvc dag --outs >/dev/null
+          uv run dvc stage list
+
+      - name: params.yaml parses and carries every key the code reads
+        run: |
+          uv run python - <<'PY'
+          import yaml
+          p = yaml.safe_load(open("params.yaml"))
+          required = {
+              "coverage": ["start", "end"],
+              "normalize": ["dictionary_min_support", "rxnav_min_reports"],
+              "signals": ["roles", "min_count", "gamma_poisson_fit_sample", "random_state"],
+              "descriptive": ["trend_terms"],
+              "stratify": ["variables", "min_stratum_count", "calendar_period_years"],
+              "duplicates": ["threshold", "remove"],
+          }
+          missing = [
+              f"{section}.{key}"
+              for section, keys in required.items()
+              for key in keys
+              if key not in (p.get(section) or {})
+          ]
+          assert not missing, f"params.yaml is missing: {missing}"
+          print("params.yaml OK")
+          PY
