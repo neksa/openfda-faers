@@ -1,6 +1,10 @@
 ---
 license: cc-by-4.0
 pretty_name: FAERS disproportionality signals, 2004-2026
+annotations_creators:
+  - no-annotation
+language:
+  - en
 tags:
   - pharmacovigilance
   - drug-safety
@@ -133,15 +137,33 @@ and in measures. Use both.
 
 ## Licence and terminology
 
-The derived tables are released **CC BY 4.0**.
+This is a **non-commercial academic project**.
 
-Source data is FDA FAERS, a public-domain work of the US federal government.
+**The derived tables are released CC BY 4.0.** That covers what is actually this project's work:
+the contingency counts, the computed measures, the resolution provenance and the code that produced
+them.
 
-The `pt` column contains **MedDRA Preferred Terms**, as published by FDA in the public FAERS
-release. MedDRA is a licensed terminology owned by IFPMA and maintained by the MSSO; this project
-holds a non-commercial subscription. Consumers who intend to use MedDRA terminology in their own
-work should confirm their own licensing position — subscriptions are free of charge for
-non-profit and non-commercial organisations. `ingredient_rxcui` is RxNorm (NLM, public domain).
+**It does not, and cannot, relicense the underlying vocabularies.** A licence granted here applies
+only to this project's contribution.
+
+| Component | Origin | Terms |
+|---|---|---|
+| Contingency counts, measures, flags | this project | CC BY 4.0 |
+| Underlying reports | FDA FAERS | public domain (US federal work) |
+| `ingredient`, `ingredient_rxcui` | RxNorm (NLM) | public domain |
+| `pt` | **MedDRA**, as published by FDA in the public FAERS release | see below |
+
+MedDRA is a licensed terminology owned by IFPMA and maintained by the MSSO. The preferred terms in
+`pt` reach this dataset through FDA's public-domain FAERS release rather than from the MedDRA
+distribution, and FDA publishes them to everyone without a licence check. Whether onward
+republication in a derived table is covered is not settled by that fact alone: the MedDRA EULA
+contains no explicit carve-out for terms obtained from public regulatory sources.
+
+**If you intend to use the `pt` column, confirm your own position.** MedDRA subscriptions are free
+of charge for non-profit, non-commercial and academic organisations, and for regulatory
+authorities; commercial users pay on a revenue-scaled tariff. Nothing else in this dataset carries
+that constraint — the drug side is RxNorm, and the statistics are CC BY 4.0 — so a consumer without
+a MedDRA position can drop one column and use everything else.
 
 ## Citation
 

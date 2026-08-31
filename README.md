@@ -132,6 +132,24 @@ Further limitations — MedDRA version drift, absent drug-class hierarchy,
 approximate q-values under dependence — are stated in the
 [report](https://neksa.github.io/openfda-faers/#limitations).
 
+## Licence
+
+A non-commercial academic project.
+
+| | |
+|---|---|
+| Code | MIT ([`LICENSE`](LICENSE)) |
+| Derived result tables | CC BY 4.0 ([`DATASET_CARD.md`](DATASET_CARD.md)) |
+| FAERS source data | public domain (US federal work) |
+| Drug identifiers | RxNorm (NLM), public domain |
+| Reaction terms | **MedDRA** — owned by IFPMA/MSSO, not relicensable here |
+
+A licence set here covers this project's own contribution. It cannot extend to MedDRA, whose
+preferred terms populate the `pt` column and arrive via FDA's public release. MedDRA subscriptions
+are free for non-profit, non-commercial and academic use; commercial users pay a revenue-scaled
+fee. Everything else in the output is unencumbered, so a consumer without a MedDRA position can
+drop that one column and keep the rest.
+
 ## Data
 
 FDA Adverse Event Reporting System quarterly extracts, 2004Q1–2026Q2, from
