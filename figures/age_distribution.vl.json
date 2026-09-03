@@ -1,0 +1,82 @@
+{
+ "config": {
+  "view": {
+   "continuousWidth": 300,
+   "continuousHeight": 300
+  }
+ },
+ "data": {
+  "name": "data-0434dc526ee9423e8577286e0fe9f3c9"
+ },
+ "mark": {
+  "type": "bar",
+  "color": "#4C78A8"
+ },
+ "encoding": {
+  "tooltip": [
+   {
+    "field": "reports",
+    "format": ",",
+    "type": "quantitative"
+   }
+  ],
+  "x": {
+   "axis": {
+    "format": "~s"
+   },
+   "field": "reports",
+   "title": "Reports",
+   "type": "quantitative"
+  },
+  "y": {
+   "field": "age_band",
+   "sort": [
+    "Neonate",
+    "Infant",
+    "Child",
+    "Adolescent",
+    "Adult",
+    "Elderly",
+    "Unknown"
+   ],
+   "title": null,
+   "type": "nominal"
+  }
+ },
+ "height": 220,
+ "title": "Reports by patient age band",
+ "width": 620,
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+ "datasets": {
+  "data-0434dc526ee9423e8577286e0fe9f3c9": [
+   {
+    "age_band": "Unknown",
+    "reports": 8388236
+   },
+   {
+    "age_band": "Adult",
+    "reports": 6855506
+   },
+   {
+    "age_band": "Elderly",
+    "reports": 4349272
+   },
+   {
+    "age_band": "Adolescent",
+    "reports": 330176
+   },
+   {
+    "age_band": "Child",
+    "reports": 291364
+   },
+   {
+    "age_band": "Infant",
+    "reports": 71168
+   },
+   {
+    "age_band": "Neonate",
+    "reports": 38461
+   }
+  ]
+ }
+}

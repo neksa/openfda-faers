@@ -1,0 +1,62 @@
+{
+ "config": {
+  "view": {
+   "continuousWidth": 300,
+   "continuousHeight": 300
+  }
+ },
+ "data": {
+  "name": "data-a68b2458fcce0c7badb0de0a88c90568"
+ },
+ "mark": {
+  "type": "bar",
+  "color": "#E45756"
+ },
+ "encoding": {
+  "tooltip": [
+   {
+    "field": "pairs",
+    "format": ",",
+    "type": "quantitative"
+   }
+  ],
+  "x": {
+   "axis": {
+    "format": "~s"
+   },
+   "field": "pairs",
+   "title": "Drug-event pairs flagged",
+   "type": "quantitative"
+  },
+  "y": {
+   "field": "measure",
+   "sort": "-x",
+   "title": null,
+   "type": "nominal"
+  }
+ },
+ "height": 180,
+ "title": "Pairs flagged by each screening rule",
+ "width": 620,
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+ "datasets": {
+  "data-a68b2458fcce0c7badb0de0a88c90568": [
+   {
+    "measure": "ROR025 > 1",
+    "pairs": 1026632
+   },
+   {
+    "measure": "PRR >= 2 (MHRA)",
+    "pairs": 905646
+   },
+   {
+    "measure": "IC025 > 0",
+    "pairs": 885252
+   },
+   {
+    "measure": "EB05 >= 2",
+    "pairs": 685128
+   }
+  ]
+ }
+}

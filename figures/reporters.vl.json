@@ -1,0 +1,96 @@
+{
+ "config": {
+  "view": {
+   "continuousWidth": 300,
+   "continuousHeight": 300
+  }
+ },
+ "data": {
+  "name": "data-74019cee8231b742eeb58a4e0d08179e"
+ },
+ "mark": {
+  "type": "bar",
+  "color": "#54A24B"
+ },
+ "encoding": {
+  "tooltip": [
+   {
+    "field": "reports",
+    "format": ",",
+    "type": "quantitative"
+   }
+  ],
+  "x": {
+   "axis": {
+    "format": "~s"
+   },
+   "field": "reports",
+   "title": "Reports",
+   "type": "quantitative"
+  },
+  "y": {
+   "field": "reporter",
+   "sort": "-x",
+   "title": null,
+   "type": "nominal"
+  }
+ },
+ "height": 260,
+ "title": "Who submits reports",
+ "width": 620,
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+ "datasets": {
+  "data-74019cee8231b742eeb58a4e0d08179e": [
+   {
+    "occp_cod": "CN",
+    "reports": 8877993,
+    "reporter": "Consumer"
+   },
+   {
+    "occp_cod": "MD",
+    "reports": 4463540,
+    "reporter": "Physician"
+   },
+   {
+    "occp_cod": "OT",
+    "reports": 1922526,
+    "reporter": "Other health professional"
+   },
+   {
+    "occp_cod": "HP",
+    "reports": 1857919,
+    "reporter": "Health professional"
+   },
+   {
+    "occp_cod": "Unknown",
+    "reports": 1389848,
+    "reporter": "Unknown"
+   },
+   {
+    "occp_cod": "PH",
+    "reports": 1274179,
+    "reporter": "Pharmacist"
+   },
+   {
+    "occp_cod": "LW",
+    "reports": 529821,
+    "reporter": "Lawyer"
+   },
+   {
+    "occp_cod": "RN",
+    "reports": 8346,
+    "reporter": "Registered nurse"
+   },
+   {
+    "occp_cod": "SALES",
+    "reports": 10,
+    "reporter": "SALES"
+   },
+   {
+    "occp_cod": "20120210",
+    "reports": 1,
+    "reporter": "20120210"
+   }
+  ]
+ }
+}

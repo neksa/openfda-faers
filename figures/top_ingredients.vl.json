@@ -1,0 +1,126 @@
+{
+ "config": {
+  "view": {
+   "continuousWidth": 300,
+   "continuousHeight": 300
+  }
+ },
+ "data": {
+  "name": "data-f48a5eeb9560321c6238b2923d34635b"
+ },
+ "mark": {
+  "type": "bar",
+  "color": "#4C78A8"
+ },
+ "encoding": {
+  "tooltip": [
+   {
+    "field": "reports",
+    "format": ",",
+    "type": "quantitative"
+   }
+  ],
+  "x": {
+   "axis": {
+    "format": "~s"
+   },
+   "field": "reports",
+   "title": "Reports",
+   "type": "quantitative"
+  },
+  "y": {
+   "field": "ingredient",
+   "sort": "-x",
+   "title": null,
+   "type": "nominal"
+  }
+ },
+ "height": 440,
+ "title": "Most-reported active ingredients",
+ "width": 620,
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+ "datasets": {
+  "data-f48a5eeb9560321c6238b2923d34635b": [
+   {
+    "ingredient": "ACETAMINOPHEN",
+    "reports": 1050283
+   },
+   {
+    "ingredient": "ASPIRIN",
+    "reports": 816677
+   },
+   {
+    "ingredient": "ADALIMUMAB",
+    "reports": 729245
+   },
+   {
+    "ingredient": "ESOMEPRAZOLE",
+    "reports": 617729
+   },
+   {
+    "ingredient": "ETANERCEPT",
+    "reports": 587846
+   },
+   {
+    "ingredient": "LEVOTHYROXINE",
+    "reports": 586596
+   },
+   {
+    "ingredient": "PREDNISONE",
+    "reports": 542381
+   },
+   {
+    "ingredient": "ATORVASTATIN",
+    "reports": 539618
+   },
+   {
+    "ingredient": "METFORMIN",
+    "reports": 530588
+   },
+   {
+    "ingredient": "RANITIDINE",
+    "reports": 528266
+   },
+   {
+    "ingredient": "METHOTREXATE",
+    "reports": 509655
+   },
+   {
+    "ingredient": "AMLODIPINE",
+    "reports": 496013
+   },
+   {
+    "ingredient": "DUPILUMAB",
+    "reports": 478057
+   },
+   {
+    "ingredient": "ALBUTEROL",
+    "reports": 448213
+   },
+   {
+    "ingredient": "OXYCODONE",
+    "reports": 445415
+   },
+   {
+    "ingredient": "CHOLECALCIFEROL",
+    "reports": 438514
+   },
+   {
+    "ingredient": "FUROSEMIDE",
+    "reports": 432051
+   },
+   {
+    "ingredient": "LENALIDOMIDE",
+    "reports": 421694
+   },
+   {
+    "ingredient": "FLUTICASONE",
+    "reports": 408208
+   },
+   {
+    "ingredient": "METOPROLOL",
+    "reports": 403701
+   }
+  ]
+ }
+}

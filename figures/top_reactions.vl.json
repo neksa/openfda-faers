@@ -1,0 +1,126 @@
+{
+ "config": {
+  "view": {
+   "continuousWidth": 300,
+   "continuousHeight": 300
+  }
+ },
+ "data": {
+  "name": "data-86bbb466c0331b90efe750d96ff1a300"
+ },
+ "mark": {
+  "type": "bar",
+  "color": "#4C78A8"
+ },
+ "encoding": {
+  "tooltip": [
+   {
+    "field": "reports",
+    "format": ",",
+    "type": "quantitative"
+   }
+  ],
+  "x": {
+   "axis": {
+    "format": "~s"
+   },
+   "field": "reports",
+   "title": "Reports",
+   "type": "quantitative"
+  },
+  "y": {
+   "field": "pt",
+   "sort": "-x",
+   "title": null,
+   "type": "nominal"
+  }
+ },
+ "height": 440,
+ "title": "Most-reported reaction terms (MedDRA PT)",
+ "width": 620,
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+ "datasets": {
+  "data-86bbb466c0331b90efe750d96ff1a300": [
+   {
+    "pt": "DRUG INEFFECTIVE",
+    "reports": 1270246
+   },
+   {
+    "pt": "OFF LABEL USE",
+    "reports": 838855
+   },
+   {
+    "pt": "DEATH",
+    "reports": 827596
+   },
+   {
+    "pt": "NAUSEA",
+    "reports": 766335
+   },
+   {
+    "pt": "FATIGUE",
+    "reports": 751790
+   },
+   {
+    "pt": "DIARRHOEA",
+    "reports": 623932
+   },
+   {
+    "pt": "HEADACHE",
+    "reports": 606190
+   },
+   {
+    "pt": "PAIN",
+    "reports": 595926
+   },
+   {
+    "pt": "DYSPNOEA",
+    "reports": 548042
+   },
+   {
+    "pt": "DIZZINESS",
+    "reports": 483319
+   },
+   {
+    "pt": "VOMITING",
+    "reports": 455327
+   },
+   {
+    "pt": "MALAISE",
+    "reports": 424599
+   },
+   {
+    "pt": "RASH",
+    "reports": 420009
+   },
+   {
+    "pt": "ARTHRALGIA",
+    "reports": 401549
+   },
+   {
+    "pt": "PRURITUS",
+    "reports": 367087
+   },
+   {
+    "pt": "ASTHENIA",
+    "reports": 365251
+   },
+   {
+    "pt": "PYREXIA",
+    "reports": 335775
+   },
+   {
+    "pt": "FALL",
+    "reports": 322174
+   },
+   {
+    "pt": "PNEUMONIA",
+    "reports": 312822
+   },
+   {
+    "pt": "INJECTION SITE PAIN",
+    "reports": 295190
+   }
+  ]
+ }
+}

@@ -1,0 +1,18 @@
+{
+  "eligible_records": 6146714,
+  "pairs_sharing_a_drug": 48692746,
+  "pairs_sharing_a_reaction": 43925544,
+  "candidate_pairs": 5310900,
+  "max_key_group": 40,
+  "pairs_scored": 5310900,
+  "threshold": 0.8,
+  "pairs_above_threshold": 1248509,
+  "records_involved": 872012,
+  "corpus_records": 20324183,
+  "clusters": 292225,
+  "redundant_records": 579787,
+  "redundant_fraction_of_corpus": 0.02853,
+  "redundant_fraction_of_eligible": 0.09432,
+  "eligible_fraction_of_corpus": 0.3024,
+  "note": "Estimated, not applied. Blocking requires agreement on sex, 5-year age bucket, event year-month and reporter country, so pairs disagreeing on any of those are never compared and this is a lower bound. Removal is opt-in via params.duplicates.remove."
+}
