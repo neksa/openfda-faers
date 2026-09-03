@@ -38,6 +38,12 @@ signals:
   memory_limit: 24GB
   temp_dir: data/tmp
 
+similarity:
+  # Hierarchical clusters cut from the drug-drug cosine distance tree. A round number, not a tuned
+  # one: the validation against known drug classes is what says whether the similarity is
+  # meaningful, and that does not depend on the cut.
+  n_clusters: 40
+
 duplicates:
   # Mean of the drug-set and reaction-set Jaccard similarities above which a candidate pair is
   # called the same incident. 0.8 requires substantial agreement on BOTH lists: sharing only a

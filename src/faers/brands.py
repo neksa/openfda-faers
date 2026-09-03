@@ -201,33 +201,76 @@ def _migrate_cache_entry(value):
     return value
 
 
-def rxcui_for_ingredient(name: str) -> str | None:
-    """RxNorm identifier for an ingredient name, by exact/normalized match.
+def rxcui_for_ingredient(name: str) -> dict | None:
+    """RxNorm identifier and canonical base ingredient for an ingredient name.
 
-    Distinct from :func:`rxnav_lookup`, which starts from a *brand* and walks to its ingredients.
-    Most ingredients in this corpus arrive via FDA's ``prod_ai`` and never touch a brand lookup, so
-    without this pass the identifier column covers only the handful resolved from brands -- 560 of
-    337k ingredients when first measured, which is not worth publishing.
+    Distinct from :func:`rxnav_lookup`, which starts from a *brand*. Most ingredients here arrive
+    via FDA's ``prod_ai`` and never touch a brand lookup, so without this pass the identifier column
+    covers only the handful resolved from brands.
+
+    The walk to ``tty=IN`` is what collapses salt forms. FAERS records both ``ATORVASTATIN`` and
+    ``ATORVASTATIN CALCIUM``, and treating them as two drugs splits one substance almost evenly in
+    half -- 275k reports against 269k -- understating its marginal and inflating the
+    disproportionality of both halves. RxNorm resolves the salt to its active moiety, and does so
+    without a heuristic: substances where the salt *is* the drug (``SODIUM CHLORIDE``,
+    ``CALCIUM CARBONATE``, ``LITHIUM CARBONATE``) come back unchanged, which a suffix-stripping rule
+    would have mangled into ``SODIUM`` and ``CALCIUM``.
     """
     got = _rxnav_json("rxcui.json", name=name, search=1)
     ids = ((got or {}).get("idGroup") or {}).get("rxnormId") or []
-    return str(ids[0]) if ids else None
+    if not ids:
+        return None
+    rxcui = str(ids[0])
+
+    related = _rxnav_json(f"rxcui/{rxcui}/related.json", tty="IN")
+    bases = [
+        p
+        for g in ((related or {}).get("relatedGroup") or {}).get("conceptGroup") or []
+        for p in g.get("conceptProperties") or []
+        if p.get("name")
+    ]
+    if not bases:
+        # Already a base ingredient, or has no IN relation; keep the name as reported.
+        return {"rxcui": rxcui, "base": name, "base_rxcui": rxcui}
+
+    # A single IN is the normal case. Several means a combination product, which must not be
+    # collapsed onto one of its components.
+    if len(bases) > 1:
+        return {"rxcui": rxcui, "base": name, "base_rxcui": rxcui}
+
+    return {
+        "rxcui": rxcui,
+        "base": bases[0]["name"].strip().upper(),
+        "base_rxcui": str(bases[0].get("rxcui") or rxcui),
+    }
+
+
+def _migrate_rxcui_entry(value):
+    """Earlier caches stored a bare RxCUI string with no base-ingredient resolution."""
+    if value is None:
+        return None
+    if isinstance(value, str):
+        return None  # force a re-query: the base ingredient was never fetched
+    return value
 
 
 def resolve_ingredient_rxcuis(
     names: list[str], cache_path: Path, pause: float = 0.06
-) -> dict[str, str]:
-    """Resolve a list of ingredient names to RxCUIs, caching hits and misses alike."""
+) -> dict[str, dict]:
+    """Resolve ingredient names to RxCUIs and canonical base ingredients."""
     cache_path = Path(cache_path)
-    cache: dict[str, str | None] = {}
+    cache: dict[str, dict | None] = {}
     if cache_path.exists():
-        cache = json.loads(cache_path.read_text())
+        cache = {
+            k: _migrate_rxcui_entry(v)
+            for k, v in json.loads(cache_path.read_text()).items()
+        }
 
     def flush():
         cache_path.parent.mkdir(parents=True, exist_ok=True)
         cache_path.write_text(json.dumps(cache, indent=0, sort_keys=True))
 
-    pending = [n for n in names if n not in cache]
+    pending = [n for n in names if cache.get(n) is None]
     for i, name in enumerate(pending, 1):
         cache[name] = rxcui_for_ingredient(name)
         time.sleep(pause)

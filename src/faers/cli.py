@@ -333,6 +333,23 @@ def drift(
 
 
 @app.command()
+def similarity(
+    signals_dir: Path = Path("results/signals"),
+    out_dir: Path = Path("results/similarity"),
+    summary_path: Path = Path("results/similarity_summary.json"),
+) -> None:
+    """Drug-drug similarity from adverse reaction profiles."""
+    from .stats import similarity as sim_mod
+
+    p = load_params()
+    summary = sim_mod.write(
+        Path(signals_dir) / "scored.parquet", out_dir, summary_path,
+        n_clusters=p["similarity"]["n_clusters"],
+    )
+    _echo(json.dumps(summary, indent=2))
+
+
+@app.command()
 def figures(
     results_dir: Path = Path("results"),
     out_dir: Path = Path("figures"),

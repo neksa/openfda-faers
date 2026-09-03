@@ -154,16 +154,16 @@ only to this project's contribution.
 | `pt` | **MedDRA**, as published by FDA in the public FAERS release | see below |
 
 MedDRA is a licensed terminology owned by IFPMA and maintained by the MSSO. The preferred terms in
-`pt` reach this dataset through FDA's public-domain FAERS release rather than from the MedDRA
-distribution, and FDA publishes them to everyone without a licence check. Whether onward
-republication in a derived table is covered is not settled by that fact alone: the MedDRA EULA
-contains no explicit carve-out for terms obtained from public regulatory sources.
+`pt` reach this dataset through **FDA's public-domain FAERS release**, not from the MedDRA
+distribution — FDA publishes them openly, to everyone, with no licence check. No MedDRA product is
+redistributed here and no MedDRA dictionary was used to build this: the pipeline treats these
+strings as opaque labels and performs no terminology lookup anywhere.
 
-**If you intend to use the `pt` column, confirm your own position.** MedDRA subscriptions are free
-of charge for non-profit, non-commercial and academic organisations, and for regulatory
-authorities; commercial users pay on a revenue-scaled tariff. Nothing else in this dataset carries
-that constraint — the drug side is RxNorm, and the statistics are CC BY 4.0 — so a consumer without
-a MedDRA position can drop one column and use everything else.
+**If you intend to use the `pt` column in your own work, confirm your own position.** MedDRA
+subscriptions are free of charge for non-profit, non-commercial and academic organisations and for
+regulatory authorities; commercial users pay a revenue-scaled fee. Nothing else here carries that
+consideration — the drug side is RxNorm, the statistics are CC BY 4.0 — so a consumer who would
+rather not engage with it can drop that single column and use the entire rest of the dataset.
 
 ## Citation
 

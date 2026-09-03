@@ -1,10 +1,10 @@
 {
   "n_reports": 20320042.0,
-  "total_pairs": 130851156.0,
-  "max_drugs": 171.0,
+  "total_pairs": 126512749.0,
+  "max_drugs": 167.0,
   "max_reacs": 456.0,
-  "max_pairs": 39648.0,
+  "max_pairs": 35400.0,
   "median_drugs": 1.0,
   "median_reacs": 2.0,
-  "p99_pairs": 52.0
+  "p99_pairs": 50.0
 }

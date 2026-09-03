@@ -2,7 +2,7 @@
 
 [![DVC](https://img.shields.io/badge/pipeline-DVC-13ADC7.svg)](https://dvc.org)
 [![Report](https://img.shields.io/badge/report-Quarto-75AADB.svg)](https://neksa.github.io/openfda-faers/)
-[![Tests](https://img.shields.io/badge/tests-123%20passing-brightgreen.svg)](tests/)
+[![Tests](https://img.shields.io/badge/tests-140%20passing-brightgreen.svg)](tests/)
 
 A DVC pipeline over **every adverse event report the FDA has published since 2004** — 20.3 million
 distinct cases after deduplication, spanning both the legacy LAERS and current FAERS eras — with
@@ -17,11 +17,12 @@ disproportionality analysis, confounder adjustment, and a rendered report.
 | **How much of the database is distinct?** | 16.7% of raw records are redundant: 4.0M superseded case versions and 67,838 FDA-retracted cases. 82,134 cases span the 2012 era boundary. |
 | **What does a report contain?** | Mean 3.18 drugs and 2.98 reactions, median 1 drug — with a tail reaching 171 drugs on one report. |
 | **Who reports?** | Consumers (8.9M) now file more than physicians (4.5M). |
-| **Which drug–event pairs report disproportionately?** | 2.28M pairs scored; 822,472 flagged by EB05 ≥ 2, the most conservative rule. |
+| **Which drug–event pairs report disproportionately?** | 2.00M pairs scored; 685,128 flagged by EB05 ≥ 2, the most conservative rule. |
 | **Do signals survive confounder adjustment?** | 98.5–100% survive Mantel–Haenszel adjustment, but Breslow–Day rejects homogeneity for 50–76% — the confounders modify signals rather than create them. |
 | **How much of the corpus supports a causal reading?** | 0.147% of drug records are a suspect drug with both positive dechallenge and positive rechallenge. |
 | **How much is vocabulary drift rather than epidemiology?** | 42% of tested reaction terms look like MedDRA revisions, touching 24% of reaction mentions. Flagged, not corrected. |
 | **How many reports are the same incident twice?** | 9.1% of linkable records, in 287k clusters — beyond the 16.7% version-based redundancy. Estimated, not removed. |
+| **Do reaction profiles recover drug classes?** | Yes — statins, ACE inhibitors, TNF inhibitors, SSRIs and bisphosphonates average 4.8× more similar within class than to the corpus. |
 
 ## Quick start
 
@@ -59,6 +60,7 @@ brands ───────────────────────┘ 
 | `describe` | Growth, demographics, reporters, top terms, report structure |
 | `signals` | ROR, PRR, IC/BCPNN, EBGM/MGPS with Fisher + BH-FDR |
 | `stratify` | Mantel–Haenszel by sex, age band, calendar period |
+| `similarity` | Drug–drug similarity from reaction profiles, validated against known drug classes |
 | `duplicates` | Record linkage for independent duplicate reports (estimated, not removed) |
 | `drift` | Flags MedDRA vocabulary change without a licensed dictionary |
 | `figures` | Vega-Lite specs + PNG |
@@ -109,6 +111,8 @@ OR = 3.01 against a true 3, and Breslow–Day shows 6.8% type-I error against a 
   growing. Reported here as a share of each year's reports.
 - **Duplicates.** The repetitive clustergram block the notebook attributed to "duplicates or other
   artifacts" was 4.0M superseded case versions.
+- **Salt forms.** `ATORVASTATIN` and `ATORVASTATIN CALCIUM` were counted as two drugs, splitting one
+  substance nearly in half. Resolved to the active moiety via RxNorm.
 
 ## What these data cannot show
 
@@ -125,7 +129,7 @@ indication.
 **Drug names are resolved to ingredients at 98.6%**, via FDA's `prod_ai`, a dictionary bootstrapped
 from the corpus, FDA's NDC directory and NLM's RxNav. The residue — discontinued, foreign and
 misspelled products — keeps its reported name and is flagged `ingredient_curated = false` in the
-published table. 23.5% of distinct drug labels in the signal table are still product names rather
+published table. 28% of distinct drug labels in the signal table are still product names rather
 than substances, which splits marginals; treat those signals as provisional.
 
 Further limitations — MedDRA version drift, absent drug-class hierarchy,
@@ -144,11 +148,12 @@ A non-commercial academic project.
 | Drug identifiers | RxNorm (NLM), public domain |
 | Reaction terms | **MedDRA** — owned by IFPMA/MSSO, not relicensable here |
 
-A licence set here covers this project's own contribution. It cannot extend to MedDRA, whose
-preferred terms populate the `pt` column and arrive via FDA's public release. MedDRA subscriptions
-are free for non-profit, non-commercial and academic use; commercial users pay a revenue-scaled
-fee. Everything else in the output is unencumbered, so a consumer without a MedDRA position can
-drop that one column and keep the rest.
+A licence set here covers this project's own contribution and cannot extend to MedDRA, whose
+preferred terms populate the `pt` column. Those arrive through FDA's public-domain release rather
+than the MedDRA distribution, and **the pipeline needs no MedDRA licence to run** — it performs no
+terminology lookup, treating the strings as opaque labels. Everything else in the output is
+unencumbered, so anyone who would rather not engage with MedDRA terms can drop that one column and
+keep the rest.
 
 ## Data
 

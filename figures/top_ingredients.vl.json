@@ -6,7 +6,7 @@
   }
  },
  "data": {
-  "name": "data-3fb4155fb011279dd315a0be6f3ad63b"
+  "name": "data-f48a5eeb9560321c6238b2923d34635b"
  },
  "mark": {
   "type": "bar",
@@ -40,86 +40,86 @@
  "width": 620,
  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
  "datasets": {
-  "data-3fb4155fb011279dd315a0be6f3ad63b": [
+  "data-f48a5eeb9560321c6238b2923d34635b": [
    {
     "ingredient": "ACETAMINOPHEN",
-    "reports": 1049952
+    "reports": 1050283
    },
    {
     "ingredient": "ASPIRIN",
-    "reports": 816368
+    "reports": 816677
    },
    {
     "ingredient": "ADALIMUMAB",
-    "reports": 710789
+    "reports": 729245
+   },
+   {
+    "ingredient": "ESOMEPRAZOLE",
+    "reports": 617729
    },
    {
     "ingredient": "ETANERCEPT",
-    "reports": 581282
+    "reports": 587846
+   },
+   {
+    "ingredient": "LEVOTHYROXINE",
+    "reports": 586596
    },
    {
     "ingredient": "PREDNISONE",
-    "reports": 539991
+    "reports": 542381
    },
    {
-    "ingredient": "METFORMIN HYDROCHLORIDE",
-    "reports": 525103
+    "ingredient": "ATORVASTATIN",
+    "reports": 539618
    },
    {
-    "ingredient": "AMLODIPINE BESYLATE",
-    "reports": 483036
+    "ingredient": "METFORMIN",
+    "reports": 530588
+   },
+   {
+    "ingredient": "RANITIDINE",
+    "reports": 528266
+   },
+   {
+    "ingredient": "METHOTREXATE",
+    "reports": 509655
+   },
+   {
+    "ingredient": "AMLODIPINE",
+    "reports": 496013
    },
    {
     "ingredient": "DUPILUMAB",
     "reports": 478057
    },
    {
+    "ingredient": "ALBUTEROL",
+    "reports": 448213
+   },
+   {
+    "ingredient": "OXYCODONE",
+    "reports": 445415
+   },
+   {
     "ingredient": "CHOLECALCIFEROL",
-    "reports": 435013
+    "reports": 438514
    },
    {
     "ingredient": "FUROSEMIDE",
-    "reports": 432032
-   },
-   {
-    "ingredient": "RANITIDINE HYDROCHLORIDE",
-    "reports": 425816
+    "reports": 432051
    },
    {
     "ingredient": "LENALIDOMIDE",
     "reports": 421694
    },
    {
-    "ingredient": "METHOTREXATE",
-    "reports": 415774
+    "ingredient": "FLUTICASONE",
+    "reports": 408208
    },
    {
-    "ingredient": "OMEPRAZOLE",
-    "reports": 377841
-   },
-   {
-    "ingredient": "GABAPENTIN",
-    "reports": 366065
-   },
-   {
-    "ingredient": "LEVOTHYROXINE SODIUM",
-    "reports": 365475
-   },
-   {
-    "ingredient": "OXYCODONE HYDROCHLORIDE",
-    "reports": 353573
-   },
-   {
-    "ingredient": "DEXAMETHASONE",
-    "reports": 351706
-   },
-   {
-    "ingredient": "HYDROCHLOROTHIAZIDE",
-    "reports": 341981
-   },
-   {
-    "ingredient": "LISINOPRIL",
-    "reports": 341718
+    "ingredient": "METOPROLOL",
+    "reports": 403701
    }
   ]
  }

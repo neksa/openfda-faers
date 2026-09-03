@@ -490,11 +490,27 @@ which **inflates** its disproportionality: it is being compared against the whol
 fragment of its true exposure. Both the numerator and the denominator are wrong, in opposite
 directions.
 
-Two free sources close most of this gap, and the pipeline now uses both: FDA's **NDC directory**
+Two free sources close most of this gap, and the pipeline uses both: FDA's **NDC directory**
 (public domain, 7,958 brand tokens usable after an ambiguity filter) and NLM's **RxNav**. Together
-with stricter cleaning of device and product designators, they moved the fallback-only share from
-37.3% to the figure above, consolidating brands into their substances — `DURAGESIC-100` into
-fentanyl, `ADVAIR DISKUS 100/50` into fluticasone and salmeterol, `PARAGARD 380A` into copper.
+with stricter cleaning of device and product designators, they consolidate brands into their
+substances — `DURAGESIC-100` into fentanyl, `ADVAIR DISKUS 100/50` into fluticasone and salmeterol,
+`PARAGARD 380A` into copper. The fallback-only count fell from 3,838 to 2,008.
+
+A second split ran alongside the brand one and was easy to miss because both halves looked like
+real substances. FAERS records `ATORVASTATIN` **and** `ATORVASTATIN CALCIUM`, and counting them
+separately divided one drug almost exactly in half — 275,333 reports against 269,328. The same
+happened to warfarin, amlodipine and metformin. Salt forms are now resolved to their active moiety
+through RxNorm, which gets the hard cases right without a heuristic: `SODIUM CHLORIDE` and
+`CALCIUM CARBONATE` are returned unchanged, where stripping a suffix would have produced "sodium"
+and "calcium".
+
+::: {.callout-note}
+## Reading the percentage above
+The fallback *share* rose when salts were merged, from 23.5% to the figure in the table, while the
+fallback *count* fell slightly. Merging affected curated ingredients — the ones RxNorm knows — far
+more than unmapped free text, so the denominator shrank faster than the numerator. The absolute
+problem got smaller; the ratio did not.
+:::
 
 The effect on real signals is visible: atorvastatin–rhabdomyolysis rose from 2,397 co-reports
 (EB05 = 15.5) to 2,794 (EB05 = 28.6) once Lipitor's reports joined the substance they belong to.
@@ -508,6 +524,79 @@ for substances.
 One correction to an earlier draft of this report, which claimed these rows fall below the
 minimum-support threshold and never enter the signal tables: they do enter it, and always did. The
 claim was inferred from the `min_count` rule rather than measured, and it was wrong.
+
+## Do reaction profiles recover pharmacology?
+
+If two drugs act through the same mechanism, they may provoke the same pattern of reported
+reactions. The 2020 notebook explored that with UMAP and DBSCAN, described two clusters, and left
+interpretation as "out of scope" — so whether the clusters meant anything was never established.
+
+The measure here is cosine similarity on **information-component** profiles. Raw co-report counts
+would make every drug resemble every other, because both profiles are dominated by the same
+ubiquitous terms; the IC is normalized against what the corpus predicts, so what remains is what is
+*distinctive* about a drug. No embedding step is involved, which also makes the result
+deterministic rather than a function of projection hyperparameters.
+
+The question is whether it recovers classes it was never told about:
+
+```{python}
+# | label: tbl-similarity
+simsum = load_json("similarity_summary.json")
+labels = {
+    "statins": "Statins",
+    "ace_inhibitors": "ACE inhibitors",
+    "tnf_inhibitors": "TNF inhibitors",
+    "ssris": "SSRIs",
+    "bisphosphonates": "Bisphosphonates",
+}
+rows = [
+    {
+        "Drug class": labels.get(k, k),
+        "Members": v["members"],
+        "Within-class similarity": v["within_class_similarity"],
+        "Vs. corpus average": f'{v["vs_overall"]}×',
+    }
+    for k, v in simsum["validation"].items()
+]
+pl.DataFrame(rows).to_pandas()
+```
+
+**Every class is 3.0–5.8× more similar to itself than the corpus average**, without any drug-class
+information entering the computation. The nearest neighbours are recognisable pharmacology:
+
+```{python}
+# | label: tbl-neighbours
+nn = pl.read_parquet(RESULTS / "similarity" / "nearest_neighbours.parquet")
+probes = [
+    "ATORVASTATIN CALCIUM",
+    "LISINOPRIL",
+    "ADALIMUMAB",
+    "SERTRALINE HYDROCHLORIDE",
+]
+rows = []
+for probe in probes:
+    top = nn.filter(pl.col("ingredient") == probe).sort("rank").head(3)
+    if top.height:
+        rows.append(
+            {
+                "Drug": probe.title(),
+                "Nearest by reaction profile": ", ".join(
+                    f'{r["neighbour"].title()} ({r["cosine"]:.2f})' for r in top.to_dicts()
+                ),
+            }
+        )
+pl.DataFrame(rows).to_pandas()
+```
+
+Atorvastatin's neighbours are other statins **and ezetimibe** — a different mechanism, but the same
+therapeutic setting and co-prescription pattern. Adalimumab sits beside infliximab and etanercept,
+then ustekinumab: TNF inhibitors first, then a biologic used for overlapping indications. Sertraline
+sits among SSRIs, then venlafaxine, an SNRI.
+
+That last detail is the honest caveat. This measure cannot separate *shared mechanism* from *shared
+indication* or *shared co-prescription* — the same confound that puts indication bias at the top of
+the disproportionality rankings. It recovers therapeutic neighbourhoods reliably; reading a specific
+mechanism into any one pair requires evidence from outside these data.
 
 ## Vocabulary drift, measured
 

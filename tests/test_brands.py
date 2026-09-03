@@ -133,6 +133,102 @@ class TestRxNavQueryConstruction:
         assert brands.rxnav_ingredients("ANYTHING") is None
 
 
+class TestSaltCollapsing:
+    """Salt forms must resolve to the active moiety, and only when that is actually correct.
+
+    FAERS records both ATORVASTATIN and ATORVASTATIN CALCIUM. Counting them separately split one
+    substance almost exactly in half -- 275,333 reports against 269,328 -- which understates the
+    marginal and inflates the disproportionality of both halves.
+
+    The reason this defers to RxNorm rather than stripping a suffix list: for some substances the
+    salt *is* the drug. Stripping "CHLORIDE" from SODIUM CHLORIDE yields SODIUM, turning saline
+    into an electrolyte that was never administered. RxNorm distinguishes the two cases; a regex
+    cannot.
+    """
+
+    def test_combination_products_are_not_collapsed_to_one_component(self, monkeypatch):
+        """A product with several base ingredients must keep its own identity."""
+        from faers import brands
+
+        def fake(path, **params):
+            if path == "rxcui.json":
+                return {"idGroup": {"rxnormId": ["999"]}}
+            return {
+                "relatedGroup": {
+                    "conceptGroup": [
+                        {
+                            "tty": "IN",
+                            "conceptProperties": [
+                                {"name": "amlodipine", "rxcui": "1"},
+                                {"name": "valsartan", "rxcui": "2"},
+                            ],
+                        }
+                    ]
+                }
+            }
+
+        monkeypatch.setattr(brands, "_rxnav_json", fake)
+        got = brands.rxcui_for_ingredient("AMLODIPINE / VALSARTAN")
+        assert got["base"] == "AMLODIPINE / VALSARTAN", "combinations must not collapse"
+
+    def test_single_base_ingredient_collapses_and_uppercases(self, monkeypatch):
+        from faers import brands
+
+        def fake(path, **params):
+            if path == "rxcui.json":
+                return {"idGroup": {"rxnormId": ["83366"]}}
+            return {
+                "relatedGroup": {
+                    "conceptGroup": [
+                        {
+                            "tty": "IN",
+                            "conceptProperties": [{"name": "atorvastatin", "rxcui": "83367"}],
+                        }
+                    ]
+                }
+            }
+
+        monkeypatch.setattr(brands, "_rxnav_json", fake)
+        got = brands.rxcui_for_ingredient("ATORVASTATIN CALCIUM")
+        assert got["base"] == "ATORVASTATIN"
+        assert got["base_rxcui"] == "83367"
+
+    def test_substance_with_no_base_relation_keeps_its_name(self, monkeypatch):
+        """SODIUM CHLORIDE has no separate active moiety; it must survive untouched."""
+        from faers import brands
+
+        def fake(path, **params):
+            if path == "rxcui.json":
+                return {"idGroup": {"rxnormId": ["9863"]}}
+            return {"relatedGroup": {"conceptGroup": []}}
+
+        monkeypatch.setattr(brands, "_rxnav_json", fake)
+        got = brands.rxcui_for_ingredient("SODIUM CHLORIDE")
+        assert got["base"] == "SODIUM CHLORIDE"
+
+    def test_unresolvable_name_returns_none(self, monkeypatch):
+        from faers import brands
+
+        monkeypatch.setattr(brands, "_rxnav_json", lambda *a, **k: {"idGroup": {}})
+        assert brands.rxcui_for_ingredient("NOT A DRUG") is None
+
+    def test_stale_string_cache_entries_are_requeried(self, tmp_path, monkeypatch):
+        """Older caches stored a bare RxCUI with no base ingredient; those must not be trusted."""
+        import json as _json
+
+        from faers import brands
+
+        cache = tmp_path / "rxcui.json"
+        cache.write_text(_json.dumps({"ATORVASTATIN CALCIUM": "83366"}))
+        monkeypatch.setattr(
+            brands,
+            "rxcui_for_ingredient",
+            lambda name: {"rxcui": "83366", "base": "ATORVASTATIN", "base_rxcui": "83367"},
+        )
+        got = brands.resolve_ingredient_rxcuis(["ATORVASTATIN CALCIUM"], cache, pause=0)
+        assert got["ATORVASTATIN CALCIUM"]["base"] == "ATORVASTATIN"
+
+
 class TestCleaningForBrandLookup:
     """The cleaner must reduce a product string to a token the brand index can match."""
 

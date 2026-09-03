@@ -369,15 +369,34 @@ def normalize_drugs(
             pl.DataFrame(
                 {
                     "ingredient": list(direct),
-                    "ingredient_rxcui": [direct[k] for k in direct],
+                    "ingredient_rxcui": [direct[k]["base_rxcui"] for k in direct],
+                    "ingredient_base": [direct[k]["base"] for k in direct],
                 },
-                schema={"ingredient": pl.String, "ingredient_rxcui": pl.String},
+                schema={
+                    "ingredient": pl.String,
+                    "ingredient_rxcui": pl.String,
+                    "ingredient_base": pl.String,
+                },
             )
             # A direct ingredient match beats one inferred through a brand.
-            .vstack(rxcuis.filter(~pl.col("ingredient").is_in(list(direct))))
+            .vstack(
+                rxcuis.filter(~pl.col("ingredient").is_in(list(direct))).with_columns(
+                    pl.col("ingredient").alias("ingredient_base")
+                )
+            )
         )
+    else:
+        rxcuis = rxcuis.with_columns(pl.col("ingredient").alias("ingredient_base"))
 
-    exploded = exploded.join(rxcuis.lazy(), on="ingredient", how="left")
+    # Collapse salt forms onto the active moiety RxNorm reports. Without this, ATORVASTATIN and
+    # ATORVASTATIN CALCIUM are two drugs splitting one substance nearly in half.
+    exploded = (
+        exploded.join(rxcuis.lazy(), on="ingredient", how="left")
+        .with_columns(
+            pl.coalesce(pl.col("ingredient_base"), pl.col("ingredient")).alias("ingredient")
+        )
+        .drop("ingredient_base")
+    )
 
     df = exploded.select(
         "record_id", "drug_seq", "role_cod", "drugname", "ingredient", "ingredient_rxcui",

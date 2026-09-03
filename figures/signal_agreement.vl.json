@@ -6,7 +6,7 @@
   }
  },
  "data": {
-  "name": "data-45d3d8ce336ca16dc17d5cf947d8cbad"
+  "name": "data-a68b2458fcce0c7badb0de0a88c90568"
  },
  "mark": {
   "type": "bar",
@@ -40,22 +40,22 @@
  "width": 620,
  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
  "datasets": {
-  "data-45d3d8ce336ca16dc17d5cf947d8cbad": [
+  "data-a68b2458fcce0c7badb0de0a88c90568": [
    {
     "measure": "ROR025 > 1",
-    "pairs": 1207456
+    "pairs": 1026632
    },
    {
     "measure": "PRR >= 2 (MHRA)",
-    "pairs": 1073627
+    "pairs": 905646
    },
    {
     "measure": "IC025 > 0",
-    "pairs": 1039569
+    "pairs": 885252
    },
    {
     "measure": "EB05 >= 2",
-    "pairs": 821847
+    "pairs": 685128
    }
   ]
  }

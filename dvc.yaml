@@ -144,6 +144,20 @@ stages:
       - results/stratify_summary.json:
           cache: false
 
+  similarity:
+    desc: Drug-drug similarity from reaction profiles, validated against known drug classes.
+    cmd: python -m faers.cli similarity
+    deps:
+      - results/signals/scored.parquet
+      - src/faers/stats/similarity.py
+    params:
+      - similarity
+    outs:
+      - results/similarity
+    metrics:
+      - results/similarity_summary.json:
+          cache: false
+
   duplicates:
     desc: Estimate independent duplicate reports (same incident, different case ids).
     cmd: python -m faers.cli duplicates
@@ -195,6 +209,9 @@ stages:
       - results/signals/summary.json
       - results/dedup_stats.json
       - results/normalize_stats.json
+      - results/similarity
+      - results/drift_summary.json
+      - results/duplicates_summary.json
       - report/index.qmd
       - report/_quarto.yml
     outs:

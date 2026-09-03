@@ -1,28 +1,28 @@
 {
-  "n_pairs": 2275122,
+  "n_pairs": 1997725,
   "n_total_reports": 20320042,
-  "signal_table_ingredients": 8686,
-  "signal_table_ingredients_fallback_only": 2040,
-  "signal_table_fallback_fraction": 0.2349,
+  "signal_table_ingredients": 7168,
+  "signal_table_ingredients_fallback_only": 2008,
+  "signal_table_fallback_fraction": 0.2801,
   "gamma_poisson": {
-    "alpha1": 0.9761934265196157,
-    "beta1": 0.36546657096237556,
-    "alpha2": 0.3862838981270572,
-    "beta2": 0.0029973453673170346,
-    "weight": 0.7972815416867466,
-    "neg_log_likelihood": 904638.7354705299,
+    "alpha1": 0.982855860242027,
+    "beta1": 0.39324130123012896,
+    "alpha2": 0.3864566414040658,
+    "beta2": 0.003259130939647247,
+    "weight": 0.8063179169868361,
+    "neg_log_likelihood": 910409.5515697489,
     "converged": true,
     "n_pairs_fitted": 200000,
     "fit_sample_size": 200000,
     "fit_random_state": 0
   },
   "signals": {
-    "signal_ror": 1207456,
-    "signal_prr_mhra": 1073627,
-    "signal_ic": 1039569,
-    "signal_eb05": 821847,
-    "signal_fdr": 1116115
+    "signal_ror": 1026632,
+    "signal_prr_mhra": 905646,
+    "signal_ic": 885252,
+    "signal_eb05": 685128,
+    "signal_fdr": 946126
   },
-  "concordant_all_four": 821808,
+  "concordant_all_four": 685128,
   "hypothesis_family": "One Benjamini-Hochberg family per cohort, over ingredient-reaction pairs with n_ij >= 3 in that cohort. q-values are approximate because pairs share reports and are therefore dependent."
 }
