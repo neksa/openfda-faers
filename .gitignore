@@ -3,6 +3,11 @@
 /report/.quarto
 /report/index_files
 
+# Secrets. Never commit: the publish stage reads HF_TOKEN from here.
+.env
+.env.*
+!.env.example
+
 # Python
 __pycache__/
 *.py[cod]

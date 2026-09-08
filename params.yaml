@@ -70,10 +70,26 @@ stratify:
   calendar_period_years: 5
 
 publish:
-  # Hugging Face dataset repo receiving the derived tables. Requires HF_TOKEN in the environment.
-  # The publish stage is opt-in and is not part of the default `dvc repro`.
-  hf_repo: null
+  # Hugging Face dataset repo receiving the derived tables. HF_TOKEN comes from the environment or
+  # from .env (gitignored). The publish stage is opt-in and is not part of the default `dvc repro`.
+  hf_repo: neksa/faers-signals
+
+  # Start private. Going public is a separate, deliberate act -- see `faers publish --public`.
+  private: true
+
   include:
     - results/signals/scored.parquet
     - results/descriptive
-    - results/*.json
+    - results/similarity
+    - results/drift
+    - results/duplicates_summary.json
+    - results/drift_summary.json
+    - results/similarity_summary.json
+    - results/signals/summary.json
+    - results/signals/fanout.json
+    - results/dedup_stats.json
+    - results/normalize_stats.json
+    - results/brands_stats.json
+    - results/stratify_summary.json
+    - results/source_manifest.json
+    - DATASET_CARD.md

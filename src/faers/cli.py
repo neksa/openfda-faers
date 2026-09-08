@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import time
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
@@ -25,6 +26,27 @@ PARAMS = Path("params.yaml")
 
 def load_params() -> dict:
     return yaml.safe_load(PARAMS.read_text())
+
+
+def load_dotenv(path: Path = Path(".env")) -> None:
+    """Read KEY=VALUE lines from .env into the environment, without overriding what is already set.
+
+    Deliberately not a dependency: this needs to parse a handful of lines, and a real secret should
+    not be routed through more third-party code than necessary. Existing environment variables win,
+    so CI and one-off overrides behave as expected.
+
+    .env is gitignored. `.env.example` documents the keys.
+    """
+    if not path.exists():
+        return
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        key, value = key.strip(), value.strip().strip("'\"")
+        if key and key not in os.environ:
+            os.environ[key] = value
 
 
 def _echo(msg: str) -> None:
@@ -388,10 +410,9 @@ def publish(dry_run: bool = False) -> None:
     Deliberately excluded from the default `dvc repro`: it is a side effect on an external service
     and must be an explicit act, not something a pipeline rebuild does silently.
     """
-    import os
-
     from huggingface_hub import HfApi
 
+    load_dotenv()
     p = load_params()
     repo = p["publish"]["hf_repo"]
     if not repo:
@@ -413,15 +434,25 @@ def publish(dry_run: bool = False) -> None:
         return
 
     api = HfApi(token=token)
-    api.create_repo(repo, repo_type="dataset", exist_ok=True)
+    private = bool(p["publish"].get("private", True))
+    api.create_repo(repo, repo_type="dataset", exist_ok=True, private=private)
+
     for f in paths:
+        # Hugging Face renders the dataset card from README.md at the repo root; uploaded under
+        # its own name it would be an ordinary file and the dataset page would stay blank.
+        target = "README.md" if f.name == "DATASET_CARD.md" else str(f)
+        _echo(f"  uploading {f} -> {target}")
         if f.is_dir():
-            api.upload_folder(folder_path=str(f), path_in_repo=str(f), repo_id=repo,
-                              repo_type="dataset")
+            api.upload_folder(
+                folder_path=str(f), path_in_repo=str(f), repo_id=repo, repo_type="dataset"
+            )
         else:
-            api.upload_file(path_or_fileobj=str(f), path_in_repo=str(f), repo_id=repo,
-                            repo_type="dataset")
-    _echo(f"published to https://huggingface.co/datasets/{repo}")
+            api.upload_file(
+                path_or_fileobj=str(f), path_in_repo=target, repo_id=repo, repo_type="dataset"
+            )
+
+    visibility = "private" if private else "public"
+    _echo(f"published ({visibility}) to https://huggingface.co/datasets/{repo}")
 
 
 if __name__ == "__main__":
