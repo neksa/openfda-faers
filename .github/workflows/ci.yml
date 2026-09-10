@@ -75,3 +75,37 @@ jobs:
           assert not missing, f"params.yaml is missing: {missing}"
           print("params.yaml OK")
           PY
+
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: No credentials committed
+        # A live HF token sat untracked-but-unignored in the working tree for several days. It
+        # never reached history, but only because no commit happened to land in that window.
+        run: |
+          if git log --all --pretty=format: --name-only --diff-filter=A \
+             | sort -u | grep -E '(^|/)\.env$'; then
+            echo "::error::a .env file was committed at some point in history"; exit 1
+          fi
+          # Real tokens, not the hf_xxxx placeholder in .env.example.
+          if git grep -nIE 'hf_[A-Za-z0-9]{34,}|ghp_[A-Za-z0-9]{36}|AKIA[0-9A-Z]{16}' \
+             -- . ':!.env.example' ':!.github/workflows/ci.yml'; then
+            echo "::error::credential-shaped string in tracked files"; exit 1
+          fi
+          echo "no committed credentials"
+
+      - name: .env stays ignored
+        run: |
+          printf 'HF_TOKEN=hf_%s\n' "$(head -c 40 /dev/zero | tr '\0' 'x')" > .env
+          if ! git check-ignore -q .env; then
+            echo "::error::.env is not gitignored"; rm -f .env; exit 1
+          fi
+          if git status --porcelain | grep -qE '^\?\? \.env$'; then
+            echo "::error::.env shows as untracked-and-addable"; rm -f .env; exit 1
+          fi
+          rm -f .env
+          echo ".env is ignored"
