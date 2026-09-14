@@ -1,0 +1,557 @@
+{
+ "config": {
+  "view": {
+   "continuousWidth": 300,
+   "continuousHeight": 300
+  }
+ },
+ "data": {
+  "name": "data-a8cd4c17475584a69e56772895bb8f4f"
+ },
+ "mark": {
+  "type": "line",
+  "point": true
+ },
+ "encoding": {
+  "color": {
+   "field": "pt",
+   "scale": {
+    "range": [
+     "#4C78A8",
+     "#F58518",
+     "#54A24B",
+     "#E45756",
+     "#72B7B2",
+     "#B279A2",
+     "#9D755D"
+    ]
+   },
+   "title": "Reaction",
+   "type": "nominal"
+  },
+  "tooltip": [
+   {
+    "field": "year",
+    "type": "ordinal"
+   },
+   {
+    "field": "pt",
+    "type": "nominal"
+   },
+   {
+    "field": "share",
+    "format": ".2%",
+    "type": "quantitative"
+   },
+   {
+    "field": "reports",
+    "format": ",",
+    "type": "quantitative"
+   }
+  ],
+  "x": {
+   "field": "year",
+   "title": "FDA receipt year",
+   "type": "ordinal"
+  },
+  "y": {
+   "axis": {
+    "format": "%"
+   },
+   "field": "share",
+   "title": "Share of that year's reports",
+   "type": "quantitative"
+  }
+ },
+ "height": 320,
+ "title": "Reaction terms as a share of yearly reports",
+ "width": 620,
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+ "datasets": {
+  "data-a8cd4c17475584a69e56772895bb8f4f": [
+   {
+    "year": 2004,
+    "pt": "DEATH",
+    "reports": 4709,
+    "total_reports": 205154,
+    "share": 0.022953488598808698
+   },
+   {
+    "year": 2005,
+    "pt": "DEATH",
+    "reports": 6138,
+    "total_reports": 230441,
+    "share": 0.02663588510725088
+   },
+   {
+    "year": 2006,
+    "pt": "DEATH",
+    "reports": 4219,
+    "total_reports": 245237,
+    "share": 0.01720376615274204
+   },
+   {
+    "year": 2007,
+    "pt": "DEATH",
+    "reports": 4810,
+    "total_reports": 264528,
+    "share": 0.018183330309078812
+   },
+   {
+    "year": 2008,
+    "pt": "DEATH",
+    "reports": 7011,
+    "total_reports": 309538,
+    "share": 0.022649884666826044
+   },
+   {
+    "year": 2009,
+    "pt": "DEATH",
+    "reports": 9679,
+    "total_reports": 335508,
+    "share": 0.028848790490837776
+   },
+   {
+    "year": 2010,
+    "pt": "DEATH",
+    "reports": 19240,
+    "total_reports": 475980,
+    "share": 0.04042186646497752
+   },
+   {
+    "year": 2011,
+    "pt": "DEATH",
+    "reports": 23629,
+    "total_reports": 538584,
+    "share": 0.04387245072263565
+   },
+   {
+    "year": 2012,
+    "pt": "DEATH",
+    "reports": 35814,
+    "total_reports": 637755,
+    "share": 0.05615636098501776
+   },
+   {
+    "year": 2013,
+    "pt": "DEATH",
+    "reports": 32168,
+    "total_reports": 769472,
+    "share": 0.04180528986109956
+   },
+   {
+    "year": 2014,
+    "pt": "DEATH",
+    "reports": 38700,
+    "total_reports": 811933,
+    "share": 0.047664031391752765
+   },
+   {
+    "year": 2015,
+    "pt": "DEATH",
+    "reports": 48152,
+    "total_reports": 1224113,
+    "share": 0.039336237749292756
+   },
+   {
+    "year": 2016,
+    "pt": "DEATH",
+    "reports": 46453,
+    "total_reports": 1147014,
+    "share": 0.04049906975852082
+   },
+   {
+    "year": 2017,
+    "pt": "DEATH",
+    "reports": 53144,
+    "total_reports": 1231908,
+    "share": 0.043139585098887254
+   },
+   {
+    "year": 2018,
+    "pt": "DEATH",
+    "reports": 47713,
+    "total_reports": 1055713,
+    "share": 0.045195048275430916
+   },
+   {
+    "year": 2019,
+    "pt": "DEATH",
+    "reports": 55385,
+    "total_reports": 1421252,
+    "share": 0.03896916240047507
+   },
+   {
+    "year": 2020,
+    "pt": "DEATH",
+    "reports": 66772,
+    "total_reports": 1419546,
+    "share": 0.04703757398492194
+   },
+   {
+    "year": 2021,
+    "pt": "DEATH",
+    "reports": 64423,
+    "total_reports": 1566609,
+    "share": 0.04112257749061827
+   },
+   {
+    "year": 2022,
+    "pt": "DEATH",
+    "reports": 63217,
+    "total_reports": 1526834,
+    "share": 0.04140397711866516
+   },
+   {
+    "year": 2023,
+    "pt": "DEATH",
+    "reports": 64327,
+    "total_reports": 1385487,
+    "share": 0.04642916173157886
+   },
+   {
+    "year": 2024,
+    "pt": "DEATH",
+    "reports": 51509,
+    "total_reports": 1340061,
+    "share": 0.0384378024582463
+   },
+   {
+    "year": 2025,
+    "pt": "DEATH",
+    "reports": 53287,
+    "total_reports": 1389118,
+    "share": 0.038360312082918804
+   },
+   {
+    "year": 2026,
+    "pt": "DEATH",
+    "reports": 27136,
+    "total_reports": 792341,
+    "share": 0.034247880647347545
+   },
+   {
+    "year": 2004,
+    "pt": "DYSPNOEA",
+    "reports": 6780,
+    "total_reports": 205154,
+    "share": 0.033048344170720535
+   },
+   {
+    "year": 2005,
+    "pt": "DYSPNOEA",
+    "reports": 8128,
+    "total_reports": 230441,
+    "share": 0.03527150116515724
+   },
+   {
+    "year": 2006,
+    "pt": "DYSPNOEA",
+    "reports": 8517,
+    "total_reports": 245237,
+    "share": 0.03472966966648589
+   },
+   {
+    "year": 2007,
+    "pt": "DYSPNOEA",
+    "reports": 8037,
+    "total_reports": 264528,
+    "share": 0.03038241698421339
+   },
+   {
+    "year": 2008,
+    "pt": "DYSPNOEA",
+    "reports": 9966,
+    "total_reports": 309538,
+    "share": 0.03219637007411045
+   },
+   {
+    "year": 2009,
+    "pt": "DYSPNOEA",
+    "reports": 10632,
+    "total_reports": 335508,
+    "share": 0.03168925927250617
+   },
+   {
+    "year": 2010,
+    "pt": "DYSPNOEA",
+    "reports": 14161,
+    "total_reports": 475980,
+    "share": 0.029751250052523215
+   },
+   {
+    "year": 2011,
+    "pt": "DYSPNOEA",
+    "reports": 16526,
+    "total_reports": 538584,
+    "share": 0.030684164401467554
+   },
+   {
+    "year": 2012,
+    "pt": "DYSPNOEA",
+    "reports": 20172,
+    "total_reports": 637755,
+    "share": 0.03162970106075217
+   },
+   {
+    "year": 2013,
+    "pt": "DYSPNOEA",
+    "reports": 22772,
+    "total_reports": 769472,
+    "share": 0.02959431922149214
+   },
+   {
+    "year": 2014,
+    "pt": "DYSPNOEA",
+    "reports": 24777,
+    "total_reports": 811933,
+    "share": 0.03051606474918497
+   },
+   {
+    "year": 2015,
+    "pt": "DYSPNOEA",
+    "reports": 35475,
+    "total_reports": 1224113,
+    "share": 0.028980167680598114
+   },
+   {
+    "year": 2016,
+    "pt": "DYSPNOEA",
+    "reports": 30962,
+    "total_reports": 1147014,
+    "share": 0.026993567646079297
+   },
+   {
+    "year": 2017,
+    "pt": "DYSPNOEA",
+    "reports": 32641,
+    "total_reports": 1231908,
+    "share": 0.02649629680138452
+   },
+   {
+    "year": 2018,
+    "pt": "DYSPNOEA",
+    "reports": 27813,
+    "total_reports": 1055713,
+    "share": 0.02634522829594786
+   },
+   {
+    "year": 2019,
+    "pt": "DYSPNOEA",
+    "reports": 37885,
+    "total_reports": 1421252,
+    "share": 0.02665607506620923
+   },
+   {
+    "year": 2020,
+    "pt": "DYSPNOEA",
+    "reports": 38771,
+    "total_reports": 1419546,
+    "share": 0.027312253354241426
+   },
+   {
+    "year": 2021,
+    "pt": "DYSPNOEA",
+    "reports": 36543,
+    "total_reports": 1566609,
+    "share": 0.023326177750798063
+   },
+   {
+    "year": 2022,
+    "pt": "DYSPNOEA",
+    "reports": 34855,
+    "total_reports": 1526834,
+    "share": 0.022828283886787953
+   },
+   {
+    "year": 2023,
+    "pt": "DYSPNOEA",
+    "reports": 32527,
+    "total_reports": 1385487,
+    "share": 0.0234769434862976
+   },
+   {
+    "year": 2024,
+    "pt": "DYSPNOEA",
+    "reports": 33898,
+    "total_reports": 1340061,
+    "share": 0.02529586339726326
+   },
+   {
+    "year": 2025,
+    "pt": "DYSPNOEA",
+    "reports": 35892,
+    "total_reports": 1389118,
+    "share": 0.025837977767187523
+   },
+   {
+    "year": 2026,
+    "pt": "DYSPNOEA",
+    "reports": 20367,
+    "total_reports": 792341,
+    "share": 0.02570484172849821
+   },
+   {
+    "year": 2004,
+    "pt": "PAIN",
+    "reports": 3452,
+    "total_reports": 205154,
+    "share": 0.016826384082201662
+   },
+   {
+    "year": 2005,
+    "pt": "PAIN",
+    "reports": 5117,
+    "total_reports": 230441,
+    "share": 0.02220524993382254
+   },
+   {
+    "year": 2006,
+    "pt": "PAIN",
+    "reports": 5195,
+    "total_reports": 245237,
+    "share": 0.02118358975195423
+   },
+   {
+    "year": 2007,
+    "pt": "PAIN",
+    "reports": 4550,
+    "total_reports": 264528,
+    "share": 0.017200447589669147
+   },
+   {
+    "year": 2008,
+    "pt": "PAIN",
+    "reports": 6983,
+    "total_reports": 309538,
+    "share": 0.022559427275487987
+   },
+   {
+    "year": 2009,
+    "pt": "PAIN",
+    "reports": 7879,
+    "total_reports": 335508,
+    "share": 0.023483791742670814
+   },
+   {
+    "year": 2010,
+    "pt": "PAIN",
+    "reports": 11672,
+    "total_reports": 475980,
+    "share": 0.024522038741123575
+   },
+   {
+    "year": 2011,
+    "pt": "PAIN",
+    "reports": 21741,
+    "total_reports": 538584,
+    "share": 0.040366962256583934
+   },
+   {
+    "year": 2012,
+    "pt": "PAIN",
+    "reports": 23109,
+    "total_reports": 637755,
+    "share": 0.03623491779758685
+   },
+   {
+    "year": 2013,
+    "pt": "PAIN",
+    "reports": 25186,
+    "total_reports": 769472,
+    "share": 0.03273153539050154
+   },
+   {
+    "year": 2014,
+    "pt": "PAIN",
+    "reports": 25666,
+    "total_reports": 811933,
+    "share": 0.03161098267960534
+   },
+   {
+    "year": 2015,
+    "pt": "PAIN",
+    "reports": 35902,
+    "total_reports": 1224113,
+    "share": 0.029328991686225048
+   },
+   {
+    "year": 2016,
+    "pt": "PAIN",
+    "reports": 29398,
+    "total_reports": 1147014,
+    "share": 0.025630027183626353
+   },
+   {
+    "year": 2017,
+    "pt": "PAIN",
+    "reports": 29351,
+    "total_reports": 1231908,
+    "share": 0.023825642823977117
+   },
+   {
+    "year": 2018,
+    "pt": "PAIN",
+    "reports": 24754,
+    "total_reports": 1055713,
+    "share": 0.023447660491061492
+   },
+   {
+    "year": 2019,
+    "pt": "PAIN",
+    "reports": 34028,
+    "total_reports": 1421252,
+    "share": 0.023942270617737037
+   },
+   {
+    "year": 2020,
+    "pt": "PAIN",
+    "reports": 42402,
+    "total_reports": 1419546,
+    "share": 0.029870113402454025
+   },
+   {
+    "year": 2021,
+    "pt": "PAIN",
+    "reports": 60974,
+    "total_reports": 1566609,
+    "share": 0.03892100709238872
+   },
+   {
+    "year": 2022,
+    "pt": "PAIN",
+    "reports": 71415,
+    "total_reports": 1526834,
+    "share": 0.04677325760364257
+   },
+   {
+    "year": 2023,
+    "pt": "PAIN",
+    "reports": 39770,
+    "total_reports": 1385487,
+    "share": 0.028704708163988547
+   },
+   {
+    "year": 2024,
+    "pt": "PAIN",
+    "reports": 33186,
+    "total_reports": 1340061,
+    "share": 0.02476454430059527
+   },
+   {
+    "year": 2025,
+    "pt": "PAIN",
+    "reports": 33613,
+    "total_reports": 1389118,
+    "share": 0.02419736840210839
+   },
+   {
+    "year": 2026,
+    "pt": "PAIN",
+    "reports": 20627,
+    "total_reports": 792341,
+    "share": 0.02603298327361578
+   }
+  ]
+ }
+}

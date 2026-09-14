@@ -1,0 +1,33 @@
+project:
+  type: website
+  # Renders to /docs at the repository root because GitHub Pages serves this repo from the master
+  # branch. Pages cannot serve a nested path like report/_site, which is why the published link
+  # was returning 404.
+  output-dir: ../docs
+
+website:
+  title: "FAERS 2004-2026"
+  page-navigation: true
+  navbar:
+    right:
+      - text: "Source"
+        href: https://github.com/neksa/openfda-faers
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    toc-title: "Contents"
+    code-fold: true
+    code-tools: true
+    embed-resources: false
+    fig-align: center
+    tbl-cap-location: bottom
+    df-print: kable
+    smooth-scroll: true
+
+execute:
+  freeze: false
+  echo: false
+  warning: false

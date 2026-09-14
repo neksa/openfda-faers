@@ -1,0 +1,410 @@
+{
+ "config": {
+  "view": {
+   "continuousWidth": 300,
+   "continuousHeight": 300
+  }
+ },
+ "data": {
+  "name": "data-6b5db8a332e477caa44e6baf562de6d9"
+ },
+ "mark": {
+  "type": "area"
+ },
+ "encoding": {
+  "color": {
+   "field": "sex",
+   "scale": {
+    "range": [
+     "#4C78A8",
+     "#F58518",
+     "#BAB0AC"
+    ]
+   },
+   "title": "Sex",
+   "type": "nominal"
+  },
+  "tooltip": [
+   {
+    "field": "year",
+    "type": "ordinal"
+   },
+   {
+    "field": "sex",
+    "type": "nominal"
+   },
+   {
+    "field": "reports",
+    "format": ",",
+    "type": "quantitative"
+   }
+  ],
+  "x": {
+   "field": "year",
+   "title": "FDA receipt year",
+   "type": "ordinal"
+  },
+  "y": {
+   "axis": {
+    "format": "%"
+   },
+   "field": "reports",
+   "stack": "normalize",
+   "title": "Share of reports",
+   "type": "quantitative"
+  }
+ },
+ "height": 320,
+ "title": "Reporting by patient sex over time (share of reports)",
+ "width": 620,
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+ "datasets": {
+  "data-6b5db8a332e477caa44e6baf562de6d9": [
+   {
+    "year": 2004,
+    "sex": "F",
+    "reports": 114565
+   },
+   {
+    "year": 2004,
+    "sex": "M",
+    "reports": 76085
+   },
+   {
+    "year": 2004,
+    "sex": "UNK",
+    "reports": 14504
+   },
+   {
+    "year": 2005,
+    "sex": "F",
+    "reports": 124285
+   },
+   {
+    "year": 2005,
+    "sex": "M",
+    "reports": 90461
+   },
+   {
+    "year": 2005,
+    "sex": "UNK",
+    "reports": 15695
+   },
+   {
+    "year": 2006,
+    "sex": "F",
+    "reports": 134428
+   },
+   {
+    "year": 2006,
+    "sex": "M",
+    "reports": 94824
+   },
+   {
+    "year": 2006,
+    "sex": "UNK",
+    "reports": 15985
+   },
+   {
+    "year": 2007,
+    "sex": "F",
+    "reports": 148750
+   },
+   {
+    "year": 2007,
+    "sex": "M",
+    "reports": 94661
+   },
+   {
+    "year": 2007,
+    "sex": "UNK",
+    "reports": 21117
+   },
+   {
+    "year": 2008,
+    "sex": "F",
+    "reports": 177066
+   },
+   {
+    "year": 2008,
+    "sex": "M",
+    "reports": 108274
+   },
+   {
+    "year": 2008,
+    "sex": "UNK",
+    "reports": 24198
+   },
+   {
+    "year": 2009,
+    "sex": "F",
+    "reports": 186914
+   },
+   {
+    "year": 2009,
+    "sex": "M",
+    "reports": 120330
+   },
+   {
+    "year": 2009,
+    "sex": "UNK",
+    "reports": 28264
+   },
+   {
+    "year": 2010,
+    "sex": "F",
+    "reports": 258633
+   },
+   {
+    "year": 2010,
+    "sex": "M",
+    "reports": 160948
+   },
+   {
+    "year": 2010,
+    "sex": "UNK",
+    "reports": 56399
+   },
+   {
+    "year": 2011,
+    "sex": "F",
+    "reports": 314179
+   },
+   {
+    "year": 2011,
+    "sex": "M",
+    "reports": 185644
+   },
+   {
+    "year": 2011,
+    "sex": "UNK",
+    "reports": 38761
+   },
+   {
+    "year": 2012,
+    "sex": "F",
+    "reports": 365517
+   },
+   {
+    "year": 2012,
+    "sex": "M",
+    "reports": 220852
+   },
+   {
+    "year": 2012,
+    "sex": "UNK",
+    "reports": 51386
+   },
+   {
+    "year": 2013,
+    "sex": "F",
+    "reports": 450758
+   },
+   {
+    "year": 2013,
+    "sex": "M",
+    "reports": 269692
+   },
+   {
+    "year": 2013,
+    "sex": "UNK",
+    "reports": 49022
+   },
+   {
+    "year": 2014,
+    "sex": "F",
+    "reports": 461505
+   },
+   {
+    "year": 2014,
+    "sex": "M",
+    "reports": 280164
+   },
+   {
+    "year": 2014,
+    "sex": "UNK",
+    "reports": 70264
+   },
+   {
+    "year": 2015,
+    "sex": "F",
+    "reports": 675100
+   },
+   {
+    "year": 2015,
+    "sex": "M",
+    "reports": 421451
+   },
+   {
+    "year": 2015,
+    "sex": "UNK",
+    "reports": 127562
+   },
+   {
+    "year": 2016,
+    "sex": "F",
+    "reports": 629873
+   },
+   {
+    "year": 2016,
+    "sex": "M",
+    "reports": 398672
+   },
+   {
+    "year": 2016,
+    "sex": "UNK",
+    "reports": 118469
+   },
+   {
+    "year": 2017,
+    "sex": "F",
+    "reports": 661135
+   },
+   {
+    "year": 2017,
+    "sex": "M",
+    "reports": 424421
+   },
+   {
+    "year": 2017,
+    "sex": "UNK",
+    "reports": 146352
+   },
+   {
+    "year": 2018,
+    "sex": "F",
+    "reports": 569143
+   },
+   {
+    "year": 2018,
+    "sex": "M",
+    "reports": 356452
+   },
+   {
+    "year": 2018,
+    "sex": "UNK",
+    "reports": 130118
+   },
+   {
+    "year": 2019,
+    "sex": "F",
+    "reports": 765456
+   },
+   {
+    "year": 2019,
+    "sex": "M",
+    "reports": 473678
+   },
+   {
+    "year": 2019,
+    "sex": "UNK",
+    "reports": 182118
+   },
+   {
+    "year": 2020,
+    "sex": "F",
+    "reports": 732178
+   },
+   {
+    "year": 2020,
+    "sex": "M",
+    "reports": 478823
+   },
+   {
+    "year": 2020,
+    "sex": "UNK",
+    "reports": 208545
+   },
+   {
+    "year": 2021,
+    "sex": "F",
+    "reports": 777128
+   },
+   {
+    "year": 2021,
+    "sex": "M",
+    "reports": 602120
+   },
+   {
+    "year": 2021,
+    "sex": "UNK",
+    "reports": 187361
+   },
+   {
+    "year": 2022,
+    "sex": "F",
+    "reports": 762593
+   },
+   {
+    "year": 2022,
+    "sex": "M",
+    "reports": 565737
+   },
+   {
+    "year": 2022,
+    "sex": "UNK",
+    "reports": 198504
+   },
+   {
+    "year": 2023,
+    "sex": "F",
+    "reports": 680080
+   },
+   {
+    "year": 2023,
+    "sex": "M",
+    "reports": 476538
+   },
+   {
+    "year": 2023,
+    "sex": "UNK",
+    "reports": 228869
+   },
+   {
+    "year": 2024,
+    "sex": "F",
+    "reports": 659774
+   },
+   {
+    "year": 2024,
+    "sex": "M",
+    "reports": 450546
+   },
+   {
+    "year": 2024,
+    "sex": "UNK",
+    "reports": 229741
+   },
+   {
+    "year": 2025,
+    "sex": "F",
+    "reports": 673057
+   },
+   {
+    "year": 2025,
+    "sex": "M",
+    "reports": 453557
+   },
+   {
+    "year": 2025,
+    "sex": "UNK",
+    "reports": 262504
+   },
+   {
+    "year": 2026,
+    "sex": "F",
+    "reports": 397747
+   },
+   {
+    "year": 2026,
+    "sex": "M",
+    "reports": 244573
+   },
+   {
+    "year": 2026,
+    "sex": "UNK",
+    "reports": 150021
+   }
+  ]
+ }
+}

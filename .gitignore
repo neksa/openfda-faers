@@ -1,4 +1,22 @@
+# DVC-managed data and outputs
+/data
+/report/.quarto
+/report/index_files
 
+# Secrets. Never commit: the publish stage reads HF_TOKEN from here.
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
 .ipynb_checkpoints
+
+# Legacy artefacts from the notebook era
 *.sqlite
-*.pyc
+openfda_cache.sqlite

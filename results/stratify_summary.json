@@ -1,0 +1,25 @@
+{
+  "by_variable": [
+    {
+      "variable": "sex",
+      "tested": 18687,
+      "surviving": 18683,
+      "heterogeneous": 9548,
+      "survival_rate": 0.9998
+    },
+    {
+      "variable": "age_band",
+      "tested": 18445,
+      "surviving": 18198,
+      "heterogeneous": 13963,
+      "survival_rate": 0.9866
+    },
+    {
+      "variable": "calendar_period",
+      "tested": 18458,
+      "surviving": 18322,
+      "heterogeneous": 14082,
+      "survival_rate": 0.9926
+    }
+  ]
+}
