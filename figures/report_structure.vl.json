@@ -6,7 +6,7 @@
   }
  },
  "data": {
-  "name": "data-9fbe9d398f8b78f22371f9214bb4ba42"
+  "name": "data-104c193682ade94c224a222315202c99"
  },
  "mark": {
   "type": "bar"
@@ -61,7 +61,7 @@
  "width": 620,
  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
  "datasets": {
-  "data-9fbe9d398f8b78f22371f9214bb4ba42": [
+  "data-104c193682ade94c224a222315202c99": [
    {
     "count": 1,
     "reports": 11093882,
@@ -109,12 +109,12 @@
    },
    {
     "count": 10,
-    "reports": 244323,
+    "reports": 244325,
     "kind": "Drugs per report"
    },
    {
     "count": 11,
-    "reports": 193015,
+    "reports": 193013,
     "kind": "Drugs per report"
    },
    {

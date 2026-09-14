@@ -126,7 +126,11 @@ def explode_ingredients(lf: pl.LazyFrame, col: str, out: str = "ingredient") -> 
             .str.split("\\")
             .alias(out)
         )
-        .explode(out)
+        # empty_as_null is pinned rather than left to the default, which flips in Polars 2.0. An
+        # empty fragment (from a trailing separator, e.g. "ASPIRIN\\") must become null so the
+        # filter below drops it; under the new default it would survive as an empty-string
+        # "ingredient".
+        .explode(out, empty_as_null=True)
         .with_columns(pl.col(out).str.strip_chars())
         .filter(pl.col(out).is_not_null() & (pl.col(out).str.len_chars() > 1))
     )

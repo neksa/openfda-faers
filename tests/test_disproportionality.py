@@ -126,7 +126,8 @@ class TestInformationComponent:
 
 class TestGammaPoisson:
     @pytest.fixture(scope="class")
-    def fitted(self):
+    @classmethod
+    def fitted(cls):
         """Simulate from a known mixture, then check the fit recovers its behaviour."""
         rng = np.random.default_rng(11)
         n_pairs = 4000

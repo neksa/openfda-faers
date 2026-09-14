@@ -26,6 +26,12 @@ jobs:
       - name: Lint
         run: uv run ruff check src tests
 
+      - name: Docs agree with pipeline output
+        # Skips when results/ is absent (it is gitignored), so this only bites locally and on a
+        # runner that has produced results. Cheap insurance against README figures going stale,
+        # which has already happened once.
+        run: uv run python scripts/check_docs.py
+
       - name: Test
         # The full pipeline needs a 3.5 GB download from FDA and is not run here. These are the
         # statistical and data-contract tests, which are the ones that would catch a silent

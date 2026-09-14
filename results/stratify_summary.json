@@ -2,24 +2,24 @@
   "by_variable": [
     {
       "variable": "sex",
-      "tested": 18740,
-      "surviving": 18736,
-      "heterogeneous": 9494,
+      "tested": 18687,
+      "surviving": 18683,
+      "heterogeneous": 9548,
       "survival_rate": 0.9998
     },
     {
       "variable": "age_band",
-      "tested": 18431,
-      "surviving": 18159,
-      "heterogeneous": 13944,
-      "survival_rate": 0.9852
+      "tested": 18445,
+      "surviving": 18198,
+      "heterogeneous": 13963,
+      "survival_rate": 0.9866
     },
     {
       "variable": "calendar_period",
-      "tested": 18437,
-      "surviving": 18243,
-      "heterogeneous": 14567,
-      "survival_rate": 0.9895
+      "tested": 18458,
+      "surviving": 18322,
+      "heterogeneous": 14082,
+      "survival_rate": 0.9926
     }
   ]
 }
