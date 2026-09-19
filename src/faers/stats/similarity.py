@@ -195,6 +195,45 @@ def validate_against_known_classes(
     return pl.DataFrame(rows)
 
 
+def class_similarity_matrix(
+    sim: np.ndarray, drugs: list[str], classes: dict[str, tuple[str, ...]] | None = None
+) -> pl.DataFrame:
+    """Mean similarity between every pair of known drug classes, including each with itself.
+
+    The diagonal is within-class similarity and the off-diagonal is between-class. Plotted as a
+    heatmap this *shows* the validation rather than asserting it: if reaction profiles carry
+    pharmacology, the diagonal is visibly darker than everything around it.
+    """
+    classes = classes or VALIDATION_CLASSES
+    index = {d: i for i, d in enumerate(drugs)}
+    members = {
+        name: [index[d] for d in drugs if any(d.startswith(p) for p in prefixes)]
+        for name, prefixes in classes.items()
+    }
+
+    rows = []
+    for a, ia in members.items():
+        for b, ib in members.items():
+            if not ia or not ib:
+                rows.append({"class_a": a, "class_b": b, "similarity": None, "n_pairs": 0})
+                continue
+            block = sim[np.ix_(ia, ib)]
+            if a == b:
+                # Exclude the unit diagonal; a drug's similarity to itself is not evidence.
+                vals = block[np.triu_indices(len(ia), k=1)]
+            else:
+                vals = block.ravel()
+            rows.append(
+                {
+                    "class_a": a,
+                    "class_b": b,
+                    "similarity": float(vals.mean()) if vals.size else None,
+                    "n_pairs": int(vals.size),
+                }
+            )
+    return pl.DataFrame(rows)
+
+
 def write(scored_path: Path, out_dir: Path, summary_path: Path, n_clusters: int = 40) -> dict:
     """Build profiles, compute similarity, cluster, validate, and write everything."""
     out_dir = Path(out_dir)
@@ -215,6 +254,10 @@ def write(scored_path: Path, out_dir: Path, summary_path: Path, n_clusters: int 
 
     validation = validate_against_known_classes(sim, drugs)
     validation.write_parquet(out_dir / "class_validation.parquet", compression="zstd")
+
+    class_similarity_matrix(sim, drugs).write_parquet(
+        out_dir / "class_matrix.parquet", compression="zstd"
+    )
 
     scored_ratios = [r for r in validation["ratio"].to_list() if r is not None]
     summary = {
