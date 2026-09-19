@@ -261,6 +261,17 @@ Four screening rules are applied. All four are reported because none is authorit
 disagreement is informative.
 
 ```{python}
+# | label: fig-landscape
+fig("signal_landscape")
+```
+
+Each point is a drug–event pair: evidence on the x-axis, shrunk effect size on the y. Both axes are
+logarithmic because the corpus spans four orders of magnitude on one and three on the other. The
+flagged pairs are the band above EB05 = 2; note how many sit at the far left, carrying a large
+effect size on only a handful of co-reports. Those are the pairs shrinkage exists to discipline,
+and the reason screening happens on the lower bound rather than the point estimate.
+
+```{python}
 # | label: fig-agreement
 fig("signal_agreement")
 ```
@@ -561,6 +572,16 @@ rows = [
 pl.DataFrame(rows).to_pandas()
 ```
 
+```{python}
+# | label: fig-classsim
+fig("class_similarity")
+```
+
+The diagonal is the validation made visible. One off-diagonal cell is worth a second look: TNF
+inhibitors and bisphosphonates sit well above every other cross-class pair — unsurprising once
+stated, since both are given to overlapping rheumatology populations, and a further reminder that
+this measure tracks therapeutic neighbourhood rather than mechanism.
+
 **Every class is 3.0–5.8× more similar to itself than the corpus average**, without any drug-class
 information entering the computation. The nearest neighbours are recognisable pharmacology:
 
@@ -633,8 +654,17 @@ pl.DataFrame(
 ).to_pandas()
 ```
 
-**Roughly a quarter of reaction mentions involve a term whose trajectory looks like vocabulary
-change rather than epidemiology.** Any statement about a reaction becoming more or less common over
+```{python}
+# | label: fig-drift
+fig("drift_trajectories")
+```
+
+Grey terms hold a steady band; the flagged ones move by orders of magnitude between adjacent
+quarters. That shape is the whole basis of the flag — a real clinical trend does not switch on in
+one quarter and stay on.
+
+**16% of reaction mentions involve a term whose trajectory looks like vocabulary change
+rather than epidemiology.** Any statement about a reaction becoming more or less common over
 this window has to contend with that. The pooled disproportionality analysis is unaffected — it
 aggregates over the whole window and never asks when a term appeared — but the temporal figures
 are, and the per-term flags in `results/drift/term_drift.parquet` mark which terms to distrust.

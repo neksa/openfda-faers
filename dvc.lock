@@ -304,9 +304,9 @@ stages:
       nfiles: 17
     - path: results/drift
       hash: md5
-      md5: 1b53165f9c0617e850fd876177968ae7.dir
-      size: 230766
-      nfiles: 1
+      md5: 94008f452975a47acb9482b3436830cf.dir
+      size: 249522
+      nfiles: 2
     - path: results/signals/scored.parquet
       hash: md5
       md5: aff39c39cfeefd9b8fd860c5f2881d80
@@ -318,30 +318,30 @@ stages:
       nfiles: 7
     - path: src/faers/plots.py
       hash: md5
-      md5: 516c3feda366b386e21b8381cdccd0e8
-      size: 10704
+      md5: e95affee15f1351a1f6c411eb4b14877
+      size: 18153
     outs:
     - path: figures
       hash: md5
-      md5: 387c8920362d2a82c04167a29f9d969d.dir
-      size: 3219296
-      nfiles: 24
+      md5: 58145914a49c99d1239903d1307358f5.dir
+      size: 5157035
+      nfiles: 30
   report:
     cmd: python -m faers.cli report
     deps:
     - path: figures
       hash: md5
-      md5: 387c8920362d2a82c04167a29f9d969d.dir
-      size: 3219296
-      nfiles: 24
+      md5: 58145914a49c99d1239903d1307358f5.dir
+      size: 5157035
+      nfiles: 30
     - path: report/_quarto.yml
       hash: md5
       md5: b56123279d97cbda401448b04ba5f04b
       size: 733
     - path: report/index.qmd
       hash: md5
-      md5: b5fa43ec31266b018f5deed08e7b4df1
-      size: 31486
+      md5: 3c4abd32a2c059a862ecbfc52cf6392d
+      size: 32722
     - path: results/dedup_stats.json
       hash: md5
       md5: 1ecc47781dba3574ee47c8019bb77700
@@ -353,7 +353,7 @@ stages:
       nfiles: 17
     - path: results/drift_summary.json
       hash: md5
-      md5: 29fe6d9bdacdb649f609d4df9973bf50
+      md5: 22a0df23a996e1c461c99ea4c1069cd2
       size: 242
     - path: results/duplicates_summary.json
       hash: md5
@@ -369,14 +369,14 @@ stages:
       size: 939
     - path: results/similarity
       hash: md5
-      md5: 06d4996b2363e5279bde4a8db026542a.dir
-      size: 133095
-      nfiles: 3
+      md5: 0807d35628e08ea38971a07eb1e03992.dir
+      size: 135043
+      nfiles: 4
     outs:
     - path: docs
       hash: md5
-      md5: 6e2858f0ab049a74594c60be9e36ec71.dir
-      size: 1916292
+      md5: ac23f1d50128472fcccbc2d39dfda27b.dir
+      size: 2725890
       nfiles: 21
   brands:
     cmd: python -m faers.cli brands
@@ -445,17 +445,17 @@ stages:
       size: 211809058
     - path: src/faers/stats/drift.py
       hash: md5
-      md5: f4181a7c9eefc18a58bb7628fa1ce98a
-      size: 8373
+      md5: 8fa3c860bf69729c7573035c175a90a7
+      size: 10877
     outs:
     - path: results/drift
       hash: md5
-      md5: 1b53165f9c0617e850fd876177968ae7.dir
-      size: 230766
-      nfiles: 1
+      md5: 94008f452975a47acb9482b3436830cf.dir
+      size: 249522
+      nfiles: 2
     - path: results/drift_summary.json
       hash: md5
-      md5: 29fe6d9bdacdb649f609d4df9973bf50
+      md5: 22a0df23a996e1c461c99ea4c1069cd2
       size: 242
   similarity:
     cmd: python -m faers.cli similarity
@@ -466,8 +466,8 @@ stages:
       size: 268127395
     - path: src/faers/stats/similarity.py
       hash: md5
-      md5: 604d3048f6a95c4a58f95b7633a8d6d7
-      size: 10247
+      md5: d39783c7f77bf67da53f4af6f39cc27a
+      size: 11922
     params:
       params.yaml:
         similarity:
@@ -475,9 +475,9 @@ stages:
     outs:
     - path: results/similarity
       hash: md5
-      md5: 06d4996b2363e5279bde4a8db026542a.dir
-      size: 133095
-      nfiles: 3
+      md5: 0807d35628e08ea38971a07eb1e03992.dir
+      size: 135043
+      nfiles: 4
     - path: results/similarity_summary.json
       hash: md5
       md5: 2e74c84365ec9731ca7e027a8b0b4cf1

@@ -1,0 +1,362 @@
+{
+ "config": {
+  "view": {
+   "continuousWidth": 300,
+   "continuousHeight": 300
+  }
+ },
+ "layer": [
+  {
+   "mark": {
+    "type": "rect",
+    "stroke": "#fcfcfb",
+    "strokeWidth": 2
+   },
+   "encoding": {
+    "color": {
+     "field": "similarity",
+     "legend": {
+      "gradientLength": 180,
+      "orient": "right"
+     },
+     "scale": {
+      "scheme": "blues"
+     },
+     "title": "Mean cosine similarity",
+     "type": "quantitative"
+    },
+    "tooltip": [
+     {
+      "field": "a",
+      "title": "Class",
+      "type": "nominal"
+     },
+     {
+      "field": "b",
+      "title": "vs",
+      "type": "nominal"
+     },
+     {
+      "field": "similarity",
+      "format": ".3f",
+      "type": "quantitative"
+     },
+     {
+      "field": "n_pairs",
+      "format": ",",
+      "title": "Drug pairs",
+      "type": "quantitative"
+     }
+    ],
+    "x": {
+     "axis": {
+      "labelAngle": -30
+     },
+     "field": "b",
+     "sort": [
+      "Statins",
+      "ACE inhibitors",
+      "TNF inhibitors",
+      "SSRIs",
+      "Bisphosphonates"
+     ],
+     "title": null,
+     "type": "nominal"
+    },
+    "y": {
+     "field": "a",
+     "sort": [
+      "Statins",
+      "ACE inhibitors",
+      "TNF inhibitors",
+      "SSRIs",
+      "Bisphosphonates"
+     ],
+     "title": null,
+     "type": "nominal"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "fontSize": 11
+   },
+   "encoding": {
+    "color": {
+     "condition": {
+      "test": "(datum.similarity > 0.35)",
+      "value": "#ffffff"
+     },
+     "value": "#52514e"
+    },
+    "text": {
+     "field": "similarity",
+     "format": ".2f",
+     "type": "quantitative"
+    },
+    "tooltip": [
+     {
+      "field": "a",
+      "title": "Class",
+      "type": "nominal"
+     },
+     {
+      "field": "b",
+      "title": "vs",
+      "type": "nominal"
+     },
+     {
+      "field": "similarity",
+      "format": ".3f",
+      "type": "quantitative"
+     },
+     {
+      "field": "n_pairs",
+      "format": ",",
+      "title": "Drug pairs",
+      "type": "quantitative"
+     }
+    ],
+    "x": {
+     "axis": {
+      "labelAngle": -30
+     },
+     "field": "b",
+     "sort": [
+      "Statins",
+      "ACE inhibitors",
+      "TNF inhibitors",
+      "SSRIs",
+      "Bisphosphonates"
+     ],
+     "title": null,
+     "type": "nominal"
+    },
+    "y": {
+     "field": "a",
+     "sort": [
+      "Statins",
+      "ACE inhibitors",
+      "TNF inhibitors",
+      "SSRIs",
+      "Bisphosphonates"
+     ],
+     "title": null,
+     "type": "nominal"
+    }
+   }
+  }
+ ],
+ "data": {
+  "name": "data-cbb65fb73d4f5437eafe2d9b2ba78a8b"
+ },
+ "height": 320,
+ "title": "Drug classes resemble themselves, not each other",
+ "width": 420,
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+ "datasets": {
+  "data-cbb65fb73d4f5437eafe2d9b2ba78a8b": [
+   {
+    "class_a": "statins",
+    "class_b": "statins",
+    "similarity": 0.3438186056061484,
+    "n_pairs": 10,
+    "a": "Statins",
+    "b": "Statins"
+   },
+   {
+    "class_a": "statins",
+    "class_b": "ace_inhibitors",
+    "similarity": 0.2238383339747665,
+    "n_pairs": 25,
+    "a": "Statins",
+    "b": "ACE inhibitors"
+   },
+   {
+    "class_a": "statins",
+    "class_b": "tnf_inhibitors",
+    "similarity": 0.10380374821683246,
+    "n_pairs": 25,
+    "a": "Statins",
+    "b": "TNF inhibitors"
+   },
+   {
+    "class_a": "statins",
+    "class_b": "ssris",
+    "similarity": 0.16587506151502204,
+    "n_pairs": 25,
+    "a": "Statins",
+    "b": "SSRIs"
+   },
+   {
+    "class_a": "statins",
+    "class_b": "bisphosphonates",
+    "similarity": 0.16056850888840515,
+    "n_pairs": 25,
+    "a": "Statins",
+    "b": "Bisphosphonates"
+   },
+   {
+    "class_a": "ace_inhibitors",
+    "class_b": "statins",
+    "similarity": 0.22383833397476655,
+    "n_pairs": 25,
+    "a": "ACE inhibitors",
+    "b": "Statins"
+   },
+   {
+    "class_a": "ace_inhibitors",
+    "class_b": "ace_inhibitors",
+    "similarity": 0.293709103428916,
+    "n_pairs": 10,
+    "a": "ACE inhibitors",
+    "b": "ACE inhibitors"
+   },
+   {
+    "class_a": "ace_inhibitors",
+    "class_b": "tnf_inhibitors",
+    "similarity": 0.13568685739405112,
+    "n_pairs": 25,
+    "a": "ACE inhibitors",
+    "b": "TNF inhibitors"
+   },
+   {
+    "class_a": "ace_inhibitors",
+    "class_b": "ssris",
+    "similarity": 0.17922990341527797,
+    "n_pairs": 25,
+    "a": "ACE inhibitors",
+    "b": "SSRIs"
+   },
+   {
+    "class_a": "ace_inhibitors",
+    "class_b": "bisphosphonates",
+    "similarity": 0.16777395198635658,
+    "n_pairs": 25,
+    "a": "ACE inhibitors",
+    "b": "Bisphosphonates"
+   },
+   {
+    "class_a": "tnf_inhibitors",
+    "class_b": "statins",
+    "similarity": 0.10380374821683244,
+    "n_pairs": 25,
+    "a": "TNF inhibitors",
+    "b": "Statins"
+   },
+   {
+    "class_a": "tnf_inhibitors",
+    "class_b": "ace_inhibitors",
+    "similarity": 0.13568685739405112,
+    "n_pairs": 25,
+    "a": "TNF inhibitors",
+    "b": "ACE inhibitors"
+   },
+   {
+    "class_a": "tnf_inhibitors",
+    "class_b": "tnf_inhibitors",
+    "similarity": 0.5417527407904082,
+    "n_pairs": 10,
+    "a": "TNF inhibitors",
+    "b": "TNF inhibitors"
+   },
+   {
+    "class_a": "tnf_inhibitors",
+    "class_b": "ssris",
+    "similarity": 0.06481472358698621,
+    "n_pairs": 25,
+    "a": "TNF inhibitors",
+    "b": "SSRIs"
+   },
+   {
+    "class_a": "tnf_inhibitors",
+    "class_b": "bisphosphonates",
+    "similarity": 0.26892844819880135,
+    "n_pairs": 25,
+    "a": "TNF inhibitors",
+    "b": "Bisphosphonates"
+   },
+   {
+    "class_a": "ssris",
+    "class_b": "statins",
+    "similarity": 0.16587506151502204,
+    "n_pairs": 25,
+    "a": "SSRIs",
+    "b": "Statins"
+   },
+   {
+    "class_a": "ssris",
+    "class_b": "ace_inhibitors",
+    "similarity": 0.17922990341527797,
+    "n_pairs": 25,
+    "a": "SSRIs",
+    "b": "ACE inhibitors"
+   },
+   {
+    "class_a": "ssris",
+    "class_b": "tnf_inhibitors",
+    "similarity": 0.0648147235869862,
+    "n_pairs": 25,
+    "a": "SSRIs",
+    "b": "TNF inhibitors"
+   },
+   {
+    "class_a": "ssris",
+    "class_b": "ssris",
+    "similarity": 0.5777870528212524,
+    "n_pairs": 10,
+    "a": "SSRIs",
+    "b": "SSRIs"
+   },
+   {
+    "class_a": "ssris",
+    "class_b": "bisphosphonates",
+    "similarity": 0.09114329020417852,
+    "n_pairs": 25,
+    "a": "SSRIs",
+    "b": "Bisphosphonates"
+   },
+   {
+    "class_a": "bisphosphonates",
+    "class_b": "statins",
+    "similarity": 0.16056850888840515,
+    "n_pairs": 25,
+    "a": "Bisphosphonates",
+    "b": "Statins"
+   },
+   {
+    "class_a": "bisphosphonates",
+    "class_b": "ace_inhibitors",
+    "similarity": 0.16777395198635658,
+    "n_pairs": 25,
+    "a": "Bisphosphonates",
+    "b": "ACE inhibitors"
+   },
+   {
+    "class_a": "bisphosphonates",
+    "class_b": "tnf_inhibitors",
+    "similarity": 0.26892844819880135,
+    "n_pairs": 25,
+    "a": "Bisphosphonates",
+    "b": "TNF inhibitors"
+   },
+   {
+    "class_a": "bisphosphonates",
+    "class_b": "ssris",
+    "similarity": 0.09114329020417852,
+    "n_pairs": 25,
+    "a": "Bisphosphonates",
+    "b": "SSRIs"
+   },
+   {
+    "class_a": "bisphosphonates",
+    "class_b": "bisphosphonates",
+    "similarity": 0.4116359962952294,
+    "n_pairs": 10,
+    "a": "Bisphosphonates",
+    "b": "Bisphosphonates"
+   }
+  ]
+ }
+}

@@ -10,7 +10,7 @@
  },
  "mark": {
   "type": "bar",
-  "color": "#E45756"
+  "color": "#2a78d6"
  },
  "encoding": {
   "tooltip": [
