@@ -340,8 +340,8 @@ stages:
       size: 733
     - path: report/index.qmd
       hash: md5
-      md5: 3c4abd32a2c059a862ecbfc52cf6392d
-      size: 32722
+      md5: e72967bfff4a1e4543e1918414495cdf
+      size: 30943
     - path: results/dedup_stats.json
       hash: md5
       md5: 1ecc47781dba3574ee47c8019bb77700
@@ -375,9 +375,9 @@ stages:
     outs:
     - path: docs
       hash: md5
-      md5: ac23f1d50128472fcccbc2d39dfda27b.dir
-      size: 2725890
-      nfiles: 21
+      md5: 9a224d06b414cb09ca3232232c506b60.dir
+      size: 6515023
+      nfiles: 36
   brands:
     cmd: python -m faers.cli brands
     deps:

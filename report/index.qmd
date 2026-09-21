@@ -1,16 +1,18 @@
 ---
 title: "Adverse event reporting in FAERS, 2004–2026"
-subtitle: "A reproducible analysis of the complete FDA Adverse Event Reporting System corpus"
+subtitle: "FDA Adverse Event Reporting System, 2004Q1–2026Q2"
 author: "Alexander Goncearenco"
 date: last-modified
 abstract: |
-  This report analyses every adverse event report the FDA has published since 2004 — 20.3 million
-  after deduplication, spanning both the legacy LAERS and current FAERS eras. It rebuilds and
-  corrects an earlier exploratory analysis that worked from a 10,000-report sample drawn through
-  the rate-limited openFDA API, and extends it to the questions that sample could not support:
-  signal detection with shrinkage and multiplicity control, confounder adjustment, and the internal
-  structure of a report. Every number is produced by a DVC pipeline from FDA's own published
-  archives.
+  Across 20.3 million retained cases, the two most frequent entries in the reaction field are
+  `DRUG INEFFECTIVE` and `OFF LABEL USE` — neither is a clinical event. How a drug is named
+  changes its estimates: `ATORVASTATIN` and `ATORVASTATIN CALCIUM` were recorded as separate
+  substances holding 275,333 and 269,328 reports; merging them took atorvastatin–rhabdomyolysis
+  from 2,397 co-reports to 5,183. The highest-scoring associations in the corpus are dominated by
+  diagnostic procedures and treated conditions rather than harms. Separate adjustment for sex, age
+  or calendar period left 98.5–100% of sampled signals above threshold, though most showed
+  statistically detectable variation across strata. Methods, source coverage and reproduction are
+  in the final sections.
 ---
 
 ```{python}
@@ -35,14 +37,31 @@ def desc(name):
 
 
 def fig(name, caption=""):
-    """Embed the Vega-Lite spec so the chart stays interactive in the rendered site."""
+    """Show the figure as a static image, then upgrade it to the interactive chart.
+
+    The image is what renders. Earlier versions emitted only a Vega-Lite spec and relied on three
+    CDN scripts plus JavaScript to draw anything -- so offline, behind a proxy, or with the CDN
+    blocked, the reader got blank space and no error, because the embed's failure handler logged
+    to the console. A report whose figures sometimes silently vanish is worse than one with static
+    images.
+
+    The PNG is committed beside the page, so it works from file://, from GitHub Pages, and in
+    print. If Vega loads, it replaces the image with the interactive version.
+    """
     spec = (FIGURES / f"{name}.vl.json").read_text()
     html = (
-        f'<div id="vis-{name}" class="vega-figure"></div>'
-        "<script>vegaEmbed("
-        f"'#vis-{name}', {spec}, "
-        "{actions: {export: true, source: false, editor: false}}"
-        ").catch(console.error);</script>"
+        f'<figure class="viz" id="fig-{name}">'
+        f'<img src="figures/{name}.png" alt="{caption or name.replace("_", " ")}" '
+        'style="max-width:100%;height:auto">'
+        "</figure>"
+        "<script>(function(){"
+        "if(typeof vegaEmbed!=='function')return;"
+        f"var host=document.getElementById('fig-{name}');"
+        "var div=document.createElement('div');"
+        f"vegaEmbed(div,{spec},{{actions:{{export:true,source:false,editor:false}}}})"
+        ".then(function(){host.replaceChildren(div);})"
+        ".catch(function(){/* keep the static image */});"
+        "})();</script>"
     )
     if caption:
         html += f'<p class="figure-caption"><em>{caption}</em></p>'
@@ -68,24 +87,14 @@ def n(x):
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 ```
 
-## What this is, and what it replaces
+## What these data are
 
-An adverse event report is a voluntary notification that something undesirable happened to someone
-taking a medical product. It names the patient's drugs and the reactions observed. It does **not**
-say which drug caused which reaction — that link is simply not recorded — and no report is
-validated before it enters the database.
+FAERS records suspected adverse events reported during medical-product use. A report names the
+patient's drugs and the reactions observed, but **not which drug is held to have caused which
+reaction** — that field does not exist — and no report is validated before entry.
 
-Everything below follows from that. These data can show that an event is reported *disproportionately
-often* alongside a drug. They cannot show that the drug caused it, and they cannot estimate how often
-it happens, because the number of people taking the drug without incident is unknown. Disproportionate
-reporting is a signal to investigate, not a finding.
-
-This analysis replaces a 2020 Jupyter notebook that explored the same database through the openFDA
-web API. That notebook asked good questions and was candid about its limits: it could not compute
-reactions per report, could not deduplicate, could not correct for the confounders it had itself
-identified, and drew its record-level conclusions from a 10,000-report sample. The API made all four
-impossible. Working instead from FDA's quarterly ASCII archives — 3.5 GB covering the whole corpus,
-against 113 GB for the equivalent JSON — removes all four constraints.
+These reports support analyses of reporting *associations*. They do not establish causation, and
+they cannot give incidence: the number of people who took a drug without incident is unknown.
 
 ::: {.callout-note}
 ## Provenance
@@ -120,10 +129,9 @@ pl.DataFrame(
 ).to_pandas()
 ```
 
-**`{python} f'{dedup["duplicate_fraction_of_raw"]:.1%}'` of the raw corpus is redundant.** The 2020
-notebook saw the consequence of this without being able to name it: a block of "quite repetitive"
-rows in its clustergram, which it guessed came from "duplicates in the database or other artifacts".
-It did — 4.0 million superseded versions of cases counted again each time they were resubmitted.
+**`{python} f'{dedup["duplicate_fraction_of_raw"]:.1%}'` of the raw corpus is redundant** — 4.0
+million superseded case versions, counted again each time a case was resubmitted with new
+follow-up information.
 
 `{python} n(dedup["cases_spanning_both_eras"])` cases were opened under LAERS and followed up under
 FAERS. These only link because case identifiers survived the 2012Q4 transition; an analysis treating
@@ -156,8 +164,8 @@ fig("sex_over_time")
 fig("age_distribution")
 ```
 
-Among reports recording a sex, `{python} f'{10719893/(10719893+7048525):.1%}'` are female — matching
-the notebook's earlier estimate. The more consequential number is what is *missing*:
+Among reports recording a sex, `{python} f'{10719893/(10719893+7048525):.1%}'` are female. The
+more consequential number is what is *missing*:
 `{python} f'{8388236/dedup["records_final"]:.0%}'` of reports record no usable patient age at all.
 Any age-stratified conclusion rests on the 59% that do, and that subset is not a random sample.
 
@@ -186,8 +194,8 @@ fig("top_reactions")
 Acetaminophen has displaced aspirin at the top since 2020. The leading *reactions* are worth reading
 carefully: `DRUG INEFFECTIVE` (1.27M) and `OFF LABEL USE` (839k) outrank every clinical event. Neither
 is an adverse reaction — they are reasons a report was filed. `DEATH` ranks third, and is an outcome
-whose cause is unstated. The notebook flagged exactly this and it remains true: the most common terms
-in the reaction field are substantially not reactions.
+whose cause is unstated. The most frequent entries in the reaction field are substantially not
+reactions.
 
 ```{python}
 # | label: fig-indications
@@ -205,27 +213,21 @@ therefore unavailable for a quarter of the corpus.
 fig("report_structure")
 ```
 
-The notebook could not compute this. It noted the API "does not allow analytics other than counting
-reports with only one variable to group by", and concluded the data would have to be loaded into
-Spark or a relational database first.
+A report carries a **median of one drug** (mean 3.18) and 2.98 reactions. The mean is pulled up by
+a long tail: the largest single report lists 171 drugs and 456 reactions, contributing 39,648
+drug–event combinations on its own. Those combinations share one case; they are not 39,648
+independent observations. Across the corpus the reaction and drug fields generate
+`{python} n(fan["total_pairs"])` such combinations.
 
-A report carries a mean of 3.18 drugs and 2.98 reactions, but a **median of one drug** — the mean is
-pulled up by a long tail reaching 171 drugs and 456 reactions on a single report. That tail is why
-the drug–event join has to be built carefully: the worst single report contributes 39,648 drug–event
-pairs on its own, and the corpus generates `{python} n(fan["total_pairs"])` pairs in total.
-
-This structure is also the reason no drug can be attributed a reaction. With three drugs and three
-reactions on a report, all nine combinations are equally supported by the record.
+A report listing three drugs and three reactions yields nine co-occurrences without identifying
+which drug is suspected of which reaction.
 
 ### Dechallenge and rechallenge
 
-Withdrawing a drug and seeing the reaction abate — then reintroducing it and seeing the reaction
-return — is the strongest causal evidence a spontaneous report can carry. The notebook tried to
-quantify how much of the database has it, estimated roughly 2% from marginal counts, and closed the
-section noting "more data preprocessing needed".
+Withdrawing a drug and seeing the reaction abate, then reintroducing it and seeing the reaction
+return, is the strongest evidence a spontaneous report can carry about a drug's involvement.
 
-Computed directly from the joint distribution, with missing values kept distinct from negative
-outcomes:
+Computed from the joint distribution, with missing values kept distinct from negative outcomes:
 
 ```{python}
 # | label: tbl-challenge
@@ -246,10 +248,13 @@ pl.DataFrame(
 ).to_pandas()
 ```
 
-**0.147%**, not 2%. The earlier estimate was inflated by reading marginal counts as if the three
-fields were independent; they are not. The practical consequence is stark: for roughly 1 drug record
-in 680 does the database contain the validation protocol that would support a causal reading. The
-rest is association.
+Among **suspect** drug records — the population the question is really about — 103,665 of
+41,799,712 carry both a positive dechallenge and a positive rechallenge: **0.248%**, about one in
+400. Against all drug records including concomitants it is 0.147%.
+
+Absence of those fields is not evidence against involvement; most reports simply never record a
+challenge outcome. What the number bounds is how often the database contains this particular kind
+of corroboration, not how often a drug was responsible.
 
 ## Which drug–event pairs report disproportionately
 
@@ -298,14 +303,13 @@ pl.DataFrame(
 ).to_pandas()
 ```
 
-Each rule screens on a **lower confidence or credible bound**, never a point estimate. This matters
-more than it sounds: a reporting odds ratio of 8 computed from two co-reports is noise, and screening
-on the raw ratio is the most common way to manufacture spurious signals. The 2020 notebook used the
-lower bound for ROR and PRR, which was right, but evaluated it on two hand-picked pairs.
+ROR, IC and EBGM are screened on a lower bound (ROR₀₂₅, IC₀₂₅, EB05); the MHRA rule combines a
+point estimate with a χ² threshold, and the FDR rule is a multiplicity-corrected p-value. They are
+not interchangeable criteria.
 
-EB05 is the most conservative at `{python} n(sig["signals"]["signal_eb05"])` pairs, and is very nearly
-a subset of the others: `{python} n(sig["concordant_all_four"])` pairs satisfy all four rules
-simultaneously. That is the shrinkage doing its job.
+EB05 is the most conservative at `{python} n(sig["signals"]["signal_eb05"])` pairs and is very
+nearly a subset of the others: `{python} n(sig["concordant_all_four"])` pairs satisfy all four of
+ROR, PRR/χ², IC and EB05 simultaneously.
 
 ```{python}
 # | label: fig-shrinkage
@@ -336,9 +340,8 @@ toward the null, while a ratio supported by thousands of reports is left alone.
 
 ### Does it recover what we already know?
 
-A signal-detection pipeline that cannot rediscover established drug safety findings is not
-trustworthy on novel ones. Nine associations that appear on approved product labelling, several as
-boxed warnings, were checked blind against the output:
+Nine associations that appear on approved product labelling, several as boxed warnings, were
+looked up in the output:
 
 ```{python}
 # | label: tbl-controls
@@ -372,12 +375,15 @@ for ing, pt in controls:
 pl.DataFrame(rows).to_pandas()
 ```
 
-All nine are flagged by every rule. Implausible pairings behave correctly in the other direction:
-aspirin–alopecia returns EB05 = 0.19 and is not flagged.
+All nine met every screening criterion. Metformin–lactic acidosis has 21,396 co-reports against
+an expectation two orders of magnitude lower; amiodarone–pulmonary toxicity has 1,125. As a
+comparison pair, aspirin–alopecia returns EB05 = 0.19 and is not flagged — one unflagged pair does
+not establish specificity.
 
-### What ranks highest, and why that is a warning
+### What ranks highest
 
-The pairs with the largest EB05 in the whole corpus are **not** adverse reactions:
+Among pairs with at least 200 co-reports, the highest EB05 scores belong to associations with
+diagnostic procedures and treated conditions rather than to harms:
 
 ```{python}
 # | label: tbl-top-signals
@@ -398,22 +404,20 @@ pl.DataFrame(
 ).to_pandas()
 ```
 
-A radioisotope tracer is *administered in order to* perform the scan whose abnormality is recorded.
-Anosognosia — a patient's unawareness of their own illness — is a feature of the psychosis
-zuclopenthixol treats, not a reaction to it. Raised prolactin is the expected pharmacology of a
-dopamine antagonist. Further down the same ranking, "gadolinium deposition disease" names its own
-cause. These are indication bias, expected pharmacology and tautology, ranked at the very top by
-every measure — and they rank there precisely *because* the association is real and
-near-deterministic.
+Technetium Tc-99m tetrofosmin is a cardiac imaging tracer: it is administered *in order to*
+perform the scan whose abnormality is then recorded, 257 times against an expected 0.02. Flupenthixol
+and anosognosia (400 co-reports, expected 0.06) pairs an antipsychotic with a feature of the
+psychosis it treats — unawareness of one's own illness. Proplex T, a clotting-factor concentrate
+withdrawn in the 1990s, pairs with hepatitis C virus at 293 co-reports, reflecting the
+plasma-derived contamination of that era.
 
-This is the practical lesson of the whole exercise. Disproportionality finds strong statistical
-association. Whether that association reflects harm, the reason for prescribing, or a naming
-convention is not decidable from these data.
+Each association is real. None is a newly detected harm. Disproportionality measures how often
+terms co-occur relative to expectation; it does not distinguish a drug's effect from its
+indication, its administration context, or a term that names its own cause.
 
 ## Do signals survive confounder adjustment?
 
-The notebook identified sex and age as likely confounders and could not act on it. Each is applied
-here as a separate Mantel–Haenszel stratification, along with calendar period, on a random sample of
+Each variable is applied as a separate Mantel–Haenszel stratification, on a random sample of
 `{python} n(strat["by_variable"][0]["tested"])` signalling pairs.
 
 ```{python}
@@ -433,21 +437,15 @@ pl.DataFrame(
 ).to_pandas()
 ```
 
-The result is two-sided, and the second half matters more than the first.
+Between 98.5% and 100% of sampled signals remained above the screening threshold after separate
+adjustment for sex, age band or calendar period. Passing a threshold is a weaker statement than
+being unchanged: a signal can weaken substantially and still clear it.
 
-**Adjustment removes almost nothing** — 98.5% to 100% of signals survive. Confounding by sex, age
-or period is not what generates these associations.
-
-**But homogeneity is rejected for half to three-quarters of them.** A pooled Mantel–Haenszel estimate
-assumes one common odds ratio across strata; where Breslow–Day rejects that, the pooled number
-averages genuinely different effects and is misleading on its own. The honest reading is that these
-confounders do not *create* signals but do *modify* them, and a stratum-specific estimate should be
-read instead of the pooled one.
-
-One caveat stated plainly: at these sample sizes Breslow–Day has enormous power and will detect
-heterogeneity too small to matter clinically. The test was calibrated against simulated data with a
-known common odds ratio and showed a 6.8% rejection rate against a nominal 5%, so it is not simply
-always rejecting — but the effect sizes, not the p-values, are what should drive interpretation.
+Breslow–Day rejects a common odds ratio across strata for 50–76% of the pairs tested. Where it
+does, the pooled estimate averages materially different stratum-specific values and should not be
+read alone. At these sample sizes the test detects differences far too small to matter clinically,
+so the stratum-specific *estimates*, not the p-values, are what carry interpretation. Statistical
+heterogeneity here is not evidence of biological effect modification.
 
 ```{python}
 # | label: fig-strat
@@ -461,10 +459,9 @@ fig("stratified_survival")
 fig("reaction_trends")
 ```
 
-The notebook compared raw yearly counts of Death, Pain and Dyspnoea and read the divergence as a
-reporting bias. Raw counts rise with the corpus, so that comparison partly measured database growth.
-Plotted as a share of each year's reports, the picture is different: what looked like a rising trend
-in Death is substantially the database getting larger.
+Raw yearly counts rise with the corpus, so a rising count is not by itself a rising rate. Plotted
+as a share of each year's reports, the apparent upward trend in `DEATH` is substantially the
+database growing rather than the term becoming more common.
 
 ## Drug names that are not ingredients
 
@@ -539,16 +536,12 @@ claim was inferred from the `min_count` rule rather than measured, and it was wr
 ## Do reaction profiles recover pharmacology?
 
 If two drugs act through the same mechanism, they may provoke the same pattern of reported
-reactions. The 2020 notebook explored that with UMAP and DBSCAN, described two clusters, and left
-interpretation as "out of scope" — so whether the clusters meant anything was never established.
+reactions. Drugs are compared by cosine similarity on their information-component profiles, so
+that what is compared is each drug's *distinctive* reaction pattern rather than the ubiquitous
+terms every profile contains.
 
-The measure here is cosine similarity on **information-component** profiles. Raw co-report counts
-would make every drug resemble every other, because both profiles are dominated by the same
-ubiquitous terms; the IC is normalized against what the corpus predicts, so what remains is what is
-*distinctive* about a drug. No embedding step is involved, which also makes the result
-deterministic rather than a function of projection hyperparameters.
-
-The question is whether it recovers classes it was never told about:
+Within-class similarity runs 3.0–5.8× the corpus average, highest for bisphosphonates and lowest
+for ACE inhibitors, with no class information supplied to the algorithm:
 
 ```{python}
 # | label: tbl-similarity
@@ -621,13 +614,9 @@ mechanism into any one pair requires evidence from outside these data.
 
 ## Vocabulary drift, measured
 
-MedDRA is revised twice a year. Terms are added, renamed, split and merged, so a reaction term's
-frequency can move for reasons that have nothing to do with patients. Earlier versions of this
-report declared that as a limitation. It is now measured.
-
-Correcting drift needs the licensed MedDRA release history. *Noticing* it does not: a term that
-goes from absent to established between two adjacent quarters, or the reverse, is behaving like a
-vocabulary change. Real clinical trends do not switch on in one quarter and stay on.
+MedDRA is revised twice a year and terms are added, renamed, split and merged, so a reaction
+term's frequency can move for reasons unrelated to patients. Confirming a specific revision needs
+the licensed release history. Flagging trajectories for review does not.
 
 ```{python}
 # | label: tbl-drift
@@ -663,14 +652,14 @@ Grey terms hold a steady band; the flagged ones move by orders of magnitude betw
 quarters. That shape is the whole basis of the flag — a real clinical trend does not switch on in
 one quarter and stay on.
 
-**16% of reaction mentions involve a term whose trajectory looks like vocabulary change
-rather than epidemiology.** Any statement about a reaction becoming more or less common over
-this window has to contend with that. The pooled disproportionality analysis is unaffected — it
-aggregates over the whole window and never asks when a term appeared — but the temporal figures
-are, and the per-term flags in `results/drift/term_drift.parquet` mark which terms to distrust.
+Terms flagged for abrupt onset, disappearance or a step change account for **16% of reaction
+mentions**. The flags identify trajectories worth reviewing; they do not establish that a MedDRA
+revision caused any particular one. An abrupt change in a term's frequency has several possible
+causes, and this detector does not distinguish between them.
 
-This is a floor, not a ceiling. A rename between two similarly-named terms shows up on both sides
-and is caught; a gradual merge of one term into another may not be visible at all.
+Per-term flags are in `results/drift/term_drift.parquet`. A rename between two similar terms
+produces a fall and a rise and is caught on both sides; a gradual merge may not be visible at all,
+so the flagged set is neither exhaustive nor confirmed.
 
 ## Independent duplicates
 
@@ -710,36 +699,33 @@ pl.DataFrame(
 ).to_pandas()
 ```
 
-Two numbers, because they answer different questions. Only **30%** of the corpus records a sex, an
-age, an event date *and* a reporter country, and without all four a record cannot be blocked at
-all. Among records that could be examined, **9.1%** appear to be redundant. Across the whole corpus
-the figure is 2.7%, but that denominator mixes "not redundant" with "never examined" — the true
-rate is somewhere between, and closer to the higher figure if missingness is unrelated to
-duplication.
+Linkage was possible for 30% of cases — the rest lack a sex, an age, an event date or a reporter
+country, and cannot be blocked. Within that subset the matcher classified 9.4% as redundant,
+equivalent to 2.7% of the full corpus. Its precision, and the duplication rate among the 70% never
+examined, are both unknown, so neither figure bounds the true rate.
 
-**These reports have not been removed.** Dropping half a million records would move every number in
-this document, and a matcher with unknown precision should not do that silently. The estimate is
-published; removal is a parameter (`duplicates.remove`) that is off by default. Anyone who wants
-the deduplicated variant can turn it on and re-run.
+Suspected duplicates remain in every analysis in this report. Removal is a parameter
+(`duplicates.remove`), off by default.
 
 ## Limitations
 
-- **No causality, and no rates.** These are reporting associations. The denominator — people exposed
-  without an event — is unknown, so incidence cannot be estimated.
-- **MedDRA drift.** Preferred terms are treated as stable strings across 22 years, but MedDRA has
-  been revised continuously and terms are renamed, split and merged. Some apparent temporal trend is
-  vocabulary change. Correcting this needs the licensed MedDRA release, which cannot ship here.
-- **No drug class hierarchy.** RxNorm→ATC mapping requires a UMLS licence. Cluster interpretation by
-  pharmacologic class is therefore not attempted rather than approximated badly.
-- **A substantial minority of "ingredients" are really product names.** See the section below —
-  this is the most consequential limitation of the analysis and it is quantified there rather than
-  summarized here.
-- **Approximate q-values.** Benjamini–Hochberg assumes independence or positive dependence. Drug–event
-  tests share reports and are dependent, so the stated FDR level is approximate.
-- **Independent duplicates are estimated, not removed.** See the section above: ~9% of linkable
-  records. Blocking makes that a lower bound, and the reports remain in every table here.
-- **Partial dates.** Dates given as year or year-month are completed to the start of the period,
-  biasing those toward January and month-starts.
+- **No causality, no incidence.** These are reporting associations. The number of people exposed
+  without an event is unknown, so no rate can be computed.
+- **The drug column is not uniformly a substance.** 28% of distinct drug labels reaching the signal
+  table are unmapped product names, flagged `ingredient_curated = false`. Splitting one substance
+  across several names changes both its co-report and its marginal counts.
+- **MedDRA terms are treated as stable strings** across 22 years. Terms flagged for abrupt
+  trajectory change account for 16% of reaction mentions; whether a terminology revision caused any
+  given one is unverified, and confirming it needs the licensed release history.
+- **Independent duplicates are estimated, not removed**, and remain in every table here. The
+  estimate covers only the 30% of cases that could be blocked, with unknown matcher precision.
+- **No pharmacologic class vocabulary.** RxNorm→ATC mapping needs a UMLS licence. The similarity
+  section compares drugs against five hand-specified reference classes; it does not use a class
+  hierarchy, and its groupings reflect therapeutic neighbourhood rather than mechanism.
+- **q-values are approximate.** Benjamini–Hochberg assumes independence or positive dependence.
+  Drug–event tests share reports and are dependent.
+- **Partial dates** given as a year or year-month are completed to the start of the period, biasing
+  those records toward January and month-starts.
 
 ## Reproducing this
 
