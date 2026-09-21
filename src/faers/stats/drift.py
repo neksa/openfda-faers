@@ -35,6 +35,17 @@ ABSENT_SHARE = 1e-6
 #: as an epidemiological change in a corpus of this size.
 STEP_RATIO = 10.0
 
+#: Quarters carrying fewer reports than this are dropped before anything is computed. Overridable,
+#: because a hardcoded floor makes the detector silently return nothing on any corpus smaller than
+#: itself -- which is exactly what the test suite caught.
+#:
+#: A handful of records carry an FDA receipt date far outside the real collection window -- the
+#: earliest lands in 1999, in a quarter containing exactly one report. A term appearing in that one
+#: report has a 100% share, which is not a fact about the term. Left in, these quarters produced
+#: step ratios of ~10^5 and would have flagged common, perfectly stable terms (DIARRHOEA, HEADACHE,
+#: NAUSEA) as vocabulary drift.
+MIN_QUARTER_REPORTS = 500
+
 
 def quarter_index(col: str = "quarter") -> pl.Expr:
     """Monotonic quarter counter from a ``2026Q1`` label."""
@@ -45,7 +56,9 @@ def quarter_index(col: str = "quarter") -> pl.Expr:
     )
 
 
-def term_trajectories(reac: pl.LazyFrame, demo: pl.LazyFrame) -> pl.LazyFrame:
+def term_trajectories(
+    reac: pl.LazyFrame, demo: pl.LazyFrame, min_quarter_reports: int = MIN_QUARTER_REPORTS
+) -> pl.LazyFrame:
     """Share of each quarter's reports mentioning each preferred term.
 
     Indexed on the quarter of the FDA receipt date rather than the quarter of the file a record was
@@ -56,7 +69,11 @@ def term_trajectories(reac: pl.LazyFrame, demo: pl.LazyFrame) -> pl.LazyFrame:
         "record_id",
         (pl.col("fda_dt").dt.year() * 4 + pl.col("fda_dt").dt.quarter() - 1).alias("qidx"),
     )
-    per_quarter = dated.group_by("qidx").agg(pl.len().alias("quarter_total"))
+    per_quarter = (
+        dated.group_by("qidx")
+        .agg(pl.len().alias("quarter_total"))
+        .filter(pl.col("quarter_total") >= min_quarter_reports)
+    )
 
     return (
         reac.filter(pl.col("pt").is_not_null())
@@ -65,12 +82,44 @@ def term_trajectories(reac: pl.LazyFrame, demo: pl.LazyFrame) -> pl.LazyFrame:
         .join(dated, on="record_id", how="inner")
         .group_by(["pt", "qidx"])
         .agg(pl.len().alias("reports"))
-        .join(per_quarter, on="qidx", how="left")
-        .with_columns((pl.col("reports") / pl.col("quarter_total")).alias("share"))
+        # Inner join: quarters below the denominator floor are dropped entirely rather than
+        # carried with a null share.
+        .join(per_quarter, on="qidx", how="inner")
+        .with_columns(
+            (pl.col("reports") / pl.col("quarter_total")).alias("share"),
+            (pl.col("qidx") // 4).alias("year"),
+        )
     )
 
 
-def detect(reac: pl.LazyFrame, demo: pl.LazyFrame) -> pl.DataFrame:
+def corpus_window(
+    demo: pl.LazyFrame, min_quarter_reports: int = MIN_QUARTER_REPORTS
+) -> tuple[int, int]:
+    """First and last quarter of the corpus, among quarters clearing the denominator floor.
+
+    Derived from the quarter totals rather than from any term's trajectory. A trajectory table only
+    contains rows for quarters in which a term actually appeared, so a late-onset term spans only
+    the second half of the window and, asked for its own extent, would place the midpoint inside
+    that half -- hiding the very onset the flag exists to detect.
+    """
+    q = (
+        demo.filter(pl.col("fda_dt").is_not_null())
+        .select((pl.col("fda_dt").dt.year() * 4 + pl.col("fda_dt").dt.quarter() - 1).alias("qidx"))
+        .group_by("qidx")
+        .agg(pl.len().alias("n"))
+        .filter(pl.col("n") >= min_quarter_reports)
+        .select(pl.col("qidx").min().alias("lo"), pl.col("qidx").max().alias("hi"))
+        .collect()
+    )
+    return (q.row(0)[0], q.row(0)[1]) if q.height and q.row(0)[0] is not None else (0, 0)
+
+
+def detect(
+    reac: pl.LazyFrame,
+    demo: pl.LazyFrame,
+    min_total_reports: int = MIN_TOTAL_REPORTS,
+    min_quarter_reports: int = MIN_QUARTER_REPORTS,
+) -> pl.DataFrame:
     """Flag terms whose trajectory looks like a vocabulary change.
 
     Three signatures, any of which is enough:
@@ -84,29 +133,18 @@ def detect(reac: pl.LazyFrame, demo: pl.LazyFrame) -> pl.DataFrame:
     not be visible at all. The flag is a floor on the problem, not a ceiling, and the report says
     so.
     """
-    traj = term_trajectories(reac, demo).collect()
+    traj = term_trajectories(reac, demo, min_quarter_reports).collect()
     if traj.is_empty():
         return pl.DataFrame()
 
+    window = corpus_window(demo, min_quarter_reports)
+
     totals = traj.group_by("pt").agg(pl.col("reports").sum().alias("total_reports"))
-    eligible = totals.filter(pl.col("total_reports") >= MIN_TOTAL_REPORTS)
+    eligible = totals.filter(pl.col("total_reports") >= min_total_reports)
     traj = traj.join(eligible.select("pt"), on="pt", how="semi")
     if traj.is_empty():
         return pl.DataFrame()
 
-    # The midpoint must come from the *corpus* window, not from the quarters in which the surviving
-    # terms happen to appear. Deriving it from the trajectory table lets a term define its own
-    # window: a term present only in the second half would have its midpoint fall in the middle of
-    # that half, and its onset would be invisible.
-    window = (
-        demo.filter(pl.col("fda_dt").is_not_null())
-        .select(
-            (pl.col("fda_dt").dt.year() * 4 + pl.col("fda_dt").dt.quarter() - 1).alias("qidx")
-        )
-        .select(pl.col("qidx").min().alias("lo"), pl.col("qidx").max().alias("hi"))
-        .collect()
-        .row(0)
-    )
     midpoint = (window[0] + window[1]) / 2
 
     per_term = traj.sort(["pt", "qidx"]).group_by("pt").agg(
@@ -173,6 +211,26 @@ def write(curated: Path, out_dir: Path, summary_path: Path) -> dict:
 
     flags = detect(reac, demo)
     flags.write_parquet(out_dir / "term_drift.parquet", compression="zstd")
+
+    # Trajectories for a small sample of each kind, so the report can show what a flagged term
+    # actually looks like beside a stable one rather than only quoting a count.
+    if not flags.is_empty():
+        picked = pl.concat(
+            [
+                flags.filter(pl.col("drift_suspect")).sort("total_reports", descending=True)
+                .head(6).select("pt", "drift_suspect"),
+                flags.filter(~pl.col("drift_suspect")).sort("total_reports", descending=True)
+                .head(6).select("pt", "drift_suspect"),
+            ]
+        )
+        traj = (
+            term_trajectories(reac, demo)
+            .collect()
+            .join(picked, on="pt", how="semi")
+            .join(picked, on="pt", how="left")
+            .sort(["pt", "qidx"])
+        )
+        traj.write_parquet(out_dir / "trajectories.parquet", compression="zstd")
 
     tested = flags.height
     suspect = int(flags["drift_suspect"].sum()) if tested else 0

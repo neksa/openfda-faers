@@ -400,6 +400,16 @@ def report(report_dir: Path = Path("report")) -> None:
     # exactly what Quarto emits for its site libraries. .nojekyll disables that.
     docs = Path(report_dir).parent / "docs"
     (docs / ".nojekyll").touch()
+
+    # The page shows static images by default and upgrades them to interactive charts, so the
+    # PNGs have to sit under docs/ -- GitHub Pages serves only that directory.
+    import shutil
+
+    src_figs = Path(report_dir).parent / "figures"
+    dest_figs = docs / "figures"
+    dest_figs.mkdir(parents=True, exist_ok=True)
+    for png in sorted(src_figs.glob("*.png")):
+        shutil.copy2(png, dest_figs / png.name)
     _echo(f"report rendered to {docs}")
 
 

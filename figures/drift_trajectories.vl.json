@@ -1,0 +1,8726 @@
+{
+ "config": {
+  "view": {
+   "continuousWidth": 300,
+   "continuousHeight": 300
+  }
+ },
+ "data": {
+  "name": "data-6c396d17ccea417ca9fe700891abbea9"
+ },
+ "mark": {
+  "type": "line",
+  "opacity": 0.85,
+  "strokeWidth": 2
+ },
+ "encoding": {
+  "color": {
+   "field": "status",
+   "legend": {
+    "orient": "top-left"
+   },
+   "scale": {
+    "domain": [
+     "Drift-suspect",
+     "Stable"
+    ],
+    "range": [
+     "#2a78d6",
+     "#b8b7b0"
+    ]
+   },
+   "title": null,
+   "type": "nominal"
+  },
+  "detail": {
+   "field": "pt",
+   "type": "nominal"
+  },
+  "tooltip": [
+   {
+    "field": "pt",
+    "title": "Term",
+    "type": "nominal"
+   },
+   {
+    "field": "year",
+    "format": ".0f",
+    "title": "Year",
+    "type": "quantitative"
+   },
+   {
+    "field": "share",
+    "format": ".3%",
+    "title": "Share",
+    "type": "quantitative"
+   }
+  ],
+  "x": {
+   "axis": {
+    "format": "d"
+   },
+   "field": "year",
+   "title": "FDA receipt year",
+   "type": "quantitative"
+  },
+  "y": {
+   "axis": {
+    "format": "%"
+   },
+   "field": "share",
+   "scale": {
+    "type": "log"
+   },
+   "title": "Share of that quarter's reports",
+   "type": "quantitative"
+  }
+ },
+ "height": 340,
+ "title": "Reaction term trajectories: vocabulary change has a shape",
+ "width": 620,
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+ "datasets": {
+  "data-6c396d17ccea417ca9fe700891abbea9": [
+   {
+    "qidx": 8016,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.010144640380424015,
+    "year": 2004.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8017,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.01518159260094744,
+    "year": 2004.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8018,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04995628194780737,
+    "year": 2004.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8019,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.010868710691823899,
+    "year": 2004.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8020,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.01709010840108401,
+    "year": 2005.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8021,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.01500250375563345,
+    "year": 2005.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8022,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.05146226900263997,
+    "year": 2005.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8023,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.021824171299155856,
+    "year": 2005.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8024,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.020543610547667342,
+    "year": 2006.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8025,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.02097391304347826,
+    "year": 2006.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8026,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.014858230825229126,
+    "year": 2006.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8027,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.013110731223116796,
+    "year": 2006.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8028,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.029802526499201395,
+    "year": 2007.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8029,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.018939058711082004,
+    "year": 2007.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8030,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.014974947925463042,
+    "year": 2007.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8031,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.012628236443575965,
+    "year": 2007.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8032,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.0252063138145283,
+    "year": 2008.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8033,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.026590551608179205,
+    "year": 2008.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8034,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.020458460315357096,
+    "year": 2008.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8035,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.019039935457845904,
+    "year": 2008.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8036,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.025121448938641884,
+    "year": 2009.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8037,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.029049378569029224,
+    "year": 2009.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8038,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.02453529942420564,
+    "year": 2009.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8039,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03570680847500209,
+    "year": 2009.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8040,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03466187731222576,
+    "year": 2010.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8041,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.02977634060900027,
+    "year": 2010.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8042,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.022337176770360505,
+    "year": 2010.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8043,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.07411473006271542,
+    "year": 2010.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8044,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.0496486589201821,
+    "year": 2011.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8045,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.05499037879194425,
+    "year": 2011.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8046,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03684953829440522,
+    "year": 2011.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8047,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03571672611482377,
+    "year": 2011.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8048,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03952911794480108,
+    "year": 2012.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8049,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.040883578954278396,
+    "year": 2012.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8050,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.06173326174277694,
+    "year": 2012.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8051,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.08071378675303233,
+    "year": 2012.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8052,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03876032857592866,
+    "year": 2013.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8053,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04400763429048352,
+    "year": 2013.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8054,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.047828847696283754,
+    "year": 2013.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8055,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.038133171231820286,
+    "year": 2013.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8056,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04145460761062325,
+    "year": 2014.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8057,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.055394737554039356,
+    "year": 2014.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8058,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04880767223778668,
+    "year": 2014.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8059,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.046673597205934315,
+    "year": 2014.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8060,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04335989687883935,
+    "year": 2015.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8061,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04724715580954682,
+    "year": 2015.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8062,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.030481564239822956,
+    "year": 2015.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8063,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.039414159100659575,
+    "year": 2015.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8064,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03581484736975404,
+    "year": 2016.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8065,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04069336299592139,
+    "year": 2016.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8066,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.036664009048263585,
+    "year": 2016.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8067,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.05030646941271214,
+    "year": 2016.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8068,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04963552499491507,
+    "year": 2017.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8069,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04000668393349486,
+    "year": 2017.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8070,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03913457959791317,
+    "year": 2017.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8071,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.046731335835332885,
+    "year": 2017.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8072,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.045281794455808703,
+    "year": 2018.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8073,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.06512034522525204,
+    "year": 2018.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8074,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03117514959298631,
+    "year": 2018.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8075,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.037318366940292426,
+    "year": 2018.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8076,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03930586180235388,
+    "year": 2019.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8077,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.0373389466151184,
+    "year": 2019.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8078,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03458416688199082,
+    "year": 2019.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8079,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.0451999905581324,
+    "year": 2019.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8080,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04094191868826302,
+    "year": 2020.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8081,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04258106687128769,
+    "year": 2020.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8082,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04492497246086194,
+    "year": 2020.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8083,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.06027326408344468,
+    "year": 2020.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8084,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.05062604777870914,
+    "year": 2021.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8085,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03498659889210785,
+    "year": 2021.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8086,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03474811395379039,
+    "year": 2021.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8087,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04524929058083266,
+    "year": 2021.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8088,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.046603181087084174,
+    "year": 2022.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8089,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04054065361518873,
+    "year": 2022.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8090,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.038663643779597634,
+    "year": 2022.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8091,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03966911497527885,
+    "year": 2022.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8092,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04444488354565445,
+    "year": 2023.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8093,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.044413377782557266,
+    "year": 2023.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8094,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04543924991731259,
+    "year": 2023.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8095,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.05155683860134916,
+    "year": 2023.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8096,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04426577977871588,
+    "year": 2024.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8097,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.0383531202435312,
+    "year": 2024.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8098,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03525079379889262,
+    "year": 2024.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8099,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03594636070448033,
+    "year": 2024.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8100,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03544437680250398,
+    "year": 2025.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8101,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03336251545836343,
+    "year": 2025.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8102,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.04694091210867678,
+    "year": 2025.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8103,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03610535575798965,
+    "year": 2025.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8104,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.03694661854360139,
+    "year": 2026.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8105,
+    "pt": "DEATH",
+    "drift_suspect": false,
+    "share": 0.031884977370424374,
+    "year": 2026.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8016,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.026689122250842086,
+    "year": 2004.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8017,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.02682156553124295,
+    "year": 2004.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8018,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.023742265267688998,
+    "year": 2004.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8019,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.02688679245283019,
+    "year": 2004.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8020,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.026422764227642278,
+    "year": 2005.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8021,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.027961942914371558,
+    "year": 2005.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8022,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.027685397881167074,
+    "year": 2005.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8023,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.02581523890974169,
+    "year": 2005.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8024,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.027440162271805273,
+    "year": 2006.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8025,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03333913043478261,
+    "year": 2006.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8026,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03199372818397327,
+    "year": 2006.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8027,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.027172714238447117,
+    "year": 2006.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8028,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.026608102221576883,
+    "year": 2007.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8029,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03056799476078376,
+    "year": 2007.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8030,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.0323988065079097,
+    "year": 2007.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8031,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.024670249145090375,
+    "year": 2007.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8032,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.025682161162699006,
+    "year": 2008.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8033,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.032719531377122094,
+    "year": 2008.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8034,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.02842188949251358,
+    "year": 2008.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8035,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.026058894715611132,
+    "year": 2008.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8036,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.025055444080684337,
+    "year": 2009.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8037,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.028135707087672154,
+    "year": 2009.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8038,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.026929802091570237,
+    "year": 2009.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8039,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.02710200150741144,
+    "year": 2009.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8040,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.02795104534113396,
+    "year": 2010.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8041,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.028118068942644528,
+    "year": 2010.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8042,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.02642176226175919,
+    "year": 2010.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8043,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.023880986558788987,
+    "year": 2010.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8044,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.026207052697118923,
+    "year": 2011.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8045,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.026640396807752164,
+    "year": 2011.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8046,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.023755205504254934,
+    "year": 2011.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8047,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.02544654449045413,
+    "year": 2011.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8048,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.027599459285796553,
+    "year": 2012.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8049,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.027085042833229395,
+    "year": 2012.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8050,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.02620758089619596,
+    "year": 2012.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8051,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.027468435546164637,
+    "year": 2012.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8052,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.028021032736436552,
+    "year": 2013.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8053,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.027732603452614007,
+    "year": 2013.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8054,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.028139203279565102,
+    "year": 2013.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8055,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.030226186047777607,
+    "year": 2013.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8056,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.027797363416874988,
+    "year": 2014.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8057,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.028357474069224484,
+    "year": 2014.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8058,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.028720229802367936,
+    "year": 2014.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8059,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.030967219914887514,
+    "year": 2014.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8060,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.028898765365791435,
+    "year": 2015.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8061,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.029245902629413498,
+    "year": 2015.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8062,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.028777575942685978,
+    "year": 2015.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8063,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03254284109815521,
+    "year": 2015.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8064,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.029608330974479687,
+    "year": 2016.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8065,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.030674823878383387,
+    "year": 2016.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8066,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03474681549329724,
+    "year": 2016.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8067,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03217555999642079,
+    "year": 2016.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8068,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03270433236446188,
+    "year": 2017.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8069,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03540479572228256,
+    "year": 2017.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8070,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03627465703782541,
+    "year": 2017.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8071,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03162705167381035,
+    "year": 2017.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8072,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.029436411088382592,
+    "year": 2018.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8073,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.028713855245606296,
+    "year": 2018.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8074,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03470902331091475,
+    "year": 2018.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8075,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.032155806672684625,
+    "year": 2018.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8076,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.030451590733369605,
+    "year": 2019.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8077,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.030392230860190706,
+    "year": 2019.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8078,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03189638868096419,
+    "year": 2019.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8079,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03296687084705355,
+    "year": 2019.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8080,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03193002529838447,
+    "year": 2020.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8081,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03038338022565152,
+    "year": 2020.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8082,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.033052872191820064,
+    "year": 2020.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8083,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03314224961567749,
+    "year": 2020.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8084,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.02740727158424141,
+    "year": 2021.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8085,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.026761873785012442,
+    "year": 2021.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8086,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.025957190588068616,
+    "year": 2021.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8087,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.0298408433520227,
+    "year": 2021.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8088,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.028032372539508285,
+    "year": 2022.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8089,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.031481414334684224,
+    "year": 2022.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8090,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.02847464270958036,
+    "year": 2022.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8091,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.030950931083996783,
+    "year": 2022.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8092,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.032783923626499255,
+    "year": 2023.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8093,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03187206994067947,
+    "year": 2023.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8094,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.0299687944894232,
+    "year": 2023.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8095,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.02944590096326627,
+    "year": 2023.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8096,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.033813598285137664,
+    "year": 2024.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8097,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.033607305936073056,
+    "year": 2024.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8098,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03414574410081319,
+    "year": 2024.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8099,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.031099761416633696,
+    "year": 2024.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8100,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03160415936441173,
+    "year": 2025.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8101,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03154424459110333,
+    "year": 2025.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8102,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.0346841325774986,
+    "year": 2025.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8103,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.03563656777748197,
+    "year": 2025.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8104,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.0364789056057964,
+    "year": 2026.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8105,
+    "pt": "DIARRHOEA",
+    "drift_suspect": false,
+    "share": 0.039256159221315354,
+    "year": 2026.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8016,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.04735486427580741,
+    "year": 2004.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8017,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.03460410557184751,
+    "year": 2004.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8018,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.038555959106806564,
+    "year": 2004.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8019,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.03665487421383648,
+    "year": 2004.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8020,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.04915311653116531,
+    "year": 2005.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8021,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.03679519278918378,
+    "year": 2005.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8022,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06056502211403298,
+    "year": 2005.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8023,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.053230072377694365,
+    "year": 2005.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8024,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05591886409736308,
+    "year": 2006.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8025,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.04189565217391304,
+    "year": 2006.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8026,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06712336438131149,
+    "year": 2006.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8027,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.04588066615197971,
+    "year": 2006.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8028,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.0468092057499637,
+    "year": 2007.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8029,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.039311821866647785,
+    "year": 2007.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8030,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06728874627033722,
+    "year": 2007.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8031,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.046885686370297996,
+    "year": 2007.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8032,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.03721126262694927,
+    "year": 2008.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8033,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.04614362423387753,
+    "year": 2008.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8034,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.04303696833178747,
+    "year": 2008.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8035,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.03866766553333718,
+    "year": 2008.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8036,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.03557661843911712,
+    "year": 2009.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8037,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.038307020490426606,
+    "year": 2009.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8038,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.03316664624842687,
+    "year": 2009.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8039,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.032126706306004525,
+    "year": 2009.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8040,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.052535920158306805,
+    "year": 2010.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8041,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.04950977343863358,
+    "year": 2010.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8042,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05058996011447083,
+    "year": 2010.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8043,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.055975620053580616,
+    "year": 2010.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8044,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.04737646459500764,
+    "year": 2011.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8045,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.037672204291595436,
+    "year": 2011.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8046,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.030896252036936446,
+    "year": 2011.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8047,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.04178453801265494,
+    "year": 2011.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8048,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.04907042014463499,
+    "year": 2012.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8049,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.04442183345915252,
+    "year": 2012.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8050,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.045530234549693134,
+    "year": 2012.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8051,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.04855181650761761,
+    "year": 2012.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8052,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06291889796215076,
+    "year": 2013.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8053,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05649006744441512,
+    "year": 2013.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8054,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06320180910792264,
+    "year": 2013.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8055,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06398624556564658,
+    "year": 2013.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8056,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06746576074183279,
+    "year": 2014.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8057,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06334305455607919,
+    "year": 2014.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8058,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05844863136883381,
+    "year": 2014.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8059,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05596325107158769,
+    "year": 2014.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8060,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06247356513215756,
+    "year": 2015.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8061,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.07149543646150246,
+    "year": 2015.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8062,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05993698458372852,
+    "year": 2015.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8063,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.057297025800578306,
+    "year": 2015.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8064,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.07612591809066936,
+    "year": 2016.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8065,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.07396737115313311,
+    "year": 2016.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8066,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06583353419984055,
+    "year": 2016.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8067,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.059951680734930055,
+    "year": 2016.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8068,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06517246130528637,
+    "year": 2017.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8069,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06901161333444732,
+    "year": 2017.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8070,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.07408374741268421,
+    "year": 2017.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8071,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06663795519643431,
+    "year": 2017.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8072,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.07092614798617479,
+    "year": 2018.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8073,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.058339134917387216,
+    "year": 2018.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8074,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06620046754098172,
+    "year": 2018.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8075,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.0638104525240693,
+    "year": 2018.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8076,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.07358609432719566,
+    "year": 2019.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8077,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.0723940031812324,
+    "year": 2019.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8078,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.07639789772591056,
+    "year": 2019.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8079,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06722314673842486,
+    "year": 2019.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8080,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.09395043196204192,
+    "year": 2020.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8081,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.10392190297553074,
+    "year": 2020.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8082,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06754102814750937,
+    "year": 2020.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8083,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.07122968837550106,
+    "year": 2020.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8084,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.08175555322715843,
+    "year": 2021.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8085,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.07030854065338911,
+    "year": 2021.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8086,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05330279453607396,
+    "year": 2021.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8087,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.0556239461526862,
+    "year": 2021.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8088,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05889861880568817,
+    "year": 2022.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8089,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06287636425505329,
+    "year": 2022.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8090,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06251920204256761,
+    "year": 2022.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8091,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06137060175265818,
+    "year": 2022.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8092,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.0712077886518056,
+    "year": 2023.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8093,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.07568672016462101,
+    "year": 2023.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8094,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.07096737082788075,
+    "year": 2023.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8095,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06169617344684361,
+    "year": 2023.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8096,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05812141368665548,
+    "year": 2024.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8097,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.06519330289193302,
+    "year": 2024.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8098,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05734304066524575,
+    "year": 2024.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8099,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05925919265307101,
+    "year": 2024.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8100,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05847953216374269,
+    "year": 2025.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8101,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.059350932399505334,
+    "year": 2025.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8102,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05458607834124917,
+    "year": 2025.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8103,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05829175974905374,
+    "year": 2025.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8104,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05663652216229369,
+    "year": 2026.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8105,
+    "pt": "DRUG INEFFECTIVE",
+    "drift_suspect": false,
+    "share": 0.05585907171397731,
+    "year": 2026.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8016,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03195957994848425,
+    "year": 2004.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8017,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.02190390254906384,
+    "year": 2004.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8018,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03339386602098467,
+    "year": 2004.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8019,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.024410377358490568,
+    "year": 2004.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8020,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03160569105691057,
+    "year": 2005.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8021,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.033269904857285926,
+    "year": 2005.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8022,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.029382521342613228,
+    "year": 2005.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8023,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.024785796867328676,
+    "year": 2005.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8024,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.025606490872210952,
+    "year": 2006.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8025,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03140869565217391,
+    "year": 2006.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8026,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.028017844809885575,
+    "year": 2006.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8027,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.026483401345538768,
+    "year": 2006.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8028,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.024248584289240597,
+    "year": 2007.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8029,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.02552347912278528,
+    "year": 2007.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8030,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.026769126836682994,
+    "year": 2007.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8031,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.028346360527601366,
+    "year": 2007.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8032,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.025627778608622354,
+    "year": 2008.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8033,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.02946520583609047,
+    "year": 2008.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8034,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.030952696435669804,
+    "year": 2008.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8035,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.028133463954359478,
+    "year": 2008.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8036,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.02257366142148062,
+    "year": 2009.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8037,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.028471615720524018,
+    "year": 2009.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8038,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.0282439942531936,
+    "year": 2009.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8039,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.028211623817100746,
+    "year": 2009.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8040,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.029919125871117613,
+    "year": 2010.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8041,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.034118939535269364,
+    "year": 2010.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8042,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03890599691415328,
+    "year": 2010.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8043,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.034996276991809384,
+    "year": 2010.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8044,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03421229249043819,
+    "year": 2011.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8045,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.033808388466816414,
+    "year": 2011.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8046,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.031222161868549703,
+    "year": 2011.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8047,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03621554398480314,
+    "year": 2011.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8048,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03696496875132602,
+    "year": 2012.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8049,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03408277808776709,
+    "year": 2012.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8050,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.037734566684564305,
+    "year": 2012.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8051,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.040896678732456976,
+    "year": 2012.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8052,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.044624294264460004,
+    "year": 2013.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8053,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03964430588711806,
+    "year": 2013.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8054,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03920662151323411,
+    "year": 2013.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8055,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.035266151933877096,
+    "year": 2013.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8056,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.034771275345597506,
+    "year": 2014.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8057,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.031409108370892606,
+    "year": 2014.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8058,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.035843292618054884,
+    "year": 2014.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8059,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03394257211772357,
+    "year": 2014.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8060,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03262146611973065,
+    "year": 2015.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8061,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.033809441126956205,
+    "year": 2015.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8062,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.04336328708987734,
+    "year": 2015.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8063,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.04213129449352806,
+    "year": 2015.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8064,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.04014421286295309,
+    "year": 2016.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8065,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03863922877271042,
+    "year": 2016.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8066,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.04161088758274155,
+    "year": 2016.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8067,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.0391699227488293,
+    "year": 2016.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8068,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.04090912073275551,
+    "year": 2017.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8069,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.04119308212883282,
+    "year": 2017.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8070,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.04688510032582223,
+    "year": 2017.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8071,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.041019804078395984,
+    "year": 2017.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8072,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.036724271707695565,
+    "year": 2018.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8073,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03559869690221984,
+    "year": 2018.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8074,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.041149932284193606,
+    "year": 2018.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8075,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03761423296732492,
+    "year": 2018.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8076,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03499899773775093,
+    "year": 2019.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8077,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03488453356367916,
+    "year": 2019.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8078,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.035756240626739794,
+    "year": 2019.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8079,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03886213693068489,
+    "year": 2019.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8080,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03498472649402181,
+    "year": 2020.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8081,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.034447381135078295,
+    "year": 2020.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8082,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03710178997014255,
+    "year": 2020.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8083,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.036101892159820695,
+    "year": 2020.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8084,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.033133382229673096,
+    "year": 2021.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8085,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.033176251673562626,
+    "year": 2021.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8086,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.032554515294978804,
+    "year": 2021.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8087,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.0356148984879433,
+    "year": 2021.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8088,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03433327376241416,
+    "year": 2022.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8089,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.039553285787202706,
+    "year": 2022.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8090,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.034815289593287495,
+    "year": 2022.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8091,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03871685574024373,
+    "year": 2022.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8092,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03919448764886707,
+    "year": 2023.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8093,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.040899486431264044,
+    "year": 2023.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8094,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.037469621363551385,
+    "year": 2023.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8095,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.037661649041152385,
+    "year": 2023.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8096,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03972485774166005,
+    "year": 2024.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8097,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.040529680365296805,
+    "year": 2024.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8098,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.041904417574663747,
+    "year": 2024.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8099,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03704636190339172,
+    "year": 2024.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8100,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03864199580619969,
+    "year": 2025.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8101,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03690110320676862,
+    "year": 2025.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8102,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.04324089678770236,
+    "year": 2025.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8103,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.03731205074485201,
+    "year": 2025.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8104,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.04146153534206578,
+    "year": 2026.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8105,
+    "pt": "FATIGUE",
+    "drift_suspect": false,
+    "share": 0.04109777112882762,
+    "year": 2026.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8016,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8017,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8018,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8019,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 1.9654088050314464e-05,
+    "year": 2004.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8020,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 6.775067750677507e-05,
+    "year": 2005.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8021,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.002543815723585378,
+    "year": 2005.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8022,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.0033428189392121234,
+    "year": 2005.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8023,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.003199189116421976,
+    "year": 2005.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8024,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.003716024340770791,
+    "year": 2006.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8025,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.006991304347826087,
+    "year": 2006.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8026,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.005786496929423403,
+    "year": 2006.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8027,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.0047424727032094405,
+    "year": 2006.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8028,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.004356033105851605,
+    "year": 2007.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8029,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.006283519478910385,
+    "year": 2007.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8030,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.004996340708213702,
+    "year": 2007.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8031,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.005850024425989252,
+    "year": 2007.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8032,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.007287262246271396,
+    "year": 2008.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8033,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.007566306882898519,
+    "year": 2008.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8034,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.007049158606068637,
+    "year": 2008.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8035,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.006373537716821299,
+    "year": 2008.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8036,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.009016263597000739,
+    "year": 2009.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8037,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.006650990930466913,
+    "year": 2009.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8038,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.04733319226185836,
+    "year": 2009.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8039,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.004291935348798258,
+    "year": 2009.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8040,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.003731824830078293,
+    "year": 2010.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8041,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.0057417656447567526,
+    "year": 2010.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8042,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.005838780514350468,
+    "year": 2010.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8043,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.0038304764682853434,
+    "year": 2010.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8044,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.006347589129046083,
+    "year": 2011.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8045,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.004929431697089106,
+    "year": 2011.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8046,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.0044541010320478,
+    "year": 2011.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8047,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.004537192680360242,
+    "year": 2011.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8048,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.007637891214606557,
+    "year": 2012.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8049,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.005002133455870286,
+    "year": 2012.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8050,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.005335308870205868,
+    "year": 2012.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8051,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.005143836921318346,
+    "year": 2012.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8052,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.013172114662337347,
+    "year": 2013.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8053,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.006136889456210225,
+    "year": 2013.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8054,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.0046285981641564925,
+    "year": 2013.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8055,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.004028343570527768,
+    "year": 2013.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8056,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.010187381150780933,
+    "year": 2014.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8057,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.004691076133947267,
+    "year": 2014.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8058,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.0044126512890919865,
+    "year": 2014.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8059,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.004332440556969545,
+    "year": 2014.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8060,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.009190941987633518,
+    "year": 2015.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8061,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.007983361391482905,
+    "year": 2015.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8062,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.01560917581622647,
+    "year": 2015.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8063,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.009365222759758492,
+    "year": 2015.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8064,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.013876018652324837,
+    "year": 2016.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8065,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.007801260659992584,
+    "year": 2016.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8066,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.007242319173789702,
+    "year": 2016.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8067,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.00764309362603275,
+    "year": 2016.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8068,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.009431733929965685,
+    "year": 2017.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8069,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.0077767566212716185,
+    "year": 2017.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8070,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.007508929096120822,
+    "year": 2017.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8071,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.008459629622034002,
+    "year": 2017.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8072,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.009003315228891867,
+    "year": 2018.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8073,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.006844983445556341,
+    "year": 2018.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8074,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.007228770160188857,
+    "year": 2018.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8075,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.0077317642370430305,
+    "year": 2018.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8076,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.010609661808081098,
+    "year": 2019.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8077,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.008442286350052975,
+    "year": 2019.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8078,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.008316395979787056,
+    "year": 2019.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8079,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.008984527139468186,
+    "year": 2019.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8080,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.012208307527581537,
+    "year": 2020.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8081,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.007082161025378691,
+    "year": 2020.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8082,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.00711144712633155,
+    "year": 2020.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8083,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.008074364610720803,
+    "year": 2020.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8084,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.011530804694048618,
+    "year": 2021.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8085,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.007574210368398095,
+    "year": 2021.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8086,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.009742505991664797,
+    "year": 2021.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8087,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.016384498334407173,
+    "year": 2021.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8088,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.02219867752559422,
+    "year": 2022.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8089,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.008769165116350421,
+    "year": 2022.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8090,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.010284349143456474,
+    "year": 2022.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8091,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.010477357530741685,
+    "year": 2022.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8092,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.013566345526860292,
+    "year": 2023.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8093,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.013817236959510322,
+    "year": 2023.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8094,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.014581745495333554,
+    "year": 2023.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8095,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.01313223554364156,
+    "year": 2023.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8096,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.019913182108588046,
+    "year": 2024.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8097,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.015385083713850837,
+    "year": 2024.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8098,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.01712098107420161,
+    "year": 2024.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8099,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.017204378424390654,
+    "year": 2024.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8100,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.019296400833840648,
+    "year": 2025.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8101,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.02246819556513328,
+    "year": 2025.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8102,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.02097952096419999,
+    "year": 2025.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8103,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.020172351926660725,
+    "year": 2025.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8104,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.016510537058815576,
+    "year": 2026.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8105,
+    "pt": "INCORRECT DOSE ADMINISTERED",
+    "drift_suspect": true,
+    "share": 0.015331774196602723,
+    "year": 2026.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8016,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.005845056469189617,
+    "year": 2004.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8017,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.003158132190390255,
+    "year": 2004.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8018,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.0069612590799031475,
+    "year": 2004.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8019,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.003321540880503145,
+    "year": 2004.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8020,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.008976964769647697,
+    "year": 2005.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8021,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.004887330996494742,
+    "year": 2005.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8022,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.0029313950697706314,
+    "year": 2005.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8023,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.003959392470819278,
+    "year": 2005.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8024,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.0035212981744421907,
+    "year": 2006.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8025,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.005895652173913043,
+    "year": 2006.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8026,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.005226513355608236,
+    "year": 2006.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8027,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.01655729568765854,
+    "year": 2006.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8028,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.004900537244083055,
+    "year": 2007.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8029,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.005203816131830009,
+    "year": 2007.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8030,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.0045741147328717,
+    "year": 2007.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8031,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.040583781143136294,
+    "year": 2007.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8032,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.006580289043274917,
+    "year": 2008.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8033,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.005966263491891306,
+    "year": 2008.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8034,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.006598648469590566,
+    "year": 2008.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8035,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.036178182446839166,
+    "year": 2008.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8036,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.006824902312810223,
+    "year": 2009.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8037,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.007927443735303998,
+    "year": 2009.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8038,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.011894552784862289,
+    "year": 2009.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8039,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.02848379532702454,
+    "year": 2009.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8040,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.01544351716424331,
+    "year": 2010.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8041,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.004311506332524926,
+    "year": 2010.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8042,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.0027785424816097622,
+    "year": 2010.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8043,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.033315166076870524,
+    "year": 2010.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8044,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.020587212640192774,
+    "year": 2011.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8045,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.004538450333867419,
+    "year": 2011.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8046,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.0037805540467137425,
+    "year": 2011.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8047,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.03402211198119525,
+    "year": 2011.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8048,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.025114113731837275,
+    "year": 2012.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8049,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.009203400400433256,
+    "year": 2012.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8050,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.01001135027492133,
+    "year": 2012.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8051,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.023571589393650737,
+    "year": 2012.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8052,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.033807458382805494,
+    "year": 2013.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8053,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.012396516701544655,
+    "year": 2013.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8054,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.011930754834684965,
+    "year": 2013.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8055,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.01554632141463813,
+    "year": 2013.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8056,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.03548490481379399,
+    "year": 2014.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8057,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.01170334218884422,
+    "year": 2014.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8058,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.010304629990830197,
+    "year": 2014.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8059,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.010815738128037445,
+    "year": 2014.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8060,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.02985881262965673,
+    "year": 2015.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8061,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.010357609294670965,
+    "year": 2015.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8062,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.01158765626590791,
+    "year": 2015.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8063,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.017868914785192834,
+    "year": 2015.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8064,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.035996603250748625,
+    "year": 2016.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8065,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.01125324434556915,
+    "year": 2016.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8066,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.009096471548031818,
+    "year": 2016.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8067,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.009466251081218123,
+    "year": 2016.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8068,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.012912453825511282,
+    "year": 2017.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8069,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.011319241373548334,
+    "year": 2017.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8070,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.010914065203622569,
+    "year": 2017.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8071,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.00796059692513826,
+    "year": 2017.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8072,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.015069478733159343,
+    "year": 2018.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8073,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.010753745343232342,
+    "year": 2018.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8074,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.014480543566710852,
+    "year": 2018.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8075,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.011590098752834125,
+    "year": 2018.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8076,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.013387360041235932,
+    "year": 2019.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8077,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.009666697416716287,
+    "year": 2019.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8078,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.009062261090081859,
+    "year": 2019.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8079,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.009722173045828465,
+    "year": 2019.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8080,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.013210795377008913,
+    "year": 2020.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8081,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.01011453093472021,
+    "year": 2020.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8082,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.009225980408081298,
+    "year": 2020.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8083,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.009715098487134175,
+    "year": 2020.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8084,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.011729882648784577,
+    "year": 2021.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8085,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.008955923844390824,
+    "year": 2021.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8086,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.008727169691030802,
+    "year": 2021.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8087,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.010185477127229359,
+    "year": 2021.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8088,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.011708238658122495,
+    "year": 2022.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8089,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.011165066145276951,
+    "year": 2022.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8090,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.011582142365267875,
+    "year": 2022.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8091,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.012276626295886993,
+    "year": 2022.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8092,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.01329818014503513,
+    "year": 2023.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8093,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.014520596518660826,
+    "year": 2023.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8094,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.014679532348753936,
+    "year": 2023.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8095,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.015362182225233452,
+    "year": 2023.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8096,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.020157991843656145,
+    "year": 2024.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8097,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.01769558599695586,
+    "year": 2024.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8098,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.01794320802633459,
+    "year": 2024.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8099,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.019551247467299693,
+    "year": 2024.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8100,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.02047091089096734,
+    "year": 2025.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8101,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.021657014117618247,
+    "year": 2025.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8102,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.019472958480159338,
+    "year": 2025.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8103,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.02175234104614957,
+    "year": 2025.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8104,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.01802722467794044,
+    "year": 2026.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8105,
+    "pt": "INJECTION SITE PAIN",
+    "drift_suspect": true,
+    "share": 0.022262673509193857,
+    "year": 2026.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8016,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.004339211412720428,
+    "year": 2004.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8017,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.004060455673358899,
+    "year": 2004.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8018,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.0033292978208232446,
+    "year": 2004.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8019,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.0038325471698113208,
+    "year": 2004.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8020,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.005335365853658537,
+    "year": 2005.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8021,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.0051677516274411615,
+    "year": 2005.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8022,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.003154249665718106,
+    "year": 2005.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8023,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.0033734023851380245,
+    "year": 2005.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8024,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.0033265720081135904,
+    "year": 2006.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8025,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.0038608695652173914,
+    "year": 2006.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8026,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.0022586004143878447,
+    "year": 2006.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8027,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.003929083489577589,
+    "year": 2006.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8028,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.003394075794976042,
+    "year": 2007.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8029,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.0033453103704621486,
+    "year": 2007.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8030,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.0022096492709564827,
+    "year": 2007.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8031,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.008988764044943821,
+    "year": 2007.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8032,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.005003194975052003,
+    "year": 2008.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8033,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.0049628464500732225,
+    "year": 2008.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8034,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.0028488140983172123,
+    "year": 2008.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8035,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.008632513110125051,
+    "year": 2008.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8036,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.005372795437744218,
+    "year": 2009.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8037,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.005199865636546859,
+    "year": 2009.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8038,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.0033857153994364566,
+    "year": 2009.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8039,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.00612385897328532,
+    "year": 2009.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8040,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.006667813817430956,
+    "year": 2010.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8041,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.005140642165702796,
+    "year": 2010.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8042,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.0035980204485361435,
+    "year": 2010.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8043,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.009234595573842222,
+    "year": 2010.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8044,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.01011571210246707,
+    "year": 2011.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8045,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.007282986177658865,
+    "year": 2011.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8046,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.003990584827086728,
+    "year": 2011.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8047,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.01119265302775614,
+    "year": 2011.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8048,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.011420465911364091,
+    "year": 2012.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8049,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.007260314438572882,
+    "year": 2012.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8050,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.006076135197406428,
+    "year": 2012.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8051,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.012163933101254496,
+    "year": 2012.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8052,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.015580702222006833,
+    "year": 2013.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8053,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.008045462077091605,
+    "year": 2013.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8054,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.005764860529364584,
+    "year": 2013.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8055,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.008728077736143496,
+    "year": 2013.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8056,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.01570412153067111,
+    "year": 2014.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8057,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.007877977913526207,
+    "year": 2014.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8058,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.005451220191805945,
+    "year": 2014.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8059,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.007640663488177968,
+    "year": 2014.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8060,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.013954253412195958,
+    "year": 2015.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8061,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.007704038108754897,
+    "year": 2015.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8062,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.009631820641835593,
+    "year": 2015.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8063,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.011395226352376534,
+    "year": 2015.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8064,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.015341984118707448,
+    "year": 2016.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8065,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.008969225064886911,
+    "year": 2016.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8066,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.007676190829362357,
+    "year": 2016.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8067,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.00875413845557312,
+    "year": 2016.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8068,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.011564125948914449,
+    "year": 2017.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8069,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.00022391177207786782,
+    "year": 2017.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8070,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.006970245052268676,
+    "year": 2017.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8071,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.008715982034822913,
+    "year": 2017.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8072,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.011520067715313536,
+    "year": 2018.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8073,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.007472085966189608,
+    "year": 2018.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8074,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.008071264057140063,
+    "year": 2018.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8075,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.009437522454118124,
+    "year": 2018.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8076,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.011451562097305346,
+    "year": 2019.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8077,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.009076855555835102,
+    "year": 2019.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8078,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.007216244942102221,
+    "year": 2019.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8079,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.01084634540712153,
+    "year": 2019.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8080,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.012413003999454143,
+    "year": 2020.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8081,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.008162105322988604,
+    "year": 2020.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8082,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.00674819629720415,
+    "year": 2020.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8083,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.00659166989928595,
+    "year": 2020.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8084,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.005113160100586756,
+    "year": 2021.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8085,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.0047880910418069186,
+    "year": 2021.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8086,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.004781525601822883,
+    "year": 2021.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8087,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.006909125803665675,
+    "year": 2021.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8088,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.006780872628864664,
+    "year": 2022.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8089,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.007884996750611526,
+    "year": 2022.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8090,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.005977794493119047,
+    "year": 2022.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8091,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.012143811192053147,
+    "year": 2022.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8092,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.012555785456403366,
+    "year": 2023.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8093,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.009553482937717801,
+    "year": 2023.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8094,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.007610118063245085,
+    "year": 2023.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8095,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.010366159012578431,
+    "year": 2023.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8096,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.011320957504612573,
+    "year": 2024.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8097,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.010703196347031964,
+    "year": 2024.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8098,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.00910864183852279,
+    "year": 2024.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8099,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.011692383315949118,
+    "year": 2024.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8100,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.013405402746262783,
+    "year": 2025.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8101,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.009755604804643018,
+    "year": 2025.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8102,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.00883509524539094,
+    "year": 2025.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8103,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.011910687208454389,
+    "year": 2025.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8104,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.01149816834962218,
+    "year": 2026.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8105,
+    "pt": "NASOPHARYNGITIS",
+    "drift_suspect": true,
+    "share": 0.010905277709394588,
+    "year": 2026.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8016,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.05668714087576778,
+    "year": 2004.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8017,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.04610872997969772,
+    "year": 2004.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8018,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.05072975517890772,
+    "year": 2004.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8019,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.04646226415094339,
+    "year": 2004.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8020,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.050067750677506774,
+    "year": 2005.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8021,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.04486730095142714,
+    "year": 2005.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8022,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.04722803167963795,
+    "year": 2005.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8023,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.05410113872127461,
+    "year": 2005.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8024,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.05028803245436105,
+    "year": 2006.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8025,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.05953043478260869,
+    "year": 2006.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8026,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.059022268680118714,
+    "year": 2006.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8027,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.05663394728134995,
+    "year": 2006.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8028,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.05530347030637433,
+    "year": 2007.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8029,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.055330371524151725,
+    "year": 2007.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8030,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.05017452006980803,
+    "year": 2007.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8031,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.04949926722032242,
+    "year": 2007.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8032,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.04976003698013677,
+    "year": 2008.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8033,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.05684221945001899,
+    "year": 2008.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8034,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.054630979197031936,
+    "year": 2008.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8035,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.04044257477093298,
+    "year": 2008.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8036,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.037451156405111416,
+    "year": 2009.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8037,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.04061807188444743,
+    "year": 2009.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8038,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03941462762699217,
+    "year": 2009.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8039,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.0399149987438238,
+    "year": 2009.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8040,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03735051191602856,
+    "year": 2010.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8041,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.038834649586468505,
+    "year": 2010.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8042,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.08457908922706582,
+    "year": 2010.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8043,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03901866109878638,
+    "year": 2010.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8044,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.040802464643524244,
+    "year": 2011.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8045,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.04008708918208232,
+    "year": 2011.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8046,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.037045084193373164,
+    "year": 2011.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8047,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.039010290680988886,
+    "year": 2011.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8048,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.040874841634993664,
+    "year": 2012.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8049,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.039406571044080484,
+    "year": 2012.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8050,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.040602719988038036,
+    "year": 2012.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8051,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03835651235155903,
+    "year": 2012.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8052,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03717075771159951,
+    "year": 2013.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8053,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03730615100430196,
+    "year": 2013.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8054,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03843797344265217,
+    "year": 2013.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8055,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.047097142960832526,
+    "year": 2013.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8056,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.033942268657992006,
+    "year": 2014.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8057,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03578636395608677,
+    "year": 2014.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8058,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.038072416116562896,
+    "year": 2014.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8059,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03876663713505846,
+    "year": 2014.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8060,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03531698343750629,
+    "year": 2015.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8061,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03644036447913757,
+    "year": 2015.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8062,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.046556925533568036,
+    "year": 2015.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8063,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.04877240590305512,
+    "year": 2015.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8064,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03893151378812031,
+    "year": 2016.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8065,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.039269558769002594,
+    "year": 2016.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8066,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.04150334674503551,
+    "year": 2016.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8067,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03915873773376682,
+    "year": 2016.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8068,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.04207701543851822,
+    "year": 2017.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8069,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03813518255493358,
+    "year": 2017.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8070,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.04101834137550522,
+    "year": 2017.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8071,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03608758365633737,
+    "year": 2017.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8072,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03398462298088453,
+    "year": 2018.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8073,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.035093826228828645,
+    "year": 2018.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8074,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.038524686796424144,
+    "year": 2018.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8075,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03791311803544958,
+    "year": 2018.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8076,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.035216631826121815,
+    "year": 2019.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8077,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.034876147186510234,
+    "year": 2019.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8078,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03636625173480233,
+    "year": 2019.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8079,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.036914751737893756,
+    "year": 2019.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8080,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03426304021498378,
+    "year": 2020.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8081,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03412623980447324,
+    "year": 2020.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8082,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03655839035583815,
+    "year": 2020.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8083,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03444966452595434,
+    "year": 2020.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8084,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.029463537300922046,
+    "year": 2021.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8085,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.028695768376411024,
+    "year": 2021.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8086,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.028046894369606026,
+    "year": 2021.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8087,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03048788846696917,
+    "year": 2021.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8088,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.028280017360667875,
+    "year": 2022.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8089,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03356492780221405,
+    "year": 2022.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8090,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03034187581443146,
+    "year": 2022.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8091,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03748142468005343,
+    "year": 2022.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8092,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.0341755608184972,
+    "year": 2023.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8093,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03387751661759619,
+    "year": 2023.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8094,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03326478666647493,
+    "year": 2023.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8095,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.031186850089845935,
+    "year": 2023.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8096,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03636618759590869,
+    "year": 2024.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8097,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03356773211567732,
+    "year": 2024.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8098,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.036081767846261055,
+    "year": 2024.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8099,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03277524008200554,
+    "year": 2024.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8100,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.034008522884498314,
+    "year": 2025.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8101,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.032881928713986604,
+    "year": 2025.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8102,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03877483274602932,
+    "year": 2025.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8103,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.03584781174400704,
+    "year": 2025.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8104,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.043053922164997226,
+    "year": 2026.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8105,
+    "pt": "NAUSEA",
+    "drift_suspect": false,
+    "share": 0.04242335296456909,
+    "year": 2026.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8016,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8017,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8018,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8019,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8020,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2005.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8021,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2005.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8022,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2005.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8023,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2005.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8024,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2006.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8025,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2006.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8026,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2006.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8027,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2006.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8028,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2007.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8029,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2007.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8030,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2007.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8031,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.00029311187103077673,
+    "year": 2007.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8032,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.0070425407529264615,
+    "year": 2008.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8033,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.003972989098009438,
+    "year": 2008.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8034,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.0055651252153173444,
+    "year": 2008.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8035,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.006408113870800438,
+    "year": 2008.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8036,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.0045807371422536694,
+    "year": 2009.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8037,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.0044608666442727575,
+    "year": 2009.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8038,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.00619229527002194,
+    "year": 2009.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8039,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.006155263378276527,
+    "year": 2009.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8040,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.005022369439903639,
+    "year": 2010.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8041,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.0038658458221918204,
+    "year": 2010.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8042,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.001965466686299993,
+    "year": 2010.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8043,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.0022184523032754795,
+    "year": 2010.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8044,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.00430989172711027,
+    "year": 2011.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8045,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.00926855819872586,
+    "year": 2011.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8046,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.006902045989498461,
+    "year": 2011.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8047,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.008835226107990653,
+    "year": 2011.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8048,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.006152745700655282,
+    "year": 2012.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8049,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.015282108510847802,
+    "year": 2012.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8050,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.0060557454819788895,
+    "year": 2012.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8051,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.005501769456808512,
+    "year": 2012.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8052,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.005485957982989653,
+    "year": 2013.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8053,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.011813512203204684,
+    "year": 2013.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8054,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.006243873095089564,
+    "year": 2013.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8055,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.006473475535071086,
+    "year": 2013.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8056,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.005132149648526804,
+    "year": 2014.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8057,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.00929558108203161,
+    "year": 2014.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8058,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.005294168308956517,
+    "year": 2014.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8059,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.005566622796011697,
+    "year": 2014.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8060,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.003474296916435606,
+    "year": 2015.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8061,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.006605618172621789,
+    "year": 2015.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8062,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.005374529125875437,
+    "year": 2015.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8063,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.006899221831956163,
+    "year": 2015.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8064,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.005875780283956319,
+    "year": 2016.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8065,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.009555061179087875,
+    "year": 2016.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8066,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.0071236534218382065,
+    "year": 2016.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8067,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.008966653741760372,
+    "year": 2016.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8068,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.006288916154345815,
+    "year": 2017.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8069,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.014467374049628206,
+    "year": 2017.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8070,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.007766844486813668,
+    "year": 2017.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8071,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.007919580539092034,
+    "year": 2017.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8072,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.007775975171051703,
+    "year": 2018.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8073,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.009092986549182376,
+    "year": 2018.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8074,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.0063517713937379415,
+    "year": 2018.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8075,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.007158146429531052,
+    "year": 2018.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8076,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.006746656739497724,
+    "year": 2019.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8077,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.00722067074244597,
+    "year": 2019.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8078,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.006837984779024142,
+    "year": 2019.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8079,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.008361953994500113,
+    "year": 2019.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8080,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.007240481614057923,
+    "year": 2020.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8081,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.00811663398414187,
+    "year": 2020.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8082,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.004636616274227796,
+    "year": 2020.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8083,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.006356047871499792,
+    "year": 2020.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8084,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.008439857502095558,
+    "year": 2021.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8085,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.00904165059290132,
+    "year": 2021.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8086,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.006384812457940284,
+    "year": 2021.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8087,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.009376670733546272,
+    "year": 2021.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8088,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.011304858433965635,
+    "year": 2022.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8089,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.011268265607524077,
+    "year": 2022.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8090,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.008859425157059465,
+    "year": 2022.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8091,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.008470095301101864,
+    "year": 2022.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8092,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.010596766772333236,
+    "year": 2023.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8093,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.010579457831850563,
+    "year": 2023.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8094,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.007115431628294914,
+    "year": 2023.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8095,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.011014228061389814,
+    "year": 2023.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8096,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.01349140478991145,
+    "year": 2024.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8097,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.016033485540334857,
+    "year": 2024.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8098,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.01907741470853221,
+    "year": 2024.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8099,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.03325480463738925,
+    "year": 2024.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8100,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.01609570719648754,
+    "year": 2025.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8101,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.013496222649410439,
+    "year": 2025.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8102,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.007731985087584904,
+    "year": 2025.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8103,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.009341034574560439,
+    "year": 2025.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8104,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.009127161144680103,
+    "year": 2026.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8105,
+    "pt": "NO ADVERSE EVENT",
+    "drift_suspect": true,
+    "share": 0.009733558051015964,
+    "year": 2026.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8016,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.00041608876560332873,
+    "year": 2004.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8017,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0006541845251522671,
+    "year": 2004.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8018,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0006389561474307236,
+    "year": 2004.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8019,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.00037342767295597487,
+    "year": 2004.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8020,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0008638211382113821,
+    "year": 2005.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8021,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0012618928392588884,
+    "year": 2005.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8022,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0006171358041622381,
+    "year": 2005.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8023,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0006810155049809157,
+    "year": 2005.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8024,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.000924949290060852,
+    "year": 2006.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8025,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0009043478260869566,
+    "year": 2006.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8026,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.000895973718104269,
+    "year": 2006.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8027,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0011166868865115254,
+    "year": 2006.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8028,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0008712066211703209,
+    "year": 2007.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8029,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0006903021399366338,
+    "year": 2007.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8030,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0010414907391769407,
+    "year": 2007.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8031,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0023937469467513435,
+    "year": 2007.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8032,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0011692249126480224,
+    "year": 2008.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8033,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0020068340836361664,
+    "year": 2008.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8034,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0020405459122830264,
+    "year": 2008.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8035,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0030772777041433758,
+    "year": 2008.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8036,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0020329496250924067,
+    "year": 2009.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8037,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.004689284514612026,
+    "year": 2009.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8038,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0045885353439730926,
+    "year": 2009.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8039,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.005296876308516874,
+    "year": 2009.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8040,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.004957842209412372,
+    "year": 2010.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8041,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.007058018779926622,
+    "year": 2010.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8042,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.004065378976548845,
+    "year": 2010.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8043,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.004544372884218283,
+    "year": 2010.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8044,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.005134674008846194,
+    "year": 2011.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8045,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.007788962059475165,
+    "year": 2011.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8046,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0066920152091254756,
+    "year": 2011.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8047,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0061634755989231,
+    "year": 2011.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8048,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0067104329956900475,
+    "year": 2012.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8049,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.014829159418387108,
+    "year": 2012.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8050,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.01867697933162513,
+    "year": 2012.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8051,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.01621087999445782,
+    "year": 2012.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8052,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.017092733044173594,
+    "year": 2013.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8053,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.025290121449042337,
+    "year": 2013.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8054,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.019288610640762854,
+    "year": 2013.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8055,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.018594797630172657,
+    "year": 2013.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8056,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.02129350682648548,
+    "year": 2014.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8057,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0249325015285225,
+    "year": 2014.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8058,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.02573624402822881,
+    "year": 2014.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8059,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.02079161780295077,
+    "year": 2014.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8060,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.017958926089787917,
+    "year": 2015.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8061,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.022410031480488892,
+    "year": 2015.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8062,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.023756704765272932,
+    "year": 2015.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8063,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.026648157126463644,
+    "year": 2015.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8064,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.030189353872741086,
+    "year": 2016.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8065,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.03388579903596589,
+    "year": 2016.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8066,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.03545139339550924,
+    "year": 2016.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8067,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.040090822322307394,
+    "year": 2016.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8068,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0353419372617462,
+    "year": 2017.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8069,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.04386665552677751,
+    "year": 2017.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8070,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.03233083688647152,
+    "year": 2017.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8071,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0831538866443811,
+    "year": 2017.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8072,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.036727093179092896,
+    "year": 2018.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8073,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.06213363661003258,
+    "year": 2018.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8074,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.046443554346607165,
+    "year": 2018.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8075,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.036521340091959995,
+    "year": 2018.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8076,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.03573780819564159,
+    "year": 2019.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8077,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.034235987062615485,
+    "year": 2019.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8078,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.03781802489591186,
+    "year": 2019.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8079,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.04231431977245099,
+    "year": 2019.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8080,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.04263197673808299,
+    "year": 2020.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8081,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.04284536902833433,
+    "year": 2020.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8082,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.04437861958778414,
+    "year": 2020.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8083,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.053690214502248465,
+    "year": 2020.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8084,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.04866146269907796,
+    "year": 2021.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8085,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.04329957212266993,
+    "year": 2021.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8086,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.0388472391116988,
+    "year": 2021.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8087,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.04578392531564012,
+    "year": 2021.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8088,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.051385023870918325,
+    "year": 2022.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8089,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.05462598562459382,
+    "year": 2022.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8090,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.047613119894905236,
+    "year": 2022.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8091,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.05440908555548038,
+    "year": 2022.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8092,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.06755509387199761,
+    "year": 2023.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8093,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.06856302479487768,
+    "year": 2023.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8094,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.06252318842663829,
+    "year": 2023.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8095,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.06155183079506289,
+    "year": 2023.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8096,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.07195316371800307,
+    "year": 2024.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8097,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.07176560121765602,
+    "year": 2024.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8098,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.08117595948345487,
+    "year": 2024.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8099,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.09282871152993083,
+    "year": 2024.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8100,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.07578664502124571,
+    "year": 2025.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8101,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.06755457873663846,
+    "year": 2025.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8102,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.06416679434145345,
+    "year": 2025.5,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8103,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.06661129952658201,
+    "year": 2025.75,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8104,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.06632061316355084,
+    "year": 2026.0,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8105,
+    "pt": "OFF LABEL USE",
+    "drift_suspect": false,
+    "share": 0.06216031965459125,
+    "year": 2026.25,
+    "status": "Stable"
+   },
+   {
+    "qidx": 8016,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8017,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8018,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8019,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8020,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2005.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8021,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2005.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8022,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2005.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8023,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2005.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8024,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2006.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8025,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2006.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8026,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2006.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8027,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2006.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8028,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2007.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8029,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2007.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8030,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2007.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8031,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2007.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8032,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2008.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8033,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2008.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8034,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 1.3250298131707964e-05,
+    "year": 2008.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8035,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2008.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8036,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2009.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8037,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 1.3436345314074572e-05,
+    "year": 2009.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8038,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2009.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8039,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2009.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8040,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2010.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8041,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2010.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8042,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2010.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8043,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2010.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8044,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2011.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8045,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2011.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8046,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2011.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8047,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2011.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8048,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 6.061818424290919e-06,
+    "year": 2012.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8049,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2012.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8050,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2012.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8051,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2012.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8052,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2013.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8053,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2013.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8054,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2013.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8055,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2013.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8056,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2014.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8057,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2014.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8058,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2014.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8059,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2014.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8060,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2015.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8061,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2015.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8062,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2015.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8063,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2015.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8064,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2016.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8065,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2016.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8066,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2016.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8067,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2016.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8068,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2017.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8069,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2017.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8070,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2017.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8071,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2017.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8072,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2018.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8073,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2018.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8074,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2018.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8075,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2018.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8076,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2019.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8077,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2019.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8078,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2019.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8079,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2019.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8080,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 5.2486274839129566e-06,
+    "year": 2020.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8081,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 8.52587603376247e-06,
+    "year": 2020.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8082,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.028634797066823387,
+    "year": 2020.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8083,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.02995560536183785,
+    "year": 2020.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8084,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.026500943000838224,
+    "year": 2021.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8085,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.02542050230831877,
+    "year": 2021.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8086,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.023976104178226938,
+    "year": 2021.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8087,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.028845600230304195,
+    "year": 2021.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8088,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.03269677551124614,
+    "year": 2022.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8089,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.0364963503649635,
+    "year": 2022.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8090,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.029828055640897966,
+    "year": 2022.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8091,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.02716945954276521,
+    "year": 2022.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8092,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.031149526194112216,
+    "year": 2023.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8093,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.03083737571316881,
+    "year": 2023.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8094,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.02908008455686737,
+    "year": 2023.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8095,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.02749874804842843,
+    "year": 2023.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8096,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.033482209497423525,
+    "year": 2024.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8097,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.032417047184170475,
+    "year": 2024.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8098,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.03262958092666727,
+    "year": 2024.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8099,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.02974798882614586,
+    "year": 2024.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8100,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.03679106634444506,
+    "year": 2025.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8101,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.03364719423051022,
+    "year": 2025.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8102,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.03376742760839589,
+    "year": 2025.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8103,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.04338603822068918,
+    "year": 2025.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8104,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.047266042148235266,
+    "year": 2026.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8105,
+    "pt": "PRODUCT DOSE OMISSION ISSUE",
+    "drift_suspect": true,
+    "share": 0.040887098301361564,
+    "year": 2026.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8016,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8017,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8018,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8019,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2004.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8020,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2005.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8021,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2005.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8022,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2005.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8023,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2005.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8024,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2006.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8025,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2006.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8026,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2006.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8027,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2006.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8028,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2007.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8029,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2007.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8030,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2007.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8031,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2007.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8032,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2008.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8033,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2008.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8034,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2008.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8035,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2008.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8036,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2009.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8037,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2009.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8038,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2009.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8039,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2009.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8040,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2010.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8041,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2010.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8042,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2010.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8043,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2010.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8044,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2011.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8045,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2011.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8046,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2011.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8047,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2011.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8048,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2012.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8049,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2012.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8050,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2012.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8051,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2012.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8052,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2013.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8053,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2013.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8054,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2013.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8055,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2013.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8056,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2014.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8057,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2014.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8058,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2014.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8059,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2014.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8060,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2015.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8061,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 3.7746389557838792e-06,
+    "year": 2015.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8062,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2015.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8063,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2015.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8064,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2016.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8065,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2016.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8066,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2016.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8067,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2016.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8068,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": null,
+    "year": 2017.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8069,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.021585763221655944,
+    "year": 2017.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8070,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.015834046137472167,
+    "year": 2017.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8071,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.017404619812281672,
+    "year": 2017.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8072,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.014476969739719264,
+    "year": 2018.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8073,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.015557988382660084,
+    "year": 2018.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8074,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.017807388067641046,
+    "year": 2018.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8075,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.01785158997799119,
+    "year": 2018.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8076,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.017608315913060908,
+    "year": 2019.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8077,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.01866528011897474,
+    "year": 2019.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8078,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.022637006097447277,
+    "year": 2019.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8079,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.019332223913890167,
+    "year": 2019.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8080,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.018194367172984265,
+    "year": 2020.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8081,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.020942393497598546,
+    "year": 2020.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8082,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.022164207094318225,
+    "year": 2020.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8083,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.018151516457623952,
+    "year": 2020.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8084,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.014108340318524728,
+    "year": 2021.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8085,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.015834234724880172,
+    "year": 2021.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8086,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.014949056091427493,
+    "year": 2021.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8087,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.018969937077604287,
+    "year": 2021.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8088,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.016860272153999337,
+    "year": 2022.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8089,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.017295672037687327,
+    "year": 2022.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8090,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.016921634477863354,
+    "year": 2022.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8091,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.012376864110101216,
+    "year": 2022.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8092,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.013586105081310567,
+    "year": 2023.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8093,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.017206151199053662,
+    "year": 2023.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8094,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.016370669696141732,
+    "year": 2023.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8095,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.019963472471794266,
+    "year": 2023.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8096,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.016321644166064592,
+    "year": 2024.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8097,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.01902587519025875,
+    "year": 2024.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8098,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.02105717393015736,
+    "year": 2024.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8099,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.026262153964200508,
+    "year": 2024.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8100,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.021980556016750603,
+    "year": 2025.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8101,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.02004995653291866,
+    "year": 2025.25,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8102,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.020009192584648384,
+    "year": 2025.5,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8103,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.020128945632169274,
+    "year": 2025.75,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8104,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.018243508117387838,
+    "year": 2026.0,
+    "status": "Drift-suspect"
+   },
+   {
+    "qidx": 8105,
+    "pt": "PRODUCT USE IN UNAPPROVED INDICATION",
+    "drift_suspect": true,
+    "share": 0.020534682901888007,
+    "year": 2026.25,
+    "status": "Drift-suspect"
+   }
+  ]
+ }
+}

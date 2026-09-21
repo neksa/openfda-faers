@@ -6,11 +6,11 @@
   }
  },
  "data": {
-  "name": "data-74019cee8231b742eeb58a4e0d08179e"
+  "name": "data-c3b46daba64ebcbf35ca444ac9954abe"
  },
  "mark": {
   "type": "bar",
-  "color": "#54A24B"
+  "color": "#2a78d6"
  },
  "encoding": {
   "tooltip": [
@@ -40,20 +40,20 @@
  "width": 620,
  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
  "datasets": {
-  "data-74019cee8231b742eeb58a4e0d08179e": [
+  "data-c3b46daba64ebcbf35ca444ac9954abe": [
    {
     "occp_cod": "CN",
-    "reports": 8877993,
+    "reports": 9021530,
     "reporter": "Consumer"
    },
    {
     "occp_cod": "MD",
-    "reports": 4463540,
+    "reports": 4537875,
     "reporter": "Physician"
    },
    {
     "occp_cod": "OT",
-    "reports": 1922526,
+    "reports": 1981417,
     "reporter": "Other health professional"
    },
    {
@@ -63,17 +63,17 @@
    },
    {
     "occp_cod": "Unknown",
-    "reports": 1389848,
+    "reports": 1393593,
     "reporter": "Unknown"
    },
    {
     "occp_cod": "PH",
-    "reports": 1274179,
+    "reports": 1299465,
     "reporter": "Pharmacist"
    },
    {
     "occp_cod": "LW",
-    "reports": 529821,
+    "reports": 543058,
     "reporter": "Lawyer"
    },
    {

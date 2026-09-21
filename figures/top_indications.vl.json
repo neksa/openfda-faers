@@ -6,11 +6,11 @@
   }
  },
  "data": {
-  "name": "data-ca514273bfc856eb30afb6fdf9131213"
+  "name": "data-53996e731dc40ff440a84ae42dadd1ca"
  },
  "mark": {
   "type": "bar",
-  "color": "#4C78A8"
+  "color": "#2a78d6"
  },
  "encoding": {
   "tooltip": [
@@ -40,86 +40,86 @@
  "width": 620,
  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
  "datasets": {
-  "data-ca514273bfc856eb30afb6fdf9131213": [
+  "data-53996e731dc40ff440a84ae42dadd1ca": [
    {
     "indi_pt": "PRODUCT USED FOR UNKNOWN INDICATION",
-    "reports": 5429967
+    "reports": 5531968
    },
    {
     "indi_pt": "RHEUMATOID ARTHRITIS",
-    "reports": 915709
+    "reports": 931267
    },
    {
     "indi_pt": "MULTIPLE SCLEROSIS",
-    "reports": 635660
+    "reports": 648472
    },
    {
     "indi_pt": "HYPERTENSION",
-    "reports": 514998
+    "reports": 522274
    },
    {
     "indi_pt": "PLASMA CELL MYELOMA",
-    "reports": 457216
+    "reports": 464692
    },
    {
     "indi_pt": "PSORIASIS",
-    "reports": 443970
+    "reports": 451675
    },
    {
     "indi_pt": "PAIN",
-    "reports": 344050
+    "reports": 359527
    },
    {
     "indi_pt": "TYPE 2 DIABETES MELLITUS",
-    "reports": 334259
+    "reports": 339247
    },
    {
     "indi_pt": "CROHN'S DISEASE",
-    "reports": 329087
+    "reports": 333115
    },
    {
     "indi_pt": "DIABETES MELLITUS",
-    "reports": 326506
+    "reports": 329801
    },
    {
     "indi_pt": "DYSPEPSIA",
-    "reports": 309008
+    "reports": 309830
    },
    {
     "indi_pt": "DEPRESSION",
-    "reports": 296219
+    "reports": 300265
    },
    {
     "indi_pt": "GASTROOESOPHAGEAL REFLUX DISEASE",
-    "reports": 293910
+    "reports": 295864
    },
    {
     "indi_pt": "ASTHMA",
-    "reports": 289770
+    "reports": 293109
    },
    {
     "indi_pt": "PSORIATIC ARTHROPATHY",
-    "reports": 273732
+    "reports": 278175
    },
    {
     "indi_pt": "DERMATITIS ATOPIC",
-    "reports": 246887
+    "reports": 247402
    },
    {
     "indi_pt": "CONTRACEPTION",
-    "reports": 238014
+    "reports": 241248
    },
    {
     "indi_pt": "PULMONARY ARTERIAL HYPERTENSION",
-    "reports": 210606
+    "reports": 214653
    },
    {
     "indi_pt": "PROPHYLAXIS",
-    "reports": 206502
+    "reports": 209740
    },
    {
     "indi_pt": "OSTEOPOROSIS",
-    "reports": 198920
+    "reports": 201285
    }
   ]
  }

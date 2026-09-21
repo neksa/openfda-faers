@@ -15,6 +15,9 @@ import pytest
 
 from faers.stats.drift import ABSENT_SHARE, STEP_RATIO, detect, term_trajectories
 
+#: The production floor assumes a corpus of millions; these fixtures are hundreds.
+TEST_QUARTER_FLOOR = 1
+
 
 def build_corpus(term_plan, quarters=40, reports_per_quarter=500, seed=0):
     """Synthesize DEMO and REAC frames from a per-term share schedule.
@@ -40,6 +43,12 @@ def build_corpus(term_plan, quarters=40, reports_per_quarter=500, seed=0):
     return reac, demo
 
 
+def detect_small(reac, demo, min_total=200):
+    """detect() with the floors scaled to fixture size."""
+    return detect(reac, demo, min_total_reports=min_total,
+                  min_quarter_reports=TEST_QUARTER_FLOOR)
+
+
 def flags_for(result, term):
     row = result.filter(pl.col("pt") == term)
     assert row.height == 1, f"{term} was not tested"
@@ -49,7 +58,7 @@ def flags_for(result, term):
 class TestTrajectories:
     def test_shares_are_computed_per_quarter(self):
         reac, demo = build_corpus({"STABLE": lambda q: 0.5}, quarters=8, reports_per_quarter=200)
-        traj = term_trajectories(reac, demo).collect()
+        traj = term_trajectories(reac, demo, TEST_QUARTER_FLOOR).collect()
         assert traj["qidx"].n_unique() == 8
         # Planted at 0.5; sampling noise around it, never wildly off.
         assert traj["share"].mean() == pytest.approx(0.5, abs=0.08)
@@ -59,25 +68,25 @@ class TestDetection:
     def test_stable_term_is_not_flagged(self):
         """The false-positive case that matters: a genuinely steady term must pass through."""
         reac, demo = build_corpus({"STABLE": lambda q: 0.30}, seed=1)
-        got = flags_for(detect(reac, demo), "STABLE")
+        got = flags_for(detect_small(reac, demo), "STABLE")
         assert not got["drift_suspect"]
         assert not got["late_onset"] and not got["discontinued"] and not got["step_change"]
 
     def test_late_onset_term_is_flagged(self):
         """A term that does not exist before the midpoint, then becomes common."""
         reac, demo = build_corpus({"NEWTERM": lambda q: 0.0 if q < 20 else 0.30}, seed=2)
-        got = flags_for(detect(reac, demo), "NEWTERM")
+        got = flags_for(detect_small(reac, demo), "NEWTERM")
         assert got["late_onset"] and got["drift_suspect"]
 
     def test_discontinued_term_is_flagged(self):
         reac, demo = build_corpus({"OLDTERM": lambda q: 0.30 if q < 20 else 0.0}, seed=3)
-        got = flags_for(detect(reac, demo), "OLDTERM")
+        got = flags_for(detect_small(reac, demo), "OLDTERM")
         assert got["discontinued"] and got["drift_suspect"]
 
     def test_abrupt_step_is_flagged(self):
         """Present throughout, so neither onset nor discontinuation — caught by the step rule."""
         reac, demo = build_corpus({"JUMPY": lambda q: 0.01 if q < 20 else 0.40}, seed=4)
-        got = flags_for(detect(reac, demo), "JUMPY")
+        got = flags_for(detect_small(reac, demo), "JUMPY")
         assert got["step_change"] and got["drift_suspect"]
         assert got["max_step_ratio"] >= STEP_RATIO
 
@@ -88,7 +97,7 @@ class TestDetection:
         spread across the window instead of landing in one quarter.
         """
         reac, demo = build_corpus({"GRADUAL": lambda q: 0.02 + 0.38 * (q / 39)}, seed=5)
-        got = flags_for(detect(reac, demo), "GRADUAL")
+        got = flags_for(detect_small(reac, demo), "GRADUAL")
         assert not got["drift_suspect"], "a smooth trend must not be mistaken for vocabulary drift"
 
     def test_rename_flags_both_sides(self):
@@ -100,7 +109,7 @@ class TestDetection:
             },
             seed=6,
         )
-        result = detect(reac, demo)
+        result = detect_small(reac, demo)
         assert flags_for(result, "OLDNAME")["discontinued"]
         assert flags_for(result, "NEWNAME")["late_onset"]
 
@@ -112,7 +121,7 @@ class TestDetection:
             reports_per_quarter=200,
             seed=7,
         )
-        result = detect(reac, demo)
+        result = detect_small(reac, demo)
         assert "COMMON" in result["pt"].to_list()
         assert "RARE" not in result["pt"].to_list()
 

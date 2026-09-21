@@ -19,8 +19,16 @@ import polars as pl
 
 alt.data_transformers.disable_max_rows()
 
-#: A single ordinal palette used across every figure so colour means the same thing throughout.
-PALETTE = ["#4C78A8", "#F58518", "#54A24B", "#E45756", "#72B7B2", "#B279A2", "#9D755D"]
+#: Categorical slots, in fixed order, from the validated reference palette. The order is the
+#: CVD-safety mechanism, not decoration: slots 1-3 clear the all-pairs separation and
+#: normal-vision floors in both light and dark. Hues are assigned in this order and never cycled.
+PALETTE = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300", "#4a3aa7"]
+
+#: Emphasis pair: one accent against a de-emphasis grey. Used where the reader's job is to find
+#: the few marks that matter rather than to tell many series apart -- colouring everything would
+#: bury the point.
+ACCENT = "#2a78d6"
+MUTED = "#b8b7b0"
 
 WIDTH, HEIGHT = 620, 320
 
@@ -90,7 +98,7 @@ def reporters(df: pl.DataFrame, out_dir: Path) -> None:
     d = df.sort("reports", descending=True).head(10)
     chart = (
         _base(d, "Who submits reports")
-        .mark_bar(color=PALETTE[2])
+        .mark_bar(color=PALETTE[0])
         .encode(
             y=alt.Y("reporter:N", sort="-x", title=None),
             x=alt.X("reports:Q", title="Reports", axis=alt.Axis(format="~s")),
@@ -173,7 +181,7 @@ def signal_agreement(scored: pl.DataFrame, out_dir: Path) -> None:
     d = pl.DataFrame(rows)
     chart = (
         _base(d, "Pairs flagged by each screening rule")
-        .mark_bar(color=PALETTE[3])
+        .mark_bar(color=PALETTE[0])
         .encode(
             y=alt.Y("measure:N", sort="-x", title=None),
             x=alt.X("pairs:Q", title="Drug-event pairs flagged", axis=alt.Axis(format="~s")),
@@ -184,7 +192,7 @@ def signal_agreement(scored: pl.DataFrame, out_dir: Path) -> None:
     _save(chart, out_dir, "signal_agreement")
 
 
-def shrinkage_effect(scored: pl.DataFrame, out_dir: Path, sample: int = 6_000) -> None:
+def shrinkage_effect(scored: pl.DataFrame, out_dir: Path, sample: int = 3_000) -> None:
     """Why EB05 rather than a raw ratio: shrinkage collapses thinly-evidenced extremes.
 
     The sample is kept small on purpose. Vega-Lite specs embed their data, so this figure alone
@@ -213,7 +221,7 @@ def stratified_survival(df: pl.DataFrame, out_dir: Path) -> None:
     """How many unadjusted signals survive each Mantel-Haenszel adjustment."""
     chart = (
         _base(df, "Signals surviving confounder adjustment")
-        .mark_bar(color=PALETTE[2])
+        .mark_bar(color=PALETTE[0])
         .encode(
             y=alt.Y("variable:N", sort="-x", title=None),
             x=alt.X("surviving:Q", title="Pairs still signalling after adjustment",
@@ -225,6 +233,174 @@ def stratified_survival(df: pl.DataFrame, out_dir: Path) -> None:
         .properties(height=200)
     )
     _save(chart, out_dir, "stratified_survival")
+
+
+def signal_landscape(scored: pl.DataFrame, out_dir: Path, sample: int = 4_000) -> None:
+    """Evidence against effect size for every scored pair -- the standard pharmacovigilance view.
+
+    Form is *emphasis*, not categorical: the reader's job is to find the handful of pairs in the
+    top-right, so flagged pairs take the accent hue and everything else recedes to grey. Colouring
+    five screening rules categorically would bury exactly the points the chart exists to show.
+
+    Both axes are log. Co-report counts span four orders of magnitude and EB05 three; on linear
+    axes the entire corpus collapses into the bottom-left corner.
+
+    The sample is small on purpose. A Vega-Lite spec embeds its data, and at 12,000 points carrying
+    drug and reaction names this figure alone was 2.5 MB -- it took the report page from 0.7 MB to
+    3.4 MB on its own. 4,000 points render the same density and the same outliers.
+    """
+    d = (
+        scored.select("ingredient", "pt", "n_ij", "eb05", "signal_eb05", "ingredient_curated")
+        .filter((pl.col("n_ij") > 0) & (pl.col("eb05") > 0))
+        .sample(n=min(sample, scored.height), seed=0)
+        .with_columns(
+            pl.when(pl.col("signal_eb05"))
+            .then(pl.lit("Flagged (EB05 ≥ 2)"))
+            .otherwise(pl.lit("Not flagged"))
+            .alias("status")
+        )
+    )
+    chart = (
+        _base(d, "Signal landscape: evidence against effect size")
+        .mark_circle(size=18, opacity=0.45)
+        .encode(
+            x=alt.X("n_ij:Q", scale=alt.Scale(type="log"), title="Co-reports (evidence)"),
+            y=alt.Y("eb05:Q", scale=alt.Scale(type="log"), title="EB05 (shrunk effect size)"),
+            color=alt.Color(
+                "status:N",
+                title=None,
+                scale=alt.Scale(
+                    domain=["Flagged (EB05 ≥ 2)", "Not flagged"],
+                    range=[ACCENT, MUTED],
+                ),
+                legend=alt.Legend(orient="top-left"),
+            ),
+            tooltip=[
+                alt.Tooltip("ingredient:N", title="Drug"),
+                alt.Tooltip("pt:N", title="Reaction"),
+                alt.Tooltip("n_ij:Q", title="Co-reports", format=","),
+                alt.Tooltip("eb05:Q", title="EB05", format=".2f"),
+                alt.Tooltip("ingredient_curated:N", title="Curated ingredient"),
+            ],
+        )
+        .properties(height=380)
+    )
+    _save(chart, out_dir, "signal_landscape")
+
+
+def class_similarity(matrix: pl.DataFrame, out_dir: Path) -> None:
+    """Between-class mean similarity as a heatmap -- the validation, shown rather than asserted.
+
+    Magnitude on a grid, so the colour job is *sequential*: one hue, light to dark. A diverging or
+    categorical scheme here would imply a midpoint or an identity that the data does not have.
+    If reaction profiles carry pharmacology the diagonal is visibly darkest.
+    """
+    labels = {
+        "statins": "Statins",
+        "ace_inhibitors": "ACE inhibitors",
+        "tnf_inhibitors": "TNF inhibitors",
+        "ssris": "SSRIs",
+        "bisphosphonates": "Bisphosphonates",
+    }
+    d = matrix.filter(pl.col("similarity").is_not_null()).with_columns(
+        pl.col("class_a").replace_strict(labels, default=pl.col("class_a")).alias("a"),
+        pl.col("class_b").replace_strict(labels, default=pl.col("class_b")).alias("b"),
+    )
+    order = list(labels.values())
+
+    cells = (
+        alt.Chart(d.to_pandas())
+        .mark_rect(stroke="#fcfcfb", strokeWidth=2)  # 2px surface gap between fills
+        .encode(
+            x=alt.X("b:N", sort=order, title=None, axis=alt.Axis(labelAngle=-30)),
+            y=alt.Y("a:N", sort=order, title=None),
+            color=alt.Color(
+                "similarity:Q",
+                title="Mean cosine similarity",
+                scale=alt.Scale(scheme="blues"),
+                legend=alt.Legend(orient="right", gradientLength=180),
+            ),
+            tooltip=[
+                alt.Tooltip("a:N", title="Class"),
+                alt.Tooltip("b:N", title="vs"),
+                alt.Tooltip("similarity:Q", format=".3f"),
+                alt.Tooltip("n_pairs:Q", title="Drug pairs", format=","),
+            ],
+        )
+    )
+    # Direct labels: three of the sequential steps fall below 3:1 on the light surface, and the
+    # relief rule requires visible values rather than colour alone.
+    text = cells.mark_text(fontSize=11).encode(
+        text=alt.Text("similarity:Q", format=".2f"),
+        color=alt.condition(
+            alt.datum.similarity > 0.35, alt.value("#ffffff"), alt.value("#52514e")
+        ),
+    )
+    chart = (cells + text).properties(
+        width=420, height=320, title="Drug classes resemble themselves, not each other"
+    )
+    _save(chart, out_dir, "class_similarity")
+
+
+def drift_trajectories(traj: pl.DataFrame, out_dir: Path) -> None:
+    """What a drift-suspect term looks like beside a stable one.
+
+    Emphasis again: flagged terms in the accent hue, stable terms grey, so the abrupt step that
+    defines vocabulary change is visible as a shape rather than inferred from a count.
+    """
+    # Reindex every term onto the full quarter grid, leaving a null share where the term does not
+    # appear. Without this the line mark joins the quarters either side of an absence with a
+    # straight segment: three of these terms are present in only 29-37 of 90 quarters, so the
+    # chart drew long near-horizontal lines across years in which the term did not exist, and
+    # where two such lines crossed they read as a trajectory doubling back in time. A gap in the
+    # data should look like a gap.
+    terms = traj.select("pt", "drift_suspect").unique()
+    grid = pl.DataFrame(
+        {"qidx": list(range(traj["qidx"].min(), traj["qidx"].max() + 1))},
+        schema={"qidx": traj.schema["qidx"]},
+    ).join(terms, how="cross")
+
+    d = (
+        grid.join(traj.select("pt", "qidx", "share"), on=["pt", "qidx"], how="left")
+        .with_columns(
+            # qidx is year*4 + quarter - 1. Dividing rather than floor-dividing keeps the four
+            # quarters of a year at distinct x positions; collapsing them onto the integer year
+            # drew a sawtooth that looked like volatility but was four points on one tick.
+            (pl.col("qidx") / 4).alias("year"),
+            pl.when(pl.col("drift_suspect"))
+            .then(pl.lit("Drift-suspect"))
+            .otherwise(pl.lit("Stable"))
+            .alias("status"),
+        )
+        .sort(["pt", "qidx"])
+    )
+    chart = (
+        _base(d, "Reaction term trajectories: vocabulary change has a shape")
+        .mark_line(strokeWidth=2, opacity=0.85)
+        .encode(
+            x=alt.X("year:Q", title="FDA receipt year", axis=alt.Axis(format="d")),
+            y=alt.Y(
+                "share:Q",
+                title="Share of that quarter's reports",
+                scale=alt.Scale(type="log"),
+                axis=alt.Axis(format="%"),
+            ),
+            detail="pt:N",
+            color=alt.Color(
+                "status:N",
+                title=None,
+                scale=alt.Scale(domain=["Drift-suspect", "Stable"], range=[ACCENT, MUTED]),
+                legend=alt.Legend(orient="top-left"),
+            ),
+            tooltip=[
+                alt.Tooltip("pt:N", title="Term"),
+                alt.Tooltip("year:Q", title="Year", format=".0f"),
+                alt.Tooltip("share:Q", title="Share", format=".3%"),
+            ],
+        )
+        .properties(height=340)
+    )
+    _save(chart, out_dir, "drift_trajectories")
 
 
 def render_all(results_dir: Path, out_dir: Path) -> list[str]:
@@ -251,6 +427,15 @@ def render_all(results_dir: Path, out_dir: Path) -> list[str]:
         scored = pl.read_parquet(scored_path)
         signal_agreement(scored, out_dir)
         shrinkage_effect(scored, out_dir)
+        signal_landscape(scored, out_dir)
+
+    class_matrix = results_dir / "similarity" / "class_matrix.parquet"
+    if class_matrix.exists():
+        class_similarity(pl.read_parquet(class_matrix), out_dir)
+
+    traj = results_dir / "drift" / "trajectories.parquet"
+    if traj.exists():
+        drift_trajectories(pl.read_parquet(traj), out_dir)
 
     strat_summary = results_dir / "stratified" / "survival.parquet"
     if strat_summary.exists():
