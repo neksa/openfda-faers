@@ -1,10 +1,10 @@
 {
-  "records_raw": 24399723,
-  "cases_raw": 20373527,
+  "records_raw": 24812425,
+  "cases_raw": 20692684,
   "retracted_ids_listed": 95602,
-  "records_removed_as_retracted": 67838,
-  "records_removed_as_superseded": 4007702,
-  "cases_spanning_both_eras": 82134,
-  "records_final": 20324183,
-  "duplicate_fraction_of_raw": 0.167
+  "records_removed_as_retracted": 68088,
+  "records_removed_as_superseded": 4101123,
+  "cases_spanning_both_eras": 82313,
+  "records_final": 20643214,
+  "duplicate_fraction_of_raw": 0.168
 }

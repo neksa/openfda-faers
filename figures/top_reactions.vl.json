@@ -6,7 +6,7 @@
   }
  },
  "data": {
-  "name": "data-86bbb466c0331b90efe750d96ff1a300"
+  "name": "data-e7dc7642c9a34ced9de8c8a66456c771"
  },
  "mark": {
   "type": "bar",
@@ -40,86 +40,86 @@
  "width": 620,
  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
  "datasets": {
-  "data-86bbb466c0331b90efe750d96ff1a300": [
+  "data-e7dc7642c9a34ced9de8c8a66456c771": [
    {
     "pt": "DRUG INEFFECTIVE",
-    "reports": 1270246
+    "reports": 1293826
    },
    {
     "pt": "OFF LABEL USE",
-    "reports": 838855
+    "reports": 850733
    },
    {
     "pt": "DEATH",
-    "reports": 827596
+    "reports": 843118
    },
    {
     "pt": "NAUSEA",
-    "reports": 766335
+    "reports": 777121
    },
    {
     "pt": "FATIGUE",
-    "reports": 751790
+    "reports": 763135
    },
    {
     "pt": "DIARRHOEA",
-    "reports": 623932
+    "reports": 633098
    },
    {
     "pt": "HEADACHE",
-    "reports": 606190
+    "reports": 615996
    },
    {
     "pt": "PAIN",
-    "reports": 595926
+    "reports": 603308
    },
    {
     "pt": "DYSPNOEA",
-    "reports": 548042
+    "reports": 556078
    },
    {
     "pt": "DIZZINESS",
-    "reports": 483319
+    "reports": 490310
    },
    {
     "pt": "VOMITING",
-    "reports": 455327
+    "reports": 461469
    },
    {
     "pt": "MALAISE",
-    "reports": 424599
+    "reports": 432440
    },
    {
     "pt": "RASH",
-    "reports": 420009
+    "reports": 425022
    },
    {
     "pt": "ARTHRALGIA",
-    "reports": 401549
+    "reports": 406550
    },
    {
     "pt": "PRURITUS",
-    "reports": 367087
+    "reports": 371539
    },
    {
     "pt": "ASTHENIA",
-    "reports": 365251
+    "reports": 370643
    },
    {
     "pt": "PYREXIA",
-    "reports": 335775
+    "reports": 339983
    },
    {
     "pt": "FALL",
-    "reports": 322174
+    "reports": 327494
    },
    {
     "pt": "PNEUMONIA",
-    "reports": 312822
+    "reports": 318088
    },
    {
     "pt": "INJECTION SITE PAIN",
-    "reports": 295190
+    "reports": 299359
    }
   ]
  }

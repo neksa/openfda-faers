@@ -4,11 +4,11 @@ subtitle: "FDA Adverse Event Reporting System, 2004Q1–2026Q2"
 author: "Alexander Goncearenco"
 date: last-modified
 abstract: |
-  Across 20.3 million retained cases, the two most frequent entries in the reaction field are
-  `DRUG INEFFECTIVE` and `OFF LABEL USE` — neither is a clinical event. How a drug is named
-  changes its estimates: `ATORVASTATIN` and `ATORVASTATIN CALCIUM` were recorded as separate
-  substances holding 275,333 and 269,328 reports; merging them took atorvastatin–rhabdomyolysis
-  from 2,397 co-reports to 5,183. The highest-scoring associations in the corpus are dominated by
+  Across 20.6 million retained cases, the two most frequent entries in the
+  reaction field are `DRUG INEFFECTIVE` and `OFF LABEL USE` — neither is a clinical event. How a
+  drug is named changes its estimates: FAERS records `ATORVASTATIN` and `ATORVASTATIN CALCIUM` as
+  separate substances, splitting one drug almost evenly; resolved to a single active moiety it
+  holds 547,249 reports and 5,257 rhabdomyolysis co-reports. The highest-scoring associations in the corpus are dominated by
   diagnostic procedures and treated conditions rather than harms. Separate adjustment for sex, age
   or calendar period left 98.5–100% of sampled signals above threshold, though most showed
   statistically detectable variation across strata. Methods, source coverage and reproduction are

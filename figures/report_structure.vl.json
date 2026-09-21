@@ -6,7 +6,7 @@
   }
  },
  "data": {
-  "name": "data-104c193682ade94c224a222315202c99"
+  "name": "data-7ba27a14b9e626fbe985eab71d188416"
  },
  "mark": {
   "type": "bar"
@@ -61,205 +61,205 @@
  "width": 620,
  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
  "datasets": {
-  "data-104c193682ade94c224a222315202c99": [
+  "data-7ba27a14b9e626fbe985eab71d188416": [
    {
     "count": 1,
-    "reports": 11093882,
+    "reports": 11269194,
     "kind": "Drugs per report"
    },
    {
     "count": 2,
-    "reports": 2753070,
+    "reports": 2794815,
     "kind": "Drugs per report"
    },
    {
     "count": 3,
-    "reports": 1514313,
+    "reports": 1536455,
     "kind": "Drugs per report"
    },
    {
     "count": 4,
-    "reports": 945698,
+    "reports": 959844,
     "kind": "Drugs per report"
    },
    {
     "count": 5,
-    "reports": 900459,
+    "reports": 911922,
     "kind": "Drugs per report"
    },
    {
     "count": 6,
-    "reports": 611568,
+    "reports": 619554,
     "kind": "Drugs per report"
    },
    {
     "count": 7,
-    "reports": 440207,
+    "reports": 447060,
     "kind": "Drugs per report"
    },
    {
     "count": 8,
-    "reports": 343774,
+    "reports": 349049,
     "kind": "Drugs per report"
    },
    {
     "count": 9,
-    "reports": 282695,
+    "reports": 287095,
     "kind": "Drugs per report"
    },
    {
     "count": 10,
-    "reports": 244325,
+    "reports": 256662,
     "kind": "Drugs per report"
    },
    {
     "count": 11,
-    "reports": 193013,
+    "reports": 196265,
     "kind": "Drugs per report"
    },
    {
     "count": 12,
-    "reports": 159835,
+    "reports": 162230,
     "kind": "Drugs per report"
    },
    {
     "count": 13,
-    "reports": 132530,
+    "reports": 134469,
     "kind": "Drugs per report"
    },
    {
     "count": 14,
-    "reports": 108868,
+    "reports": 110439,
     "kind": "Drugs per report"
    },
    {
     "count": 15,
-    "reports": 91082,
+    "reports": 92503,
     "kind": "Drugs per report"
    },
    {
     "count": 16,
-    "reports": 76269,
+    "reports": 77423,
     "kind": "Drugs per report"
    },
    {
     "count": 17,
-    "reports": 64954,
+    "reports": 65864,
     "kind": "Drugs per report"
    },
    {
     "count": 18,
-    "reports": 53774,
+    "reports": 54601,
     "kind": "Drugs per report"
    },
    {
     "count": 19,
-    "reports": 45090,
+    "reports": 45699,
     "kind": "Drugs per report"
    },
    {
     "count": 20,
-    "reports": 37971,
+    "reports": 38532,
     "kind": "Drugs per report"
    },
    {
     "count": 1,
-    "reports": 8246538,
+    "reports": 8388643,
     "kind": "Reactions per report"
    },
    {
     "count": 2,
-    "reports": 4587992,
+    "reports": 4659790,
     "kind": "Reactions per report"
    },
    {
     "count": 3,
-    "reports": 2597145,
+    "reports": 2636365,
     "kind": "Reactions per report"
    },
    {
     "count": 4,
-    "reports": 1548181,
+    "reports": 1570167,
     "kind": "Reactions per report"
    },
    {
     "count": 5,
-    "reports": 962990,
+    "reports": 976579,
     "kind": "Reactions per report"
    },
    {
     "count": 6,
-    "reports": 623876,
+    "reports": 632562,
     "kind": "Reactions per report"
    },
    {
     "count": 7,
-    "reports": 423549,
+    "reports": 429277,
     "kind": "Reactions per report"
    },
    {
     "count": 8,
-    "reports": 296756,
+    "reports": 300614,
     "kind": "Reactions per report"
    },
    {
     "count": 9,
-    "reports": 213971,
+    "reports": 216693,
     "kind": "Reactions per report"
    },
    {
     "count": 10,
-    "reports": 159953,
+    "reports": 161984,
     "kind": "Reactions per report"
    },
    {
     "count": 11,
-    "reports": 119956,
+    "reports": 121360,
     "kind": "Reactions per report"
    },
    {
     "count": 12,
-    "reports": 92496,
+    "reports": 93583,
     "kind": "Reactions per report"
    },
    {
     "count": 13,
-    "reports": 73142,
+    "reports": 73995,
     "kind": "Reactions per report"
    },
    {
     "count": 14,
-    "reports": 57956,
+    "reports": 58702,
     "kind": "Reactions per report"
    },
    {
     "count": 15,
-    "reports": 46839,
+    "reports": 47357,
     "kind": "Reactions per report"
    },
    {
     "count": 16,
-    "reports": 38283,
+    "reports": 38706,
     "kind": "Reactions per report"
    },
    {
     "count": 17,
-    "reports": 30980,
+    "reports": 31345,
     "kind": "Reactions per report"
    },
    {
     "count": 18,
-    "reports": 25639,
+    "reports": 25947,
     "kind": "Reactions per report"
    },
    {
     "count": 19,
-    "reports": 21440,
+    "reports": 21672,
     "kind": "Reactions per report"
    },
    {
     "count": 20,
-    "reports": 18258,
+    "reports": 18454,
     "kind": "Reactions per report"
    }
   ]

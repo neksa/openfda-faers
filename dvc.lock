@@ -9,8 +9,8 @@ stages:
       size: 4272
     - path: src/faers/sources.py
       hash: md5
-      md5: be8b255d9065502294a1d376728066ba
-      size: 4174
+      md5: d359c6d7f135e47dca9ce63e1593cdbb
+      size: 4923
     params:
       params.yaml:
         coverage:
@@ -36,16 +36,16 @@ stages:
       nfiles: 90
     - path: src/faers/harmonize.py
       hash: md5
-      md5: 5a95486279d39f1d80c442dc4d7135a6
-      size: 8951
+      md5: b860b1fbf5317951f4c5cd2a8ecf403c
+      size: 9758
     - path: src/faers/schema.py
       hash: md5
       md5: b87b790baca89aafaad988f2c529a110
       size: 9639
     - path: src/faers/sources.py
       hash: md5
-      md5: be8b255d9065502294a1d376728066ba
-      size: 4174
+      md5: d359c6d7f135e47dca9ce63e1593cdbb
+      size: 4923
     params:
       params.yaml:
         coverage:
@@ -54,21 +54,21 @@ stages:
     outs:
     - path: data/harmonized
       hash: md5
-      md5: 5004aadb1566a602c174c224704c16d3.dir
-      size: 1755059716
-      nfiles: 648
+      md5: 86bb15ee4281517547f973354ae4731b.dir
+      size: 1759786452
+      nfiles: 649
     - path: results/harmonize_stats.json
       hash: md5
-      md5: 190fc00ff3455d2cf1f03b1ee6074ee1
-      size: 17893
+      md5: b49f9411c43eb312df8348a861ee6890
+      size: 17898
   dedup:
     cmd: python -m faers.cli dedup
     deps:
     - path: data/harmonized
       hash: md5
-      md5: 5004aadb1566a602c174c224704c16d3.dir
-      size: 1755059716
-      nfiles: 648
+      md5: 86bb15ee4281517547f973354ae4731b.dir
+      size: 1759786452
+      nfiles: 649
     - path: src/faers/dedup.py
       hash: md5
       md5: b54dca55bbe5483d687bd4c8f7d02532
@@ -76,47 +76,47 @@ stages:
     outs:
     - path: data/curated/demo.parquet
       hash: md5
-      md5: 5acd433e2e5bc910f17e64feccb742ff
-      size: 545707031
+      md5: 9fa8f9ea18cd6d247395da5d100f1fd3
+      size: 554322162
     - path: data/curated/drug.parquet
       hash: md5
-      md5: 7465b7dc80a139708803a650d44db140
-      size: 561609515
+      md5: bd0d294970f86415e6d60b0f1f021b7d
+      size: 570106228
     - path: data/curated/indi.parquet
       hash: md5
-      md5: 6ba5e2776e1cff2a187083c753d5ae5e
-      size: 162543366
+      md5: 87f63bc3e1a15ca0346e301b5261c887
+      size: 165227502
     - path: data/curated/outc.parquet
       hash: md5
-      md5: 694a0bc4aa5f4a341aa139a0949d57f6
-      size: 39447869
+      md5: da002addb5d5d82ed69182433cd715f2
+      size: 39784846
     - path: data/curated/reac.parquet
       hash: md5
-      md5: 3c79537059965941002800f955904aef
-      size: 211809058
+      md5: 404fcee0e706f7e004e7059afbf06802
+      size: 214694241
     - path: data/curated/rpsr.parquet
       hash: md5
-      md5: a73f895720df2c1ce3f888613c9b1bce
-      size: 7302585
+      md5: a1acd0f87695b950c0bebb8277945a7f
+      size: 7355569
     - path: data/curated/surviving_records.parquet
       hash: md5
-      md5: a3b44d5597ef3607af14dd07968880cf
-      size: 211187007
+      md5: 59cd69dc008e74acb467c327e671890e
+      size: 214579623
     - path: data/curated/ther.parquet
       hash: md5
-      md5: a845a3f88bfef923a643e1387ae9b181
-      size: 145059664
+      md5: 1012c5e92400c75ca77dfa3d9584eb1a
+      size: 146880915
     - path: results/dedup_stats.json
       hash: md5
-      md5: 1ecc47781dba3574ee47c8019bb77700
+      md5: ebad3fbad5e133a9fee189dcd57eb0c4
       size: 277
   normalize:
     cmd: python -m faers.cli normalize
     deps:
     - path: data/curated/drug.parquet
       hash: md5
-      md5: 7465b7dc80a139708803a650d44db140
-      size: 561609515
+      md5: bd0d294970f86415e6d60b0f1f021b7d
+      size: 570106228
     - path: data/reference/ndc_brand_index.parquet
       hash: md5
       md5: bdb560044450f833199d4212880e1a3d
@@ -138,43 +138,43 @@ stages:
     outs:
     - path: data/curated/drug_ingredients.parquet
       hash: md5
-      md5: f3614744bab1e883f181b198d77fbebf
-      size: 586581181
+      md5: 1d640fcf6ede60889bdcef355a36f4d5
+      size: 595171393
     - path: data/reference/rxcui_cache.json
       hash: md5
-      md5: 2f1c2e9b7add85e14eebc8b6ec83c1ec
-      size: 771753
+      md5: 46f2486ae8fd8087569b4ccc173cbcd9
+      size: 775412
     - path: data/reference/rxnav_cache.json
       hash: md5
-      md5: 568872b68d08e7a46a578592598909c2
-      size: 90702
+      md5: 057432aa5dfdefc001dcbab6838821e1
+      size: 91253
     - path: results/normalize_stats.json
       hash: md5
-      md5: b9e2bd83774cc51936ed3b16818120b5
+      md5: 6483bcb4bbec70c2abb8de7a3c28af89
       size: 565
   describe:
     cmd: python -m faers.cli describe
     deps:
     - path: data/curated/demo.parquet
       hash: md5
-      md5: 5acd433e2e5bc910f17e64feccb742ff
-      size: 545707031
+      md5: 9fa8f9ea18cd6d247395da5d100f1fd3
+      size: 554322162
     - path: data/curated/drug_ingredients.parquet
       hash: md5
-      md5: f3614744bab1e883f181b198d77fbebf
-      size: 586581181
+      md5: 1d640fcf6ede60889bdcef355a36f4d5
+      size: 595171393
     - path: data/curated/indi.parquet
       hash: md5
-      md5: 6ba5e2776e1cff2a187083c753d5ae5e
-      size: 162543366
+      md5: 87f63bc3e1a15ca0346e301b5261c887
+      size: 165227502
     - path: data/curated/outc.parquet
       hash: md5
-      md5: 694a0bc4aa5f4a341aa139a0949d57f6
-      size: 39447869
+      md5: da002addb5d5d82ed69182433cd715f2
+      size: 39784846
     - path: data/curated/reac.parquet
       hash: md5
-      md5: 3c79537059965941002800f955904aef
-      size: 211809058
+      md5: 404fcee0e706f7e004e7059afbf06802
+      size: 214694241
     - path: src/faers/stats/descriptive.py
       hash: md5
       md5: 88b20f721b10cf4085ac5769348b81f6
@@ -189,24 +189,24 @@ stages:
     outs:
     - path: results/descriptive
       hash: md5
-      md5: 82975b92d33688415f3f58ace0b97892.dir
-      size: 32520
+      md5: fc48f526e35867e66542f209ae67bd8b.dir
+      size: 32466
       nfiles: 17
   signals:
     cmd: python -m faers.cli signals
     deps:
     - path: data/curated/demo.parquet
       hash: md5
-      md5: 5acd433e2e5bc910f17e64feccb742ff
-      size: 545707031
+      md5: 9fa8f9ea18cd6d247395da5d100f1fd3
+      size: 554322162
     - path: data/curated/drug_ingredients.parquet
       hash: md5
-      md5: f3614744bab1e883f181b198d77fbebf
-      size: 586581181
+      md5: 1d640fcf6ede60889bdcef355a36f4d5
+      size: 595171393
     - path: data/curated/reac.parquet
       hash: md5
-      md5: 3c79537059965941002800f955904aef
-      size: 211809058
+      md5: 404fcee0e706f7e004e7059afbf06802
+      size: 214694241
     - path: src/faers/signals.py
       hash: md5
       md5: 3ae675a2c33a84933cfaef483de4a47a
@@ -229,39 +229,39 @@ stages:
     outs:
     - path: results/signals/counts.parquet
       hash: md5
-      md5: acb3e97b30507cc33a45e6cd56718467
-      size: 11198660
+      md5: 584810aa5e292ab5551b678bacdf6c68
+      size: 11328361
     - path: results/signals/fanout.json
       hash: md5
-      md5: 4f8f0fc9df95dd3215012cd57a81fd1b
+      md5: b3a552ce5dba0975adee438cc6d5295a
       size: 195
     - path: results/signals/scored.parquet
       hash: md5
-      md5: aff39c39cfeefd9b8fd860c5f2881d80
-      size: 268127395
+      md5: 800099ca336392581fcecfb90ea8ec6f
+      size: 269384919
     - path: results/signals/summary.json
       hash: md5
-      md5: 2137be0b90a8b416182672e7c55da513
-      size: 939
+      md5: 82f2576310e84a9fabae5efebe1d423f
+      size: 938
   stratify:
     cmd: python -m faers.cli stratify
     deps:
     - path: data/curated/demo.parquet
       hash: md5
-      md5: 5acd433e2e5bc910f17e64feccb742ff
-      size: 545707031
+      md5: 9fa8f9ea18cd6d247395da5d100f1fd3
+      size: 554322162
     - path: data/curated/drug_ingredients.parquet
       hash: md5
-      md5: f3614744bab1e883f181b198d77fbebf
-      size: 586581181
+      md5: 1d640fcf6ede60889bdcef355a36f4d5
+      size: 595171393
     - path: data/curated/reac.parquet
       hash: md5
-      md5: 3c79537059965941002800f955904aef
-      size: 211809058
+      md5: 404fcee0e706f7e004e7059afbf06802
+      size: 214694241
     - path: results/signals/scored.parquet
       hash: md5
-      md5: aff39c39cfeefd9b8fd860c5f2881d80
-      size: 268127395
+      md5: 800099ca336392581fcecfb90ea8ec6f
+      size: 269384919
     - path: src/faers/stats/stratified.py
       hash: md5
       md5: 7ff0d11a4346a0ee143011a0159b0618
@@ -287,52 +287,52 @@ stages:
     outs:
     - path: results/stratified
       hash: md5
-      md5: 0d3a9377ec8893b92d5a65bf35a1c99e.dir
-      size: 315917839
+      md5: c6bc842e2498725f9b3cf590a8bb9570.dir
+      size: 320824236
       nfiles: 7
     - path: results/stratify_summary.json
       hash: md5
-      md5: 11da9def95e455c585bcc60dbefd6361
+      md5: 8dcfa72da566bc42fb703da267e079cb
       size: 483
   figures:
     cmd: python -m faers.cli figures
     deps:
     - path: results/descriptive
       hash: md5
-      md5: 82975b92d33688415f3f58ace0b97892.dir
-      size: 32520
+      md5: fc48f526e35867e66542f209ae67bd8b.dir
+      size: 32466
       nfiles: 17
     - path: results/drift
       hash: md5
-      md5: 94008f452975a47acb9482b3436830cf.dir
-      size: 249522
+      md5: e2bfb84978cc16b8f86c799a43d48113.dir
+      size: 253772
       nfiles: 2
     - path: results/signals/scored.parquet
       hash: md5
-      md5: aff39c39cfeefd9b8fd860c5f2881d80
-      size: 268127395
+      md5: 800099ca336392581fcecfb90ea8ec6f
+      size: 269384919
     - path: results/stratified
       hash: md5
-      md5: 0d3a9377ec8893b92d5a65bf35a1c99e.dir
-      size: 315917839
+      md5: c6bc842e2498725f9b3cf590a8bb9570.dir
+      size: 320824236
       nfiles: 7
     - path: src/faers/plots.py
       hash: md5
-      md5: e95affee15f1351a1f6c411eb4b14877
-      size: 18153
+      md5: f97cf7e86bb60256282db5d4ea9932c8
+      size: 19053
     outs:
     - path: figures
       hash: md5
-      md5: 58145914a49c99d1239903d1307358f5.dir
-      size: 5157035
+      md5: 822dc4f8e120178890f9b2639b5dc4ba.dir
+      size: 5085592
       nfiles: 30
   report:
     cmd: python -m faers.cli report
     deps:
     - path: figures
       hash: md5
-      md5: 58145914a49c99d1239903d1307358f5.dir
-      size: 5157035
+      md5: 822dc4f8e120178890f9b2639b5dc4ba.dir
+      size: 5085592
       nfiles: 30
     - path: report/_quarto.yml
       hash: md5
@@ -340,43 +340,43 @@ stages:
       size: 733
     - path: report/index.qmd
       hash: md5
-      md5: e72967bfff4a1e4543e1918414495cdf
-      size: 30943
+      md5: ce31de54110b85e96eb0e84fbe5bbe90
+      size: 30958
     - path: results/dedup_stats.json
       hash: md5
-      md5: 1ecc47781dba3574ee47c8019bb77700
+      md5: ebad3fbad5e133a9fee189dcd57eb0c4
       size: 277
     - path: results/descriptive
       hash: md5
-      md5: 82975b92d33688415f3f58ace0b97892.dir
-      size: 32520
+      md5: fc48f526e35867e66542f209ae67bd8b.dir
+      size: 32466
       nfiles: 17
     - path: results/drift_summary.json
       hash: md5
-      md5: 22a0df23a996e1c461c99ea4c1069cd2
+      md5: f8d34634e3da4761f33d2b8b2dc65e62
       size: 242
     - path: results/duplicates_summary.json
       hash: md5
-      md5: 94a91e33d884afb4bcbde5e421757f48
+      md5: 317fd61993f61ede9ac0673cde01f55f
       size: 750
     - path: results/normalize_stats.json
       hash: md5
-      md5: b9e2bd83774cc51936ed3b16818120b5
+      md5: 6483bcb4bbec70c2abb8de7a3c28af89
       size: 565
     - path: results/signals/summary.json
       hash: md5
-      md5: 2137be0b90a8b416182672e7c55da513
-      size: 939
+      md5: 82f2576310e84a9fabae5efebe1d423f
+      size: 938
     - path: results/similarity
       hash: md5
-      md5: 0807d35628e08ea38971a07eb1e03992.dir
-      size: 135043
+      md5: f2c561962d8df8331fdb8e07afa47fba.dir
+      size: 134987
       nfiles: 4
     outs:
     - path: docs
       hash: md5
-      md5: 9a224d06b414cb09ca3232232c506b60.dir
-      size: 6515023
+      md5: 27fbf3f1daa20777649823e150352ba0.dir
+      size: 6443610
       nfiles: 36
   brands:
     cmd: python -m faers.cli brands
@@ -403,16 +403,16 @@ stages:
     deps:
     - path: data/curated/demo.parquet
       hash: md5
-      md5: 5acd433e2e5bc910f17e64feccb742ff
-      size: 545707031
+      md5: 9fa8f9ea18cd6d247395da5d100f1fd3
+      size: 554322162
     - path: data/curated/drug_ingredients.parquet
       hash: md5
-      md5: f3614744bab1e883f181b198d77fbebf
-      size: 586581181
+      md5: 1d640fcf6ede60889bdcef355a36f4d5
+      size: 595171393
     - path: data/curated/reac.parquet
       hash: md5
-      md5: 3c79537059965941002800f955904aef
-      size: 211809058
+      md5: 404fcee0e706f7e004e7059afbf06802
+      size: 214694241
     - path: src/faers/duplicates.py
       hash: md5
       md5: c46cffbb8a79f4a00ee46f3afb865aea
@@ -425,24 +425,24 @@ stages:
     outs:
     - path: results/duplicates
       hash: md5
-      md5: 5dfe89e53373f0ae1ae934cd8660d61f.dir
-      size: 260906036
+      md5: 32fa7ace4159ca667f48848237d298ba.dir
+      size: 252648463
       nfiles: 4
     - path: results/duplicates_summary.json
       hash: md5
-      md5: 94a91e33d884afb4bcbde5e421757f48
+      md5: 317fd61993f61ede9ac0673cde01f55f
       size: 750
   drift:
     cmd: python -m faers.cli drift
     deps:
     - path: data/curated/demo.parquet
       hash: md5
-      md5: 5acd433e2e5bc910f17e64feccb742ff
-      size: 545707031
+      md5: 9fa8f9ea18cd6d247395da5d100f1fd3
+      size: 554322162
     - path: data/curated/reac.parquet
       hash: md5
-      md5: 3c79537059965941002800f955904aef
-      size: 211809058
+      md5: 404fcee0e706f7e004e7059afbf06802
+      size: 214694241
     - path: src/faers/stats/drift.py
       hash: md5
       md5: 8fa3c860bf69729c7573035c175a90a7
@@ -450,20 +450,20 @@ stages:
     outs:
     - path: results/drift
       hash: md5
-      md5: 94008f452975a47acb9482b3436830cf.dir
-      size: 249522
+      md5: e2bfb84978cc16b8f86c799a43d48113.dir
+      size: 253772
       nfiles: 2
     - path: results/drift_summary.json
       hash: md5
-      md5: 22a0df23a996e1c461c99ea4c1069cd2
+      md5: f8d34634e3da4761f33d2b8b2dc65e62
       size: 242
   similarity:
     cmd: python -m faers.cli similarity
     deps:
     - path: results/signals/scored.parquet
       hash: md5
-      md5: aff39c39cfeefd9b8fd860c5f2881d80
-      size: 268127395
+      md5: 800099ca336392581fcecfb90ea8ec6f
+      size: 269384919
     - path: src/faers/stats/similarity.py
       hash: md5
       md5: d39783c7f77bf67da53f4af6f39cc27a
@@ -475,10 +475,10 @@ stages:
     outs:
     - path: results/similarity
       hash: md5
-      md5: 0807d35628e08ea38971a07eb1e03992.dir
-      size: 135043
+      md5: f2c561962d8df8331fdb8e07afa47fba.dir
+      size: 134987
       nfiles: 4
     - path: results/similarity_summary.json
       hash: md5
-      md5: 2e74c84365ec9731ca7e027a8b0b4cf1
-      size: 741
+      md5: cae4ac3b9d5bb3aa7d22389c93ca9f68
+      size: 739

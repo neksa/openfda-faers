@@ -6,7 +6,7 @@
   }
  },
  "data": {
-  "name": "data-b3441ccad3816dd5965f257ab4af87a3"
+  "name": "data-c83f9a236c23085d6e7b9ad04df09ea0"
  },
  "mark": {
   "type": "line",
@@ -44,66 +44,66 @@
  "width": 620,
  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
  "datasets": {
-  "data-b3441ccad3816dd5965f257ab4af87a3": [
+  "data-c83f9a236c23085d6e7b9ad04df09ea0": [
    {
     "year": 2004,
-    "reports": 205154
+    "reports": 205152
    },
    {
     "year": 2005,
-    "reports": 230441
+    "reports": 230440
    },
    {
     "year": 2006,
-    "reports": 245237
+    "reports": 245234
    },
    {
     "year": 2007,
-    "reports": 264528
+    "reports": 264525
    },
    {
     "year": 2008,
-    "reports": 309538
+    "reports": 309536
    },
    {
     "year": 2009,
-    "reports": 335508
+    "reports": 335494
    },
    {
     "year": 2010,
-    "reports": 475980
+    "reports": 475938
    },
    {
     "year": 2011,
-    "reports": 538584
+    "reports": 538531
    },
    {
     "year": 2012,
-    "reports": 637755
+    "reports": 637652
    },
    {
     "year": 2013,
-    "reports": 769472
+    "reports": 769268
    },
    {
     "year": 2014,
-    "reports": 811933
+    "reports": 811492
    },
    {
     "year": 2015,
-    "reports": 1224113
+    "reports": 1222769
    },
    {
     "year": 2016,
-    "reports": 1147014
+    "reports": 1143196
    },
    {
     "year": 2017,
-    "reports": 1231908
+    "reports": 1202915
    },
    {
     "year": 2018,
-    "reports": 1055713
+    "reports": 1409767
    },
    {
     "year": 2019,

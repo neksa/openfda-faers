@@ -1,10 +1,10 @@
 {
-  "terms_tested": 7382,
+  "terms_tested": 7417,
   "min_total_reports": 200,
-  "terms_drift_suspect": 2334,
-  "terms_drift_suspect_fraction": 0.3162,
-  "late_onset": 639,
+  "terms_drift_suspect": 2363,
+  "terms_drift_suspect_fraction": 0.3186,
+  "late_onset": 642,
   "discontinued": 191,
-  "step_change": 1656,
-  "report_mentions_affected_fraction": 0.1637
+  "step_change": 1683,
+  "report_mentions_affected_fraction": 0.1644
 }

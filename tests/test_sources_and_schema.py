@@ -116,3 +116,62 @@ class TestValueVocabularies:
         assert S.AGE_TO_YEARS["YR"] == 1.0
         assert S.AGE_TO_YEARS["DEC"] == 10.0
         assert S.AGE_TO_YEARS["MON"] == pytest.approx(1 / 12)
+
+
+class TestMemberNamingQuirks:
+    """Archive member names are not uniform across 22 years.
+
+    2018Q1 ships its demographics as ``DEMO18Q1_new.txt``. An exact-name match returned nothing,
+    and because every child table joins to DEMO by record_id, that one unmatched file removed the
+    whole quarter -- about 330,000 reports -- from the corpus without raising anything.
+    """
+
+    @staticmethod
+    def archive(tmp_path, names):
+        import zipfile
+
+        p = tmp_path / "q.zip"
+        with zipfile.ZipFile(p, "w") as zf:
+            for n in names:
+                zf.writestr(n, "header\n")
+        return zipfile.ZipFile(p)
+
+    def test_finds_a_qualified_stem(self, tmp_path):
+        from faers.sources import find_member, parse_quarter
+
+        zf = self.archive(tmp_path, ["ascii/DEMO18Q1_new.txt", "ascii/DRUG18Q1.txt"])
+        assert find_member(zf, "DEMO", parse_quarter("2018Q1")) == "ascii/DEMO18Q1_new.txt"
+
+    def test_prefers_the_bare_stem_when_both_exist(self, tmp_path):
+        from faers.sources import find_member, parse_quarter
+
+        zf = self.archive(tmp_path, ["ascii/DEMO18Q1_new.txt", "ascii/DEMO18Q1.txt"])
+        assert find_member(zf, "DEMO", parse_quarter("2018Q1")) == "ascii/DEMO18Q1.txt"
+
+    def test_does_not_match_a_different_table(self, tmp_path):
+        """DEMO must not pick up DEMOGRAPHICS-like names from another table's family."""
+        from faers.sources import find_member, parse_quarter
+
+        zf = self.archive(tmp_path, ["ascii/DRUG18Q1.txt"])
+        assert find_member(zf, "DEMO", parse_quarter("2018Q1")) is None
+
+    def test_ignores_a_pdf_of_the_same_stem(self, tmp_path):
+        from faers.sources import find_member, parse_quarter
+
+        zf = self.archive(tmp_path, ["ascii/demo18q1.pdf", "ascii/DEMO18Q1_new.txt"])
+        assert find_member(zf, "DEMO", parse_quarter("2018Q1")).endswith(".txt")
+
+    def test_missing_demo_raises_rather_than_returning_empty(self, tmp_path):
+        """The structural fix: a missing spine must stop the run, not yield a silent zero."""
+        import zipfile
+
+        import pytest
+
+        from faers.harmonize import harmonize_quarter
+        from faers.sources import parse_quarter
+
+        p = tmp_path / "2018Q1.zip"
+        with zipfile.ZipFile(p, "w") as zf:
+            zf.writestr("ascii/DRUG18Q1.txt", "primaryid$drug_seq$role_cod$drugname\n")
+        with pytest.raises(FileNotFoundError, match="no DEMO table"):
+            harmonize_quarter(p, parse_quarter("2018Q1"), tmp_path / "out")

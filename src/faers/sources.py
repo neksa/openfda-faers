@@ -95,16 +95,31 @@ def find_member(zf: zipfile.ZipFile, table: str, q: Quarter) -> str | None:
     extension ``.TXT`` or ``.txt``, with occasional stray members (``Thumbs.db``, PDFs, and in a few
     quarters a duplicate copy under a nested folder). Match on the basename case-insensitively and
     prefer the shallowest path so a stray nested duplicate never wins.
+
+    Some quarters append a qualifier to the stem. 2018Q1 ships its demographics as
+    ``DEMO18Q1_new.txt`` -- FDA reissued that quarter -- and an exact-name match returned nothing.
+    Because every child table joins to DEMO, that one unmatched file silently removed the whole
+    quarter, roughly 330,000 reports, from the corpus. A trailing ``_qualifier`` is therefore
+    accepted, while a bare stem is still preferred when both exist.
     """
-    want = f"{table}{q.yy}Q{q.quarter}.txt".lower()
-    hits = [
-        n
-        for n in zf.namelist()
-        if not n.endswith("/") and Path(n).name.lower() == want
-    ]
+    stem = f"{table}{q.yy}Q{q.quarter}".lower()
+    hits = []
+    for n in zf.namelist():
+        if n.endswith("/"):
+            continue
+        p = Path(n)
+        if p.suffix.lower() != ".txt":
+            continue
+        name = p.stem.lower()
+        if name == stem or (name.startswith(stem) and name[len(stem):].startswith("_")):
+            hits.append(n)
     if not hits:
         return None
-    return min(hits, key=lambda n: (n.count("/"), len(n)))
+    # Exact stem first, then shallowest path, then shortest name.
+    return min(
+        hits,
+        key=lambda n: (Path(n).stem.lower() != stem, n.count("/"), len(n)),
+    )
 
 
 def find_delete_member(zf: zipfile.ZipFile, q: Quarter) -> str | None:

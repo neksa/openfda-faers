@@ -348,15 +348,31 @@ def drift_trajectories(traj: pl.DataFrame, out_dir: Path) -> None:
     Emphasis again: flagged terms in the accent hue, stable terms grey, so the abrupt step that
     defines vocabulary change is visible as a shape rather than inferred from a count.
     """
-    d = traj.with_columns(
-        # qidx is year*4 + quarter - 1. Dividing rather than floor-dividing keeps the four
-        # quarters of a year at distinct x positions; collapsing them onto the integer year drew
-        # a sawtooth that looked like volatility but was four points stacked on one tick.
-        (pl.col("qidx") / 4).alias("year"),
-        pl.when(pl.col("drift_suspect"))
-        .then(pl.lit("Drift-suspect"))
-        .otherwise(pl.lit("Stable"))
-        .alias("status"),
+    # Reindex every term onto the full quarter grid, leaving a null share where the term does not
+    # appear. Without this the line mark joins the quarters either side of an absence with a
+    # straight segment: three of these terms are present in only 29-37 of 90 quarters, so the
+    # chart drew long near-horizontal lines across years in which the term did not exist, and
+    # where two such lines crossed they read as a trajectory doubling back in time. A gap in the
+    # data should look like a gap.
+    terms = traj.select("pt", "drift_suspect").unique()
+    grid = pl.DataFrame(
+        {"qidx": list(range(traj["qidx"].min(), traj["qidx"].max() + 1))},
+        schema={"qidx": traj.schema["qidx"]},
+    ).join(terms, how="cross")
+
+    d = (
+        grid.join(traj.select("pt", "qidx", "share"), on=["pt", "qidx"], how="left")
+        .with_columns(
+            # qidx is year*4 + quarter - 1. Dividing rather than floor-dividing keeps the four
+            # quarters of a year at distinct x positions; collapsing them onto the integer year
+            # drew a sawtooth that looked like volatility but was four points on one tick.
+            (pl.col("qidx") / 4).alias("year"),
+            pl.when(pl.col("drift_suspect"))
+            .then(pl.lit("Drift-suspect"))
+            .otherwise(pl.lit("Stable"))
+            .alias("status"),
+        )
+        .sort(["pt", "qidx"])
     )
     chart = (
         _base(d, "Reaction term trajectories: vocabulary change has a shape")

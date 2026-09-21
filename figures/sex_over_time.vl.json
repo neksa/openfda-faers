@@ -6,7 +6,7 @@
   }
  },
  "data": {
-  "name": "data-6b5db8a332e477caa44e6baf562de6d9"
+  "name": "data-ded1e31a9efbae47abe02aa8d730e516"
  },
  "mark": {
   "type": "area"
@@ -59,16 +59,16 @@
  "width": 620,
  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
  "datasets": {
-  "data-6b5db8a332e477caa44e6baf562de6d9": [
+  "data-ded1e31a9efbae47abe02aa8d730e516": [
    {
     "year": 2004,
     "sex": "F",
-    "reports": 114565
+    "reports": 114564
    },
    {
     "year": 2004,
     "sex": "M",
-    "reports": 76085
+    "reports": 76084
    },
    {
     "year": 2004,
@@ -83,7 +83,7 @@
    {
     "year": 2005,
     "sex": "M",
-    "reports": 90461
+    "reports": 90460
    },
    {
     "year": 2005,
@@ -93,7 +93,7 @@
    {
     "year": 2006,
     "sex": "F",
-    "reports": 134428
+    "reports": 134425
    },
    {
     "year": 2006,
@@ -108,7 +108,7 @@
    {
     "year": 2007,
     "sex": "F",
-    "reports": 148750
+    "reports": 148747
    },
    {
     "year": 2007,
@@ -123,7 +123,7 @@
    {
     "year": 2008,
     "sex": "F",
-    "reports": 177066
+    "reports": 177064
    },
    {
     "year": 2008,
@@ -138,12 +138,12 @@
    {
     "year": 2009,
     "sex": "F",
-    "reports": 186914
+    "reports": 186907
    },
    {
     "year": 2009,
     "sex": "M",
-    "reports": 120330
+    "reports": 120323
    },
    {
     "year": 2009,
@@ -153,137 +153,137 @@
    {
     "year": 2010,
     "sex": "F",
-    "reports": 258633
+    "reports": 258615
    },
    {
     "year": 2010,
     "sex": "M",
-    "reports": 160948
+    "reports": 160930
    },
    {
     "year": 2010,
     "sex": "UNK",
-    "reports": 56399
+    "reports": 56393
    },
    {
     "year": 2011,
     "sex": "F",
-    "reports": 314179
+    "reports": 314150
    },
    {
     "year": 2011,
     "sex": "M",
-    "reports": 185644
+    "reports": 185622
    },
    {
     "year": 2011,
     "sex": "UNK",
-    "reports": 38761
+    "reports": 38759
    },
    {
     "year": 2012,
     "sex": "F",
-    "reports": 365517
+    "reports": 365476
    },
    {
     "year": 2012,
     "sex": "M",
-    "reports": 220852
+    "reports": 220810
    },
    {
     "year": 2012,
     "sex": "UNK",
-    "reports": 51386
+    "reports": 51366
    },
    {
     "year": 2013,
     "sex": "F",
-    "reports": 450758
+    "reports": 450635
    },
    {
     "year": 2013,
     "sex": "M",
-    "reports": 269692
+    "reports": 269619
    },
    {
     "year": 2013,
     "sex": "UNK",
-    "reports": 49022
+    "reports": 49014
    },
    {
     "year": 2014,
     "sex": "F",
-    "reports": 461505
+    "reports": 461272
    },
    {
     "year": 2014,
     "sex": "M",
-    "reports": 280164
+    "reports": 279985
    },
    {
     "year": 2014,
     "sex": "UNK",
-    "reports": 70264
+    "reports": 70235
    },
    {
     "year": 2015,
     "sex": "F",
-    "reports": 675100
+    "reports": 674556
    },
    {
     "year": 2015,
     "sex": "M",
-    "reports": 421451
+    "reports": 420779
    },
    {
     "year": 2015,
     "sex": "UNK",
-    "reports": 127562
+    "reports": 127434
    },
    {
     "year": 2016,
     "sex": "F",
-    "reports": 629873
+    "reports": 627922
    },
    {
     "year": 2016,
     "sex": "M",
-    "reports": 398672
+    "reports": 397079
    },
    {
     "year": 2016,
     "sex": "UNK",
-    "reports": 118469
+    "reports": 118195
    },
    {
     "year": 2017,
     "sex": "F",
-    "reports": 661135
+    "reports": 646177
    },
    {
     "year": 2017,
     "sex": "M",
-    "reports": 424421
+    "reports": 413660
    },
    {
     "year": 2017,
     "sex": "UNK",
-    "reports": 146352
+    "reports": 143078
    },
    {
     "year": 2018,
     "sex": "F",
-    "reports": 569143
+    "reports": 753412
    },
    {
     "year": 2018,
     "sex": "M",
-    "reports": 356452
+    "reports": 473850
    },
    {
     "year": 2018,
     "sex": "UNK",
-    "reports": 130118
+    "reports": 182505
    },
    {
     "year": 2019,

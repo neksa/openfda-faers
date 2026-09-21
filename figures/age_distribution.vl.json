@@ -6,7 +6,7 @@
   }
  },
  "data": {
-  "name": "data-0434dc526ee9423e8577286e0fe9f3c9"
+  "name": "data-d04c70a44ef118311af299d8752d63a7"
  },
  "mark": {
   "type": "bar",
@@ -48,34 +48,34 @@
  "width": 620,
  "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
  "datasets": {
-  "data-0434dc526ee9423e8577286e0fe9f3c9": [
+  "data-d04c70a44ef118311af299d8752d63a7": [
    {
     "age_band": "Unknown",
-    "reports": 8388236
+    "reports": 8536599
    },
    {
     "age_band": "Adult",
-    "reports": 6855506
+    "reports": 6951170
    },
    {
     "age_band": "Elderly",
-    "reports": 4349272
+    "reports": 4414744
    },
    {
     "age_band": "Adolescent",
-    "reports": 330176
+    "reports": 334030
    },
    {
     "age_band": "Child",
-    "reports": 291364
+    "reports": 295550
    },
    {
     "age_band": "Infant",
-    "reports": 71168
+    "reports": 72200
    },
    {
     "age_band": "Neonate",
-    "reports": 38461
+    "reports": 38921
    }
   ]
  }

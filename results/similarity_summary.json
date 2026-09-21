@@ -1,34 +1,34 @@
 {
   "drugs": 2000,
-  "reactions": 18136,
-  "profile_density": 0.03502,
+  "reactions": 18173,
+  "profile_density": 0.03508,
   "clusters": 40,
-  "largest_cluster": 500,
+  "largest_cluster": 520,
   "validation": {
     "statins": {
       "members": 5,
-      "within_class_similarity": 0.3438,
+      "within_class_similarity": 0.3441,
       "vs_overall": 3.83
     },
     "ace_inhibitors": {
       "members": 5,
-      "within_class_similarity": 0.2937,
-      "vs_overall": 3.27
+      "within_class_similarity": 0.294,
+      "vs_overall": 3.28
     },
     "tnf_inhibitors": {
       "members": 5,
-      "within_class_similarity": 0.5418,
+      "within_class_similarity": 0.5409,
       "vs_overall": 6.03
     },
     "ssris": {
       "members": 5,
-      "within_class_similarity": 0.5778,
-      "vs_overall": 6.43
+      "within_class_similarity": 0.5785,
+      "vs_overall": 6.45
     },
     "bisphosphonates": {
       "members": 5,
-      "within_class_similarity": 0.4116,
-      "vs_overall": 4.58
+      "within_class_similarity": 0.412,
+      "vs_overall": 4.59
     }
   },
   "mean_validation_ratio": 4.83

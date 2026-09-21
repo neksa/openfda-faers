@@ -4,7 +4,7 @@
 [![Report](https://img.shields.io/badge/report-Quarto-75AADB.svg)](https://neksa.github.io/openfda-faers/)
 [![Tests](https://img.shields.io/badge/tests-140%20passing-brightgreen.svg)](tests/)
 
-A DVC pipeline over **every adverse event report the FDA has published since 2004** — 20.3 million
+A DVC pipeline over **every adverse event report the FDA has published since 2004** — 20.6 million
 distinct cases after deduplication, spanning both the legacy LAERS and current FAERS eras — with
 disproportionality analysis, confounder adjustment, and a rendered report.
 
@@ -14,14 +14,14 @@ disproportionality analysis, confounder adjustment, and a rendered report.
 
 | | |
 |---|---|
-| **How much of the database is distinct?** | 16.7% of raw records are redundant: 4.0M superseded case versions and 67,838 FDA-retracted cases. 82,134 cases span the 2012 era boundary. |
+| **How much of the database is distinct?** | 16.8% of raw records are redundant: 4.1M superseded case versions and 68,088 FDA-retracted cases. 82,313 cases span the 2012 era boundary. |
 | **What does a report contain?** | Mean 3.18 drugs and 2.98 reactions, median 1 drug — with a tail reaching 171 drugs on one report. |
 | **Who reports?** | Consumers (8.9M) now file more than physicians (4.5M). |
-| **Which drug–event pairs report disproportionately?** | 2.00M pairs scored; 685,921 flagged by EB05 ≥ 2, the most conservative rule. |
+| **Which drug–event pairs report disproportionately?** | 2.01M pairs scored; 688,879 flagged by EB05 ≥ 2, the most conservative rule. |
 | **Do signals survive confounder adjustment?** | 98.5–100% survive Mantel–Haenszel adjustment, but Breslow–Day rejects homogeneity for 50–76% — the confounders modify signals rather than create them. |
 | **How much of the corpus supports a causal reading?** | 0.147% of drug records are a suspect drug with both positive dechallenge and positive rechallenge. |
 | **How much is vocabulary drift rather than epidemiology?** | 32% of tested reaction terms look like MedDRA revisions, touching 16% of reaction mentions. Flagged, not corrected. |
-| **How many reports are the same incident twice?** | 9.4% of linkable records, in 292k clusters — beyond the 16.7% version-based redundancy. Estimated, not removed. |
+| **How many reports are the same incident twice?** | 9.5% of linkable records, in 298k clusters — beyond the 16.8% version-based redundancy. Estimated, not removed. |
 | **Do reaction profiles recover drug classes?** | Yes — statins, ACE inhibitors, TNF inhibitors, SSRIs and bisphosphonates average 4.8× more similar within class than to the corpus. |
 
 ## Quick start

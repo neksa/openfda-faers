@@ -190,6 +190,19 @@ def harmonize_quarter(zip_path: Path, q: Quarter, out_dir: Path) -> dict:
         for table in TABLES:
             member = find_member(zf, table, q)
             if member is None:
+                # DEMO defines the cases; every other table joins to it by record_id and the dedup
+                # stage keys off it. A quarter whose DEMO is missing contributes nothing at all,
+                # and 2018Q1 did exactly that for an entire pipeline run because its file is named
+                # DEMO18Q1_new.txt. Silence is the wrong response to a missing spine.
+                if table == "DEMO":
+                    available = sorted(
+                        n for n in zf.namelist()
+                        if not n.endswith("/") and n.lower().endswith(".txt")
+                    )
+                    raise FileNotFoundError(
+                        f"{q.label}: no DEMO table in {zip_path.name}. "
+                        f"Text members present: {available}"
+                    )
                 stats[table] = 0
                 continue
 
