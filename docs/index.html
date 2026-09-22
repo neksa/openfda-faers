@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Alexander Goncearenco">
-<meta name="dcterms.date" content="2026-09-21">
+<meta name="dcterms.date" content="2026-09-22">
 
 <title>Adverse event reporting in FAERS, 2004–2026 – FAERS 2004-2026</title>
 <style>
@@ -168,6 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#does-it-recover-what-we-already-know" id="toc-does-it-recover-what-we-already-know" class="nav-link" data-scroll-target="#does-it-recover-what-we-already-know">Does it recover what we already know?</a></li>
   <li><a href="#what-ranks-highest" id="toc-what-ranks-highest" class="nav-link" data-scroll-target="#what-ranks-highest">What ranks highest</a></li>
   </ul></li>
+  <li><a href="#three-signals-checked-against-the-literature" id="toc-three-signals-checked-against-the-literature" class="nav-link" data-scroll-target="#three-signals-checked-against-the-literature">Three signals, checked against the literature</a></li>
   <li><a href="#do-signals-survive-confounder-adjustment" id="toc-do-signals-survive-confounder-adjustment" class="nav-link" data-scroll-target="#do-signals-survive-confounder-adjustment">Do signals survive confounder adjustment?</a></li>
   <li><a href="#reporting-artefacts-over-time" id="toc-reporting-artefacts-over-time" class="nav-link" data-scroll-target="#reporting-artefacts-over-time">Reporting artefacts over time</a></li>
   <li><a href="#drug-names-that-are-not-ingredients" id="toc-drug-names-that-are-not-ingredients" class="nav-link" data-scroll-target="#drug-names-that-are-not-ingredients">Drug names that are not ingredients</a></li>
@@ -202,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 21, 2026</p>
+      <p class="date">September 22, 2026</p>
     </div>
   </div>
   
@@ -53343,14 +53344,254 @@ Table&nbsp;6
 <p>Each association is real. None is a newly detected harm. Disproportionality measures how often terms co-occur relative to expectation; it does not distinguish a drug’s effect from its indication, its administration context, or a term that names its own cause.</p>
 </section>
 </section>
+<section id="three-signals-checked-against-the-literature" class="level2">
+<h2 class="anchored" data-anchor-id="three-signals-checked-against-the-literature">Three signals, checked against the literature</h2>
+<p>The corpus is large enough that plausible-looking associations are cheap. These three were taken from the top of the EB05 ranking, excluding the procedure and indication artefacts above, and then looked up in the published literature.</p>
+<div class="cell" data-execution_count="19">
+<div id="tbl-worked" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="19">
+<figure class="quarto-float quarto-float-tbl figure">
+<div aria-describedby="tbl-worked-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="19">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Drug</th>
+<th data-quarto-table-cell-role="th">Reaction</th>
+<th data-quarto-table-cell-role="th">Co-reports</th>
+<th data-quarto-table-cell-role="th">Expected</th>
+<th data-quarto-table-cell-role="th">EB05</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Gadodiamide</td>
+<td>Nephrogenic Systemic Fibrosis</td>
+<td>2,222</td>
+<td>0.5</td>
+<td>4,441</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Pentosan Polysulfate</td>
+<td>Retinal Pigmentation</td>
+<td>607</td>
+<td>0.2</td>
+<td>2,990</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Belantamab Mafodotin</td>
+<td>Keratopathy</td>
+<td>840</td>
+<td>0.2</td>
+<td>3,687</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-worked-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7
+</figcaption>
+</figure>
+</div>
+</div>
+<p><strong>Gadodiamide and nephrogenic systemic fibrosis</strong> — 2,222 co-reports against an expected 0.5. NSF is a fibrosing condition of skin and internal organs seen in patients with advanced renal impairment. According to PubMed, the causal role of gadolinium-based contrast agents is established, with gadodiamide specifically implicated among the less stable linear agents, and preventive guidelines followed (<a href="https://doi.org/10.1097/BOR.0b013e328333bf3d">DOI</a>).</p>
+<p>The reporting history shows what happened next:</p>
+<div id="cell-fig-nsf" class="cell" data-execution_count="20">
+<div id="fig-nsf" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-nsf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="viz figure" id="fig-gadolinium_nsf"><img src="figures/gadolinium_nsf.png" alt="gadolinium nsf" style="max-width:100%;height:auto" class="figure-img"></figure><script>(function(){if(typeof vegaEmbed!=='function')return;var host=document.getElementById('fig-gadolinium_nsf');var div=document.createElement('div');vegaEmbed(div,{
+ "config": {
+  "view": {
+   "continuousWidth": 300,
+   "continuousHeight": 300
+  }
+ },
+ "data": {
+  "name": "data-4ddc6776128094cb0cc689c89a57d76d"
+ },
+ "mark": {
+  "type": "bar"
+ },
+ "encoding": {
+  "color": {
+   "field": "period",
+   "legend": {
+    "orient": "top-right"
+   },
+   "scale": {
+    "domain": [
+     "2007-2014",
+     "After 2015"
+    ],
+    "range": [
+     "#2a78d6",
+     "#b8b7b0"
+    ]
+   },
+   "title": null,
+   "type": "nominal"
+  },
+  "tooltip": [
+   {
+    "field": "year",
+    "type": "ordinal"
+   },
+   {
+    "field": "reports",
+    "format": ",",
+    "type": "quantitative"
+   }
+  ],
+  "x": {
+   "field": "year",
+   "title": "FDA receipt year",
+   "type": "ordinal"
+  },
+  "y": {
+   "field": "reports",
+   "title": "Reports",
+   "type": "quantitative"
+  }
+ },
+ "height": 280,
+ "title": "Gadolinium contrast agents and nephrogenic systemic fibrosis",
+ "width": 620,
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+ "datasets": {
+  "data-4ddc6776128094cb0cc689c89a57d76d": [
+   {
+    "year": 2007,
+    "reports": 161,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2008,
+    "reports": 326,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2009,
+    "reports": 300,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2010,
+    "reports": 411,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2011,
+    "reports": 415,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2012,
+    "reports": 153,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2013,
+    "reports": 131,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2014,
+    "reports": 849,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2015,
+    "reports": 19,
+    "period": "After 2015"
+   },
+   {
+    "year": 2016,
+    "reports": 13,
+    "period": "After 2015"
+   },
+   {
+    "year": 2017,
+    "reports": 50,
+    "period": "After 2015"
+   },
+   {
+    "year": 2018,
+    "reports": 26,
+    "period": "After 2015"
+   },
+   {
+    "year": 2019,
+    "reports": 29,
+    "period": "After 2015"
+   },
+   {
+    "year": 2020,
+    "reports": 29,
+    "period": "After 2015"
+   },
+   {
+    "year": 2021,
+    "reports": 12,
+    "period": "After 2015"
+   },
+   {
+    "year": 2022,
+    "reports": 9,
+    "period": "After 2015"
+   },
+   {
+    "year": 2023,
+    "reports": 6,
+    "period": "After 2015"
+   },
+   {
+    "year": 2024,
+    "reports": 5,
+    "period": "After 2015"
+   },
+   {
+    "year": 2025,
+    "reports": 6,
+    "period": "After 2015"
+   },
+   {
+    "year": 2026,
+    "reports": 9,
+    "period": "After 2015"
+   }
+  ]
+ }
+},{actions:{export:true,source:false,editor:false}}).then(function(){host.replaceChildren(div);}).catch(function(){/* keep the static image */});})();</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-nsf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12
+</figcaption>
+</figure>
+</div>
+</div>
+<p>Reports begin in 2007, run through 2014, then collapse to single digits — 849 in 2014 against 6 in 2023. The association was recognised in 2006–2007 and FDA restricted gadolinium use in advanced kidney disease; the decline is what a successful intervention looks like in reporting data. It also shows why the pooled statistic understates the story: EB05 = 4,441 is computed across 22 years, but the exposure that generated it largely stopped a decade ago.</p>
+<p><strong>Pentosan polysulfate and retinal pigmentation</strong> — 607 co-reports against 0.2. Pentosan polysulfate is the only oral therapy approved for interstitial cystitis. According to PubMed, a progressive, dose-dependent pigmentary maculopathy affecting the retinal pigment epithelium is associated with long-term use, may progress after the drug is stopped, and prompted screening recommendations (<a href="https://doi.org/10.1016/j.survophthal.2021.05.005">DOI</a>). This one is recent — first described in 2018, long after most of the drugs in this corpus were characterised.</p>
+<p><strong>Belantamab mafodotin and keratopathy</strong> — 840 co-reports against 0.2. Belantamab mafodotin is an antibody–drug conjugate for relapsed multiple myeloma. According to PubMed, 73% of patients in the DREAMM-2 trial had keratopathy, attributed to off-target damage to corneal epithelial cells by the drug’s cytotoxic payload (<a href="https://doi.org/10.3389/fonc.2021.678634">DOI</a>).</p>
+<p><strong>What this does and does not show.</strong> All three are real, documented and in some cases label-carrying associations, which is evidence the ranking surfaces genuine safety signals alongside the indication artefacts. It is not evidence of <em>discovery</em>: these were found by looking at the top of a ranking and then reading the literature, which is the easy direction. A pair with no literature behind it would be indistinguishable here from one nobody has studied yet.</p>
+</section>
 <section id="do-signals-survive-confounder-adjustment" class="level2">
 <h2 class="anchored" data-anchor-id="do-signals-survive-confounder-adjustment">Do signals survive confounder adjustment?</h2>
 <p>Each variable is applied as a separate Mantel–Haenszel stratification, on a random sample of 18,693 signalling pairs.</p>
-<div class="cell" data-execution_count="19">
-<div id="tbl-strat" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="19">
+<div class="cell" data-execution_count="21">
+<div id="tbl-strat" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="21">
 <figure class="quarto-float quarto-float-tbl figure">
 <div aria-describedby="tbl-strat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 
 
@@ -53393,14 +53634,14 @@ Table&nbsp;6
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-strat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;7
+Table&nbsp;8
 </figcaption>
 </figure>
 </div>
 </div>
 <p>Between 98.5% and 100% of sampled signals remained above the screening threshold after separate adjustment for sex, age band or calendar period. Passing a threshold is a weaker statement than being unchanged: a signal can weaken substantially and still clear it.</p>
 <p>Breslow–Day rejects a common odds ratio across strata for 50–76% of the pairs tested. Where it does, the pooled estimate averages materially different stratum-specific values and should not be read alone. At these sample sizes the test detects differences far too small to matter clinically, so the stratum-specific <em>estimates</em>, not the p-values, are what carry interpretation. Statistical heterogeneity here is not evidence of biological effect modification.</p>
-<div id="cell-fig-strat" class="cell" data-execution_count="20">
+<div id="cell-fig-strat" class="cell" data-execution_count="22">
 <div id="fig-strat" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-strat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -53483,7 +53724,7 @@ Table&nbsp;7
 },{actions:{export:true,source:false,editor:false}}).then(function(){host.replaceChildren(div);}).catch(function(){/* keep the static image */});})();</script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-strat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;12
+Figure&nbsp;13
 </figcaption>
 </figure>
 </div>
@@ -53491,7 +53732,7 @@ Figure&nbsp;12
 </section>
 <section id="reporting-artefacts-over-time" class="level2">
 <h2 class="anchored" data-anchor-id="reporting-artefacts-over-time">Reporting artefacts over time</h2>
-<div id="cell-fig-trends" class="cell" data-execution_count="21">
+<div id="cell-fig-trends" class="cell" data-execution_count="23">
 <div id="fig-trends" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-trends-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -54054,7 +54295,7 @@ Figure&nbsp;12
 },{actions:{export:true,source:false,editor:false}}).then(function(){host.replaceChildren(div);}).catch(function(){/* keep the static image */});})();</script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-trends-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;13
+Figure&nbsp;14
 </figcaption>
 </figure>
 </div>
@@ -54064,11 +54305,11 @@ Figure&nbsp;13
 <section id="drug-names-that-are-not-ingredients" class="level2">
 <h2 class="anchored" data-anchor-id="drug-names-that-are-not-ingredients">Drug names that are not ingredients</h2>
 <p>The unit of analysis is supposed to be the active ingredient. For a large minority of entries it is not: the reported string was a brand or product name that the resolution cascade could not map, and it survives into the results under its own name.</p>
-<div class="cell" data-execution_count="22">
-<div id="tbl-unresolved" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="22">
+<div class="cell" data-execution_count="24">
+<div id="tbl-unresolved" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="24">
 <figure class="quarto-float quarto-float-tbl figure">
 <div aria-describedby="tbl-unresolved-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="22">
+<div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 
 
@@ -54095,7 +54336,7 @@ Figure&nbsp;13
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-unresolved-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;8
+Table&nbsp;9
 </figcaption>
 </figure>
 </div>
@@ -54124,11 +54365,11 @@ Table&nbsp;8
 <h2 class="anchored" data-anchor-id="do-reaction-profiles-recover-pharmacology">Do reaction profiles recover pharmacology?</h2>
 <p>If two drugs act through the same mechanism, they may provoke the same pattern of reported reactions. Drugs are compared by cosine similarity on their information-component profiles, so that what is compared is each drug’s <em>distinctive</em> reaction pattern rather than the ubiquitous terms every profile contains.</p>
 <p>Within-class similarity runs 3.0–5.8× the corpus average, highest for bisphosphonates and lowest for ACE inhibitors, with no class information supplied to the algorithm:</p>
-<div class="cell" data-execution_count="23">
-<div id="tbl-similarity" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="23">
+<div class="cell" data-execution_count="25">
+<div id="tbl-similarity" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="25">
 <figure class="quarto-float quarto-float-tbl figure">
 <div aria-describedby="tbl-similarity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 
 
@@ -54185,12 +54426,12 @@ Table&nbsp;8
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-similarity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;9
+Table&nbsp;10
 </figcaption>
 </figure>
 </div>
 </div>
-<div id="cell-fig-classsim" class="cell" data-execution_count="24">
+<div id="cell-fig-classsim" class="cell" data-execution_count="26">
 <div id="fig-classsim" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-classsim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -54558,18 +54799,18 @@ Table&nbsp;9
 },{actions:{export:true,source:false,editor:false}}).then(function(){host.replaceChildren(div);}).catch(function(){/* keep the static image */});})();</script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-classsim-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;14
+Figure&nbsp;15
 </figcaption>
 </figure>
 </div>
 </div>
 <p>The diagonal is the validation made visible. One off-diagonal cell is worth a second look: TNF inhibitors and bisphosphonates sit well above every other cross-class pair — unsurprising once stated, since both are given to overlapping rheumatology populations, and a further reminder that this measure tracks therapeutic neighbourhood rather than mechanism.</p>
 <p><strong>Every class is 3.0–5.8× more similar to itself than the corpus average</strong>, without any drug-class information entering the computation. The nearest neighbours are recognisable pharmacology:</p>
-<div class="cell" data-execution_count="25">
-<div id="tbl-neighbours" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="25">
+<div class="cell" data-execution_count="27">
+<div id="tbl-neighbours" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="27">
 <figure class="quarto-float quarto-float-tbl figure">
 <div aria-describedby="tbl-neighbours-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="27">
 <div>
 
 
@@ -54599,7 +54840,7 @@ Figure&nbsp;14
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-neighbours-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;10
+Table&nbsp;11
 </figcaption>
 </figure>
 </div>
@@ -54610,11 +54851,11 @@ Table&nbsp;10
 <section id="vocabulary-drift-measured" class="level2">
 <h2 class="anchored" data-anchor-id="vocabulary-drift-measured">Vocabulary drift, measured</h2>
 <p>MedDRA is revised twice a year and terms are added, renamed, split and merged, so a reaction term’s frequency can move for reasons unrelated to patients. Confirming a specific revision needs the licensed release history. Flagging trajectories for review does not.</p>
-<div class="cell" data-execution_count="26">
-<div id="tbl-drift" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="26">
+<div class="cell" data-execution_count="28">
+<div id="tbl-drift" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="28">
 <figure class="quarto-float quarto-float-tbl figure">
 <div aria-describedby="tbl-drift-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <div>
 
 
@@ -54664,12 +54905,12 @@ Table&nbsp;10
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-drift-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;11
+Table&nbsp;12
 </figcaption>
 </figure>
 </div>
 </div>
-<div id="cell-fig-drift" class="cell" data-execution_count="27">
+<div id="cell-fig-drift" class="cell" data-execution_count="29">
 <div id="fig-drift" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-drift-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -63401,7 +63642,7 @@ Table&nbsp;11
 },{actions:{export:true,source:false,editor:false}}).then(function(){host.replaceChildren(div);}).catch(function(){/* keep the static image */});})();</script>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-drift-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;15
+Figure&nbsp;16
 </figcaption>
 </figure>
 </div>
@@ -63414,11 +63655,11 @@ Figure&nbsp;15
 <h2 class="anchored" data-anchor-id="independent-duplicates">Independent duplicates</h2>
 <p>Deduplication earlier in this report collapsed case <em>versions</em> — follow-up submissions carrying the same case id. It cannot see the other kind of redundancy: one incident reported separately by the patient, the physician and the manufacturer, each becoming a distinct case with its own id. FDA does not link these and no field identifies them.</p>
 <p>Detected here by record linkage: block on sex, five-year age band, event year-month, reporter country <strong>and</strong> a shared drug <strong>and</strong> a shared reaction, then score candidate pairs on how much their drug and reaction sets overlap.</p>
-<div class="cell" data-execution_count="28">
-<div id="tbl-duplicates" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="28">
+<div class="cell" data-execution_count="30">
+<div id="tbl-duplicates" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="30">
 <figure class="quarto-float quarto-float-tbl figure">
 <div aria-describedby="tbl-duplicates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="28">
+<div class="cell-output cell-output-display" data-execution_count="30">
 <div>
 
 
@@ -63473,7 +63714,7 @@ Figure&nbsp;15
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-duplicates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;12
+Table&nbsp;13
 </figcaption>
 </figure>
 </div>
@@ -64375,333 +64616,401 @@ Table&nbsp;12
 <span id="cb2-451"><a href="#cb2-451" aria-hidden="true" tabindex="-1"></a>terms co-occur relative to expectation; it does not distinguish a drug's effect from its</span>
 <span id="cb2-452"><a href="#cb2-452" aria-hidden="true" tabindex="-1"></a>indication, its administration context, or a term that names its own cause.</span>
 <span id="cb2-453"><a href="#cb2-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-454"><a href="#cb2-454" aria-hidden="true" tabindex="-1"></a><span class="fu">## Do signals survive confounder adjustment?</span></span>
+<span id="cb2-454"><a href="#cb2-454" aria-hidden="true" tabindex="-1"></a><span class="fu">## Three signals, checked against the literature</span></span>
 <span id="cb2-455"><a href="#cb2-455" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-456"><a href="#cb2-456" aria-hidden="true" tabindex="-1"></a>Each variable is applied as a separate Mantel–Haenszel stratification, on a random sample of</span>
-<span id="cb2-457"><a href="#cb2-457" aria-hidden="true" tabindex="-1"></a><span class="in">`{python} n(strat["by_variable"][0]["tested"])`</span> signalling pairs.</span>
-<span id="cb2-458"><a href="#cb2-458" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-461"><a href="#cb2-461" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb2-462"><a href="#cb2-462" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: tbl-strat</span></span>
-<span id="cb2-463"><a href="#cb2-463" aria-hidden="true" tabindex="-1"></a>pl.DataFrame(</span>
-<span id="cb2-464"><a href="#cb2-464" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb2-465"><a href="#cb2-465" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Adjustment"</span>: [<span class="st">"Sex"</span>, <span class="st">"Age band"</span>, <span class="st">"Calendar period (5y)"</span>],</span>
-<span id="cb2-466"><a href="#cb2-466" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Pairs tested"</span>: [n(v[<span class="st">"tested"</span>]) <span class="cf">for</span> v <span class="kw">in</span> strat[<span class="st">"by_variable"</span>]],</span>
-<span id="cb2-467"><a href="#cb2-467" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Still signalling"</span>: [</span>
-<span id="cb2-468"><a href="#cb2-468" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>n(v[<span class="st">"surviving"</span>])<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>v[<span class="st">"survival_rate"</span>]<span class="sc">:.1%}</span><span class="ss">)'</span> <span class="cf">for</span> v <span class="kw">in</span> strat[<span class="st">"by_variable"</span>]</span>
-<span id="cb2-469"><a href="#cb2-469" aria-hidden="true" tabindex="-1"></a>        ],</span>
-<span id="cb2-470"><a href="#cb2-470" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Heterogeneous (Breslow–Day p&lt;0.05)"</span>: [</span>
-<span id="cb2-471"><a href="#cb2-471" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>n(v[<span class="st">"heterogeneous"</span>])<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>v[<span class="st">"heterogeneous"</span>]<span class="op">/</span>v[<span class="st">"tested"</span>]<span class="sc">:.0%}</span><span class="ss">)'</span></span>
-<span id="cb2-472"><a href="#cb2-472" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> v <span class="kw">in</span> strat[<span class="st">"by_variable"</span>]</span>
-<span id="cb2-473"><a href="#cb2-473" aria-hidden="true" tabindex="-1"></a>        ],</span>
-<span id="cb2-474"><a href="#cb2-474" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-475"><a href="#cb2-475" aria-hidden="true" tabindex="-1"></a>).to_pandas()</span>
-<span id="cb2-476"><a href="#cb2-476" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-477"><a href="#cb2-477" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-478"><a href="#cb2-478" aria-hidden="true" tabindex="-1"></a>Between 98.5% and 100% of sampled signals remained above the screening threshold after separate</span>
-<span id="cb2-479"><a href="#cb2-479" aria-hidden="true" tabindex="-1"></a>adjustment for sex, age band or calendar period. Passing a threshold is a weaker statement than</span>
-<span id="cb2-480"><a href="#cb2-480" aria-hidden="true" tabindex="-1"></a>being unchanged: a signal can weaken substantially and still clear it.</span>
-<span id="cb2-481"><a href="#cb2-481" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-482"><a href="#cb2-482" aria-hidden="true" tabindex="-1"></a>Breslow–Day rejects a common odds ratio across strata for 50–76% of the pairs tested. Where it</span>
-<span id="cb2-483"><a href="#cb2-483" aria-hidden="true" tabindex="-1"></a>does, the pooled estimate averages materially different stratum-specific values and should not be</span>
-<span id="cb2-484"><a href="#cb2-484" aria-hidden="true" tabindex="-1"></a>read alone. At these sample sizes the test detects differences far too small to matter clinically,</span>
-<span id="cb2-485"><a href="#cb2-485" aria-hidden="true" tabindex="-1"></a>so the stratum-specific *estimates*, not the p-values, are what carry interpretation. Statistical</span>
-<span id="cb2-486"><a href="#cb2-486" aria-hidden="true" tabindex="-1"></a>heterogeneity here is not evidence of biological effect modification.</span>
-<span id="cb2-487"><a href="#cb2-487" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-490"><a href="#cb2-490" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb2-491"><a href="#cb2-491" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: fig-strat</span></span>
-<span id="cb2-492"><a href="#cb2-492" aria-hidden="true" tabindex="-1"></a>fig(<span class="st">"stratified_survival"</span>)</span>
-<span id="cb2-493"><a href="#cb2-493" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-456"><a href="#cb2-456" aria-hidden="true" tabindex="-1"></a>The corpus is large enough that plausible-looking associations are cheap. These three were taken</span>
+<span id="cb2-457"><a href="#cb2-457" aria-hidden="true" tabindex="-1"></a>from the top of the EB05 ranking, excluding the procedure and indication artefacts above, and then</span>
+<span id="cb2-458"><a href="#cb2-458" aria-hidden="true" tabindex="-1"></a>looked up in the published literature.</span>
+<span id="cb2-459"><a href="#cb2-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-462"><a href="#cb2-462" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-463"><a href="#cb2-463" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: tbl-worked</span></span>
+<span id="cb2-464"><a href="#cb2-464" aria-hidden="true" tabindex="-1"></a>scored_lf <span class="op">=</span> pl.scan_parquet(RESULTS <span class="op">/</span> <span class="st">"signals"</span> <span class="op">/</span> <span class="st">"scored.parquet"</span>)</span>
+<span id="cb2-465"><a href="#cb2-465" aria-hidden="true" tabindex="-1"></a>examples <span class="op">=</span> [</span>
+<span id="cb2-466"><a href="#cb2-466" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"GADODIAMIDE"</span>, <span class="st">"NEPHROGENIC SYSTEMIC FIBROSIS"</span>),</span>
+<span id="cb2-467"><a href="#cb2-467" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"PENTOSAN POLYSULFATE"</span>, <span class="st">"RETINAL PIGMENTATION"</span>),</span>
+<span id="cb2-468"><a href="#cb2-468" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"BELANTAMAB MAFODOTIN"</span>, <span class="st">"KERATOPATHY"</span>),</span>
+<span id="cb2-469"><a href="#cb2-469" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-470"><a href="#cb2-470" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
+<span id="cb2-471"><a href="#cb2-471" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ing, pt <span class="kw">in</span> examples:</span>
+<span id="cb2-472"><a href="#cb2-472" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> scored_lf.<span class="bu">filter</span>((pl.col(<span class="st">"ingredient"</span>) <span class="op">==</span> ing) <span class="op">&amp;</span> (pl.col(<span class="st">"pt"</span>) <span class="op">==</span> pt)).collect()</span>
+<span id="cb2-473"><a href="#cb2-473" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r.height:</span>
+<span id="cb2-474"><a href="#cb2-474" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> r.row(<span class="dv">0</span>, named<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-475"><a href="#cb2-475" aria-hidden="true" tabindex="-1"></a>        rows.append(</span>
+<span id="cb2-476"><a href="#cb2-476" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb2-477"><a href="#cb2-477" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Drug"</span>: ing.title(),</span>
+<span id="cb2-478"><a href="#cb2-478" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Reaction"</span>: pt.title(),</span>
+<span id="cb2-479"><a href="#cb2-479" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Co-reports"</span>: n(x[<span class="st">"n_ij"</span>]),</span>
+<span id="cb2-480"><a href="#cb2-480" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Expected"</span>: <span class="ss">f'</span><span class="sc">{</span>x[<span class="st">"expected"</span>]<span class="sc">:.1f}</span><span class="ss">'</span>,</span>
+<span id="cb2-481"><a href="#cb2-481" aria-hidden="true" tabindex="-1"></a>                <span class="st">"EB05"</span>: <span class="ss">f'</span><span class="sc">{</span>x[<span class="st">"eb05"</span>]<span class="sc">:,.0f}</span><span class="ss">'</span>,</span>
+<span id="cb2-482"><a href="#cb2-482" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb2-483"><a href="#cb2-483" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb2-484"><a href="#cb2-484" aria-hidden="true" tabindex="-1"></a>pl.DataFrame(rows).to_pandas()</span>
+<span id="cb2-485"><a href="#cb2-485" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-486"><a href="#cb2-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-487"><a href="#cb2-487" aria-hidden="true" tabindex="-1"></a>**Gadodiamide and nephrogenic systemic fibrosis** — 2,222 co-reports against an expected 0.5. NSF</span>
+<span id="cb2-488"><a href="#cb2-488" aria-hidden="true" tabindex="-1"></a>is a fibrosing condition of skin and internal organs seen in patients with advanced renal</span>
+<span id="cb2-489"><a href="#cb2-489" aria-hidden="true" tabindex="-1"></a>impairment. According to PubMed, the causal role of gadolinium-based contrast agents is</span>
+<span id="cb2-490"><a href="#cb2-490" aria-hidden="true" tabindex="-1"></a>established, with gadodiamide specifically implicated among the less stable linear agents, and</span>
+<span id="cb2-491"><a href="#cb2-491" aria-hidden="true" tabindex="-1"></a>preventive guidelines followed (<span class="co">[</span><span class="ot">DOI</span><span class="co">](https://doi.org/10.1097/BOR.0b013e328333bf3d)</span>).</span>
+<span id="cb2-492"><a href="#cb2-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-493"><a href="#cb2-493" aria-hidden="true" tabindex="-1"></a>The reporting history shows what happened next:</span>
 <span id="cb2-494"><a href="#cb2-494" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-495"><a href="#cb2-495" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reporting artefacts over time</span></span>
-<span id="cb2-496"><a href="#cb2-496" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-499"><a href="#cb2-499" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb2-500"><a href="#cb2-500" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: fig-trends</span></span>
-<span id="cb2-501"><a href="#cb2-501" aria-hidden="true" tabindex="-1"></a>fig(<span class="st">"reaction_trends"</span>)</span>
-<span id="cb2-502"><a href="#cb2-502" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-503"><a href="#cb2-503" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-504"><a href="#cb2-504" aria-hidden="true" tabindex="-1"></a>Raw yearly counts rise with the corpus, so a rising count is not by itself a rising rate. Plotted</span>
-<span id="cb2-505"><a href="#cb2-505" aria-hidden="true" tabindex="-1"></a>as a share of each year's reports, the apparent upward trend in <span class="in">`DEATH`</span> is substantially the</span>
-<span id="cb2-506"><a href="#cb2-506" aria-hidden="true" tabindex="-1"></a>database growing rather than the term becoming more common.</span>
+<span id="cb2-497"><a href="#cb2-497" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-498"><a href="#cb2-498" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: fig-nsf</span></span>
+<span id="cb2-499"><a href="#cb2-499" aria-hidden="true" tabindex="-1"></a>fig(<span class="st">"gadolinium_nsf"</span>)</span>
+<span id="cb2-500"><a href="#cb2-500" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-501"><a href="#cb2-501" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-502"><a href="#cb2-502" aria-hidden="true" tabindex="-1"></a>Reports begin in 2007, run through 2014, then collapse to single digits — 849 in 2014 against 6 in</span>
+<span id="cb2-503"><a href="#cb2-503" aria-hidden="true" tabindex="-1"></a><span class="ss">2023. </span>The association was recognised in 2006–2007 and FDA restricted gadolinium use in advanced</span>
+<span id="cb2-504"><a href="#cb2-504" aria-hidden="true" tabindex="-1"></a>kidney disease; the decline is what a successful intervention looks like in reporting data. It also</span>
+<span id="cb2-505"><a href="#cb2-505" aria-hidden="true" tabindex="-1"></a>shows why the pooled statistic understates the story: EB05 = 4,441 is computed across 22 years, but</span>
+<span id="cb2-506"><a href="#cb2-506" aria-hidden="true" tabindex="-1"></a>the exposure that generated it largely stopped a decade ago.</span>
 <span id="cb2-507"><a href="#cb2-507" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-508"><a href="#cb2-508" aria-hidden="true" tabindex="-1"></a><span class="fu">## Drug names that are not ingredients</span></span>
-<span id="cb2-509"><a href="#cb2-509" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-510"><a href="#cb2-510" aria-hidden="true" tabindex="-1"></a>The unit of analysis is supposed to be the active ingredient. For a large minority of entries it</span>
-<span id="cb2-511"><a href="#cb2-511" aria-hidden="true" tabindex="-1"></a>is not: the reported string was a brand or product name that the resolution cascade could not map,</span>
-<span id="cb2-512"><a href="#cb2-512" aria-hidden="true" tabindex="-1"></a>and it survives into the results under its own name.</span>
-<span id="cb2-513"><a href="#cb2-513" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-516"><a href="#cb2-516" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb2-517"><a href="#cb2-517" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: tbl-unresolved</span></span>
-<span id="cb2-518"><a href="#cb2-518" aria-hidden="true" tabindex="-1"></a>drug_ing <span class="op">=</span> pl.scan_parquet(ROOT <span class="op">/</span> <span class="st">"data"</span> <span class="op">/</span> <span class="st">"curated"</span> <span class="op">/</span> <span class="st">"drug_ingredients.parquet"</span>)</span>
-<span id="cb2-519"><a href="#cb2-519" aria-hidden="true" tabindex="-1"></a>ever_confident <span class="op">=</span> (</span>
-<span id="cb2-520"><a href="#cb2-520" aria-hidden="true" tabindex="-1"></a>    drug_ing.group_by(<span class="st">"ingredient"</span>)</span>
-<span id="cb2-521"><a href="#cb2-521" aria-hidden="true" tabindex="-1"></a>    .agg((pl.col(<span class="st">"resolution"</span>) <span class="op">!=</span> <span class="st">"unresolved"</span>).<span class="bu">any</span>().alias(<span class="st">"confident"</span>))</span>
-<span id="cb2-522"><a href="#cb2-522" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-523"><a href="#cb2-523" aria-hidden="true" tabindex="-1"></a>ing_in_signals <span class="op">=</span> scored.select(<span class="st">"ingredient"</span>).unique()</span>
-<span id="cb2-524"><a href="#cb2-524" aria-hidden="true" tabindex="-1"></a>joined <span class="op">=</span> ing_in_signals.join(ever_confident, on<span class="op">=</span><span class="st">"ingredient"</span>, how<span class="op">=</span><span class="st">"left"</span>).collect()</span>
+<span id="cb2-508"><a href="#cb2-508" aria-hidden="true" tabindex="-1"></a>**Pentosan polysulfate and retinal pigmentation** — 607 co-reports against 0.2. Pentosan</span>
+<span id="cb2-509"><a href="#cb2-509" aria-hidden="true" tabindex="-1"></a>polysulfate is the only oral therapy approved for interstitial cystitis. According to PubMed, a</span>
+<span id="cb2-510"><a href="#cb2-510" aria-hidden="true" tabindex="-1"></a>progressive, dose-dependent pigmentary maculopathy affecting the retinal pigment epithelium is</span>
+<span id="cb2-511"><a href="#cb2-511" aria-hidden="true" tabindex="-1"></a>associated with long-term use, may progress after the drug is stopped, and prompted screening</span>
+<span id="cb2-512"><a href="#cb2-512" aria-hidden="true" tabindex="-1"></a>recommendations (<span class="co">[</span><span class="ot">DOI</span><span class="co">](https://doi.org/10.1016/j.survophthal.2021.05.005)</span>). This one is recent —</span>
+<span id="cb2-513"><a href="#cb2-513" aria-hidden="true" tabindex="-1"></a>first described in 2018, long after most of the drugs in this corpus were characterised.</span>
+<span id="cb2-514"><a href="#cb2-514" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-515"><a href="#cb2-515" aria-hidden="true" tabindex="-1"></a>**Belantamab mafodotin and keratopathy** — 840 co-reports against 0.2. Belantamab mafodotin is an</span>
+<span id="cb2-516"><a href="#cb2-516" aria-hidden="true" tabindex="-1"></a>antibody–drug conjugate for relapsed multiple myeloma. According to PubMed, 73% of patients in the</span>
+<span id="cb2-517"><a href="#cb2-517" aria-hidden="true" tabindex="-1"></a>DREAMM-2 trial had keratopathy, attributed to off-target damage to corneal epithelial cells by the</span>
+<span id="cb2-518"><a href="#cb2-518" aria-hidden="true" tabindex="-1"></a>drug's cytotoxic payload (<span class="co">[</span><span class="ot">DOI</span><span class="co">](https://doi.org/10.3389/fonc.2021.678634)</span>).</span>
+<span id="cb2-519"><a href="#cb2-519" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-520"><a href="#cb2-520" aria-hidden="true" tabindex="-1"></a>**What this does and does not show.** All three are real, documented and in some cases</span>
+<span id="cb2-521"><a href="#cb2-521" aria-hidden="true" tabindex="-1"></a>label-carrying associations, which is evidence the ranking surfaces genuine safety signals</span>
+<span id="cb2-522"><a href="#cb2-522" aria-hidden="true" tabindex="-1"></a>alongside the indication artefacts. It is not evidence of *discovery*: these were found by looking</span>
+<span id="cb2-523"><a href="#cb2-523" aria-hidden="true" tabindex="-1"></a>at the top of a ranking and then reading the literature, which is the easy direction. A pair with</span>
+<span id="cb2-524"><a href="#cb2-524" aria-hidden="true" tabindex="-1"></a>no literature behind it would be indistinguishable here from one nobody has studied yet.</span>
 <span id="cb2-525"><a href="#cb2-525" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-526"><a href="#cb2-526" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> joined.height</span>
-<span id="cb2-527"><a href="#cb2-527" aria-hidden="true" tabindex="-1"></a>fallback <span class="op">=</span> joined.<span class="bu">filter</span>(<span class="op">~</span>pl.col(<span class="st">"confident"</span>).fill_null(<span class="va">False</span>)).height</span>
-<span id="cb2-528"><a href="#cb2-528" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-529"><a href="#cb2-529" aria-hidden="true" tabindex="-1"></a>pl.DataFrame(</span>
-<span id="cb2-530"><a href="#cb2-530" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb2-531"><a href="#cb2-531" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Distinct ingredients in the signal table"</span>: [n(total)],</span>
-<span id="cb2-532"><a href="#cb2-532" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Resolved by a curated path"</span>: [<span class="ss">f"</span><span class="sc">{</span>n(total <span class="op">-</span> fallback)<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>(total <span class="op">-</span> fallback) <span class="op">/</span> total<span class="sc">:.1%}</span><span class="ss">)"</span>],</span>
-<span id="cb2-533"><a href="#cb2-533" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Free-text fallback only"</span>: [<span class="ss">f"</span><span class="sc">{</span>n(fallback)<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>fallback <span class="op">/</span> total<span class="sc">:.1%}</span><span class="ss">)"</span>],</span>
-<span id="cb2-534"><a href="#cb2-534" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-535"><a href="#cb2-535" aria-hidden="true" tabindex="-1"></a>).to_pandas()</span>
-<span id="cb2-536"><a href="#cb2-536" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-537"><a href="#cb2-537" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-538"><a href="#cb2-538" aria-hidden="true" tabindex="-1"></a>The consequence is not cosmetic, and it runs in two directions at once. When <span class="in">`HUMIRA . PEN`</span> is</span>
-<span id="cb2-539"><a href="#cb2-539" aria-hidden="true" tabindex="-1"></a>counted separately from <span class="in">`ADALIMUMAB`</span>, adalimumab's marginal is **understated** — the reports filed</span>
-<span id="cb2-540"><a href="#cb2-540" aria-hidden="true" tabindex="-1"></a>under the brand never reach it. Meanwhile the brand string carries a small marginal of its own,</span>
-<span id="cb2-541"><a href="#cb2-541" aria-hidden="true" tabindex="-1"></a>which **inflates** its disproportionality: it is being compared against the whole database on a</span>
-<span id="cb2-542"><a href="#cb2-542" aria-hidden="true" tabindex="-1"></a>fragment of its true exposure. Both the numerator and the denominator are wrong, in opposite</span>
-<span id="cb2-543"><a href="#cb2-543" aria-hidden="true" tabindex="-1"></a>directions.</span>
-<span id="cb2-544"><a href="#cb2-544" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-545"><a href="#cb2-545" aria-hidden="true" tabindex="-1"></a>Two free sources close most of this gap, and the pipeline uses both: FDA's **NDC directory**</span>
-<span id="cb2-546"><a href="#cb2-546" aria-hidden="true" tabindex="-1"></a>(public domain, 7,958 brand tokens usable after an ambiguity filter) and NLM's **RxNav**. Together</span>
-<span id="cb2-547"><a href="#cb2-547" aria-hidden="true" tabindex="-1"></a>with stricter cleaning of device and product designators, they consolidate brands into their</span>
-<span id="cb2-548"><a href="#cb2-548" aria-hidden="true" tabindex="-1"></a>substances — <span class="in">`DURAGESIC-100`</span> into fentanyl, <span class="in">`ADVAIR DISKUS 100/50`</span> into fluticasone and salmeterol,</span>
-<span id="cb2-549"><a href="#cb2-549" aria-hidden="true" tabindex="-1"></a><span class="in">`PARAGARD 380A`</span> into copper. The fallback-only count fell from 3,838 to 2,008.</span>
-<span id="cb2-550"><a href="#cb2-550" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-551"><a href="#cb2-551" aria-hidden="true" tabindex="-1"></a>A second split ran alongside the brand one and was easy to miss because both halves looked like</span>
-<span id="cb2-552"><a href="#cb2-552" aria-hidden="true" tabindex="-1"></a>real substances. FAERS records <span class="in">`ATORVASTATIN`</span> **and** <span class="in">`ATORVASTATIN CALCIUM`</span>, and counting them</span>
-<span id="cb2-553"><a href="#cb2-553" aria-hidden="true" tabindex="-1"></a>separately divided one drug almost exactly in half — 275,333 reports against 269,328. The same</span>
-<span id="cb2-554"><a href="#cb2-554" aria-hidden="true" tabindex="-1"></a>happened to warfarin, amlodipine and metformin. Salt forms are now resolved to their active moiety</span>
-<span id="cb2-555"><a href="#cb2-555" aria-hidden="true" tabindex="-1"></a>through RxNorm, which gets the hard cases right without a heuristic: <span class="in">`SODIUM CHLORIDE`</span> and</span>
-<span id="cb2-556"><a href="#cb2-556" aria-hidden="true" tabindex="-1"></a><span class="in">`CALCIUM CARBONATE`</span> are returned unchanged, where stripping a suffix would have produced "sodium"</span>
-<span id="cb2-557"><a href="#cb2-557" aria-hidden="true" tabindex="-1"></a>and "calcium".</span>
-<span id="cb2-558"><a href="#cb2-558" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-559"><a href="#cb2-559" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
-<span id="cb2-560"><a href="#cb2-560" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reading the percentage above</span></span>
-<span id="cb2-561"><a href="#cb2-561" aria-hidden="true" tabindex="-1"></a>The fallback *share* rose when salts were merged, from 23.5% to the figure in the table, while the</span>
-<span id="cb2-562"><a href="#cb2-562" aria-hidden="true" tabindex="-1"></a>fallback *count* fell slightly. Merging affected curated ingredients — the ones RxNorm knows — far</span>
-<span id="cb2-563"><a href="#cb2-563" aria-hidden="true" tabindex="-1"></a>more than unmapped free text, so the denominator shrank faster than the numerator. The absolute</span>
-<span id="cb2-564"><a href="#cb2-564" aria-hidden="true" tabindex="-1"></a>problem got smaller; the ratio did not.</span>
-<span id="cb2-565"><a href="#cb2-565" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-526"><a href="#cb2-526" aria-hidden="true" tabindex="-1"></a><span class="fu">## Do signals survive confounder adjustment?</span></span>
+<span id="cb2-527"><a href="#cb2-527" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-528"><a href="#cb2-528" aria-hidden="true" tabindex="-1"></a>Each variable is applied as a separate Mantel–Haenszel stratification, on a random sample of</span>
+<span id="cb2-529"><a href="#cb2-529" aria-hidden="true" tabindex="-1"></a><span class="in">`{python} n(strat["by_variable"][0]["tested"])`</span> signalling pairs.</span>
+<span id="cb2-530"><a href="#cb2-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-533"><a href="#cb2-533" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-534"><a href="#cb2-534" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: tbl-strat</span></span>
+<span id="cb2-535"><a href="#cb2-535" aria-hidden="true" tabindex="-1"></a>pl.DataFrame(</span>
+<span id="cb2-536"><a href="#cb2-536" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb2-537"><a href="#cb2-537" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Adjustment"</span>: [<span class="st">"Sex"</span>, <span class="st">"Age band"</span>, <span class="st">"Calendar period (5y)"</span>],</span>
+<span id="cb2-538"><a href="#cb2-538" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Pairs tested"</span>: [n(v[<span class="st">"tested"</span>]) <span class="cf">for</span> v <span class="kw">in</span> strat[<span class="st">"by_variable"</span>]],</span>
+<span id="cb2-539"><a href="#cb2-539" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Still signalling"</span>: [</span>
+<span id="cb2-540"><a href="#cb2-540" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>n(v[<span class="st">"surviving"</span>])<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>v[<span class="st">"survival_rate"</span>]<span class="sc">:.1%}</span><span class="ss">)'</span> <span class="cf">for</span> v <span class="kw">in</span> strat[<span class="st">"by_variable"</span>]</span>
+<span id="cb2-541"><a href="#cb2-541" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb2-542"><a href="#cb2-542" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Heterogeneous (Breslow–Day p&lt;0.05)"</span>: [</span>
+<span id="cb2-543"><a href="#cb2-543" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>n(v[<span class="st">"heterogeneous"</span>])<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>v[<span class="st">"heterogeneous"</span>]<span class="op">/</span>v[<span class="st">"tested"</span>]<span class="sc">:.0%}</span><span class="ss">)'</span></span>
+<span id="cb2-544"><a href="#cb2-544" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> v <span class="kw">in</span> strat[<span class="st">"by_variable"</span>]</span>
+<span id="cb2-545"><a href="#cb2-545" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb2-546"><a href="#cb2-546" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-547"><a href="#cb2-547" aria-hidden="true" tabindex="-1"></a>).to_pandas()</span>
+<span id="cb2-548"><a href="#cb2-548" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-549"><a href="#cb2-549" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-550"><a href="#cb2-550" aria-hidden="true" tabindex="-1"></a>Between 98.5% and 100% of sampled signals remained above the screening threshold after separate</span>
+<span id="cb2-551"><a href="#cb2-551" aria-hidden="true" tabindex="-1"></a>adjustment for sex, age band or calendar period. Passing a threshold is a weaker statement than</span>
+<span id="cb2-552"><a href="#cb2-552" aria-hidden="true" tabindex="-1"></a>being unchanged: a signal can weaken substantially and still clear it.</span>
+<span id="cb2-553"><a href="#cb2-553" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-554"><a href="#cb2-554" aria-hidden="true" tabindex="-1"></a>Breslow–Day rejects a common odds ratio across strata for 50–76% of the pairs tested. Where it</span>
+<span id="cb2-555"><a href="#cb2-555" aria-hidden="true" tabindex="-1"></a>does, the pooled estimate averages materially different stratum-specific values and should not be</span>
+<span id="cb2-556"><a href="#cb2-556" aria-hidden="true" tabindex="-1"></a>read alone. At these sample sizes the test detects differences far too small to matter clinically,</span>
+<span id="cb2-557"><a href="#cb2-557" aria-hidden="true" tabindex="-1"></a>so the stratum-specific *estimates*, not the p-values, are what carry interpretation. Statistical</span>
+<span id="cb2-558"><a href="#cb2-558" aria-hidden="true" tabindex="-1"></a>heterogeneity here is not evidence of biological effect modification.</span>
+<span id="cb2-559"><a href="#cb2-559" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-562"><a href="#cb2-562" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-563"><a href="#cb2-563" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: fig-strat</span></span>
+<span id="cb2-564"><a href="#cb2-564" aria-hidden="true" tabindex="-1"></a>fig(<span class="st">"stratified_survival"</span>)</span>
+<span id="cb2-565"><a href="#cb2-565" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-566"><a href="#cb2-566" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-567"><a href="#cb2-567" aria-hidden="true" tabindex="-1"></a>The effect on real signals is visible: atorvastatin–rhabdomyolysis rose from 2,397 co-reports</span>
-<span id="cb2-568"><a href="#cb2-568" aria-hidden="true" tabindex="-1"></a>(EB05 = 15.5) to 2,794 (EB05 = 28.6) once Lipitor's reports joined the substance they belong to.</span>
-<span id="cb2-569"><a href="#cb2-569" aria-hidden="true" tabindex="-1"></a>The signal was always there; part of its evidence was filed under another name.</span>
-<span id="cb2-570"><a href="#cb2-570" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-571"><a href="#cb2-571" aria-hidden="true" tabindex="-1"></a>A residue remains and always will. Discontinued brands appear in neither reference, and foreign and</span>
-<span id="cb2-572"><a href="#cb2-572" aria-hidden="true" tabindex="-1"></a>misspelled products appear in nothing at all. Those entries keep their reported name and are marked</span>
-<span id="cb2-573"><a href="#cb2-573" aria-hidden="true" tabindex="-1"></a><span class="in">`ingredient_curated = false`</span> in the published table, so they can be filtered rather than mistaken</span>
-<span id="cb2-574"><a href="#cb2-574" aria-hidden="true" tabindex="-1"></a>for substances.</span>
+<span id="cb2-567"><a href="#cb2-567" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reporting artefacts over time</span></span>
+<span id="cb2-568"><a href="#cb2-568" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-571"><a href="#cb2-571" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-572"><a href="#cb2-572" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: fig-trends</span></span>
+<span id="cb2-573"><a href="#cb2-573" aria-hidden="true" tabindex="-1"></a>fig(<span class="st">"reaction_trends"</span>)</span>
+<span id="cb2-574"><a href="#cb2-574" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-575"><a href="#cb2-575" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-576"><a href="#cb2-576" aria-hidden="true" tabindex="-1"></a>One correction to an earlier draft of this report, which claimed these rows fall below the</span>
-<span id="cb2-577"><a href="#cb2-577" aria-hidden="true" tabindex="-1"></a>minimum-support threshold and never enter the signal tables: they do enter it, and always did. The</span>
-<span id="cb2-578"><a href="#cb2-578" aria-hidden="true" tabindex="-1"></a>claim was inferred from the <span class="in">`min_count`</span> rule rather than measured, and it was wrong.</span>
+<span id="cb2-576"><a href="#cb2-576" aria-hidden="true" tabindex="-1"></a>Raw yearly counts rise with the corpus, so a rising count is not by itself a rising rate. Plotted</span>
+<span id="cb2-577"><a href="#cb2-577" aria-hidden="true" tabindex="-1"></a>as a share of each year's reports, the apparent upward trend in <span class="in">`DEATH`</span> is substantially the</span>
+<span id="cb2-578"><a href="#cb2-578" aria-hidden="true" tabindex="-1"></a>database growing rather than the term becoming more common.</span>
 <span id="cb2-579"><a href="#cb2-579" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-580"><a href="#cb2-580" aria-hidden="true" tabindex="-1"></a><span class="fu">## Do reaction profiles recover pharmacology?</span></span>
+<span id="cb2-580"><a href="#cb2-580" aria-hidden="true" tabindex="-1"></a><span class="fu">## Drug names that are not ingredients</span></span>
 <span id="cb2-581"><a href="#cb2-581" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-582"><a href="#cb2-582" aria-hidden="true" tabindex="-1"></a>If two drugs act through the same mechanism, they may provoke the same pattern of reported</span>
-<span id="cb2-583"><a href="#cb2-583" aria-hidden="true" tabindex="-1"></a>reactions. Drugs are compared by cosine similarity on their information-component profiles, so</span>
-<span id="cb2-584"><a href="#cb2-584" aria-hidden="true" tabindex="-1"></a>that what is compared is each drug's *distinctive* reaction pattern rather than the ubiquitous</span>
-<span id="cb2-585"><a href="#cb2-585" aria-hidden="true" tabindex="-1"></a>terms every profile contains.</span>
-<span id="cb2-586"><a href="#cb2-586" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-587"><a href="#cb2-587" aria-hidden="true" tabindex="-1"></a>Within-class similarity runs 3.0–5.8× the corpus average, highest for bisphosphonates and lowest</span>
-<span id="cb2-588"><a href="#cb2-588" aria-hidden="true" tabindex="-1"></a>for ACE inhibitors, with no class information supplied to the algorithm:</span>
-<span id="cb2-589"><a href="#cb2-589" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-592"><a href="#cb2-592" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb2-593"><a href="#cb2-593" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: tbl-similarity</span></span>
-<span id="cb2-594"><a href="#cb2-594" aria-hidden="true" tabindex="-1"></a>simsum <span class="op">=</span> load_json(<span class="st">"similarity_summary.json"</span>)</span>
-<span id="cb2-595"><a href="#cb2-595" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> {</span>
-<span id="cb2-596"><a href="#cb2-596" aria-hidden="true" tabindex="-1"></a>    <span class="st">"statins"</span>: <span class="st">"Statins"</span>,</span>
-<span id="cb2-597"><a href="#cb2-597" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ace_inhibitors"</span>: <span class="st">"ACE inhibitors"</span>,</span>
-<span id="cb2-598"><a href="#cb2-598" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tnf_inhibitors"</span>: <span class="st">"TNF inhibitors"</span>,</span>
-<span id="cb2-599"><a href="#cb2-599" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ssris"</span>: <span class="st">"SSRIs"</span>,</span>
-<span id="cb2-600"><a href="#cb2-600" aria-hidden="true" tabindex="-1"></a>    <span class="st">"bisphosphonates"</span>: <span class="st">"Bisphosphonates"</span>,</span>
-<span id="cb2-601"><a href="#cb2-601" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-602"><a href="#cb2-602" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> [</span>
-<span id="cb2-603"><a href="#cb2-603" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb2-604"><a href="#cb2-604" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Drug class"</span>: labels.get(k, k),</span>
-<span id="cb2-605"><a href="#cb2-605" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Members"</span>: v[<span class="st">"members"</span>],</span>
-<span id="cb2-606"><a href="#cb2-606" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Within-class similarity"</span>: v[<span class="st">"within_class_similarity"</span>],</span>
-<span id="cb2-607"><a href="#cb2-607" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Vs. corpus average"</span>: <span class="ss">f'</span><span class="sc">{</span>v[<span class="st">"vs_overall"</span>]<span class="sc">}</span><span class="ss">×'</span>,</span>
-<span id="cb2-608"><a href="#cb2-608" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-609"><a href="#cb2-609" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k, v <span class="kw">in</span> simsum[<span class="st">"validation"</span>].items()</span>
-<span id="cb2-610"><a href="#cb2-610" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb2-611"><a href="#cb2-611" aria-hidden="true" tabindex="-1"></a>pl.DataFrame(rows).to_pandas()</span>
-<span id="cb2-612"><a href="#cb2-612" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-613"><a href="#cb2-613" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-616"><a href="#cb2-616" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb2-617"><a href="#cb2-617" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: fig-classsim</span></span>
-<span id="cb2-618"><a href="#cb2-618" aria-hidden="true" tabindex="-1"></a>fig(<span class="st">"class_similarity"</span>)</span>
-<span id="cb2-619"><a href="#cb2-619" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-620"><a href="#cb2-620" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-621"><a href="#cb2-621" aria-hidden="true" tabindex="-1"></a>The diagonal is the validation made visible. One off-diagonal cell is worth a second look: TNF</span>
-<span id="cb2-622"><a href="#cb2-622" aria-hidden="true" tabindex="-1"></a>inhibitors and bisphosphonates sit well above every other cross-class pair — unsurprising once</span>
-<span id="cb2-623"><a href="#cb2-623" aria-hidden="true" tabindex="-1"></a>stated, since both are given to overlapping rheumatology populations, and a further reminder that</span>
-<span id="cb2-624"><a href="#cb2-624" aria-hidden="true" tabindex="-1"></a>this measure tracks therapeutic neighbourhood rather than mechanism.</span>
-<span id="cb2-625"><a href="#cb2-625" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-626"><a href="#cb2-626" aria-hidden="true" tabindex="-1"></a>**Every class is 3.0–5.8× more similar to itself than the corpus average**, without any drug-class</span>
-<span id="cb2-627"><a href="#cb2-627" aria-hidden="true" tabindex="-1"></a>information entering the computation. The nearest neighbours are recognisable pharmacology:</span>
-<span id="cb2-628"><a href="#cb2-628" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-631"><a href="#cb2-631" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb2-632"><a href="#cb2-632" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: tbl-neighbours</span></span>
-<span id="cb2-633"><a href="#cb2-633" aria-hidden="true" tabindex="-1"></a>nn <span class="op">=</span> pl.read_parquet(RESULTS <span class="op">/</span> <span class="st">"similarity"</span> <span class="op">/</span> <span class="st">"nearest_neighbours.parquet"</span>)</span>
-<span id="cb2-634"><a href="#cb2-634" aria-hidden="true" tabindex="-1"></a>probes <span class="op">=</span> [</span>
-<span id="cb2-635"><a href="#cb2-635" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ATORVASTATIN CALCIUM"</span>,</span>
-<span id="cb2-636"><a href="#cb2-636" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LISINOPRIL"</span>,</span>
-<span id="cb2-637"><a href="#cb2-637" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ADALIMUMAB"</span>,</span>
-<span id="cb2-638"><a href="#cb2-638" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SERTRALINE HYDROCHLORIDE"</span>,</span>
-<span id="cb2-639"><a href="#cb2-639" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb2-640"><a href="#cb2-640" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
-<span id="cb2-641"><a href="#cb2-641" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> probe <span class="kw">in</span> probes:</span>
-<span id="cb2-642"><a href="#cb2-642" aria-hidden="true" tabindex="-1"></a>    top <span class="op">=</span> nn.<span class="bu">filter</span>(pl.col(<span class="st">"ingredient"</span>) <span class="op">==</span> probe).sort(<span class="st">"rank"</span>).head(<span class="dv">3</span>)</span>
-<span id="cb2-643"><a href="#cb2-643" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> top.height:</span>
-<span id="cb2-644"><a href="#cb2-644" aria-hidden="true" tabindex="-1"></a>        rows.append(</span>
-<span id="cb2-645"><a href="#cb2-645" aria-hidden="true" tabindex="-1"></a>            {</span>
-<span id="cb2-646"><a href="#cb2-646" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Drug"</span>: probe.title(),</span>
-<span id="cb2-647"><a href="#cb2-647" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Nearest by reaction profile"</span>: <span class="st">", "</span>.join(</span>
-<span id="cb2-648"><a href="#cb2-648" aria-hidden="true" tabindex="-1"></a>                    <span class="ss">f'</span><span class="sc">{</span>r[<span class="st">"neighbour"</span>]<span class="sc">.</span>title()<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>r[<span class="st">"cosine"</span>]<span class="sc">:.2f}</span><span class="ss">)'</span> <span class="cf">for</span> r <span class="kw">in</span> top.to_dicts()</span>
-<span id="cb2-649"><a href="#cb2-649" aria-hidden="true" tabindex="-1"></a>                ),</span>
-<span id="cb2-650"><a href="#cb2-650" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb2-651"><a href="#cb2-651" aria-hidden="true" tabindex="-1"></a>        )</span>
-<span id="cb2-652"><a href="#cb2-652" aria-hidden="true" tabindex="-1"></a>pl.DataFrame(rows).to_pandas()</span>
-<span id="cb2-653"><a href="#cb2-653" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-654"><a href="#cb2-654" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-655"><a href="#cb2-655" aria-hidden="true" tabindex="-1"></a>Atorvastatin's neighbours are other statins **and ezetimibe** — a different mechanism, but the same</span>
-<span id="cb2-656"><a href="#cb2-656" aria-hidden="true" tabindex="-1"></a>therapeutic setting and co-prescription pattern. Adalimumab sits beside infliximab and etanercept,</span>
-<span id="cb2-657"><a href="#cb2-657" aria-hidden="true" tabindex="-1"></a>then ustekinumab: TNF inhibitors first, then a biologic used for overlapping indications. Sertraline</span>
-<span id="cb2-658"><a href="#cb2-658" aria-hidden="true" tabindex="-1"></a>sits among SSRIs, then venlafaxine, an SNRI.</span>
-<span id="cb2-659"><a href="#cb2-659" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-660"><a href="#cb2-660" aria-hidden="true" tabindex="-1"></a>That last detail is the honest caveat. This measure cannot separate *shared mechanism* from *shared</span>
-<span id="cb2-661"><a href="#cb2-661" aria-hidden="true" tabindex="-1"></a>indication* or *shared co-prescription* — the same confound that puts indication bias at the top of</span>
-<span id="cb2-662"><a href="#cb2-662" aria-hidden="true" tabindex="-1"></a>the disproportionality rankings. It recovers therapeutic neighbourhoods reliably; reading a specific</span>
-<span id="cb2-663"><a href="#cb2-663" aria-hidden="true" tabindex="-1"></a>mechanism into any one pair requires evidence from outside these data.</span>
-<span id="cb2-664"><a href="#cb2-664" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-665"><a href="#cb2-665" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vocabulary drift, measured</span></span>
-<span id="cb2-666"><a href="#cb2-666" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-667"><a href="#cb2-667" aria-hidden="true" tabindex="-1"></a>MedDRA is revised twice a year and terms are added, renamed, split and merged, so a reaction</span>
-<span id="cb2-668"><a href="#cb2-668" aria-hidden="true" tabindex="-1"></a>term's frequency can move for reasons unrelated to patients. Confirming a specific revision needs</span>
-<span id="cb2-669"><a href="#cb2-669" aria-hidden="true" tabindex="-1"></a>the licensed release history. Flagging trajectories for review does not.</span>
-<span id="cb2-670"><a href="#cb2-670" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-673"><a href="#cb2-673" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb2-674"><a href="#cb2-674" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: tbl-drift</span></span>
-<span id="cb2-675"><a href="#cb2-675" aria-hidden="true" tabindex="-1"></a>drift <span class="op">=</span> load_json(<span class="st">"drift_summary.json"</span>)</span>
-<span id="cb2-676"><a href="#cb2-676" aria-hidden="true" tabindex="-1"></a>pl.DataFrame(</span>
-<span id="cb2-677"><a href="#cb2-677" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb2-678"><a href="#cb2-678" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Measure"</span>: [</span>
-<span id="cb2-679"><a href="#cb2-679" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Terms tested (&gt;= 200 reports)"</span>,</span>
-<span id="cb2-680"><a href="#cb2-680" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Flagged as drift-suspect"</span>,</span>
-<span id="cb2-681"><a href="#cb2-681" aria-hidden="true" tabindex="-1"></a>            <span class="st">"  - absent early, established later"</span>,</span>
-<span id="cb2-682"><a href="#cb2-682" aria-hidden="true" tabindex="-1"></a>            <span class="st">"  - established early, absent later"</span>,</span>
-<span id="cb2-683"><a href="#cb2-683" aria-hidden="true" tabindex="-1"></a>            <span class="st">"  - abrupt step between adjacent quarters"</span>,</span>
-<span id="cb2-684"><a href="#cb2-684" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Share of reaction mentions involving a flagged term"</span>,</span>
-<span id="cb2-685"><a href="#cb2-685" aria-hidden="true" tabindex="-1"></a>        ],</span>
-<span id="cb2-686"><a href="#cb2-686" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Value"</span>: [</span>
-<span id="cb2-687"><a href="#cb2-687" aria-hidden="true" tabindex="-1"></a>            n(drift[<span class="st">"terms_tested"</span>]),</span>
-<span id="cb2-688"><a href="#cb2-688" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>n(drift[<span class="st">"terms_drift_suspect"</span>])<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>drift[<span class="st">"terms_drift_suspect_fraction"</span>]<span class="sc">:.1%}</span><span class="ss">)'</span>,</span>
-<span id="cb2-689"><a href="#cb2-689" aria-hidden="true" tabindex="-1"></a>            n(drift[<span class="st">"late_onset"</span>]),</span>
-<span id="cb2-690"><a href="#cb2-690" aria-hidden="true" tabindex="-1"></a>            n(drift[<span class="st">"discontinued"</span>]),</span>
-<span id="cb2-691"><a href="#cb2-691" aria-hidden="true" tabindex="-1"></a>            n(drift[<span class="st">"step_change"</span>]),</span>
-<span id="cb2-692"><a href="#cb2-692" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>drift[<span class="st">"report_mentions_affected_fraction"</span>]<span class="sc">:.1%}</span><span class="ss">'</span>,</span>
-<span id="cb2-693"><a href="#cb2-693" aria-hidden="true" tabindex="-1"></a>        ],</span>
-<span id="cb2-694"><a href="#cb2-694" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-695"><a href="#cb2-695" aria-hidden="true" tabindex="-1"></a>).to_pandas()</span>
-<span id="cb2-696"><a href="#cb2-696" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-582"><a href="#cb2-582" aria-hidden="true" tabindex="-1"></a>The unit of analysis is supposed to be the active ingredient. For a large minority of entries it</span>
+<span id="cb2-583"><a href="#cb2-583" aria-hidden="true" tabindex="-1"></a>is not: the reported string was a brand or product name that the resolution cascade could not map,</span>
+<span id="cb2-584"><a href="#cb2-584" aria-hidden="true" tabindex="-1"></a>and it survives into the results under its own name.</span>
+<span id="cb2-585"><a href="#cb2-585" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-588"><a href="#cb2-588" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-589"><a href="#cb2-589" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: tbl-unresolved</span></span>
+<span id="cb2-590"><a href="#cb2-590" aria-hidden="true" tabindex="-1"></a>drug_ing <span class="op">=</span> pl.scan_parquet(ROOT <span class="op">/</span> <span class="st">"data"</span> <span class="op">/</span> <span class="st">"curated"</span> <span class="op">/</span> <span class="st">"drug_ingredients.parquet"</span>)</span>
+<span id="cb2-591"><a href="#cb2-591" aria-hidden="true" tabindex="-1"></a>ever_confident <span class="op">=</span> (</span>
+<span id="cb2-592"><a href="#cb2-592" aria-hidden="true" tabindex="-1"></a>    drug_ing.group_by(<span class="st">"ingredient"</span>)</span>
+<span id="cb2-593"><a href="#cb2-593" aria-hidden="true" tabindex="-1"></a>    .agg((pl.col(<span class="st">"resolution"</span>) <span class="op">!=</span> <span class="st">"unresolved"</span>).<span class="bu">any</span>().alias(<span class="st">"confident"</span>))</span>
+<span id="cb2-594"><a href="#cb2-594" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-595"><a href="#cb2-595" aria-hidden="true" tabindex="-1"></a>ing_in_signals <span class="op">=</span> scored.select(<span class="st">"ingredient"</span>).unique()</span>
+<span id="cb2-596"><a href="#cb2-596" aria-hidden="true" tabindex="-1"></a>joined <span class="op">=</span> ing_in_signals.join(ever_confident, on<span class="op">=</span><span class="st">"ingredient"</span>, how<span class="op">=</span><span class="st">"left"</span>).collect()</span>
+<span id="cb2-597"><a href="#cb2-597" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-598"><a href="#cb2-598" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> joined.height</span>
+<span id="cb2-599"><a href="#cb2-599" aria-hidden="true" tabindex="-1"></a>fallback <span class="op">=</span> joined.<span class="bu">filter</span>(<span class="op">~</span>pl.col(<span class="st">"confident"</span>).fill_null(<span class="va">False</span>)).height</span>
+<span id="cb2-600"><a href="#cb2-600" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-601"><a href="#cb2-601" aria-hidden="true" tabindex="-1"></a>pl.DataFrame(</span>
+<span id="cb2-602"><a href="#cb2-602" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb2-603"><a href="#cb2-603" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Distinct ingredients in the signal table"</span>: [n(total)],</span>
+<span id="cb2-604"><a href="#cb2-604" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Resolved by a curated path"</span>: [<span class="ss">f"</span><span class="sc">{</span>n(total <span class="op">-</span> fallback)<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>(total <span class="op">-</span> fallback) <span class="op">/</span> total<span class="sc">:.1%}</span><span class="ss">)"</span>],</span>
+<span id="cb2-605"><a href="#cb2-605" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Free-text fallback only"</span>: [<span class="ss">f"</span><span class="sc">{</span>n(fallback)<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>fallback <span class="op">/</span> total<span class="sc">:.1%}</span><span class="ss">)"</span>],</span>
+<span id="cb2-606"><a href="#cb2-606" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-607"><a href="#cb2-607" aria-hidden="true" tabindex="-1"></a>).to_pandas()</span>
+<span id="cb2-608"><a href="#cb2-608" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-609"><a href="#cb2-609" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-610"><a href="#cb2-610" aria-hidden="true" tabindex="-1"></a>The consequence is not cosmetic, and it runs in two directions at once. When <span class="in">`HUMIRA . PEN`</span> is</span>
+<span id="cb2-611"><a href="#cb2-611" aria-hidden="true" tabindex="-1"></a>counted separately from <span class="in">`ADALIMUMAB`</span>, adalimumab's marginal is **understated** — the reports filed</span>
+<span id="cb2-612"><a href="#cb2-612" aria-hidden="true" tabindex="-1"></a>under the brand never reach it. Meanwhile the brand string carries a small marginal of its own,</span>
+<span id="cb2-613"><a href="#cb2-613" aria-hidden="true" tabindex="-1"></a>which **inflates** its disproportionality: it is being compared against the whole database on a</span>
+<span id="cb2-614"><a href="#cb2-614" aria-hidden="true" tabindex="-1"></a>fragment of its true exposure. Both the numerator and the denominator are wrong, in opposite</span>
+<span id="cb2-615"><a href="#cb2-615" aria-hidden="true" tabindex="-1"></a>directions.</span>
+<span id="cb2-616"><a href="#cb2-616" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-617"><a href="#cb2-617" aria-hidden="true" tabindex="-1"></a>Two free sources close most of this gap, and the pipeline uses both: FDA's **NDC directory**</span>
+<span id="cb2-618"><a href="#cb2-618" aria-hidden="true" tabindex="-1"></a>(public domain, 7,958 brand tokens usable after an ambiguity filter) and NLM's **RxNav**. Together</span>
+<span id="cb2-619"><a href="#cb2-619" aria-hidden="true" tabindex="-1"></a>with stricter cleaning of device and product designators, they consolidate brands into their</span>
+<span id="cb2-620"><a href="#cb2-620" aria-hidden="true" tabindex="-1"></a>substances — <span class="in">`DURAGESIC-100`</span> into fentanyl, <span class="in">`ADVAIR DISKUS 100/50`</span> into fluticasone and salmeterol,</span>
+<span id="cb2-621"><a href="#cb2-621" aria-hidden="true" tabindex="-1"></a><span class="in">`PARAGARD 380A`</span> into copper. The fallback-only count fell from 3,838 to 2,008.</span>
+<span id="cb2-622"><a href="#cb2-622" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-623"><a href="#cb2-623" aria-hidden="true" tabindex="-1"></a>A second split ran alongside the brand one and was easy to miss because both halves looked like</span>
+<span id="cb2-624"><a href="#cb2-624" aria-hidden="true" tabindex="-1"></a>real substances. FAERS records <span class="in">`ATORVASTATIN`</span> **and** <span class="in">`ATORVASTATIN CALCIUM`</span>, and counting them</span>
+<span id="cb2-625"><a href="#cb2-625" aria-hidden="true" tabindex="-1"></a>separately divided one drug almost exactly in half — 275,333 reports against 269,328. The same</span>
+<span id="cb2-626"><a href="#cb2-626" aria-hidden="true" tabindex="-1"></a>happened to warfarin, amlodipine and metformin. Salt forms are now resolved to their active moiety</span>
+<span id="cb2-627"><a href="#cb2-627" aria-hidden="true" tabindex="-1"></a>through RxNorm, which gets the hard cases right without a heuristic: <span class="in">`SODIUM CHLORIDE`</span> and</span>
+<span id="cb2-628"><a href="#cb2-628" aria-hidden="true" tabindex="-1"></a><span class="in">`CALCIUM CARBONATE`</span> are returned unchanged, where stripping a suffix would have produced "sodium"</span>
+<span id="cb2-629"><a href="#cb2-629" aria-hidden="true" tabindex="-1"></a>and "calcium".</span>
+<span id="cb2-630"><a href="#cb2-630" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-631"><a href="#cb2-631" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb2-632"><a href="#cb2-632" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reading the percentage above</span></span>
+<span id="cb2-633"><a href="#cb2-633" aria-hidden="true" tabindex="-1"></a>The fallback *share* rose when salts were merged, from 23.5% to the figure in the table, while the</span>
+<span id="cb2-634"><a href="#cb2-634" aria-hidden="true" tabindex="-1"></a>fallback *count* fell slightly. Merging affected curated ingredients — the ones RxNorm knows — far</span>
+<span id="cb2-635"><a href="#cb2-635" aria-hidden="true" tabindex="-1"></a>more than unmapped free text, so the denominator shrank faster than the numerator. The absolute</span>
+<span id="cb2-636"><a href="#cb2-636" aria-hidden="true" tabindex="-1"></a>problem got smaller; the ratio did not.</span>
+<span id="cb2-637"><a href="#cb2-637" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-638"><a href="#cb2-638" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-639"><a href="#cb2-639" aria-hidden="true" tabindex="-1"></a>The effect on real signals is visible: atorvastatin–rhabdomyolysis rose from 2,397 co-reports</span>
+<span id="cb2-640"><a href="#cb2-640" aria-hidden="true" tabindex="-1"></a>(EB05 = 15.5) to 2,794 (EB05 = 28.6) once Lipitor's reports joined the substance they belong to.</span>
+<span id="cb2-641"><a href="#cb2-641" aria-hidden="true" tabindex="-1"></a>The signal was always there; part of its evidence was filed under another name.</span>
+<span id="cb2-642"><a href="#cb2-642" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-643"><a href="#cb2-643" aria-hidden="true" tabindex="-1"></a>A residue remains and always will. Discontinued brands appear in neither reference, and foreign and</span>
+<span id="cb2-644"><a href="#cb2-644" aria-hidden="true" tabindex="-1"></a>misspelled products appear in nothing at all. Those entries keep their reported name and are marked</span>
+<span id="cb2-645"><a href="#cb2-645" aria-hidden="true" tabindex="-1"></a><span class="in">`ingredient_curated = false`</span> in the published table, so they can be filtered rather than mistaken</span>
+<span id="cb2-646"><a href="#cb2-646" aria-hidden="true" tabindex="-1"></a>for substances.</span>
+<span id="cb2-647"><a href="#cb2-647" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-648"><a href="#cb2-648" aria-hidden="true" tabindex="-1"></a>One correction to an earlier draft of this report, which claimed these rows fall below the</span>
+<span id="cb2-649"><a href="#cb2-649" aria-hidden="true" tabindex="-1"></a>minimum-support threshold and never enter the signal tables: they do enter it, and always did. The</span>
+<span id="cb2-650"><a href="#cb2-650" aria-hidden="true" tabindex="-1"></a>claim was inferred from the <span class="in">`min_count`</span> rule rather than measured, and it was wrong.</span>
+<span id="cb2-651"><a href="#cb2-651" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-652"><a href="#cb2-652" aria-hidden="true" tabindex="-1"></a><span class="fu">## Do reaction profiles recover pharmacology?</span></span>
+<span id="cb2-653"><a href="#cb2-653" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-654"><a href="#cb2-654" aria-hidden="true" tabindex="-1"></a>If two drugs act through the same mechanism, they may provoke the same pattern of reported</span>
+<span id="cb2-655"><a href="#cb2-655" aria-hidden="true" tabindex="-1"></a>reactions. Drugs are compared by cosine similarity on their information-component profiles, so</span>
+<span id="cb2-656"><a href="#cb2-656" aria-hidden="true" tabindex="-1"></a>that what is compared is each drug's *distinctive* reaction pattern rather than the ubiquitous</span>
+<span id="cb2-657"><a href="#cb2-657" aria-hidden="true" tabindex="-1"></a>terms every profile contains.</span>
+<span id="cb2-658"><a href="#cb2-658" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-659"><a href="#cb2-659" aria-hidden="true" tabindex="-1"></a>Within-class similarity runs 3.0–5.8× the corpus average, highest for bisphosphonates and lowest</span>
+<span id="cb2-660"><a href="#cb2-660" aria-hidden="true" tabindex="-1"></a>for ACE inhibitors, with no class information supplied to the algorithm:</span>
+<span id="cb2-661"><a href="#cb2-661" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-664"><a href="#cb2-664" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-665"><a href="#cb2-665" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: tbl-similarity</span></span>
+<span id="cb2-666"><a href="#cb2-666" aria-hidden="true" tabindex="-1"></a>simsum <span class="op">=</span> load_json(<span class="st">"similarity_summary.json"</span>)</span>
+<span id="cb2-667"><a href="#cb2-667" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> {</span>
+<span id="cb2-668"><a href="#cb2-668" aria-hidden="true" tabindex="-1"></a>    <span class="st">"statins"</span>: <span class="st">"Statins"</span>,</span>
+<span id="cb2-669"><a href="#cb2-669" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ace_inhibitors"</span>: <span class="st">"ACE inhibitors"</span>,</span>
+<span id="cb2-670"><a href="#cb2-670" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tnf_inhibitors"</span>: <span class="st">"TNF inhibitors"</span>,</span>
+<span id="cb2-671"><a href="#cb2-671" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ssris"</span>: <span class="st">"SSRIs"</span>,</span>
+<span id="cb2-672"><a href="#cb2-672" aria-hidden="true" tabindex="-1"></a>    <span class="st">"bisphosphonates"</span>: <span class="st">"Bisphosphonates"</span>,</span>
+<span id="cb2-673"><a href="#cb2-673" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-674"><a href="#cb2-674" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> [</span>
+<span id="cb2-675"><a href="#cb2-675" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb2-676"><a href="#cb2-676" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Drug class"</span>: labels.get(k, k),</span>
+<span id="cb2-677"><a href="#cb2-677" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Members"</span>: v[<span class="st">"members"</span>],</span>
+<span id="cb2-678"><a href="#cb2-678" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Within-class similarity"</span>: v[<span class="st">"within_class_similarity"</span>],</span>
+<span id="cb2-679"><a href="#cb2-679" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Vs. corpus average"</span>: <span class="ss">f'</span><span class="sc">{</span>v[<span class="st">"vs_overall"</span>]<span class="sc">}</span><span class="ss">×'</span>,</span>
+<span id="cb2-680"><a href="#cb2-680" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-681"><a href="#cb2-681" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> k, v <span class="kw">in</span> simsum[<span class="st">"validation"</span>].items()</span>
+<span id="cb2-682"><a href="#cb2-682" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-683"><a href="#cb2-683" aria-hidden="true" tabindex="-1"></a>pl.DataFrame(rows).to_pandas()</span>
+<span id="cb2-684"><a href="#cb2-684" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-685"><a href="#cb2-685" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-688"><a href="#cb2-688" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-689"><a href="#cb2-689" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: fig-classsim</span></span>
+<span id="cb2-690"><a href="#cb2-690" aria-hidden="true" tabindex="-1"></a>fig(<span class="st">"class_similarity"</span>)</span>
+<span id="cb2-691"><a href="#cb2-691" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-692"><a href="#cb2-692" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-693"><a href="#cb2-693" aria-hidden="true" tabindex="-1"></a>The diagonal is the validation made visible. One off-diagonal cell is worth a second look: TNF</span>
+<span id="cb2-694"><a href="#cb2-694" aria-hidden="true" tabindex="-1"></a>inhibitors and bisphosphonates sit well above every other cross-class pair — unsurprising once</span>
+<span id="cb2-695"><a href="#cb2-695" aria-hidden="true" tabindex="-1"></a>stated, since both are given to overlapping rheumatology populations, and a further reminder that</span>
+<span id="cb2-696"><a href="#cb2-696" aria-hidden="true" tabindex="-1"></a>this measure tracks therapeutic neighbourhood rather than mechanism.</span>
 <span id="cb2-697"><a href="#cb2-697" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-700"><a href="#cb2-700" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb2-701"><a href="#cb2-701" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: fig-drift</span></span>
-<span id="cb2-702"><a href="#cb2-702" aria-hidden="true" tabindex="-1"></a>fig(<span class="st">"drift_trajectories"</span>)</span>
-<span id="cb2-703"><a href="#cb2-703" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-704"><a href="#cb2-704" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-705"><a href="#cb2-705" aria-hidden="true" tabindex="-1"></a>Grey terms hold a steady band; the flagged ones move by orders of magnitude between adjacent</span>
-<span id="cb2-706"><a href="#cb2-706" aria-hidden="true" tabindex="-1"></a>quarters. That shape is the whole basis of the flag — a real clinical trend does not switch on in</span>
-<span id="cb2-707"><a href="#cb2-707" aria-hidden="true" tabindex="-1"></a>one quarter and stay on.</span>
-<span id="cb2-708"><a href="#cb2-708" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-709"><a href="#cb2-709" aria-hidden="true" tabindex="-1"></a>Terms flagged for abrupt onset, disappearance or a step change account for **16% of reaction</span>
-<span id="cb2-710"><a href="#cb2-710" aria-hidden="true" tabindex="-1"></a>mentions**. The flags identify trajectories worth reviewing; they do not establish that a MedDRA</span>
-<span id="cb2-711"><a href="#cb2-711" aria-hidden="true" tabindex="-1"></a>revision caused any particular one. An abrupt change in a term's frequency has several possible</span>
-<span id="cb2-712"><a href="#cb2-712" aria-hidden="true" tabindex="-1"></a>causes, and this detector does not distinguish between them.</span>
-<span id="cb2-713"><a href="#cb2-713" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-714"><a href="#cb2-714" aria-hidden="true" tabindex="-1"></a>Per-term flags are in <span class="in">`results/drift/term_drift.parquet`</span>. A rename between two similar terms</span>
-<span id="cb2-715"><a href="#cb2-715" aria-hidden="true" tabindex="-1"></a>produces a fall and a rise and is caught on both sides; a gradual merge may not be visible at all,</span>
-<span id="cb2-716"><a href="#cb2-716" aria-hidden="true" tabindex="-1"></a>so the flagged set is neither exhaustive nor confirmed.</span>
-<span id="cb2-717"><a href="#cb2-717" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-718"><a href="#cb2-718" aria-hidden="true" tabindex="-1"></a><span class="fu">## Independent duplicates</span></span>
-<span id="cb2-719"><a href="#cb2-719" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-720"><a href="#cb2-720" aria-hidden="true" tabindex="-1"></a>Deduplication earlier in this report collapsed case *versions* — follow-up submissions carrying the</span>
-<span id="cb2-721"><a href="#cb2-721" aria-hidden="true" tabindex="-1"></a>same case id. It cannot see the other kind of redundancy: one incident reported separately by the</span>
-<span id="cb2-722"><a href="#cb2-722" aria-hidden="true" tabindex="-1"></a>patient, the physician and the manufacturer, each becoming a distinct case with its own id. FDA does</span>
-<span id="cb2-723"><a href="#cb2-723" aria-hidden="true" tabindex="-1"></a>not link these and no field identifies them.</span>
-<span id="cb2-724"><a href="#cb2-724" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-725"><a href="#cb2-725" aria-hidden="true" tabindex="-1"></a>Detected here by record linkage: block on sex, five-year age band, event year-month, reporter</span>
-<span id="cb2-726"><a href="#cb2-726" aria-hidden="true" tabindex="-1"></a>country **and** a shared drug **and** a shared reaction, then score candidate pairs on how much</span>
-<span id="cb2-727"><a href="#cb2-727" aria-hidden="true" tabindex="-1"></a>their drug and reaction sets overlap.</span>
-<span id="cb2-728"><a href="#cb2-728" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-731"><a href="#cb2-731" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb2-732"><a href="#cb2-732" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: tbl-duplicates</span></span>
-<span id="cb2-733"><a href="#cb2-733" aria-hidden="true" tabindex="-1"></a>dup <span class="op">=</span> load_json(<span class="st">"duplicates_summary.json"</span>)</span>
-<span id="cb2-734"><a href="#cb2-734" aria-hidden="true" tabindex="-1"></a>pl.DataFrame(</span>
-<span id="cb2-735"><a href="#cb2-735" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb2-736"><a href="#cb2-736" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Measure"</span>: [</span>
-<span id="cb2-737"><a href="#cb2-737" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Records eligible for linkage"</span>,</span>
-<span id="cb2-738"><a href="#cb2-738" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Candidate pairs compared"</span>,</span>
-<span id="cb2-739"><a href="#cb2-739" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Pairs above similarity threshold"</span>,</span>
-<span id="cb2-740"><a href="#cb2-740" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Suspected duplicate clusters"</span>,</span>
-<span id="cb2-741"><a href="#cb2-741" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Redundant records (all but one per cluster)"</span>,</span>
-<span id="cb2-742"><a href="#cb2-742" aria-hidden="true" tabindex="-1"></a>            <span class="st">"As a share of eligible records"</span>,</span>
-<span id="cb2-743"><a href="#cb2-743" aria-hidden="true" tabindex="-1"></a>            <span class="st">"As a share of the whole corpus"</span>,</span>
-<span id="cb2-744"><a href="#cb2-744" aria-hidden="true" tabindex="-1"></a>        ],</span>
-<span id="cb2-745"><a href="#cb2-745" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Value"</span>: [</span>
-<span id="cb2-746"><a href="#cb2-746" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>n(dup[<span class="st">"eligible_records"</span>])<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>dup[<span class="st">"eligible_fraction_of_corpus"</span>]<span class="sc">:.1%}</span><span class="ss"> of corpus)'</span>,</span>
-<span id="cb2-747"><a href="#cb2-747" aria-hidden="true" tabindex="-1"></a>            n(dup[<span class="st">"candidate_pairs"</span>]),</span>
-<span id="cb2-748"><a href="#cb2-748" aria-hidden="true" tabindex="-1"></a>            n(dup[<span class="st">"pairs_above_threshold"</span>]),</span>
-<span id="cb2-749"><a href="#cb2-749" aria-hidden="true" tabindex="-1"></a>            n(dup[<span class="st">"clusters"</span>]),</span>
-<span id="cb2-750"><a href="#cb2-750" aria-hidden="true" tabindex="-1"></a>            n(dup[<span class="st">"redundant_records"</span>]),</span>
-<span id="cb2-751"><a href="#cb2-751" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>dup[<span class="st">"redundant_fraction_of_eligible"</span>]<span class="sc">:.1%}</span><span class="ss">'</span>,</span>
-<span id="cb2-752"><a href="#cb2-752" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>dup[<span class="st">"redundant_fraction_of_corpus"</span>]<span class="sc">:.1%}</span><span class="ss">'</span>,</span>
-<span id="cb2-753"><a href="#cb2-753" aria-hidden="true" tabindex="-1"></a>        ],</span>
-<span id="cb2-754"><a href="#cb2-754" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb2-755"><a href="#cb2-755" aria-hidden="true" tabindex="-1"></a>).to_pandas()</span>
-<span id="cb2-756"><a href="#cb2-756" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-757"><a href="#cb2-757" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-758"><a href="#cb2-758" aria-hidden="true" tabindex="-1"></a>Linkage was possible for 30% of cases — the rest lack a sex, an age, an event date or a reporter</span>
-<span id="cb2-759"><a href="#cb2-759" aria-hidden="true" tabindex="-1"></a>country, and cannot be blocked. Within that subset the matcher classified 9.4% as redundant,</span>
-<span id="cb2-760"><a href="#cb2-760" aria-hidden="true" tabindex="-1"></a>equivalent to 2.7% of the full corpus. Its precision, and the duplication rate among the 70% never</span>
-<span id="cb2-761"><a href="#cb2-761" aria-hidden="true" tabindex="-1"></a>examined, are both unknown, so neither figure bounds the true rate.</span>
-<span id="cb2-762"><a href="#cb2-762" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-763"><a href="#cb2-763" aria-hidden="true" tabindex="-1"></a>Suspected duplicates remain in every analysis in this report. Removal is a parameter</span>
-<span id="cb2-764"><a href="#cb2-764" aria-hidden="true" tabindex="-1"></a>(<span class="in">`duplicates.remove`</span>), off by default.</span>
-<span id="cb2-765"><a href="#cb2-765" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-766"><a href="#cb2-766" aria-hidden="true" tabindex="-1"></a><span class="fu">## Limitations</span></span>
-<span id="cb2-767"><a href="#cb2-767" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-768"><a href="#cb2-768" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**No causality, no incidence.** These are reporting associations. The number of people exposed</span>
-<span id="cb2-769"><a href="#cb2-769" aria-hidden="true" tabindex="-1"></a>  without an event is unknown, so no rate can be computed.</span>
-<span id="cb2-770"><a href="#cb2-770" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**The drug column is not uniformly a substance.** 28% of distinct drug labels reaching the signal</span>
-<span id="cb2-771"><a href="#cb2-771" aria-hidden="true" tabindex="-1"></a>  table are unmapped product names, flagged <span class="in">`ingredient_curated = false`</span>. Splitting one substance</span>
-<span id="cb2-772"><a href="#cb2-772" aria-hidden="true" tabindex="-1"></a>  across several names changes both its co-report and its marginal counts.</span>
-<span id="cb2-773"><a href="#cb2-773" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**MedDRA terms are treated as stable strings** across 22 years. Terms flagged for abrupt</span>
-<span id="cb2-774"><a href="#cb2-774" aria-hidden="true" tabindex="-1"></a>  trajectory change account for 16% of reaction mentions; whether a terminology revision caused any</span>
-<span id="cb2-775"><a href="#cb2-775" aria-hidden="true" tabindex="-1"></a>  given one is unverified, and confirming it needs the licensed release history.</span>
-<span id="cb2-776"><a href="#cb2-776" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Independent duplicates are estimated, not removed**, and remain in every table here. The</span>
-<span id="cb2-777"><a href="#cb2-777" aria-hidden="true" tabindex="-1"></a>  estimate covers only the 30% of cases that could be blocked, with unknown matcher precision.</span>
-<span id="cb2-778"><a href="#cb2-778" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**No pharmacologic class vocabulary.** RxNorm→ATC mapping needs a UMLS licence. The similarity</span>
-<span id="cb2-779"><a href="#cb2-779" aria-hidden="true" tabindex="-1"></a>  section compares drugs against five hand-specified reference classes; it does not use a class</span>
-<span id="cb2-780"><a href="#cb2-780" aria-hidden="true" tabindex="-1"></a>  hierarchy, and its groupings reflect therapeutic neighbourhood rather than mechanism.</span>
-<span id="cb2-781"><a href="#cb2-781" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**q-values are approximate.** Benjamini–Hochberg assumes independence or positive dependence.</span>
-<span id="cb2-782"><a href="#cb2-782" aria-hidden="true" tabindex="-1"></a>  Drug–event tests share reports and are dependent.</span>
-<span id="cb2-783"><a href="#cb2-783" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Partial dates** given as a year or year-month are completed to the start of the period, biasing</span>
-<span id="cb2-784"><a href="#cb2-784" aria-hidden="true" tabindex="-1"></a>  those records toward January and month-starts.</span>
+<span id="cb2-698"><a href="#cb2-698" aria-hidden="true" tabindex="-1"></a>**Every class is 3.0–5.8× more similar to itself than the corpus average**, without any drug-class</span>
+<span id="cb2-699"><a href="#cb2-699" aria-hidden="true" tabindex="-1"></a>information entering the computation. The nearest neighbours are recognisable pharmacology:</span>
+<span id="cb2-700"><a href="#cb2-700" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-703"><a href="#cb2-703" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-704"><a href="#cb2-704" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: tbl-neighbours</span></span>
+<span id="cb2-705"><a href="#cb2-705" aria-hidden="true" tabindex="-1"></a>nn <span class="op">=</span> pl.read_parquet(RESULTS <span class="op">/</span> <span class="st">"similarity"</span> <span class="op">/</span> <span class="st">"nearest_neighbours.parquet"</span>)</span>
+<span id="cb2-706"><a href="#cb2-706" aria-hidden="true" tabindex="-1"></a>probes <span class="op">=</span> [</span>
+<span id="cb2-707"><a href="#cb2-707" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ATORVASTATIN CALCIUM"</span>,</span>
+<span id="cb2-708"><a href="#cb2-708" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LISINOPRIL"</span>,</span>
+<span id="cb2-709"><a href="#cb2-709" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ADALIMUMAB"</span>,</span>
+<span id="cb2-710"><a href="#cb2-710" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SERTRALINE HYDROCHLORIDE"</span>,</span>
+<span id="cb2-711"><a href="#cb2-711" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-712"><a href="#cb2-712" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
+<span id="cb2-713"><a href="#cb2-713" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> probe <span class="kw">in</span> probes:</span>
+<span id="cb2-714"><a href="#cb2-714" aria-hidden="true" tabindex="-1"></a>    top <span class="op">=</span> nn.<span class="bu">filter</span>(pl.col(<span class="st">"ingredient"</span>) <span class="op">==</span> probe).sort(<span class="st">"rank"</span>).head(<span class="dv">3</span>)</span>
+<span id="cb2-715"><a href="#cb2-715" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> top.height:</span>
+<span id="cb2-716"><a href="#cb2-716" aria-hidden="true" tabindex="-1"></a>        rows.append(</span>
+<span id="cb2-717"><a href="#cb2-717" aria-hidden="true" tabindex="-1"></a>            {</span>
+<span id="cb2-718"><a href="#cb2-718" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Drug"</span>: probe.title(),</span>
+<span id="cb2-719"><a href="#cb2-719" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Nearest by reaction profile"</span>: <span class="st">", "</span>.join(</span>
+<span id="cb2-720"><a href="#cb2-720" aria-hidden="true" tabindex="-1"></a>                    <span class="ss">f'</span><span class="sc">{</span>r[<span class="st">"neighbour"</span>]<span class="sc">.</span>title()<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>r[<span class="st">"cosine"</span>]<span class="sc">:.2f}</span><span class="ss">)'</span> <span class="cf">for</span> r <span class="kw">in</span> top.to_dicts()</span>
+<span id="cb2-721"><a href="#cb2-721" aria-hidden="true" tabindex="-1"></a>                ),</span>
+<span id="cb2-722"><a href="#cb2-722" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb2-723"><a href="#cb2-723" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb2-724"><a href="#cb2-724" aria-hidden="true" tabindex="-1"></a>pl.DataFrame(rows).to_pandas()</span>
+<span id="cb2-725"><a href="#cb2-725" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-726"><a href="#cb2-726" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-727"><a href="#cb2-727" aria-hidden="true" tabindex="-1"></a>Atorvastatin's neighbours are other statins **and ezetimibe** — a different mechanism, but the same</span>
+<span id="cb2-728"><a href="#cb2-728" aria-hidden="true" tabindex="-1"></a>therapeutic setting and co-prescription pattern. Adalimumab sits beside infliximab and etanercept,</span>
+<span id="cb2-729"><a href="#cb2-729" aria-hidden="true" tabindex="-1"></a>then ustekinumab: TNF inhibitors first, then a biologic used for overlapping indications. Sertraline</span>
+<span id="cb2-730"><a href="#cb2-730" aria-hidden="true" tabindex="-1"></a>sits among SSRIs, then venlafaxine, an SNRI.</span>
+<span id="cb2-731"><a href="#cb2-731" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-732"><a href="#cb2-732" aria-hidden="true" tabindex="-1"></a>That last detail is the honest caveat. This measure cannot separate *shared mechanism* from *shared</span>
+<span id="cb2-733"><a href="#cb2-733" aria-hidden="true" tabindex="-1"></a>indication* or *shared co-prescription* — the same confound that puts indication bias at the top of</span>
+<span id="cb2-734"><a href="#cb2-734" aria-hidden="true" tabindex="-1"></a>the disproportionality rankings. It recovers therapeutic neighbourhoods reliably; reading a specific</span>
+<span id="cb2-735"><a href="#cb2-735" aria-hidden="true" tabindex="-1"></a>mechanism into any one pair requires evidence from outside these data.</span>
+<span id="cb2-736"><a href="#cb2-736" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-737"><a href="#cb2-737" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vocabulary drift, measured</span></span>
+<span id="cb2-738"><a href="#cb2-738" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-739"><a href="#cb2-739" aria-hidden="true" tabindex="-1"></a>MedDRA is revised twice a year and terms are added, renamed, split and merged, so a reaction</span>
+<span id="cb2-740"><a href="#cb2-740" aria-hidden="true" tabindex="-1"></a>term's frequency can move for reasons unrelated to patients. Confirming a specific revision needs</span>
+<span id="cb2-741"><a href="#cb2-741" aria-hidden="true" tabindex="-1"></a>the licensed release history. Flagging trajectories for review does not.</span>
+<span id="cb2-742"><a href="#cb2-742" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-745"><a href="#cb2-745" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-746"><a href="#cb2-746" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: tbl-drift</span></span>
+<span id="cb2-747"><a href="#cb2-747" aria-hidden="true" tabindex="-1"></a>drift <span class="op">=</span> load_json(<span class="st">"drift_summary.json"</span>)</span>
+<span id="cb2-748"><a href="#cb2-748" aria-hidden="true" tabindex="-1"></a>pl.DataFrame(</span>
+<span id="cb2-749"><a href="#cb2-749" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb2-750"><a href="#cb2-750" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Measure"</span>: [</span>
+<span id="cb2-751"><a href="#cb2-751" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Terms tested (&gt;= 200 reports)"</span>,</span>
+<span id="cb2-752"><a href="#cb2-752" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Flagged as drift-suspect"</span>,</span>
+<span id="cb2-753"><a href="#cb2-753" aria-hidden="true" tabindex="-1"></a>            <span class="st">"  - absent early, established later"</span>,</span>
+<span id="cb2-754"><a href="#cb2-754" aria-hidden="true" tabindex="-1"></a>            <span class="st">"  - established early, absent later"</span>,</span>
+<span id="cb2-755"><a href="#cb2-755" aria-hidden="true" tabindex="-1"></a>            <span class="st">"  - abrupt step between adjacent quarters"</span>,</span>
+<span id="cb2-756"><a href="#cb2-756" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Share of reaction mentions involving a flagged term"</span>,</span>
+<span id="cb2-757"><a href="#cb2-757" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb2-758"><a href="#cb2-758" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Value"</span>: [</span>
+<span id="cb2-759"><a href="#cb2-759" aria-hidden="true" tabindex="-1"></a>            n(drift[<span class="st">"terms_tested"</span>]),</span>
+<span id="cb2-760"><a href="#cb2-760" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>n(drift[<span class="st">"terms_drift_suspect"</span>])<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>drift[<span class="st">"terms_drift_suspect_fraction"</span>]<span class="sc">:.1%}</span><span class="ss">)'</span>,</span>
+<span id="cb2-761"><a href="#cb2-761" aria-hidden="true" tabindex="-1"></a>            n(drift[<span class="st">"late_onset"</span>]),</span>
+<span id="cb2-762"><a href="#cb2-762" aria-hidden="true" tabindex="-1"></a>            n(drift[<span class="st">"discontinued"</span>]),</span>
+<span id="cb2-763"><a href="#cb2-763" aria-hidden="true" tabindex="-1"></a>            n(drift[<span class="st">"step_change"</span>]),</span>
+<span id="cb2-764"><a href="#cb2-764" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>drift[<span class="st">"report_mentions_affected_fraction"</span>]<span class="sc">:.1%}</span><span class="ss">'</span>,</span>
+<span id="cb2-765"><a href="#cb2-765" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb2-766"><a href="#cb2-766" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-767"><a href="#cb2-767" aria-hidden="true" tabindex="-1"></a>).to_pandas()</span>
+<span id="cb2-768"><a href="#cb2-768" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-769"><a href="#cb2-769" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-772"><a href="#cb2-772" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-773"><a href="#cb2-773" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: fig-drift</span></span>
+<span id="cb2-774"><a href="#cb2-774" aria-hidden="true" tabindex="-1"></a>fig(<span class="st">"drift_trajectories"</span>)</span>
+<span id="cb2-775"><a href="#cb2-775" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-776"><a href="#cb2-776" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-777"><a href="#cb2-777" aria-hidden="true" tabindex="-1"></a>Grey terms hold a steady band; the flagged ones move by orders of magnitude between adjacent</span>
+<span id="cb2-778"><a href="#cb2-778" aria-hidden="true" tabindex="-1"></a>quarters. That shape is the whole basis of the flag — a real clinical trend does not switch on in</span>
+<span id="cb2-779"><a href="#cb2-779" aria-hidden="true" tabindex="-1"></a>one quarter and stay on.</span>
+<span id="cb2-780"><a href="#cb2-780" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-781"><a href="#cb2-781" aria-hidden="true" tabindex="-1"></a>Terms flagged for abrupt onset, disappearance or a step change account for **16% of reaction</span>
+<span id="cb2-782"><a href="#cb2-782" aria-hidden="true" tabindex="-1"></a>mentions**. The flags identify trajectories worth reviewing; they do not establish that a MedDRA</span>
+<span id="cb2-783"><a href="#cb2-783" aria-hidden="true" tabindex="-1"></a>revision caused any particular one. An abrupt change in a term's frequency has several possible</span>
+<span id="cb2-784"><a href="#cb2-784" aria-hidden="true" tabindex="-1"></a>causes, and this detector does not distinguish between them.</span>
 <span id="cb2-785"><a href="#cb2-785" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-786"><a href="#cb2-786" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reproducing this</span></span>
-<span id="cb2-787"><a href="#cb2-787" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-788"><a href="#cb2-788" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
-<span id="cb2-789"><a href="#cb2-789" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/neksa/openfda-faers <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> openfda-faers</span>
-<span id="cb2-790"><a href="#cb2-790" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span>
-<span id="cb2-791"><a href="#cb2-791" aria-hidden="true" tabindex="-1"></a><span class="ex">dvc</span> repro</span>
-<span id="cb2-792"><a href="#cb2-792" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-793"><a href="#cb2-793" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-794"><a href="#cb2-794" aria-hidden="true" tabindex="-1"></a>No credentials and no cloud storage are needed: FDA hosts the source archives, <span class="in">`dvc.lock`</span> pins every</span>
-<span id="cb2-795"><a href="#cb2-795" aria-hidden="true" tabindex="-1"></a>intermediate by hash, and <span class="in">`results/source_manifest.json`</span> records a SHA-256 for each of the</span>
-<span id="cb2-796"><a href="#cb2-796" aria-hidden="true" tabindex="-1"></a><span class="in">`{python} n(manifest["n_quarters"])`</span> inputs. FDA republishes quarterly extracts as snapshots and can</span>
-<span id="cb2-797"><a href="#cb2-797" aria-hidden="true" tabindex="-1"></a>revise them in place, so <span class="in">`faers verify`</span> reports drift against those checksums rather than letting it</span>
-<span id="cb2-798"><a href="#cb2-798" aria-hidden="true" tabindex="-1"></a>change the numbers silently.</span>
-<span id="cb2-799"><a href="#cb2-799" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-800"><a href="#cb2-800" aria-hidden="true" tabindex="-1"></a>Full run is roughly 25 minutes on a 10-core laptop, dominated by the download.</span>
+<span id="cb2-786"><a href="#cb2-786" aria-hidden="true" tabindex="-1"></a>Per-term flags are in <span class="in">`results/drift/term_drift.parquet`</span>. A rename between two similar terms</span>
+<span id="cb2-787"><a href="#cb2-787" aria-hidden="true" tabindex="-1"></a>produces a fall and a rise and is caught on both sides; a gradual merge may not be visible at all,</span>
+<span id="cb2-788"><a href="#cb2-788" aria-hidden="true" tabindex="-1"></a>so the flagged set is neither exhaustive nor confirmed.</span>
+<span id="cb2-789"><a href="#cb2-789" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-790"><a href="#cb2-790" aria-hidden="true" tabindex="-1"></a><span class="fu">## Independent duplicates</span></span>
+<span id="cb2-791"><a href="#cb2-791" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-792"><a href="#cb2-792" aria-hidden="true" tabindex="-1"></a>Deduplication earlier in this report collapsed case *versions* — follow-up submissions carrying the</span>
+<span id="cb2-793"><a href="#cb2-793" aria-hidden="true" tabindex="-1"></a>same case id. It cannot see the other kind of redundancy: one incident reported separately by the</span>
+<span id="cb2-794"><a href="#cb2-794" aria-hidden="true" tabindex="-1"></a>patient, the physician and the manufacturer, each becoming a distinct case with its own id. FDA does</span>
+<span id="cb2-795"><a href="#cb2-795" aria-hidden="true" tabindex="-1"></a>not link these and no field identifies them.</span>
+<span id="cb2-796"><a href="#cb2-796" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-797"><a href="#cb2-797" aria-hidden="true" tabindex="-1"></a>Detected here by record linkage: block on sex, five-year age band, event year-month, reporter</span>
+<span id="cb2-798"><a href="#cb2-798" aria-hidden="true" tabindex="-1"></a>country **and** a shared drug **and** a shared reaction, then score candidate pairs on how much</span>
+<span id="cb2-799"><a href="#cb2-799" aria-hidden="true" tabindex="-1"></a>their drug and reaction sets overlap.</span>
+<span id="cb2-800"><a href="#cb2-800" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-803"><a href="#cb2-803" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb2-804"><a href="#cb2-804" aria-hidden="true" tabindex="-1"></a><span class="co"># | label: tbl-duplicates</span></span>
+<span id="cb2-805"><a href="#cb2-805" aria-hidden="true" tabindex="-1"></a>dup <span class="op">=</span> load_json(<span class="st">"duplicates_summary.json"</span>)</span>
+<span id="cb2-806"><a href="#cb2-806" aria-hidden="true" tabindex="-1"></a>pl.DataFrame(</span>
+<span id="cb2-807"><a href="#cb2-807" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb2-808"><a href="#cb2-808" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Measure"</span>: [</span>
+<span id="cb2-809"><a href="#cb2-809" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Records eligible for linkage"</span>,</span>
+<span id="cb2-810"><a href="#cb2-810" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Candidate pairs compared"</span>,</span>
+<span id="cb2-811"><a href="#cb2-811" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Pairs above similarity threshold"</span>,</span>
+<span id="cb2-812"><a href="#cb2-812" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Suspected duplicate clusters"</span>,</span>
+<span id="cb2-813"><a href="#cb2-813" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Redundant records (all but one per cluster)"</span>,</span>
+<span id="cb2-814"><a href="#cb2-814" aria-hidden="true" tabindex="-1"></a>            <span class="st">"As a share of eligible records"</span>,</span>
+<span id="cb2-815"><a href="#cb2-815" aria-hidden="true" tabindex="-1"></a>            <span class="st">"As a share of the whole corpus"</span>,</span>
+<span id="cb2-816"><a href="#cb2-816" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb2-817"><a href="#cb2-817" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Value"</span>: [</span>
+<span id="cb2-818"><a href="#cb2-818" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>n(dup[<span class="st">"eligible_records"</span>])<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>dup[<span class="st">"eligible_fraction_of_corpus"</span>]<span class="sc">:.1%}</span><span class="ss"> of corpus)'</span>,</span>
+<span id="cb2-819"><a href="#cb2-819" aria-hidden="true" tabindex="-1"></a>            n(dup[<span class="st">"candidate_pairs"</span>]),</span>
+<span id="cb2-820"><a href="#cb2-820" aria-hidden="true" tabindex="-1"></a>            n(dup[<span class="st">"pairs_above_threshold"</span>]),</span>
+<span id="cb2-821"><a href="#cb2-821" aria-hidden="true" tabindex="-1"></a>            n(dup[<span class="st">"clusters"</span>]),</span>
+<span id="cb2-822"><a href="#cb2-822" aria-hidden="true" tabindex="-1"></a>            n(dup[<span class="st">"redundant_records"</span>]),</span>
+<span id="cb2-823"><a href="#cb2-823" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>dup[<span class="st">"redundant_fraction_of_eligible"</span>]<span class="sc">:.1%}</span><span class="ss">'</span>,</span>
+<span id="cb2-824"><a href="#cb2-824" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>dup[<span class="st">"redundant_fraction_of_corpus"</span>]<span class="sc">:.1%}</span><span class="ss">'</span>,</span>
+<span id="cb2-825"><a href="#cb2-825" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb2-826"><a href="#cb2-826" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-827"><a href="#cb2-827" aria-hidden="true" tabindex="-1"></a>).to_pandas()</span>
+<span id="cb2-828"><a href="#cb2-828" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-829"><a href="#cb2-829" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-830"><a href="#cb2-830" aria-hidden="true" tabindex="-1"></a>Linkage was possible for 30% of cases — the rest lack a sex, an age, an event date or a reporter</span>
+<span id="cb2-831"><a href="#cb2-831" aria-hidden="true" tabindex="-1"></a>country, and cannot be blocked. Within that subset the matcher classified 9.4% as redundant,</span>
+<span id="cb2-832"><a href="#cb2-832" aria-hidden="true" tabindex="-1"></a>equivalent to 2.7% of the full corpus. Its precision, and the duplication rate among the 70% never</span>
+<span id="cb2-833"><a href="#cb2-833" aria-hidden="true" tabindex="-1"></a>examined, are both unknown, so neither figure bounds the true rate.</span>
+<span id="cb2-834"><a href="#cb2-834" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-835"><a href="#cb2-835" aria-hidden="true" tabindex="-1"></a>Suspected duplicates remain in every analysis in this report. Removal is a parameter</span>
+<span id="cb2-836"><a href="#cb2-836" aria-hidden="true" tabindex="-1"></a>(<span class="in">`duplicates.remove`</span>), off by default.</span>
+<span id="cb2-837"><a href="#cb2-837" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-838"><a href="#cb2-838" aria-hidden="true" tabindex="-1"></a><span class="fu">## Limitations</span></span>
+<span id="cb2-839"><a href="#cb2-839" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-840"><a href="#cb2-840" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**No causality, no incidence.** These are reporting associations. The number of people exposed</span>
+<span id="cb2-841"><a href="#cb2-841" aria-hidden="true" tabindex="-1"></a>  without an event is unknown, so no rate can be computed.</span>
+<span id="cb2-842"><a href="#cb2-842" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**The drug column is not uniformly a substance.** 28% of distinct drug labels reaching the signal</span>
+<span id="cb2-843"><a href="#cb2-843" aria-hidden="true" tabindex="-1"></a>  table are unmapped product names, flagged <span class="in">`ingredient_curated = false`</span>. Splitting one substance</span>
+<span id="cb2-844"><a href="#cb2-844" aria-hidden="true" tabindex="-1"></a>  across several names changes both its co-report and its marginal counts.</span>
+<span id="cb2-845"><a href="#cb2-845" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**MedDRA terms are treated as stable strings** across 22 years. Terms flagged for abrupt</span>
+<span id="cb2-846"><a href="#cb2-846" aria-hidden="true" tabindex="-1"></a>  trajectory change account for 16% of reaction mentions; whether a terminology revision caused any</span>
+<span id="cb2-847"><a href="#cb2-847" aria-hidden="true" tabindex="-1"></a>  given one is unverified, and confirming it needs the licensed release history.</span>
+<span id="cb2-848"><a href="#cb2-848" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Independent duplicates are estimated, not removed**, and remain in every table here. The</span>
+<span id="cb2-849"><a href="#cb2-849" aria-hidden="true" tabindex="-1"></a>  estimate covers only the 30% of cases that could be blocked, with unknown matcher precision.</span>
+<span id="cb2-850"><a href="#cb2-850" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**No pharmacologic class vocabulary.** RxNorm→ATC mapping needs a UMLS licence. The similarity</span>
+<span id="cb2-851"><a href="#cb2-851" aria-hidden="true" tabindex="-1"></a>  section compares drugs against five hand-specified reference classes; it does not use a class</span>
+<span id="cb2-852"><a href="#cb2-852" aria-hidden="true" tabindex="-1"></a>  hierarchy, and its groupings reflect therapeutic neighbourhood rather than mechanism.</span>
+<span id="cb2-853"><a href="#cb2-853" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**q-values are approximate.** Benjamini–Hochberg assumes independence or positive dependence.</span>
+<span id="cb2-854"><a href="#cb2-854" aria-hidden="true" tabindex="-1"></a>  Drug–event tests share reports and are dependent.</span>
+<span id="cb2-855"><a href="#cb2-855" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Partial dates** given as a year or year-month are completed to the start of the period, biasing</span>
+<span id="cb2-856"><a href="#cb2-856" aria-hidden="true" tabindex="-1"></a>  those records toward January and month-starts.</span>
+<span id="cb2-857"><a href="#cb2-857" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-858"><a href="#cb2-858" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reproducing this</span></span>
+<span id="cb2-859"><a href="#cb2-859" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-860"><a href="#cb2-860" aria-hidden="true" tabindex="-1"></a><span class="in">```bash</span></span>
+<span id="cb2-861"><a href="#cb2-861" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/neksa/openfda-faers <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> openfda-faers</span>
+<span id="cb2-862"><a href="#cb2-862" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span>
+<span id="cb2-863"><a href="#cb2-863" aria-hidden="true" tabindex="-1"></a><span class="ex">dvc</span> repro</span>
+<span id="cb2-864"><a href="#cb2-864" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-865"><a href="#cb2-865" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-866"><a href="#cb2-866" aria-hidden="true" tabindex="-1"></a>No credentials and no cloud storage are needed: FDA hosts the source archives, <span class="in">`dvc.lock`</span> pins every</span>
+<span id="cb2-867"><a href="#cb2-867" aria-hidden="true" tabindex="-1"></a>intermediate by hash, and <span class="in">`results/source_manifest.json`</span> records a SHA-256 for each of the</span>
+<span id="cb2-868"><a href="#cb2-868" aria-hidden="true" tabindex="-1"></a><span class="in">`{python} n(manifest["n_quarters"])`</span> inputs. FDA republishes quarterly extracts as snapshots and can</span>
+<span id="cb2-869"><a href="#cb2-869" aria-hidden="true" tabindex="-1"></a>revise them in place, so <span class="in">`faers verify`</span> reports drift against those checksums rather than letting it</span>
+<span id="cb2-870"><a href="#cb2-870" aria-hidden="true" tabindex="-1"></a>change the numbers silently.</span>
+<span id="cb2-871"><a href="#cb2-871" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-872"><a href="#cb2-872" aria-hidden="true" tabindex="-1"></a>Full run is roughly 25 minutes on a 10-core laptop, dominated by the download.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

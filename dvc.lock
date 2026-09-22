@@ -177,8 +177,8 @@ stages:
       size: 214694241
     - path: src/faers/stats/descriptive.py
       hash: md5
-      md5: 88b20f721b10cf4085ac5769348b81f6
-      size: 10398
+      md5: 996e807598accbebdf23cfeff4a6e4bf
+      size: 11703
     params:
       params.yaml:
         descriptive:
@@ -189,9 +189,9 @@ stages:
     outs:
     - path: results/descriptive
       hash: md5
-      md5: fc48f526e35867e66542f209ae67bd8b.dir
-      size: 32466
-      nfiles: 17
+      md5: 7fd7aec4035224bba4e81b70090a76ef.dir
+      size: 33457
+      nfiles: 18
   signals:
     cmd: python -m faers.cli signals
     deps:
@@ -299,9 +299,9 @@ stages:
     deps:
     - path: results/descriptive
       hash: md5
-      md5: fc48f526e35867e66542f209ae67bd8b.dir
-      size: 32466
-      nfiles: 17
+      md5: 7fd7aec4035224bba4e81b70090a76ef.dir
+      size: 33457
+      nfiles: 18
     - path: results/drift
       hash: md5
       md5: e2bfb84978cc16b8f86c799a43d48113.dir
@@ -318,39 +318,39 @@ stages:
       nfiles: 7
     - path: src/faers/plots.py
       hash: md5
-      md5: f97cf7e86bb60256282db5d4ea9932c8
-      size: 19053
+      md5: 020f7343d1f58d0f17aca24af7ec7c11
+      size: 20187
     outs:
     - path: figures
       hash: md5
-      md5: 822dc4f8e120178890f9b2639b5dc4ba.dir
-      size: 5085592
-      nfiles: 30
+      md5: 383d3d49b99501e37e74a81bdfd50106.dir
+      size: 5233016
+      nfiles: 32
   report:
     cmd: python -m faers.cli report
     deps:
     - path: figures
       hash: md5
-      md5: 822dc4f8e120178890f9b2639b5dc4ba.dir
-      size: 5085592
-      nfiles: 30
+      md5: 383d3d49b99501e37e74a81bdfd50106.dir
+      size: 5233016
+      nfiles: 32
     - path: report/_quarto.yml
       hash: md5
       md5: b56123279d97cbda401448b04ba5f04b
       size: 733
     - path: report/index.qmd
       hash: md5
-      md5: ce31de54110b85e96eb0e84fbe5bbe90
-      size: 30958
+      md5: 62c9916a0bf3124c10af7e269c74b9a6
+      size: 34436
     - path: results/dedup_stats.json
       hash: md5
       md5: ebad3fbad5e133a9fee189dcd57eb0c4
       size: 277
     - path: results/descriptive
       hash: md5
-      md5: fc48f526e35867e66542f209ae67bd8b.dir
-      size: 32466
-      nfiles: 17
+      md5: 7fd7aec4035224bba4e81b70090a76ef.dir
+      size: 33457
+      nfiles: 18
     - path: results/drift_summary.json
       hash: md5
       md5: f8d34634e3da4761f33d2b8b2dc65e62
@@ -375,9 +375,9 @@ stages:
     outs:
     - path: docs
       hash: md5
-      md5: 27fbf3f1daa20777649823e150352ba0.dir
-      size: 6443610
-      nfiles: 36
+      md5: dbad5d05f6fb0fad1650aa748340d4bb.dir
+      size: 6610500
+      nfiles: 37
   brands:
     cmd: python -m faers.cli brands
     deps:

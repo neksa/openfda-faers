@@ -415,6 +415,74 @@ Each association is real. None is a newly detected harm. Disproportionality meas
 terms co-occur relative to expectation; it does not distinguish a drug's effect from its
 indication, its administration context, or a term that names its own cause.
 
+## Three signals, checked against the literature
+
+The corpus is large enough that plausible-looking associations are cheap. These three were taken
+from the top of the EB05 ranking, excluding the procedure and indication artefacts above, and then
+looked up in the published literature.
+
+```{python}
+# | label: tbl-worked
+scored_lf = pl.scan_parquet(RESULTS / "signals" / "scored.parquet")
+examples = [
+    ("GADODIAMIDE", "NEPHROGENIC SYSTEMIC FIBROSIS"),
+    ("PENTOSAN POLYSULFATE", "RETINAL PIGMENTATION"),
+    ("BELANTAMAB MAFODOTIN", "KERATOPATHY"),
+]
+rows = []
+for ing, pt in examples:
+    r = scored_lf.filter((pl.col("ingredient") == ing) & (pl.col("pt") == pt)).collect()
+    if r.height:
+        x = r.row(0, named=True)
+        rows.append(
+            {
+                "Drug": ing.title(),
+                "Reaction": pt.title(),
+                "Co-reports": n(x["n_ij"]),
+                "Expected": f'{x["expected"]:.1f}',
+                "EB05": f'{x["eb05"]:,.0f}',
+            }
+        )
+pl.DataFrame(rows).to_pandas()
+```
+
+**Gadodiamide and nephrogenic systemic fibrosis** — 2,222 co-reports against an expected 0.5. NSF
+is a fibrosing condition of skin and internal organs seen in patients with advanced renal
+impairment. According to PubMed, the causal role of gadolinium-based contrast agents is
+established, with gadodiamide specifically implicated among the less stable linear agents, and
+preventive guidelines followed ([DOI](https://doi.org/10.1097/BOR.0b013e328333bf3d)).
+
+The reporting history shows what happened next:
+
+```{python}
+# | label: fig-nsf
+fig("gadolinium_nsf")
+```
+
+Reports begin in 2007, run through 2014, then collapse to single digits — 849 in 2014 against 6 in
+2023. The association was recognised in 2006–2007 and FDA restricted gadolinium use in advanced
+kidney disease; the decline is what a successful intervention looks like in reporting data. It also
+shows why the pooled statistic understates the story: EB05 = 4,441 is computed across 22 years, but
+the exposure that generated it largely stopped a decade ago.
+
+**Pentosan polysulfate and retinal pigmentation** — 607 co-reports against 0.2. Pentosan
+polysulfate is the only oral therapy approved for interstitial cystitis. According to PubMed, a
+progressive, dose-dependent pigmentary maculopathy affecting the retinal pigment epithelium is
+associated with long-term use, may progress after the drug is stopped, and prompted screening
+recommendations ([DOI](https://doi.org/10.1016/j.survophthal.2021.05.005)). This one is recent —
+first described in 2018, long after most of the drugs in this corpus were characterised.
+
+**Belantamab mafodotin and keratopathy** — 840 co-reports against 0.2. Belantamab mafodotin is an
+antibody–drug conjugate for relapsed multiple myeloma. According to PubMed, 73% of patients in the
+DREAMM-2 trial had keratopathy, attributed to off-target damage to corneal epithelial cells by the
+drug's cytotoxic payload ([DOI](https://doi.org/10.3389/fonc.2021.678634)).
+
+**What this does and does not show.** All three are real, documented and in some cases
+label-carrying associations, which is evidence the ranking surfaces genuine safety signals
+alongside the indication artefacts. It is not evidence of *discovery*: these were found by looking
+at the top of a ranking and then reading the literature, which is the easy direction. A pair with
+no literature behind it would be indistinguishable here from one nobody has studied yet.
+
 ## Do signals survive confounder adjustment?
 
 Each variable is applied as a separate Mantel–Haenszel stratification, on a random sample of

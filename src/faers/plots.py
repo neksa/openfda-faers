@@ -403,6 +403,36 @@ def drift_trajectories(traj: pl.DataFrame, out_dir: Path) -> None:
     _save(chart, out_dir, "drift_trajectories")
 
 
+def worked_example(df: pl.DataFrame, out_dir: Path) -> None:
+    """Gadolinium agents and nephrogenic systemic fibrosis, by year.
+
+    Emphasis on the period after regulatory action rather than a flat series: the point of the
+    chart is the collapse, not the peak.
+    """
+    d = df.with_columns(
+        pl.when(pl.col("year") >= 2015)
+        .then(pl.lit("After 2015"))
+        .otherwise(pl.lit("2007-2014"))
+        .alias("period")
+    )
+    chart = (
+        _base(d, "Gadolinium contrast agents and nephrogenic systemic fibrosis")
+        .mark_bar()
+        .encode(
+            x=alt.X("year:O", title="FDA receipt year"),
+            y=alt.Y("reports:Q", title="Reports"),
+            color=alt.Color(
+                "period:N", title=None,
+                scale=alt.Scale(domain=["2007-2014", "After 2015"], range=[ACCENT, MUTED]),
+                legend=alt.Legend(orient="top-right"),
+            ),
+            tooltip=["year:O", alt.Tooltip("reports:Q", format=",")],
+        )
+        .properties(height=280)
+    )
+    _save(chart, out_dir, "gadolinium_nsf")
+
+
 def render_all(results_dir: Path, out_dir: Path) -> list[str]:
     """Build every figure from the result tables."""
     results_dir, out_dir = Path(results_dir), Path(out_dir)
@@ -421,6 +451,7 @@ def render_all(results_dir: Path, out_dir: Path) -> list[str]:
               out_dir, "top_indications")
     report_structure(read("drugs_per_report"), read("reactions_per_report"), out_dir)
     reaction_trends(read("reaction_trend"), out_dir)
+    worked_example(read("gadolinium_nsf"), out_dir)
 
     scored_path = results_dir / "signals" / "scored.parquet"
     if scored_path.exists():

@@ -1,0 +1,163 @@
+{
+ "config": {
+  "view": {
+   "continuousWidth": 300,
+   "continuousHeight": 300
+  }
+ },
+ "data": {
+  "name": "data-4ddc6776128094cb0cc689c89a57d76d"
+ },
+ "mark": {
+  "type": "bar"
+ },
+ "encoding": {
+  "color": {
+   "field": "period",
+   "legend": {
+    "orient": "top-right"
+   },
+   "scale": {
+    "domain": [
+     "2007-2014",
+     "After 2015"
+    ],
+    "range": [
+     "#2a78d6",
+     "#b8b7b0"
+    ]
+   },
+   "title": null,
+   "type": "nominal"
+  },
+  "tooltip": [
+   {
+    "field": "year",
+    "type": "ordinal"
+   },
+   {
+    "field": "reports",
+    "format": ",",
+    "type": "quantitative"
+   }
+  ],
+  "x": {
+   "field": "year",
+   "title": "FDA receipt year",
+   "type": "ordinal"
+  },
+  "y": {
+   "field": "reports",
+   "title": "Reports",
+   "type": "quantitative"
+  }
+ },
+ "height": 280,
+ "title": "Gadolinium contrast agents and nephrogenic systemic fibrosis",
+ "width": 620,
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.1.0.json",
+ "datasets": {
+  "data-4ddc6776128094cb0cc689c89a57d76d": [
+   {
+    "year": 2007,
+    "reports": 161,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2008,
+    "reports": 326,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2009,
+    "reports": 300,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2010,
+    "reports": 411,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2011,
+    "reports": 415,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2012,
+    "reports": 153,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2013,
+    "reports": 131,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2014,
+    "reports": 849,
+    "period": "2007-2014"
+   },
+   {
+    "year": 2015,
+    "reports": 19,
+    "period": "After 2015"
+   },
+   {
+    "year": 2016,
+    "reports": 13,
+    "period": "After 2015"
+   },
+   {
+    "year": 2017,
+    "reports": 50,
+    "period": "After 2015"
+   },
+   {
+    "year": 2018,
+    "reports": 26,
+    "period": "After 2015"
+   },
+   {
+    "year": 2019,
+    "reports": 29,
+    "period": "After 2015"
+   },
+   {
+    "year": 2020,
+    "reports": 29,
+    "period": "After 2015"
+   },
+   {
+    "year": 2021,
+    "reports": 12,
+    "period": "After 2015"
+   },
+   {
+    "year": 2022,
+    "reports": 9,
+    "period": "After 2015"
+   },
+   {
+    "year": 2023,
+    "reports": 6,
+    "period": "After 2015"
+   },
+   {
+    "year": 2024,
+    "reports": 5,
+    "period": "After 2015"
+   },
+   {
+    "year": 2025,
+    "reports": 6,
+    "period": "After 2015"
+   },
+   {
+    "year": 2026,
+    "reports": 9,
+    "period": "After 2015"
+   }
+  ]
+ }
+}
