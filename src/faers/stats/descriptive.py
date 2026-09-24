@@ -250,6 +250,34 @@ def reaction_trend(reac: pl.LazyFrame, demo: pl.LazyFrame, terms: list[str]) -> 
     )
 
 
+def worked_example(
+    drug: pl.LazyFrame, reac: pl.LazyFrame, demo: pl.LazyFrame,
+    ingredient_prefix: str, reaction: str,
+) -> pl.DataFrame:
+    """Yearly report count for one drug-reaction pair.
+
+    A signal's shape over time carries information the pooled statistics discard. Gadolinium
+    contrast agents and nephrogenic systemic fibrosis is the clearest case in this corpus: reports
+    begin in 2007, when the association was established and FDA restricted use in renal impairment,
+    and fall to single digits after 2015 once practice had changed.
+    """
+    d = drug.filter(pl.col("ingredient").str.starts_with(ingredient_prefix)).select(
+        "record_id"
+    ).unique()
+    r = reac.filter(pl.col("pt") == reaction).select("record_id").unique()
+    return (
+        d.join(r, on="record_id", how="inner")
+        .join(demo.select("record_id", "fda_dt"), on="record_id", how="inner")
+        .filter(pl.col("fda_dt").is_not_null())
+        .with_columns(pl.col("fda_dt").dt.year().alias("year"))
+        .group_by("year")
+        .agg(pl.len().alias("reports"))
+        .filter(pl.col("year").is_between(2004, 2026))
+        .sort("year")
+        .collect()
+    )
+
+
 def write_all(curated: Path, out_dir: Path, trend_terms: list[str]) -> dict[str, int]:
     """Run every descriptive question and write tidy tables."""
     curated, out_dir = Path(curated), Path(out_dir)
@@ -270,6 +298,9 @@ def write_all(curated: Path, out_dir: Path, trend_terms: list[str]) -> dict[str,
         "challenge_table": challenge_table(drug),
         "reaction_trend": reaction_trend(reac, demo, trend_terms),
     }
+    tables["gadolinium_nsf"] = worked_example(
+        drug, reac, demo, "GADO", "NEPHROGENIC SYSTEMIC FIBROSIS"
+    )
     tables.update(demographics(demo))
     tables.update(reporters(demo))
     tables.update(report_structure(drug, reac))
